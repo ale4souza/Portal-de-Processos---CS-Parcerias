@@ -1,0 +1,2979 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal de Processos | CS Parcerias – Helena</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #00C853;
+    --green-light: #00E060;
+    --green-pale: #e6faf0;
+    --green-mid: #009940;
+    --black: #0a0e0c;
+    --dark: #111714;
+    --gray: #1e2620;
+    --gray-mid: #2d3530;
+    --border: #e2ebe6;
+    --text: #1a2420;
+    --muted: #6b8070;
+    --white: #ffffff;
+    --sidebar-w: 280px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #f4f8f6;
+    color: var(--text);
+    display: flex;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ───── SIDEBAR ───── */
+  #sidebar {
+    width: var(--sidebar-w);
+    min-height: 100vh;
+    background: var(--dark);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0; top: 0;
+    z-index: 100;
+    transition: transform .3s ease;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #2d3530 transparent;
+  }
+
+  .sidebar-logo {
+    padding: 20px 20px 16px;
+    border-bottom: 1px solid #1e2620;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .logo-sub {
+    font-size: .65rem;
+    color: var(--green-light);
+    font-weight: 500;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  /* Search in sidebar */
+  .sidebar-search {
+    padding: 14px 16px;
+    border-bottom: 1px solid #1e2620;
+  }
+
+  .search-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .search-wrap svg {
+    position: absolute;
+    left: 10px;
+    width: 15px; height: 15px;
+    stroke: #6b8070;
+    fill: none;
+  }
+
+  #searchInput {
+    width: 100%;
+    background: #1a2420;
+    border: 1px solid #2d3530;
+    border-radius: 8px;
+    padding: 8px 10px 8px 34px;
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .8rem;
+    outline: none;
+    transition: border .2s;
+  }
+
+  #searchInput::placeholder { color: #4a5e55; }
+  #searchInput:focus { border-color: var(--green); }
+
+  /* Nav */
+  .nav-section {
+    padding: 6px 0;
+    border-bottom: 1px solid #1a2420;
+  }
+
+  .nav-section:last-child { border-bottom: none; }
+
+  .nav-cat {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px 8px;
+    cursor: pointer;
+    user-select: none;
+    transition: background .15s;
+    border-radius: 0;
+  }
+
+  .nav-cat:hover { background: #1a2420; }
+
+  .nav-cat.active { background: #1a2420; }
+
+  .nav-cat-icon {
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .95rem;
+    flex-shrink: 0;
+    background: #1e2620;
+  }
+
+  .nav-cat.active .nav-cat-icon { background: var(--green-mid); }
+
+  .nav-cat-label {
+    flex: 1;
+    font-size: .82rem;
+    font-weight: 500;
+    color: #c8d8d0;
+    line-height: 1.2;
+  }
+
+  .nav-cat.active .nav-cat-label { color: white; }
+
+  .nav-chevron {
+    width: 14px; height: 14px;
+    stroke: #4a5e55;
+    fill: none;
+    transition: transform .25s;
+    flex-shrink: 0;
+  }
+
+  .nav-cat.open .nav-chevron { transform: rotate(90deg); }
+
+  .nav-items {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height .35s ease;
+  }
+
+  .nav-items.open { max-height: 800px; }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 18px 7px 56px;
+    cursor: pointer;
+    font-size: .78rem;
+    color: #7a9080;
+    transition: background .15s, color .15s;
+    line-height: 1.3;
+  }
+
+  .nav-item:hover { background: #161c18; color: #c8d8d0; }
+
+  .nav-item.active {
+    background: #0f1a14;
+    color: var(--green-light);
+    font-weight: 500;
+  }
+
+  .nav-item::before {
+    content: '';
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+    flex-shrink: 0;
+    opacity: .5;
+  }
+
+  .nav-item.active::before { opacity: 1; background: var(--green-light); }
+
+  /* No results */
+  .no-results {
+    padding: 16px 18px;
+    font-size: .78rem;
+    color: #4a5e55;
+    display: none;
+  }
+
+  /* ───── MAIN ───── */
+  #main {
+    margin-left: var(--sidebar-w);
+    flex: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Top bar */
+  #topbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(244,248,246,.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 32px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: .82rem;
+    color: var(--muted);
+  }
+
+  .breadcrumb span { color: var(--text); font-weight: 500; }
+  .breadcrumb .sep { color: #c0cdc5; }
+
+  .topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .top-search-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .top-search-wrap svg {
+    position: absolute;
+    left: 11px;
+    width: 15px; height: 15px;
+    stroke: var(--muted);
+    fill: none;
+    pointer-events: none;
+  }
+
+  #topSearch {
+    width: 220px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 7px 12px 7px 34px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .82rem;
+    color: var(--text);
+    background: white;
+    outline: none;
+    transition: border .2s, box-shadow .2s;
+  }
+
+  #topSearch:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(26,140,91,.12);
+  }
+
+  .btn-search {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: var(--green);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .2s, transform .1s;
+  }
+
+  .btn-search:hover { background: var(--green-mid); }
+  .btn-search:active { transform: scale(.97); }
+  .btn-search svg { width: 14px; height: 14px; stroke: white; fill: none; }
+
+  /* ───── CONTENT ───── */
+  #content {
+    flex: 1;
+    padding: 36px 40px 60px;
+    max-width: 900px;
+    width: 100%;
+  }
+
+  /* Home page */
+  .home-hero {
+    background: linear-gradient(135deg, var(--dark) 0%, #1a3328 100%);
+    border-radius: 20px;
+    padding: 44px 40px;
+    margin-bottom: 36px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .home-hero::before {
+    content: '';
+    position: absolute;
+    right: -60px; top: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(34,181,114,.15) 0%, transparent 70%);
+  }
+
+  .home-hero::after {
+    content: '';
+    position: absolute;
+    left: -40px; bottom: -80px;
+    width: 250px; height: 250px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(26,140,91,.1) 0%, transparent 70%);
+  }
+
+  .home-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(34,181,114,.15);
+    border: 1px solid rgba(34,181,114,.25);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: .72rem;
+    font-weight: 600;
+    color: var(--green-light);
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .home-hero h1 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: white;
+    letter-spacing: -.03em;
+    line-height: 1.15;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .home-hero h1 em {
+    color: var(--green-light);
+    font-style: normal;
+  }
+
+  .home-hero p {
+    color: #8aab98;
+    font-size: .95rem;
+    line-height: 1.65;
+    max-width: 520px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .home-stats {
+    display: flex;
+    gap: 20px;
+    margin-top: 28px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stat-pill {
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 12px;
+    padding: 10px 18px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--green-light);
+    display: block;
+  }
+
+  .stat-label {
+    font-size: .7rem;
+    color: #6a8878;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+  }
+
+  /* Section cards on home */
+  .section-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+
+  .section-card {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 16px;
+    padding: 22px;
+    cursor: pointer;
+    transition: border-color .2s, box-shadow .2s, transform .2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .section-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--green);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .25s;
+  }
+
+  .section-card:hover {
+    border-color: var(--green);
+    box-shadow: 0 8px 24px rgba(26,140,91,.1);
+    transform: translateY(-2px);
+  }
+
+  .section-card:hover::after { transform: scaleX(1); }
+
+  .card-icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    background: var(--green-pale);
+    margin-bottom: 14px;
+  }
+
+  .card-title {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: .95rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+    line-height: 1.25;
+  }
+
+  .card-desc {
+    font-size: .78rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  .card-count {
+    margin-top: 14px;
+    font-size: .72rem;
+    color: var(--green);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* ─── PAGE VIEW ─── */
+  .page-header {
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1.5px solid var(--border);
+  }
+
+  .page-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--green-pale);
+    border: 1px solid rgba(26,140,91,.2);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: .7rem;
+    font-weight: 600;
+    color: var(--green);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .page-title {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--black);
+    letter-spacing: -.02em;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .page-desc {
+    color: var(--muted);
+    font-size: .9rem;
+    line-height: 1.6;
+  }
+
+  /* Sub-page grid */
+  .sub-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .sub-card {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 18px;
+    cursor: pointer;
+    transition: border-color .2s, box-shadow .2s, transform .15s;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .sub-card:hover {
+    border-color: var(--green);
+    box-shadow: 0 4px 16px rgba(26,140,91,.08);
+    transform: translateY(-1px);
+  }
+
+  .sub-card-icon { font-size: 1.3rem; }
+
+  .sub-card-title {
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+  }
+
+  .sub-card-arrow {
+    margin-top: auto;
+    width: 20px; height: 20px;
+    border-radius: 6px;
+    background: var(--green-pale);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sub-card-arrow svg {
+    width: 11px; height: 11px;
+    stroke: var(--green);
+    fill: none;
+  }
+
+  /* Content blocks */
+  .content-body {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-top: 20px;
+    line-height: 1.7;
+  }
+
+  .content-body h2 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--black);
+    margin: 20px 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .content-body h2:first-child { margin-top: 0; }
+
+  .content-body p {
+    color: #3a4e44;
+    font-size: .9rem;
+    margin-bottom: 10px;
+  }
+
+  .content-body ul, .content-body ol {
+    padding-left: 1.4em;
+    margin: 8px 0 14px;
+  }
+
+  .content-body li {
+    font-size: .87rem;
+    color: #3a4e44;
+    margin-bottom: 5px;
+    line-height: 1.6;
+  }
+
+  .callout-block {
+    background: var(--green-pale);
+    border-left: 3px solid var(--green);
+    border-radius: 0 10px 10px 0;
+    padding: 12px 16px;
+    margin: 16px 0;
+    font-size: .87rem;
+    color: var(--green-mid);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .callout-block .ci { font-size: 1rem; flex-shrink: 0; }
+
+  .warning-block {
+    background: #fff8e6;
+    border-left: 3px solid #e6a817;
+    border-radius: 0 10px 10px 0;
+    padding: 12px 16px;
+    margin: 16px 0;
+    font-size: .87rem;
+    color: #7a5800;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .info-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: .87rem;
+  }
+
+  .info-row:last-child { border-bottom: none; }
+
+  .info-key {
+    font-weight: 600;
+    color: var(--text);
+    min-width: 120px;
+    flex-shrink: 0;
+  }
+
+  .info-val { color: var(--muted); }
+
+  .step-list {
+    counter-reset: step;
+    padding: 0;
+    list-style: none;
+  }
+
+  .step-list li {
+    counter-increment: step;
+    padding: 10px 0 10px 44px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    font-size: .88rem;
+    color: #3a4e44;
+  }
+
+  .step-list li:last-child { border-bottom: none; }
+
+  .step-list > li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 26px; height: 26px;
+    background: var(--green);
+    color: white;
+    border-radius: 8px;
+    font-size: .72rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bricolage Grotesque', sans-serif;
+  }
+
+  .step-list ul li {
+    counter-increment: none;
+    padding: 4px 0 4px 0;
+    border-bottom: none;
+    list-style: disc;
+  }
+
+  .step-list ul li::before {
+    display: none;
+  }
+
+  .step-list ul {
+    padding-left: 18px;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: .72rem;
+    font-weight: 600;
+  }
+
+  .badge-green { background: var(--green-pale); color: var(--green); }
+  .checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 12px 0;
+  }
+  .checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    cursor: pointer;
+    transition: background .15s;
+    user-select: none;
+  }
+  .checklist-item:hover { background: var(--green-pale); }
+  .checklist-item input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    border: 2px solid var(--green);
+    border-radius: 4px;
+    margin-top: 1px;
+    cursor: pointer;
+    position: relative;
+    transition: background .15s;
+  }
+  .checklist-item input[type="checkbox"]:checked {
+    background: var(--green);
+  }
+  .checklist-item input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 3px;
+    top: 0px;
+    width: 5px;
+    height: 9px;
+    border: 2px solid #fff;
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg);
+  }
+  .checklist-item input[type="checkbox"]:checked ~ span {
+    text-decoration: line-through;
+    color: var(--muted);
+  }
+  .badge-orange { background: #fff3e0; color: #e6720a; }
+
+  /* Search results overlay */
+  #searchResults {
+    position: fixed;
+    top: 60px;
+    right: 32px;
+    width: 360px;
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.12);
+    z-index: 200;
+    display: none;
+    max-height: 70vh;
+    overflow-y: auto;
+    padding: 12px;
+  }
+
+  .search-result-item {
+    padding: 10px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background .15s;
+  }
+
+  .search-result-item:hover { background: var(--green-pale); }
+
+  .sr-cat {
+    font-size: .68rem;
+    font-weight: 600;
+    color: var(--green);
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .sr-title {
+    font-size: .88rem;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .sr-preview {
+    font-size: .76rem;
+    color: var(--muted);
+    margin-top: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  #searchResults hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 4px 0;
+  }
+
+  #noSearchResults {
+    padding: 20px;
+    text-align: center;
+    color: var(--muted);
+    font-size: .85rem;
+  }
+
+  .mobile-toggle {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 200;
+    background: var(--green);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 52px; height: 52px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(26,140,91,.35);
+  }
+
+  @media (max-width: 768px) {
+    #sidebar { transform: translateX(-100%); }
+    #sidebar.open { transform: translateX(0); }
+    #main { margin-left: 0; }
+    #content { padding: 20px; }
+    .mobile-toggle { display: flex; align-items: center; justify-content: center; }
+    .home-hero { padding: 28px 24px; }
+    .home-hero h1 { font-size: 1.6rem; }
+    .home-stats { flex-wrap: wrap; }
+    .section-cards { grid-template-columns: 1fr; }
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-in { animation: fadeUp .3s ease forwards; }
+
+  .page-view { display: none; }
+  .page-view.active { display: block; animation: fadeUp .25s ease; }
+
+  .highlight { background: #fef9c3; border-radius: 3px; padding: 0 2px; }
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<nav id="sidebar">
+  <div class="sidebar-logo">
+    <img src="data:image/png;base64,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HaOWGQFPeQ+BmUFFHii6Qg1lQ3WjY4f9KM+//acOToHlUXZWYcGJ8ZUlDMwupItZ6r/tt5vhOjfhXVTQGtDWgAAaADmUXmOImmObp697nnLnO6rFEYGzOk1RrVw6o7+v2cX9REUM5UIiICIiAiIgxuJrJQYhs09quUQkgmHA++Y7mc08xC5SxdYazDV/qbRWjv4naseBoJGH2Lh1EfEdRzLr9RjtB4abc8MNvkEY9V206vIHF8LjxHwHQ9Q3ule/AYibdexO6W58jc7qwWLjDXJ/53J04VdU9+6e7sc8IiKedlEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREFteBKBlrwPYbYxrWso7bTwNDeQBkTW8PiWaXjsf5FofNo/ohexAREQEREBERAREQEREFSeOPbrffSNR2jlhlmcce3W++kajtHLDIJ52abS2Gx3G9Pb+MqZxAwnmYwanTyl38KlxaXkjA2DLK06csglkcekmR3+2gW6LWsVVtXqp9rgPKLETiM0v1z6Ux3R0foREXnQoiIgIiICIiAvjXU0NbQz0dQ3ehnjdFI3pa4aEfEV9kVdytNU0zrG9xndKOS33OqoJv+pTTPhfw04tcQf8l5ltWbkDafMi9xtGgNR3Tk53NDj/mtVW026tqiKu19HYK//ow1u7PnUxPxjUREV70iIiAundn/AGWosd4IpMXYoxBVW6mr959JSUcbTIYwS0Pe92oGpBIaAeGh146DmJWkbO/uFYJ9C03ZhBCtx2LMJPp3Nt+Mr5TzaHR88MUrQebvQGn5Vzjnlkji7KiqjlujYrhZqh+5T3OmB7mXfmPaeMb9BrodQeOhOh0s1WCx/he240wbdML3aMPpLhTuiJI1Mbvevb+s12jh1gIKl0X2raaWjrJ6Sdu7LBI6OQdDmnQj4wvigIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiDMYLw5c8XYrtuGrPG19dcahsEIedGgnlc48zQNSeoFdd27YqsjaOMXHHVwkqtPxhgomMZr0AFxPyqAdkfwi8Iecy9hIrMEHG2MNi2pioJJ8J4zbU1LW6spbhS9zDz0d0YTofK34QuV8V4ev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" alt="Helena CRM" style="height:36px;width:auto;object-fit:contain;max-width:180px;">
+    <div class="logo-sub" style="display:none;">CS Parcerias</div>
+  </div>
+
+  <div class="sidebar-search">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="searchInput" placeholder="Buscar processo...">
+    </div>
+  </div>
+
+  <div id="navTree">
+    <!-- Rotinas do Time -->
+    <div class="nav-section">
+      <div class="nav-cat" data-section="rotinas" onclick="toggleCat(this,'rotinas')">
+        <div class="nav-cat-icon">📆</div>
+        <div class="nav-cat-label">Rotinas do Time</div>
+        <svg class="nav-chevron" viewBox="0 0 24 24" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+      </div>
+      <div class="nav-items" id="nav-rotinas">
+        <div class="nav-item" onclick="showPage('check-in')">Check-in Semanal</div>
+        <div class="nav-item" onclick="showPage('check-out')">Check-out Semanal</div>
+        <div class="nav-item" onclick="showPage('cumbuca')">Cumbuca</div>
+        <div class="nav-item" onclick="showPage('emv')">Avaliação de EMV</div>
+        <div class="nav-item" onclick="showPage('fechamentos')">Acompanhar Fechamentos</div>
+        <div class="nav-item" onclick="showPage('ferias')">Solicitação de Férias</div>
+      </div>
+    </div>
+
+    <!-- Onboarding -->
+    <div class="nav-section">
+      <div class="nav-cat" data-section="onboarding" onclick="toggleCat(this,'onboarding')">
+        <div class="nav-cat-icon">🚀</div>
+        <div class="nav-cat-label">Processos de Onboarding</div>
+        <svg class="nav-chevron" viewBox="0 0 24 24" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+      </div>
+      <div class="nav-items" id="nav-onboarding">
+        <div class="nav-item" onclick="showPage('distribuicao')">Distribuição</div>
+        <div class="nav-item" onclick="showPage('kickoff')">Kick Off</div>
+        <div class="nav-item" onclick="showPage('configurar-ambiente')">Configurar Ambiente</div>
+        <div class="nav-item" onclick="showPage('conexoes')">Conexões</div>
+        <div class="nav-item" onclick="showPage('funcionalidades')">Funcionalidades Gerais</div>
+        <div class="nav-item" onclick="showPage('estrategias')">Primeiras Estratégias</div>
+      </div>
+    </div>
+
+    <!-- Operacional -->
+    <div class="nav-section">
+      <div class="nav-cat" data-section="operacional" onclick="toggleCat(this,'operacional')">
+        <div class="nav-cat-icon">⚙️</div>
+        <div class="nav-cat-label">Processos Operacionais</div>
+        <svg class="nav-chevron" viewBox="0 0 24 24" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+      </div>
+      <div class="nav-items" id="nav-operacional">
+        <div class="nav-item" onclick="showPage('cancelamentos')">Cancelamentos / Alterações</div>
+        <div class="nav-item" onclick="showPage('suporte')">Suporte e Escalações</div>
+        <div class="nav-item" onclick="showPage('orgao-gov')">Órgão Governamental</div>
+        <div class="nav-item" onclick="showPage('transferencia')">Transferência de Titularidade</div>
+        <div class="nav-item" onclick="showPage('palavras-reservadas')">Políticas de Palavras Reservadas</div>
+        <div class="nav-item" onclick="showPage('solicitacoes-meta')">Solicitações Meta</div>
+      </div>
+    </div>
+
+    <!-- Gestão de Parceiros -->
+    <div class="nav-section">
+      <div class="nav-cat" data-section="gestao" onclick="toggleCat(this,'gestao')">
+        <div class="nav-cat-icon">📈</div>
+        <div class="nav-cat-label">Gestão de Parceiros</div>
+        <svg class="nav-chevron" viewBox="0 0 24 24" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+      </div>
+      <div class="nav-items" id="nav-gestao">
+        <div class="nav-item" onclick="showPage('contato-estrategico')">Contato Estratégico (mensal)</div>
+        <div class="nav-item" onclick="showPage('acompanhamento-ongoing')">Acompanhamento em Ongoing</div>
+      </div>
+    </div>
+
+    <!-- Procedimentos Parceiros -->
+    <div class="nav-section">
+      <div class="nav-cat" data-section="procedimentos" onclick="toggleCat(this,'procedimentos')">
+        <div class="nav-cat-icon">📁</div>
+        <div class="nav-cat-label">Procedimentos Parceiros</div>
+        <svg class="nav-chevron" viewBox="0 0 24 24" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+      </div>
+      <div class="nav-items" id="nav-procedimentos">
+        <div class="nav-item" onclick="showPage('criacao-ambiente')">Criação do Ambiente do Parceiro</div>
+        <div class="nav-item" onclick="showPage('dominio-personalizado')">Configuração de Domínio</div>
+        <div class="nav-item" onclick="showPage('criacao-conta')">Criação de Conta na Plataforma</div>
+      </div>
+    </div>
+
+    <!-- Dashboards -->
+    <div class="nav-section">
+      <div class="nav-cat" data-section="dashboards" onclick="toggleCat(this,'dashboards')">
+        <div class="nav-cat-icon">📊</div>
+        <div class="nav-cat-label">Dashboards e Monitoramento</div>
+        <svg class="nav-chevron" viewBox="0 0 24 24" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+      </div>
+      <div class="nav-items" id="nav-dashboards">
+        <div class="nav-item" onclick="showPage('metabase')">Metabase – Evolução de Atendimento</div>
+        <div class="nav-item" onclick="showPage('painel-gestao')">Painel de Gestão a Vista</div>
+      </div>
+    </div>
+
+    <!-- Cultura -->
+    <div class="nav-section">
+      <div class="nav-cat" data-section="cultura" onclick="toggleCat(this,'cultura')">
+        <div class="nav-cat-icon">🎓</div>
+        <div class="nav-cat-label">Cultura e Desenvolvimento</div>
+        <svg class="nav-chevron" viewBox="0 0 24 24" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+      </div>
+      <div class="nav-items" id="nav-cultura">
+        <div class="nav-item" onclick="showPage('academia')">Portal do Parceiro | Academia Helena</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="no-results" id="noNavResults">Nenhum resultado encontrado.</div>
+</nav>
+
+<!-- MAIN -->
+<div id="main">
+  <div id="topbar">
+    <div class="breadcrumb" id="breadcrumb">
+      <span>Portal CS Parcerias</span>
+    </div>
+    <div class="topbar-actions">
+      <div class="top-search-wrap">
+        <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="topSearch" placeholder="Buscar em todos os processos...">
+      </div>
+      <button class="btn-search" onclick="doSearch()">
+        <svg viewBox="0 0 24 24" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        Buscar
+      </button>
+    </div>
+  </div>
+
+  <!-- Search results dropdown -->
+  <div id="searchResults"></div>
+
+  <div id="content">
+
+    <!-- HOME PAGE -->
+    <div id="page-home" class="page-view active">
+      <div class="home-hero animate-in">
+        <div class="home-tag">🏢 Portal Interno</div>
+        <h1>Portal de Processos<br><em>CS Parcerias</em></h1>
+        <p>Central de documentação e procedimentos do time de Customer Success. Processos, rotinas operacionais, onboarding de parceiros e acompanhamento estratégico.</p>
+        <div class="home-stats">
+          <div class="stat-pill"><span class="stat-num">7</span><span class="stat-label">Seções</span></div>
+          <div class="stat-pill"><span class="stat-num">30+</span><span class="stat-label">Processos</span></div>
+          <div class="stat-pill"><span class="stat-num">CS</span><span class="stat-label">Parcerias</span></div>
+        </div>
+      </div>
+
+      <div class="section-cards animate-in">
+        <div class="section-card" onclick="openSection('rotinas')">
+          <div class="card-icon">📆</div>
+          <div class="card-title">Rotinas do Time</div>
+          <div class="card-desc">Check-in, check-out, cumbuca e acompanhamentos periódicos da carteira.</div>
+          <div class="card-count">↗ 6 processos</div>
+        </div>
+        <div class="section-card" onclick="openSection('onboarding')">
+          <div class="card-icon">🚀</div>
+          <div class="card-title">Processos de Onboarding</div>
+          <div class="card-desc">Configuração, treinamento e adaptação dos parceiros à plataforma.</div>
+          <div class="card-count">↗ 6 processos</div>
+        </div>
+        <div class="section-card" onclick="openSection('operacional')">
+          <div class="card-icon">⚙️</div>
+          <div class="card-title">Processos Operacionais</div>
+          <div class="card-desc">Cancelamentos, suporte, órgãos governamentais e solicitações Meta.</div>
+          <div class="card-count">↗ 6 processos</div>
+        </div>
+        <div class="section-card" onclick="openSection('gestao')">
+          <div class="card-icon">📈</div>
+          <div class="card-title">Gestão de Parceiros</div>
+          <div class="card-desc">Contato estratégico mensal e acompanhamento em ongoing.</div>
+          <div class="card-count">↗ 2 processos</div>
+        </div>
+        <div class="section-card" onclick="openSection('procedimentos')">
+          <div class="card-icon">📁</div>
+          <div class="card-title">Procedimentos Parceiros</div>
+          <div class="card-desc">Criação de ambiente, domínio personalizado e conta na plataforma.</div>
+          <div class="card-count">↗ 3 processos</div>
+        </div>
+        <div class="section-card" onclick="openSection('dashboards')">
+          <div class="card-icon">📊</div>
+          <div class="card-title">Dashboards e Monitoramento</div>
+          <div class="card-desc">Metabase e painel de gestão para acompanhamento de churn e performance.</div>
+          <div class="card-count">↗ 2 processos</div>
+        </div>
+        <div class="section-card" onclick="openSection('cultura')">
+          <div class="card-icon">🎓</div>
+          <div class="card-title">Cultura e Desenvolvimento</div>
+          <div class="card-desc">Academia Helena – treinamentos e capacitação de parceiros.</div>
+          <div class="card-count">↗ 1 processo</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION: ROTINAS -->
+    <div id="page-rotinas" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">📆 Rotinas do Time</div>
+        <div class="page-title">Rotinas do Time</div>
+        <div class="page-desc">Processos de acompanhamento e análises periódicas para garantir a saúde da carteira de parceiros.</div>
+      </div>
+      <div class="sub-grid">
+        <div class="sub-card" onclick="showPage('check-in')">
+          <div class="sub-card-icon">✅</div>
+          <div class="sub-card-title">Check-in Semanal</div>
+          <div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div>
+        </div>
+        <div class="sub-card" onclick="showPage('check-out')">
+          <div class="sub-card-icon">📋</div>
+          <div class="sub-card-title">Check-out Semanal</div>
+          <div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div>
+        </div>
+        <div class="sub-card" onclick="showPage('cumbuca')">
+          <div class="sub-card-icon">📚</div>
+          <div class="sub-card-title">Cumbuca</div>
+          <div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div>
+        </div>
+        <div class="sub-card" onclick="showPage('emv')">
+          <div class="sub-card-icon">📊</div>
+          <div class="sub-card-title">Avaliação de EMV</div>
+          <div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div>
+        </div>
+        <div class="sub-card" onclick="showPage('fechamentos')">
+          <div class="sub-card-icon">🤝</div>
+          <div class="sub-card-title">Acompanhar Fechamentos do Comercial</div>
+          <div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div>
+        </div>
+        <div class="sub-card" onclick="showPage('ferias')">
+          <div class="sub-card-icon">🏝️</div>
+          <div class="sub-card-title">Solicitação de Férias</div>
+          <div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE: CHECK-IN -->
+    <div id="page-check-in" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">📆 Rotinas do Time</div>
+        <div class="page-title">Check-in Semanal</div>
+        <div class="page-desc">Na segunda-feira às 14h, cada analista apresenta as estratégias planejadas para a semana.</div>
+      </div>
+      <div class="content-body">
+        <div class="info-row"><span class="info-key">⏱️ Duração</span><span class="info-val">30 minutos</span></div>
+        <div class="info-row"><span class="info-key">🎯 Objetivo</span><span class="info-val">Alinhar ações com foco em performance de clientes prioritários e desenvolvimento contínuo da equipe.</span></div>
+        <h2>Conteúdo da Reunião</h2>
+        <p>Revisão dos parceiros que merecem mais atenção na semana, com base nas principais métricas:</p>
+        <ul>
+          <li>Quem teve mais cancelamentos</li>
+          <li>Quem perdeu mais contas do que conquistou</li>
+          <li>Quem está há mais tempo sem adicionar novas contas</li>
+          <li>Quem ainda não adicionou contas neste mês</li>
+        </ul>
+        <div class="warning-block"><span class="ci">⚠️</span><span>O objetivo é <strong>apenas citar os nomes dos parceiros</strong> que se enquadram nas métricas, sem entrar em detalhes ou análises individuais.</span></div>
+        <div class="callout-block"><span class="ci">🔗</span><span>Acesse o <a href="https://lookerstudio.google.com/u/0/reporting/a41cb5b0-b3d1-4837-8fe4-b2bbf24079fe/page/p_jxzk95g9td" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">Link do Painel</a> para consultar os dados antes da reunião.</span></div>
+      </div>
+    </div>
+
+    <!-- PAGE: CHECK-OUT -->
+    <div id="page-check-out" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">📆 Rotinas do Time</div>
+        <div class="page-title">Check-out Semanal</div>
+        <div class="page-desc">Na sexta-feira à tarde, apresentação dos resultados dos pontos levantados no check-in.</div>
+      </div>
+      <div class="content-body">
+        <div class="info-row"><span class="info-key">⏱️ Duração</span><span class="info-val">45 minutos</span></div>
+        <div class="info-row"><span class="info-key">🎯 Objetivo</span><span class="info-val">Compartilhar conquistas, desafios, aprendizados e status da carteira.</span></div>
+        <h2>Conteúdo da Reunião</h2>
+        <p>Cada CSM compartilha:</p>
+        <ul>
+          <li><strong>Conquistas:</strong> atingiu a meta da semana? O que deu certo?</li>
+          <li><strong>Desafios:</strong> algo não saiu como planejado?</li>
+          <li><strong>Aprendizados:</strong> o que podemos melhorar?</li>
+          <li><strong>Crescimento:</strong> evolução de contas na carteira.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PAGE: CUMBUCA -->
+    <div id="page-cumbuca" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">📆 Rotinas do Time</div>
+        <div class="page-title">Cumbuca</div>
+        <div class="page-desc">Encontro semanal de leitura e compartilhamento de aprendizados do livro do time.</div>
+      </div>
+      <div class="content-body">
+        <p>Semanalmente realizamos a Cumbuca, um encontro onde levamos pontos de um determinado capítulo do livro que toda a equipe está lendo.</p>
+        <div class="callout-block"><span class="ci">📂</span><span>Os materiais estão disponíveis no <a href="https://drive.google.com/drive/folders/1pkmQb4DkonBH_0Z3EOkA9yyhukR9Ck68" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">Google Drive do Time</a>.</span></div>
+      </div>
+    </div>
+
+    <!-- PAGE: EMV -->
+    <div id="page-emv" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">📆 Rotinas do Time</div>
+        <div class="page-title">Avaliação de EMV</div>
+        <div class="page-desc">Avaliação trimestral do Engagement Maturity Value de cada parceiro da carteira.</div>
+      </div>
+      <div class="content-body">
+        <p>Trimestralmente deve-se avaliar os parceiros da carteira para validar como está o EMV de cada um.</p>
+        <div class="callout-block"><span class="ci">📊</span><span>Utilize a <a href="https://docs.google.com/spreadsheets/d/1wevrzIx2KajRejQDKk1tSFZM4Y1imz_c0WZjX4yeZt8/edit?gid=904238701#gid=904238701" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">planilha de EMV</a> para registrar e acompanhar as avaliações trimestrais.</span></div>
+      </div>
+    </div>
+
+    <!-- PAGE: FECHAMENTOS -->
+    <div id="page-fechamentos" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">📆 Rotinas do Time</div>
+        <div class="page-title">Acompanhar Fechamentos do Comercial</div>
+        <div class="page-desc">Monitoramento contínuo dos novos parceiros fechados pelo time comercial.</div>
+      </div>
+      <div class="content-body">
+        <p>Todos os fechamentos de novos parceiros ficam centralizados e podem ser acompanhados na planilha <strong>F+1 – Fechou mais um HELENA CRM</strong>.</p>
+        <div class="callout-block"><span class="ci">🔗</span><span>Acesse o <a href="https://docs.google.com/spreadsheets/d/1yiEyf8R4YHvOHkqIXE3ICrYAPELJ6_cehEvRQxthiVQ/edit?pli=1&gid=1103254367#gid=1103254367" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">Link F+1</a> para visualizar os fechamentos em tempo real.</span></div>
+      </div>
+    </div>
+
+    <!-- PAGE: FERIAS -->
+    <div id="page-ferias" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">📆 Rotinas do Time</div>
+        <div class="page-title">🏝️ Solicitação de Férias</div>
+        <div class="page-desc">Processo padronizado para solicitação de férias, garantindo o cumprimento dos prazos legais.</div>
+      </div>
+      <div class="content-body">
+        <h2>Forma de Solicitação</h2>
+        <p>A solicitação deve ser enviada por e-mail ao DP (<strong><a href="mailto:dp@helena.app">dp@helena.app</a></strong>) com cópia para a liderança. O colaborador é responsável por respeitar todos os prazos definidos neste POP.</p>
+        <h2>Prazos para Solicitação</h2>
+        <div class="info-row"><span class="info-key">Prazo legal</span><span class="info-val">Mínimo 30 dias de antecedência</span></div>
+        <div class="info-row"><span class="info-key">Envio ao DP</span><span class="info-val">Até o dia 10 do mês anterior</span></div>
+        <div class="info-row"><span class="info-key">DP → Contabilidade</span><span class="info-val">Até o dia 13 de cada mês</span></div>
+        <div class="callout-block"><span class="ci">💡</span><span><strong>Exemplo:</strong> Férias em março → Solicitação ao DP até 10 de fevereiro → Envio à contabilidade em 13 de fevereiro.</span></div>
+        <h2>Regras de Fracionamento</h2>
+        <ul>
+          <li>As férias podem ser divididas em até 3 períodos.</li>
+          <li>Um período não pode ser inferior a 14 dias corridos.</li>
+          <li>Os demais períodos não podem ser inferiores a 5 dias corridos cada.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SECTION: ONBOARDING -->
+    <div id="page-onboarding" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">🚀 Processos de Onboarding</div>
+        <div class="page-title">Processos de Onboarding</div>
+        <div class="page-desc">Configuração, treinamento e adaptação dos parceiros à plataforma. Voltado a parceiros que comercializarão a plataforma com sua marca própria (White Label).</div>
+      </div>
+      <div class="sub-grid">
+        <div class="sub-card" onclick="showPage('distribuicao')"><div class="sub-card-icon">📤</div><div class="sub-card-title">Distribuição</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
+        <div class="sub-card" onclick="showPage('kickoff')"><div class="sub-card-icon">🎯</div><div class="sub-card-title">Kick Off</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
+        <div class="sub-card" onclick="showPage('configurar-ambiente')"><div class="sub-card-icon">⚙️</div><div class="sub-card-title">Configurar Ambiente</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
+        <div class="sub-card" onclick="showPage('conexoes')"><div class="sub-card-icon">🔗</div><div class="sub-card-title">Conexões</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
+        <div class="sub-card" onclick="showPage('funcionalidades')"><div class="sub-card-icon">🛠️</div><div class="sub-card-title">Funcionalidades Gerais</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
+        <div class="sub-card" onclick="showPage('estrategias')"><div class="sub-card-icon">📈</div><div class="sub-card-title">Primeiras Estratégias</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
+      </div>
+    </div>
+
+    <!-- PAGE: DISTRIBUICAO -->
+    <div id="page-distribuicao" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">🚀 Processos de Onboarding</div>
+        <div class="page-title">Distribuição</div>
+        <div class="page-desc">Fluxo de distribuição de novos parceiros ao time de CS após o fechamento comercial.</div>
+      </div>
+      <div class="content-body">
+        <p>Quando o time Comercial preencher o formulário <strong>Fechou +1</strong>, uma mensagem será enviada automaticamente no grupo de WhatsApp da empresa.</p>
+        <p>Se o novo parceiro for do tipo <span class="badge badge-green">Revenda White Label</span>, um card será criado automaticamente no painel <strong>Onboarding Parcerias</strong>.</p>
+        <h2>Após a Alocação</h2>
+        <ol class="step-list">
+          <li>Atualize o campo "Contato" com nome e telefone do responsável pela implantação.</li>
+          <li>Padronize o nome: <strong>Nome Parceiro — Nome empresa</strong> (Ex.: João — AI Tech)</li>
+          <li>Ajuste as etiquetas do contato: <span class="badge badge-green">Parceiro</span> <span class="badge badge-green">White Label</span> <span class="badge badge-green">CS — SEU NOME</span> <span class="badge badge-green">Onboarding</span> <span class="badge badge-green">Implantação</span></li>
+          <li>Ajuste as etiquetas do card de acordo com o que foi contratado: <span class="badge badge-green">WL Pró</span> <span class="badge badge-green">WL Premium</span> <span class="badge badge-green">DNS Próprio</span></li>
+          <li>Com tudo organizado, agende o <strong>Kickoff</strong> com o parceiro.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- PAGE: KICKOFF -->
+    <div id="page-kickoff" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">🚀 Processos de Onboarding</div>
+        <div class="page-title">Kick Off</div>
+        <div class="page-desc">Primeira reunião formal com o parceiro para apresentação e coleta de informações essenciais.</div>
+      </div>
+      <div class="content-body">
+        <div class="callout-block"><span class="ci">📂</span><span>Crie a apresentação usando o template na <a href="https://drive.google.com/drive/u/0/folders/1VxNeURZxjBxVD4_exG_c28BHnNpED1u7" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">Pasta do time CS</a>. Faça uma cópia do "KickOff - 2026" e renomeie com o nome do parceiro.</span></div>
+        <h2>Procedimentos na Reunião</h2>
+        <ol class="step-list">
+          <li>Apresentar-se como CS e perguntar sobre a empresa e expectativas da parceria.</li>
+          <li>Preencher o <a href="https://docs.google.com/forms/d/e/1FAIpQLScbivCdbksqEYmaHT9xyWgpPDs6OtuADo3oT_2Oj-qXdEFi5A/viewform" target="_blank" rel="noopener noreferrer" style="font-weight:700;text-decoration:underline;">formulário de maturidade</a>.</li>
+          <li>Solicitar subdomínio (quando houver).</li>
+          <li>Solicitar nome do produto.</li>
+          <li>Solicitar e-mail para criação do usuário SuperAdmin.</li>
+          <li>Solicitar e-mail para os termos de uso.</li>
+          <li>Solicitar dados para cadastro no portal do parceiro (Nome, E-mail, Admin no cliente).</li>
+          <li>Informar sobre API Oficial x API Não Oficial e verificar qual o parceiro utilizará.</li>
+          <li>Solicitar logos da empresa para personalização do ambiente.</li>
+          <li>Informar sobre as office hours semanais.</li>
+          <li>Reforçar que o parceiro é responsável pelo Suporte N1 dos clientes dele.</li>
+        </ol>
+        <h2>Para White Label Premium</h2>
+        <ul>
+          <li>Solicitar logo em formato <strong>.png</strong> para personalização.</li>
+          <li>Informar sobre a necessidade de loja para os apps: Android (U$ 25,00 único) / iOS (U$ 99,00 anual).</li>
+          <li>Enviar manuais de abertura de loja: <a href="https://docs.google.com/document/d/1XLpJiLlP5H7qvYpnPVJV3CAX21pa9hmQ_zYVz7AHRPc/edit?tab=t.0#heading=h.bbcy0kniuygu" target="_blank" rel="noopener noreferrer" style="font-weight:700;text-decoration:underline;">Play Store</a> e <a href="https://docs.google.com/document/d/1gbNRmsjHQ2kKE4hVVLHLTUIZ6i-lRSyxy4CZoOoG5Gc/edit?tab=t.0" target="_blank" rel="noopener noreferrer" style="font-weight:700;text-decoration:underline;">Apple Store</a>.</li>
+        </ul>
+        <h2>Procedimentos Internos <small style="font-weight:400;font-size:0.8em;opacity:0.6;">(após a reunião de Kick Off)</small></h2>
+        <ol class="step-list">
+          <li>Enviar no <strong>Staging</strong> as mensagens de informações sobre o que foi conversado usando os modelos: <span class="badge badge-green">/wl_kickoff_01</span> <span class="badge badge-green">/wl_kickoff_02</span> <span class="badge badge-green">/wl_kickoff_05</span></li>
+          <li>Cadastrar o cliente como <strong>Parceiro na Helena</strong> seguindo o manual.</li>
+          <li>Criar a agenda para a reunião de <strong>Configurações</strong>.</li>
+          <li>Atualizar o card com as notas do <strong>TLDV</strong> e avançar para a próxima etapa no <a href="https://web-staging.helena.run/panels/a22a008b-66b8-47a1-af07-62f5ce904b16" target="_blank" rel="noopener noreferrer" style="font-weight:700;text-decoration:underline;">painel de Onboarding Parcerias</a> do nosso CRM.</li>
+          <li>Enviar e-mail ao cliente com o documento <a href="https://docs.google.com/document/d/1KIoGA_NQvghG5QD-_OlGjK7uItT0ZiDxPu6UqX_GL60/edit?tab=t.0#heading=h.us65h12laohh" target="_blank" rel="noopener noreferrer" style="font-weight:700;text-decoration:underline;">Modelo de Conta de Demonstração e Faturamento</a> em PDF, e o documento de <strong>Kickoff</strong> também em PDF.</li>
+          <li>Enviar para <strong>Larissa</strong> via Discord os dados das pessoas a serem cadastradas no portal do parceiro (não há limite de usuários):
+            <div class="callout-block" style="margin-top:10px;font-size:0.88em;">
+              <span class="ci">💬</span>
+              <span>
+                <strong>Exemplo de mensagem:</strong><br><br>
+                Cadastrar Portal Parceiros<br>
+                Empresa: <em>Nome Empresa</em><br>
+                Tipo Parceiro: White Label (Pro ou Premium) / Revenda Helena<br>
+                Nome usuário 1 (Admin) — email1@dominiocliente.com.br<br>
+                Nome usuário 2 — email2@dominiocliente.com.br
+              </span>
+            </div>
+          </li>
+        </ol>
+        <h2>Apenas para White Label Premium</h2>
+        <ul>
+          <li>Criar no painel <strong>publicação apps whitelabel</strong> do nosso CRM um card para cada plataforma de app (<strong>Android / iOS</strong>) e colocar suas respectivas etiquetas.</li>
+        </ul>
+        <h2>Apenas para Parceiro com Domínio Próprio</h2>
+        <ul>
+          <li>Cadastrar o domínio, gerar as chaves de registros <strong>NS</strong> e enviar ao parceiro. O cadastro deve ser realizado seguindo o manual.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PAGE: CONFIGURAR AMBIENTE -->
+    <div id="page-configurar-ambiente" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">🚀 Processos de Onboarding</div>
+        <div class="page-title">⚙️ Configurar Ambiente</div>
+        <div class="page-desc">Criação e configuração da conta da empresa do parceiro no ambiente da plataforma.</div>
+      </div>
+      <div class="content-body">
+        <h2>Procedimentos na Reunião</h2>
+        <ol class="step-list">
+          <li>Enviar ao cliente o link de acesso do ambiente.</li>
+          <li>Solicitar que compartilhe a tela e acesse o ambiente.</li>
+          <li>Cadastrar o canal do cliente:
+            <ul style="margin-top:8px;">
+              <li>Seguir documentação caso haja dúvidas.</li>
+              <li>Testar recepção e envio de mensagem.</li>
+              <li>Criar um modelo de mensagem do tipo <strong>atendimento</strong>, em caso de API Oficial.</li>
+            </ul>
+          </li>
+          <li>Explicar a parte de <strong>personalização do ambiente</strong>:
+            <ul style="margin-top:8px;">
+              <li>Inclusão das logos.</li>
+              <li>Documentos.</li>
+              <li>Apps.</li>
+            </ul>
+          </li>
+          <li>Solicitar ao cliente que assista os <strong>treinamentos do portal</strong>.</li>
+        </ol>
+        <h2>Pontos de Atenção para Explicar ao Cliente</h2>
+        <ul>
+          <li>Ambiente (produção / demonstração).</li>
+          <li>Situação da assinatura.</li>
+          <li>O e-mail do Administrador não pode ser o mesmo do SuperAdmin.</li>
+          <li>Recomendar planos personalizados.</li>
+          <li>Informar apps com cobrança adicional.</li>
+          <li>Transcrição de áudio com IA: R$ 3,99 por usuário/conta.</li>
+          <li>Automação ilimitada: R$ 99,90 / 1 usuário.</li>
+          <li>Canais adicionais: R$ 29,90 por canal.</li>
+          <li>Usuários adicionais: R$ 19,90 por usuário.</li>
+        </ul>
+        <h2>Apenas para White Label Premium</h2>
+        <ul>
+          <li>Abordar a inicialização do App.</li>
+          <li>Marcar agenda com o cliente para tratativas do App.</li>
+        </ul>
+        <h2>Procedimentos Internos <small style="font-weight:400;font-size:0.8em;opacity:0.6;">(após a reunião)</small></h2>
+        <ol class="step-list">
+          <li>Enviar por <em>email</em> o <a href="https://drive.google.com/file/d/1vFjgH76JK6rd8s9vzGJy4o9kbbvRYLhQ/view" target="_blank" rel="noopener noreferrer" style="font-weight:700;text-decoration:underline;">manual de cadastro de contas</a>.</li>
+          <li>Informar no cadastro do parceiro a <strong>data de implantação</strong>, conta associada e conferir o <strong>ID de integração</strong>.</li>
+          <li>Enviar no <strong>Staging</strong> a mensagem de informação sobre os vídeos que o parceiro deve assistir no portal para configurar seu ambiente — usar modelo de mensagem: <span class="badge badge-green">/wl_configuracoes</span></li>
+          <li>Criar a agenda para reunião de <strong>conexões</strong> (próximo dia útil).</li>
+          <li>Atualizar o <em>card</em> com as notas do <strong>TLDV</strong> e avançar para a próxima etapa no <a href="https://web-staging.helena.run/panels/a22a008b-66b8-47a1-af07-62f5ce904b16" target="_blank" rel="noopener noreferrer" style="font-weight:700;text-decoration:underline;">painel de Onboarding Parcerias</a> do nosso CRM.</li>
+          <li>Atualizar o campo <strong>URL White Label</strong> no cadastro do contato com o endereço <strong>wts.chat</strong> do parceiro. Em casos de domínio próprio, usar também o endereço <strong>wts.chat</strong>, pois ele redirecionará automaticamente para o domínio do parceiro.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- PAGE: CONEXOES -->
+    <div id="page-conexoes" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">🚀 Processos de Onboarding</div>
+        <div class="page-title">Conexões</div>
+        <div class="page-desc">Apresentação de todos os tipos de conexão disponíveis na plataforma.</div>
+      </div>
+      <div class="content-body">
+        <div class="callout-block"><span class="ci">📄</span><span>Compartilhe na reunião o <a href="https://docs.google.com/presentation/d/13QWc1pF_yc2Xo2ZO3Q9cmME1rlniKMVtXW-Cpenf1R0/edit?slide=id.g3861e3d12ca_0_49#slide=id.g3861e3d12ca_0_49" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">documento completo de conexões</a>.</span></div>
+
+        <h2>Procedimentos na Reunião</h2>
+
+        <h2>Instagram e Facebook</h2>
+        <p><strong>Instagram:</strong></p>
+        <ul>
+          <li>Precisa estar vinculado ao Facebook.</li>
+          <li>Não pode ser do tipo gerador de conteúdo — tem que ser tipo profissional.</li>
+          <li>Necessário liberar permissão de caixa de entrada (usar a opção de "essa conta e contas futuras").</li>
+        </ul>
+        <p><strong>Facebook:</strong></p>
+        <ul>
+          <li>Basta fazer login com e-mail e senha.</li>
+        </ul>
+
+        <h2>WhatsApp</h2>
+        <p><strong>Z-API</strong></p>
+        <ul>
+          <li>Conta própria: cliente direto com Z-API (R$ 99,90).</li>
+          <li>Parceria Helena (R$ 69,90).</li>
+        </ul>
+
+        <p><strong>Meta</strong></p>
+        <p style="margin:6px 0 4px;font-size:.87rem;color:#3a4e44;"><em>Nova Conexão (Cloud API Meta)</em></p>
+        <ul>
+          <li>Número não pode estar na Meta/WABA.</li>
+          <li>Precisa estar ativo e recebendo ligação telefônica.</li>
+          <li>Não pode estar em URA.</li>
+          <li>Orientar onde deverá ser informado o nome WABA na BM, e onde deverá ser o Display Name.</li>
+        </ul>
+
+        <p style="margin:12px 0 4px;font-size:.87rem;color:#3a4e44;"><em>Migração de Número</em></p>
+        <ul>
+          <li>Já possuir conta na Meta, usando outra plataforma.</li>
+          <li>A migração é de WABA, e não de BM.</li>
+          <li>Autenticação em dois fatores deve estar desativada.</li>
+          <li>O Display Name deve estar aprovado e registrado.</li>
+          <li>Para realizar a portabilidade de um número, a BM obrigatoriamente deve estar verificada.</li>
+          <li>BM verificada entra em quantidade de conversas 1000/24h.</li>
+          <li>Para aumentar o limite de conversas: se em janela de 7 dias o cliente utilizar durante 3 dias a metade do total diário liberado, a Meta aumenta a quantidade seguindo a escala: <strong>250 → 1.000 → 10.000 → 100.000 → ilimitado</strong>.</li>
+        </ul>
+
+        <p style="margin:12px 0 4px;font-size:.87rem;color:#3a4e44;"><em>Permitir Acesso</em></p>
+        <ul>
+          <li>Já possuir conta na Meta, usando outra plataforma.</li>
+          <li>Quando o número já está na nossa conexão (Hunion) e precisa liberar para algum outro sistema.</li>
+          <li><strong>Obs.:</strong> Hunion é o nosso nome de registro de parceiro na Meta.</li>
+        </ul>
+
+        <p style="margin:12px 0 4px;font-size:.87rem;color:#3a4e44;"><em>Nova Conexão (360 Dialog)</em></p>
+        <ul>
+          <li>Método de conexão que utilizamos antes de ser um tech provider direto na Meta.</li>
+          <li>Exemplo de utilização: o parceiro conecta por ele para conseguir cobrar as conversas do cliente com margem de lucro.</li>
+          <li>360 cobra U$15,00 por canal + cobranças da Meta.</li>
+        </ul>
+
+        <p style="margin:12px 0 4px;font-size:.87rem;color:#3a4e44;"><em>QR Code</em></p>
+        <ul>
+          <li>Ter um número de telefone cadastrado no WhatsApp Business.</li>
+          <li>Ter uma conta na Meta Business (Business Manager - BM).</li>
+          <li>Ser um usuário com perfil de administrador na HelenaCRM.</li>
+          <li>Ter a página do Facebook atrelada à conta do WhatsApp Business.</li>
+          <li>Ter acesso ao aplicativo WhatsApp Business no celular para escanear o QR Code.</li>
+        </ul>
+
+        <h2>BM Meta</h2>
+        <p><strong>Informações do Portfólio</strong> <span style="font-size:.78rem;color:var(--muted);">(PORTFÓLIO › CONFIGURAÇÕES › INFORMAÇÕES DO PORTFÓLIO DE NEGÓCIO)</span></p>
+        <ul>
+          <li>Dados preenchidos têm que ser exatamente os da empresa.</li>
+          <li>O site precisa ser o da empresa — recomendar clicar no link para verificar se está ativo.</li>
+          <li>Site precisa ser HTTPS.</li>
+          <li>O Display Name precisa estar referenciado em algum local do site informado (seção sobre, rodapé, etc.), não pode ser todo em letra maiúscula e não pode conter caractere especial.</li>
+        </ul>
+
+        <p><strong>Consultar se BM possui restrição</strong></p>
+        <ul>
+          <li>Acessar página de apoio para negócios e verificar se consta alguma informação de restrição na BM que possa causar influência ao cadastrar a WABA.</li>
+          <li>Orientar o parceiro a sempre consultar essa página do cliente dele quando houver algum problema, antes de nos acionar.</li>
+          <li>Informar forma de pagamento da WABA e defini-la como padrão.</li>
+          <li>Colocar logo na WABA (aba Perfil).</li>
+          <li>Orientar o parceiro a sempre usar a BM do cliente final.</li>
+          <li>Falar sobre Mensagem de Utilidade e Marketing: quando utilizar cada tipo e valores (seguir Tabela Meta).</li>
+          <li>Recomendar utilização da API Oficial visando: segurança do canal, menor risco de banimento, pontuação da Meta (na WABA) e profissionalismo.</li>
+        </ul>
+
+        <h2>Procedimentos Internos (após a Reunião)</h2>
+        <ol class="step-list">
+          <li>Enviar e-mail para o parceiro com o documento de conexões apresentado durante a reunião, em PDF.</li>
+          <li>Atualizar o card com as notas do TLDV, e avançar para a próxima etapa no <a href="https://web-staging.helena.run/panels/a22a008b-66b8-47a1-af07-62f5ce904b16" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">painel de Onboarding Parcerias</a> do nosso CRM.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- PAGE: FUNCIONALIDADES -->
+    <div id="page-funcionalidades" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">🚀 Processos de Onboarding</div>
+        <div class="page-title">Funcionalidades Gerais</div>
+        <div class="page-desc">Verificação do uso da plataforma e apresentação das principais funcionalidades ao parceiro.</div>
+      </div>
+      <div class="content-body">
+        <h2>Procedimentos na Reunião</h2>
+        <ul>
+          <li>Verificar com o cliente se está usando a plataforma.</li>
+          <li>Responder as dúvidas apresentadas.</li>
+          <li>Sugerir configurações e funcionalidades que melhorem o uso.</li>
+          <li>Apresentar o <a href="https://docs.google.com/presentation/d/1-RipziUdJxySS51aAgT0Gl0J9iC7m013kOuJ_LSXwtE/edit?slide=id.g2d8ff38c128_9_165#slide=id.g2d8ff38c128_9_165" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">documento de passagem de bastão para suporte N2</a> e reforçar que o suporte N1 deve ser realizado pelo parceiro.</li>
+        </ul>
+
+        <h2>Procedimentos Internos (após a Reunião)</h2>
+        <ol class="step-list">
+          <li>Enviar e-mail para o parceiro com o documento de abertura de suporte N2 apresentado durante a reunião.</li>
+          <li>Atualizar o card com as notas do TLDV, e avançar para a próxima etapa no <a href="https://web-staging.helena.run/panels/a22a008b-66b8-47a1-af07-62f5ce904b16" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">painel de Onboarding Parcerias</a> do nosso CRM.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- PAGE: ESTRATEGIAS -->
+    <div id="page-estrategias" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">🚀 Processos de Onboarding</div>
+        <div class="page-title">Primeiras Estratégias</div>
+        <div class="page-desc">Sessão para responder dúvidas gerais e traçar as primeiras estratégias do parceiro.</div>
+      </div>
+      <div class="content-body">
+        <p>Responder dúvidas gerais apresentadas pelo cliente e traçar com ele as primeiras estratégias para alcançar os <strong>primeiros 4 clientes</strong>.</p>
+
+        <h2>Procedimentos Internos (após a Reunião)</h2>
+        <ol class="step-list">
+          <li>Enviar no staging a mensagem de recomendação sobre o curso de precificação e de API Oficial que o parceiro deve fazer no portal. Usar modelo de mensagem: <span class="badge badge-green">/wl_segundo tira dúvidas: precificação/api oficial</span></li>
+          <li>Atualizar o card com as notas do TLDV, e avançar para a próxima etapa no <a href="https://web-staging.helena.run/panels/a22a008b-66b8-47a1-af07-62f5ce904b16" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">painel de Onboarding Parcerias</a> do nosso CRM.</li>
+          <li>No card do painel preencher o campo de <strong>Conclusão</strong> com a data da reunião e o tipo de conclusão com: <strong>'Sucesso'</strong>.</li>
+        </ol>
+
+        <h2>Etapa: Pendente</h2>
+        <p>O parceiro só fica nessa etapa caso peça para que paremos a implantação ou pare de nos responder — e depois de tentativas como ligações, meios de comunicação existentes e repasse para a equipe comercial.</p>
+
+        <h2>Etapa: Concluído</h2>
+        <p>O parceiro estando cancelado, em desistência ou com 5 contas e 60 dias em implantação, deverá ser transferido para essa etapa.</p>
+        <div class="callout-block"><span class="ci">⚠️</span><span>Atenção no preenchimento do campo <strong>Concluído</strong>: o tipo de conclusão é o que vai levá-lo ou não para o painel de <strong>Ongoing Parcerias</strong>, onde será realizado o acompanhamento em caso de <strong>Sucesso</strong>.</span></div>
+      </div>
+    </div>
+
+    <!-- SECTION: OPERACIONAL -->
+    <div id="page-operacional" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">⚙️ Processos Operacionais</div>
+        <div class="page-title">Processos Operacionais</div>
+        <div class="page-desc">Procedimentos para cancelamentos, suporte, órgãos governamentais e solicitações Meta.</div>
+      </div>
+      <div class="sub-grid">
+        <div class="sub-card" onclick="showPage('cancelamentos')"><div class="sub-card-icon">❌</div><div class="sub-card-title">Cancelamentos / Alterações</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
+        <div class="sub-card" onclick="showPage('suporte')"><div class="sub-card-icon">🛠️</div><div class="sub-card-title">Suporte e Escalações</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
+        <div class="sub-card" onclick="showPage('orgao-gov')"><div class="sub-card-icon">🏛️</div><div class="sub-card-title">Órgão Governamental</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
+        <div class="sub-card" onclick="showPage('transferencia')"><div class="sub-card-icon">🔄</div><div class="sub-card-title">Transferência de Titularidade</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
+        <div class="sub-card" onclick="showPage('palavras-reservadas')"><div class="sub-card-icon">🚫</div><div class="sub-card-title">Políticas de Palavras Reservadas</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
+        <div class="sub-card" onclick="showPage('solicitacoes-meta')"><div class="sub-card-icon">📱</div><div class="sub-card-title">Solicitações Meta</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
+      </div>
+    </div>
+
+    <!-- PAGE: CANCELAMENTOS -->
+    <div id="page-cancelamentos" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">⚙️ Processos Operacionais</div>
+        <div class="page-title">Cancelamentos / Alterações</div>
+        <div class="page-desc">Procedimentos para cancelamento de parceiros, alterações de conta e processos relacionados.</div>
+      </div>
+      <div class="sub-grid">
+        <div class="sub-card" onclick="showPage('cancel-parceiros')"><div class="sub-card-icon">🔴</div><div class="sub-card-title">Cancelamento de Parceiros</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
+        <div class="sub-card" onclick="showPage('alteracoes-conta')"><div class="sub-card-icon">✏️</div><div class="sub-card-title">Solicitar Alterações / Cancelamento da Conta do Parceiro</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
+        <div class="sub-card" onclick="showPage('upsell-revenda')"><div class="sub-card-icon">⬆️</div><div class="sub-card-title">Upsell Revenda Helena para White Label</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
+        <div class="sub-card" onclick="showPage('segundo-ambiente-wl')"><div class="sub-card-icon">➕</div><div class="sub-card-title">2° Ambiente WL</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
+      </div>
+    </div>
+
+    <!-- PAGE: CANCEL PARCEIROS -->
+    <div id="page-cancel-parceiros" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">⚙️ Processos Operacionais › <span onclick="showPage('cancelamentos')" style="cursor:pointer;text-decoration:underline;">Cancelamentos / Alterações</span></div>
+        <div class="page-title">Cancelamento de Parceiros</div>
+        <div class="page-desc">Garantir que toda solicitação de cancelamento seja tratada com tentativa de retenção, alinhamento entre áreas e registro completo das informações.</div>
+      </div>
+      <div class="content-body">
+
+        <h2>Tratativa Inicial – Tentativa de Reversão</h2>
+        <p><strong>Abordagem imediata</strong></p>
+        <p>Assim que o parceiro sinalizar intenção de cancelamento:</p>
+        <ul>
+          <li>Agendar ligação ou reunião para entender o momento.</li>
+          <li>Investigar motivos, expectativas e dificuldades.</li>
+          <li>Analisar se o caso é de atendimento, maturidade, financeiro ou desalinhamento.</li>
+        </ul>
+        <p><strong>Oferta de retenção</strong></p>
+        <p>Se fizer sentido:</p>
+        <ul>
+          <li>Oferecer desconto de 50% por 2 a 3 meses como solução inicial (avaliar qual período faz mais sentido ao contexto).</li>
+        </ul>
+        <p><strong>Necessidade de negociação mais profunda</strong></p>
+        <p>Se o desconto inicial não for suficiente ou se o caso for complexo:</p>
+        <ul>
+          <li>Envolver liderança de CS.</li>
+          <li>Envolver liderança Comercial se o parceiro tiver menos de 90 dias de empresa.</li>
+        </ul>
+
+        <h2>Em Caso de Reversão</h2>
+        <p>Se o parceiro aceitar a proposta de retenção:</p>
+        <ul>
+          <li>Preencher o <strong>alterou+1</strong> e selecionar: <em>Desconto ou isenção temporária</em>.</li>
+          <li>Informar: percentual e tempo de desconto concedido, e motivo da tentativa de cancelamento.</li>
+          <li>Atualizar o card do parceiro com: etiqueta <span class="badge badge-green">Alerta</span> e histórico completo da negociação e quais tratativas foram feitas.</li>
+        </ul>
+        <div class="callout-block"><span class="ci">📌</span><span>Toda reversão precisa ficar documentada para análise futura de risco.</span></div>
+
+        <h2>Em Caso de Não Reversão (Cancelamento Confirmado)</h2>
+        <p>Preencher o <strong>alterou+1</strong> com:</p>
+        <ul>
+          <li>Tipo do processo: <em>Desistência</em> ou <em>Cancelamento</em>.</li>
+          <li>Motivo do cancelamento.</li>
+          <li>Se o parceiro possui boletos em aberto.</li>
+        </ul>
+        <p>Enviar e-mail para <a href="mailto:juridico@helena.app" style="color:inherit;font-weight:700;text-decoration:underline;">juridico@helena.app</a> com cópia para a liderança de CS, informando: que o parceiro decidiu encerrar, quais valores ficaram acordados, e que deve ser iniciado o procedimento de distrato.</p>
+        <p><strong>Registro no card:</strong></p>
+        <ul>
+          <li>Inserir etiqueta <span class="badge badge-green">Churn</span> no card e no contato.</li>
+          <li>Descrever claramente: todas as tratativas, tentativas de retenção, quem participou, e status financeiro.</li>
+        </ul>
+
+        <h2>Conclusão e Informações Obrigatórias no Card</h2>
+        <p>Todas as tratativas devem incluir (Histórico Completo):</p>
+        <ul>
+          <li>Motivo inicial do cancelamento.</li>
+          <li>Análise do CS sobre o caso.</li>
+          <li>Descontos ofertados e respostas.</li>
+          <li>Envolvimento da liderança (quando houve).</li>
+          <li>Status financeiro (boletos em aberto ou não).</li>
+          <li>Decisão final do parceiro.</li>
+          <li>Data da finalização do processo.</li>
+        </ul>
+
+        <h2>Checklist Final</h2>
+        <div class="checklist">
+          <label class="checklist-item"><input type="checkbox"><span>Reunião / ligação realizada.</span></label>
+          <label class="checklist-item"><input type="checkbox"><span>Tentativa de retenção feita.</span></label>
+          <label class="checklist-item"><input type="checkbox"><span>Desconto oferecido (se aplicável).</span></label>
+          <label class="checklist-item"><input type="checkbox"><span>Lideranças envolvidas (quando necessário).</span></label>
+          <label class="checklist-item"><input type="checkbox"><span>Alterou+1 preenchido corretamente.</span></label>
+          <label class="checklist-item"><input type="checkbox"><span>Card atualizado.</span></label>
+          <label class="checklist-item"><input type="checkbox"><span>Etiqueta aplicada (<span class="badge badge-green">Churn</span> ou <span class="badge badge-green">Alerta</span>).</span></label>
+          <label class="checklist-item"><input type="checkbox"><span>E-mail para Jurídico enviado (quando for distrato).</span></label>
+          <label class="checklist-item"><input type="checkbox"><span>Histórico completo registrado.</span></label>
+          <label class="checklist-item"><input type="checkbox"><span>Colocar o ambiente do parceiro com o status <strong>Cancelado</strong>.</span></label>
+        </div>
+
+        <h2>Cancelamento por Inadimplência</h2>
+        <p><strong>Identificação da Inadimplência</strong></p>
+        <p>Considera-se inadimplência quando o parceiro permanece com faturas em aberto por dois meses consecutivos. O CS deve acompanhar mensalmente a situação financeira do parceiro.</p>
+
+        <p><strong>Comunicação no Segundo Mês de Inadimplência</strong></p>
+        <p>Ao identificar que o parceiro entrou no segundo mês consecutivo de inadimplência, o CS deve enviar e-mail formal ao parceiro com cópia para a liderança informando: a preocupação com as faturas em aberto e que, caso ao menos uma fatura não seja quitada em até 24 horas, o contrato será cancelado por inadimplência. Registrar o envio no card com data e conteúdo da comunicação.</p>
+
+        <div class="callout-block" style="flex-direction:column;gap:8px;">
+          <div style="display:flex;gap:10px;align-items:flex-start;"><span class="ci">✉️</span><strong>Modelo – 1º e-mail (aviso de inadimplência)</strong></div>
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;font-size:.85rem;line-height:1.7;white-space:pre-wrap;font-family:inherit;"><strong>Assunto:</strong> Pendências financeiras em aberto – ação necessária
+
+Olá, [Nome do parceiro],
+
+Esperamos que esteja tudo bem.
+
+Identificamos que existem <strong>faturas em aberto</strong> referentes ao seu contrato conosco e gostaríamos de entender se houve alguma dificuldade pontual para regularização.
+
+Nos preocupa o fato de estarmos no <strong>segundo mês consecutivo de inadimplência</strong>. Informamos que, caso <strong>ao menos uma das faturas em aberto não seja quitada no prazo de até 24 horas</strong>, será necessário seguir com o <strong>cancelamento do contrato por inadimplência</strong>, conforme previsto contratualmente.
+
+Seguimos à disposição para conversar e esclarecer qualquer dúvida dentro desse prazo.
+
+Aguardamos seu retorno.</div>
+          <div style="font-size:.8rem;color:var(--muted);">⚠️ Essa comunicação é obrigatória antes da finalização do contrato.</div>
+        </div>
+
+        <p><strong>Prazo de 24 Horas</strong></p>
+        <p>Após o envio do e-mail, aguardar 24 horas corridas e monitorar se o parceiro quitou ao menos uma fatura ou enviou comprovante/retorno formal. Se houver pagamento ou retorno, avaliar o caso junto à liderança de CS, registrar tratativa no card e definir próximos passos.</p>
+
+        <p><strong>Sem Retorno Após 24 Horas</strong></p>
+        <p>Caso o parceiro não quite nenhuma fatura e não envie retorno: responder o primeiro e-mail para o parceiro com cópia para <a href="mailto:juridico@helena.app" style="color:inherit;font-weight:700;text-decoration:underline;">juridico@helena.app</a> e liderança de CS, incluindo: informação de que o contrato está sendo finalizado por inadimplência, link das faturas em aberto, nome do parceiro e data do último contato. Registrar a ação no card.</p>
+
+        <div class="callout-block" style="flex-direction:column;gap:8px;">
+          <div style="display:flex;gap:10px;align-items:flex-start;"><span class="ci">✉️</span><strong>Modelo – 2º e-mail (cancelamento por inadimplência)</strong></div>
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;font-size:.85rem;line-height:1.7;white-space:pre-wrap;font-family:inherit;"><strong>Assunto:</strong> Cancelamento de Plano por Inadimplência
+
+Prezada(o) [Nome do Parceiro],
+
+Tudo bem?
+
+Identificamos que o pagamento referente ao seu plano [nome do plano], com vencimento em [data], ainda não foi realizado. Conforme previsto em contrato, a falta de pagamento dentro do prazo estabelecido resulta no cancelamento automático do serviço.
+
+Dessa forma, informamos que o seu plano foi cancelado em [data do cancelamento] por motivo de inadimplência.
+
+Sabemos que imprevistos podem acontecer, e gostaríamos de reforçar que nossa equipe está à disposição para ajudá-lo(a) a regularizar a situação e reativar o serviço, caso seja de seu interesse. Basta entrar em contato conosco pelo e-mail [email do CS que o atendeu].
+
+[Insira aqui os valores devidos, juntamente com as datas de vencimento]
+
+Atenciosamente,</div>
+        </div>
+
+        <p><strong>Registro e Finalização – Checklist Inadimplência</strong></p>
+        <div class="checklist">
+          <label class="checklist-item"><input type="checkbox"><span>Preencher o alterou+1 com tipo: <em>Cancelamento por Inadimplência</em>.</span></label>
+          <label class="checklist-item"><input type="checkbox"><span>Informar: motivo, quantidade de faturas em aberto e datas das comunicações realizadas.</span></label>
+          <label class="checklist-item"><input type="checkbox"><span>Colocar card na coluna de cancelado.</span></label>
+          <label class="checklist-item"><input type="checkbox"><span>Inserir etiqueta <span class="badge badge-green">Churn</span> também no contato.</span></label>
+          <label class="checklist-item"><input type="checkbox"><span>Detalhar no card todo o histórico da inadimplência e comunicações.</span></label>
+          <label class="checklist-item"><input type="checkbox"><span>Segundo mês de inadimplência identificado.</span></label>
+          <label class="checklist-item"><input type="checkbox"><span>E-mail de aviso enviado ao parceiro.</span></label>
+          <label class="checklist-item"><input type="checkbox"><span>Prazo de 24h respeitado.</span></label>
+          <label class="checklist-item"><input type="checkbox"><span>Sem retorno/pagamento do parceiro.</span></label>
+          <label class="checklist-item"><input type="checkbox"><span>E-mail enviado ao Jurídico com faturas.</span></label>
+          <label class="checklist-item"><input type="checkbox"><span>Alterou+1 preenchido.</span></label>
+          <label class="checklist-item"><input type="checkbox"><span>Card atualizado com histórico.</span></label>
+          <label class="checklist-item"><input type="checkbox"><span>Etiquetas de Churn aplicadas.</span></label>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- PAGE: ALTERACOES CONTA -->
+    <div id="page-alteracoes-conta" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">⚙️ Processos Operacionais › <span onclick="showPage('cancelamentos')" style="cursor:pointer;text-decoration:underline;">Cancelamentos / Alterações</span></div>
+        <div class="page-title">Solicitar Alterações / Cancelamento da Conta do Parceiro</div>
+        <div class="page-desc">Formulário para alterar informações da conta do parceiro.</div>
+      </div>
+      <div class="content-body">
+        <p>Formulário para alterar informações da conta do parceiro, como:</p>
+        <ul>
+          <li>Cancelamento ou Desistência</li>
+          <li>Novo Plano</li>
+          <li>Novo Contrato</li>
+          <li>Alteração de Plano (Upsell ou Downsell)</li>
+          <li>Ocorrência</li>
+          <li>Desconto ou isenção temporária</li>
+        </ul>
+        <div class="callout-block"><span class="ci">📋</span><span><a href="https://docs.google.com/forms/d/e/1FAIpQLSdGXeG_vrZn8fLi5SBe-she7qIsAlph8MdcW2uKLBtv_dr70w/viewform" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">Acessar formulário</a></span></div>
+      </div>
+    </div>
+
+    <!-- PAGE: UPSELL REVENDA -->
+    <div id="page-upsell-revenda" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">⚙️ Processos Operacionais › <span onclick="showPage('cancelamentos')" style="cursor:pointer;text-decoration:underline;">Cancelamentos / Alterações</span></div>
+        <div class="page-title">Upsell Revenda Helena para White Label</div>
+        <div class="page-desc">Padronização dos procedimentos internos quando um parceiro Revenda Marca Helena migra para o modelo White Label.</div>
+      </div>
+      <div class="content-body">
+
+        <h2>Registro da Ocorrência para Comissão</h2>
+        <p>O CS recebe <strong>7% do valor de implantação</strong> pago pelo parceiro, desde que o processo seja registrado corretamente.</p>
+
+        <p><strong>Procedimento obrigatório: Ocorrência</strong></p>
+        <ol class="step-list">
+          <li>Acessar o formulário de <strong>alterou+1</strong>.</li>
+          <li>Selecionar a opção <em>Ocorrência</em>.</li>
+          <li>Preencher a descrição com:
+            <ul style="margin-top:8px;">
+              <li>Parceria: Nome do parceiro</li>
+              <li>Mudança de modelo: Revenda Marca Helena → Whitelabel</li>
+              <li>Valor pago de setup: R$ X (valor exato)</li>
+            </ul>
+          </li>
+          <li>Enviar o formulário.</li>
+        </ol>
+        <div class="callout-block"><span class="ci">⚠️</span><span>Sem esse preenchimento, a comissão não é gerada.</span></div>
+
+        <p><strong>Procedimento obrigatório: Cancelamento</strong></p>
+        <ol class="step-list">
+          <li>Acessar o formulário de <strong>alterou+1</strong>.</li>
+          <li>Selecionar a opção <em>Cancelamento</em>.</li>
+          <li>Preencher a descrição com:
+            <ul style="margin-top:8px;">
+              <li>Parceria: Nome do parceiro</li>
+              <li>Tipo do Cliente: Revenda Marca Helena</li>
+              <li>Data do Cancelamento: data do F+1 registrado pelo time comercial do novo contrato de White Label</li>
+              <li>Motivo do Cancelamento: Alteração para plano White Label + plano escolhido (Pró ou Premium)</li>
+              <li>Detalhamento: "Cliente era REVENDA e fez upgrade para White Label" + informações relevantes do F+1, se necessário</li>
+            </ul>
+          </li>
+          <li>Enviar o formulário.</li>
+        </ol>
+
+        <p><strong>Procedimento obrigatório: Ocorrência de migração de contas</strong></p>
+        <ol class="step-list">
+          <li>Acessar o formulário de <strong>alterou+1</strong>.</li>
+          <li>Selecionar a opção <em>Ocorrência</em>.</li>
+          <li>Preencher a descrição com:
+            <ul style="margin-top:8px;">
+              <li>Parceria: Nome do parceiro</li>
+              <li>Tipo do Cliente: Revenda Marca Helena</li>
+              <li>Assunto: "Migração contas associadas ambiente revenda"</li>
+              <li>Descrição: "Todas as contas já foram migradas do ambiente revenda para o novo ambiente White Label. ID de faturamento conta Revenda é de nº XXXX"</li>
+            </ul>
+          </li>
+          <li>Enviar o formulário.</li>
+        </ol>
+
+        <h2>Ações Imediatas Após a Migração</h2>
+        <p><strong>Agendar o Kick Off White Label</strong></p>
+        <ul>
+          <li>Entrar em contato com o parceiro.</li>
+          <li>Informar sobre o processo de início do White Label.</li>
+          <li>Agendar o Kickoff da implantação White Label.</li>
+        </ul>
+
+        <h2>Análise do "Fechou+1" para Avaliar Maturidade</h2>
+        <p>O CS deve verificar a data do primeiro Fechou+1 da revenda:</p>
+        <ul>
+          <li><strong>Mais de 6 meses</strong> da data atual → preencher novamente o formulário de maturidade.</li>
+          <li><strong>Menos de 6 meses</strong> → não é necessário preencher novamente.</li>
+        </ul>
+
+        <h2>Verificar se o Parceiro Deseja Migrar as Contas</h2>
+        <p>Durante o kickoff ou no contato inicial, perguntar se o parceiro deseja migrar as contas atuais do ambiente de Revenda para o White Label e registrar a decisão no histórico interno.</p>
+        <p><strong>Caso o parceiro opte por migrar:</strong></p>
+        <ul>
+          <li>Realizar a migração seguindo o procedimento padrão.</li>
+          <li>Validar com o parceiro se todas as contas foram transferidas corretamente.</li>
+        </ul>
+
+        <h2>Finalização Técnica</h2>
+        <p><strong>Cancelar o Ambiente de Revenda</strong></p>
+        <ul>
+          <li>Acessar a plataforma.</li>
+          <li>Cancelar o ambiente antigo do modelo Revenda.</li>
+          <li>Confirmar que o ambiente White Label está ativo e funcional.</li>
+        </ul>
+
+        <h2>Reuniões e Onboarding Complementar</h2>
+        <p><strong>Tira-Dúvidas</strong></p>
+        <ul>
+          <li>Realizar reunião rápida de alinhamento técnico.</li>
+          <li>Validar fluxos e configurações iniciais.</li>
+        </ul>
+        <p><strong>Reunião de Conexão</strong></p>
+        <ul>
+          <li>Realizar a reunião para conectar os canais e revisar permissões.</li>
+          <li>Se necessário, relembrar o onboarding anterior e reforçar boas práticas.</li>
+        </ul>
+
+        <h2>Checklist Final</h2>
+        <div class="checklist">
+          <label class="checklist-item"><input type="checkbox"><span>Formulário de alterou+1 preenchido corretamente.</span></label>
+          <label class="checklist-item"><input type="checkbox"><span>Kickoff agendado com o parceiro.</span></label>
+          <label class="checklist-item"><input type="checkbox"><span>Avaliação dos 6 meses do Fechou+1 realizada.</span></label>
+          <label class="checklist-item"><input type="checkbox"><span>Formulário de maturidade enviado (se aplicável).</span></label>
+          <label class="checklist-item"><input type="checkbox"><span>Decisão sobre migração de contas registrada.</span></label>
+          <label class="checklist-item"><input type="checkbox"><span>Contas migradas (se solicitado).</span></label>
+          <label class="checklist-item"><input type="checkbox"><span>Ambiente de Revenda cancelado.</span></label>
+          <label class="checklist-item"><input type="checkbox"><span>Tira-dúvidas realizado.</span></label>
+          <label class="checklist-item"><input type="checkbox"><span>Reunião de conexão realizada.</span></label>
+          <label class="checklist-item"><input type="checkbox"><span>Parceiro oficialmente ativo como White Label.</span></label>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- PAGE: SEGUNDO AMBIENTE WL -->
+    <div id="page-segundo-ambiente-wl" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">⚙️ Processos Operacionais › <span onclick="showPage('cancelamentos')" style="cursor:pointer;text-decoration:underline;">Cancelamentos / Alterações</span></div>
+        <div class="page-title">2° Ambiente WL</div>
+        <div class="page-desc">Processo para parceiro que já possui um ambiente Whitelabel ativo e contrata um novo ambiente.</div>
+      </div>
+      <div class="content-body">
+
+        <h2>Cenário Aplicável</h2>
+        <ul>
+          <li>O parceiro <strong>já possui uma conta Whitelabel ativa</strong>.</li>
+          <li>O parceiro fecha um <strong>segundo (ou mais) ambiente Whitelabel</strong>.</li>
+        </ul>
+
+        <h2>Registro da Ocorrência (Obrigatório)</h2>
+        <p>O time de Sucesso Parcerias deve:</p>
+        <ol class="step-list">
+          <li>Preencher o <strong>alterou+1</strong>.</li>
+          <li>Selecionar a opção <em>Ocorrência</em>.</li>
+          <li>Descrever no campo de observações:
+            <ul style="margin-top:8px;">
+              <li>Nome do parceiro</li>
+              <li>Informação de que se trata de novo ambiente Whitelabel</li>
+              <li>Valor pago pelo parceiro referente à implantação</li>
+              <li>Forma de pagamento acordada</li>
+            </ul>
+          </li>
+        </ol>
+
+        <h2>Comissão do CS</h2>
+        <ul>
+          <li>❌ Não é pago o valor integral da segunda implantação.</li>
+          <li>✅ O CS recebe <strong>7% sobre o valor pago pelo parceiro</strong> referente à taxa de implantação.</li>
+          <li>✅ A comissão considera o valor e a forma de pagamento efetivamente acordados.</li>
+        </ul>
+        <div class="callout-block"><span class="ci">⚠️</span><span>Sem o registro correto no alterou+1, a comissão não será contabilizada.</span></div>
+
+        <h2>Processo de Implantação do Novo Ambiente</h2>
+        <p>A implantação deve seguir o processo padrão de implantação Whitelabel, ajustando conforme:</p>
+        <ul>
+          <li>Comandos básicos já utilizados pelo parceiro.</li>
+          <li>Padrões previamente definidos no primeiro ambiente.</li>
+          <li>Boas práticas já consolidadas na operação do parceiro.</li>
+        </ul>
+        <p><strong>Pontos de atenção:</strong></p>
+        <ul>
+          <li>Validar expectativas do parceiro.</li>
+          <li>Confirmar se haverá replicação de fluxos ou ajustes específicos para o novo ambiente.</li>
+          <li>Registrar particularidades no card do parceiro.</li>
+        </ul>
+
+        <h2>Registro em Card e Histórico</h2>
+        <p>Atualizar o card do parceiro descrevendo: abertura de novo ambiente, condições comerciais e particularidades da implantação, garantindo histórico claro para futuras consultas.</p>
+
+        <h2>Checklist Final</h2>
+        <div class="checklist">
+          <label class="checklist-item"><input type="checkbox"><span>alterou+1 preenchido como ocorrência.</span></label>
+          <label class="checklist-item"><input type="checkbox"><span>Valor e forma de pagamento registrados.</span></label>
+          <label class="checklist-item"><input type="checkbox"><span>Processo de implantação iniciado.</span></label>
+          <label class="checklist-item"><input type="checkbox"><span>Implantação adaptada aos comandos básicos do parceiro.</span></label>
+          <label class="checklist-item"><input type="checkbox"><span>Card atualizado com histórico completo.</span></label>
+        </div>
+
+      </div>
+    </div>
+
+    <div id="page-suporte" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">⚙️ Processos Operacionais</div>
+        <div class="page-title">🛠️ Suporte e Escalações</div>
+        <div class="page-desc">Processos de abertura de cards, escalações N2 e suporte especializado.</div>
+      </div>
+      <div class="sub-grid">
+        <div class="sub-card" onclick="showPage('abertura-card-n2')"><div class="sub-card-icon">🃏</div><div class="sub-card-title">Abertura de Card Demandas de Clientes – N2</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
+        <div class="sub-card" onclick="showPage('linha-credito-hunion')"><div class="sub-card-icon">💳</div><div class="sub-card-title">Linha de Crédito Hunion</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
+        <div class="sub-card" onclick="showPage('apps-white-label')"><div class="sub-card-icon">📱</div><div class="sub-card-title">Apps White Label</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
+        <div class="sub-card" onclick="showPage('solicitar-reuniao')"><div class="sub-card-icon">🤝</div><div class="sub-card-title">Solicitar Reunião de Integrações / Automações</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
+      </div>
+    </div>
+
+    <!-- PAGE: ABERTURA CARD N2 -->
+    <div id="page-abertura-card-n2" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">⚙️ Processos Operacionais › <span onclick="showPage('suporte')" style="cursor:pointer;text-decoration:underline;">Suporte e Escalações</span></div>
+        <div class="page-title">Abertura de Card Demandas de Clientes – N2</div>
+        <div class="page-desc">Situações mais complexas que exigem análise do N2 devem ser registradas no painel de Demandas de Clientes.</div>
+      </div>
+      <div class="content-body">
+
+        <p>As situações apresentadas pelos parceiros que são mais complexas e exigem análise do N2 devem ser registradas no painel de Demandas de Clientes.</p>
+
+        <h2>Passo a passo para abertura do Card</h2>
+        <ol class="step-list">
+          <li>Acessar o painel de <strong>Demandas de Clientes</strong>.</li>
+          <li>Na etapa <strong>N1-Novo</strong>, incluir um Novo Ítem preenchendo os campos:
+            <ul style="margin-top:10px;">
+              <li><strong>Etiquetas:</strong> Selecionar a etiqueta que informa se o parceiro é WL ou Revenda.</li>
+              <li><strong>Título:</strong> [Nome do parceiro/cliente] - Problema</li>
+              <li><strong>Descrição:</strong> Descrever da forma mais clara e detalhada possível o problema relatado.</li>
+              <li><strong>Contatos:</strong> Informar qual o contato da pessoa que reportou o problema.</li>
+              <li><strong>Data do Relato:</strong> Data que o problema foi reportado.</li>
+              <li><strong>Conta:</strong> Nome da Conta na Plataforma.</li>
+              <li><strong>URL Parceiro</strong> (Apenas para Whitelabel): URL do Parceiro White Label.</li>
+            </ul>
+          </li>
+          <li>Após o preenchimento, clique em <strong>Salvar</strong>, abra o card criado e na aba de <strong>Anotações/Anexos</strong> na lateral direita, insira os arquivos de evidências (imagens, documentos, etc.). Caso haja anotações específicas sobre os testes relativos às imagens anexadas, inserir no campo de anotações.</li>
+        </ol>
+
+        <h2>Prioridades</h2>
+        <p>Após a abertura, os cards são avaliados pelo time responsável e classificados com etiquetas de acordo com a prioridade de cada um.</p>
+
+        <div class="callout-block" style="border-left: 4px solid #e53e3e; background:#fff5f5;">
+          <span class="ci">🚨</span>
+          <span><strong>Prioridade 0 — URGENTE</strong> (Acionar Thiago, Juliano ou David imediatamente):
+            <ul style="margin-top:8px;">
+              <li>Criar conta</li>
+              <li>Conectar canais</li>
+              <li>Enviar e receber mensagens</li>
+              <li>Tempo de envio e recebimento de mensagens está acima de 5 segundos</li>
+              <li>Usuários não conseguem logar</li>
+              <li>Perda de mensagem na API Oficial</li>
+            </ul>
+          </span>
+        </div>
+
+        <div class="callout-block" style="margin-top:8px;"><span class="ci">📌</span><span>Outras demandas de sustentação precisam ser avaliadas à exaustão, seja auxiliando o cliente com ajuste via usuário SuperAdmin, seja acessando com ele o portfólio empresarial (BM) em busca de solução ou mais informações. Dúvidas de uso ou regras devem ser alinhadas entre Letícia e Thiago — não devem gerar card.</span></div>
+
+        <h2>Classificações quanto à Urgência</h2>
+
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px;">
+          <div style="border-left:4px solid #e53e3e;background:#fff5f5;border-radius:0 8px 8px 0;padding:12px 16px;">
+            <strong style="color:#e53e3e;">🔴 Vermelho</strong>
+            <ul style="margin-top:6px;">
+              <li>Impedimento de uso, com possível repercussão geral.</li>
+              <li>Problemas que não tenham nenhuma solução de contorno mapeada.</li>
+              <li>Algo que possa gerar prejuízo financeiro ao cliente.</li>
+            </ul>
+          </div>
+          <div style="border-left:4px solid #dd6b20;background:#fffaf0;border-radius:0 8px 8px 0;padding:12px 16px;">
+            <strong style="color:#dd6b20;">🟠 Laranja</strong>
+            <ul style="margin-top:6px;">
+              <li>Demanda que atrapalhe muito a operação do cliente, mas com solução de contorno mapeada.</li>
+              <li>Suspeita de efeito colateral da última publicação.</li>
+            </ul>
+          </div>
+          <div style="border-left:4px solid #3182ce;background:#ebf8ff;border-radius:0 8px 8px 0;padding:12px 16px;">
+            <strong style="color:#3182ce;">🔵 Azul</strong>
+            <ul style="margin-top:6px;">
+              <li>Algo que tenha solução de contorno, mas que não impacta no dia a dia do cliente — de uso esporádico.</li>
+            </ul>
+          </div>
+          <div style="border-left:4px solid #38a169;background:#f0fff4;border-radius:0 8px 8px 0;padding:12px 16px;">
+            <strong style="color:#38a169;">🟢 Verde</strong>
+            <ul style="margin-top:6px;">
+              <li>Extração de dados, alteração direto na base (quando não impeditivo).</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- PAGE: LINHA CREDITO HUNION -->
+    <div id="page-linha-credito-hunion" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">⚙️ Processos Operacionais › <span onclick="showPage('suporte')" style="cursor:pointer;text-decoration:underline;">Suporte e Escalações</span></div>
+        <div class="page-title">Linha de Crédito Hunion</div>
+        <div class="page-desc">Passo a passo para conexão de canais em API Oficial usando a linha de crédito Hunion como forma de pagamento.</div>
+      </div>
+      <div class="content-body">
+
+        <h2>Resumo do Processo</h2>
+        <ol class="step-list">
+          <li>Orientar o parceiro sobre o cálculo de disparos.</li>
+          <li>Enviar e-mail com detalhamento ao parceiro e aguardar retorno de permissão.</li>
+          <li>Solicitar boleto pelo Alterou+1.</li>
+          <li>Vincular linha de crédito à WABA.</li>
+          <li>Preencher formulário para solicitar a recarga da WABA.</li>
+        </ol>
+
+        <h2>Cálculo de Disparos</h2>
+        <ul>
+          <li>Verificar quantos disparos farão no mês e multiplicar pelo valor de <strong>R$ 0,45</strong> (valor estimado).</li>
+          <li>Perguntar em nome de quem virá o boleto (parceiro ou cliente — lembrando que o boleto virá no nome da Hunion).</li>
+        </ul>
+
+        <h2>Envio de E-mail</h2>
+        <ul>
+          <li>Enviar o e-mail abaixo ao parceiro utilizando o mesmo e-mail cadastrado no F+1 ou o e-mail de SuperAdmin atrelado à conta.</li>
+          <li>Aguardar resposta do parceiro dando permissão para liberar a linha de crédito.</li>
+        </ul>
+
+        <div class="callout-block" style="flex-direction:column;gap:8px;">
+          <div style="display:flex;gap:10px;align-items:flex-start;"><span class="ci">✉️</span><strong>Modelo de e-mail</strong></div>
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;font-size:.85rem;line-height:1.8;">
+            <p style="margin:0 0 10px;">Prezados,</p>
+            <p style="margin:0 0 10px;">Sobre a liberação da linha de crédito para a <strong>"NOME DO PARCEIRO"</strong>, gostaríamos de alinhar alguns pontos importantes sobre o funcionamento na HelenaCRM:</p>
+            <ul style="margin:0 0 12px;padding-left:20px;">
+              <li><strong>Controle de Consumo:</strong> Atualmente, a HelenaCRM não possui um sistema de faturamento pré-pago que interrompe automaticamente o uso após atingir determinado saldo. O único controle disponível é o limite mensal configurado na WABA pela Meta, em dólares. Esse limite se renova integralmente a cada virada de mês.</li>
+              <li><strong>Recarga Mensal:</strong> Será realizada uma recarga mensal para garantir o saldo de aproximadamente <strong>U$"valor em dólar" (cerca de R$"valor em real")</strong>.</li>
+              <li><strong>Consumo sem Trava:</strong> Caso o cliente ultrapasse esse limite, a Meta pode não bloquear o disparo de mensagens. Assim, o consumo excedente será faturado pela HelenaCRM e cobrado da <strong>"NOME DO PARCEIRO"</strong> no ciclo seguinte.</li>
+              <li><strong>Monitoramento:</strong> É fundamental que o uso seja acompanhado de perto, já que não há garantia de bloqueio automático após o limite.</li>
+              <li><strong>Desativação:</strong> Caso o cliente deseje interromper o serviço, é necessário informar seu CS para que a linha de crédito seja desativada. Caso contrário, as recargas e cobranças continuarão sendo geradas mensalmente.</li>
+            </ul>
+            <p style="margin:0 0 10px;">⚠️ <strong>Ponto de Atenção:</strong> Já houve casos em que, mesmo após ultrapassar o limite estipulado, a Meta não bloqueou o envio de mensagens. Portanto, ao aceitar a liberação da linha de crédito, é importante estar ciente e concordar que qualquer valor excedente será cobrado no próximo ciclo de faturamento.</p>
+            <p style="margin:0 0 10px;">Se houver concordância com esse formato e aceitação do risco, seguiremos com a liberação da linha de crédito no valor aproximado de <strong>U$"valor em dólar" (cerca de R$"valor em real")</strong>. Caso contrário, recomendamos aguardar até que a funcionalidade de cobrança pré-paga esteja disponível.</p>
+            <p style="margin:0;">Atenciosamente,</p>
+          </div>
+        </div>
+        <div class="callout-block"><span class="ci">📌</span><span>Os pontos de atenção presentes no e-mail devem ser informados também ao parceiro por <strong>WhatsApp</strong>.</span></div>
+
+        <h2>Solicitar Boleto</h2>
+        <ul>
+          <li>Com as informações acima, preencha o <strong>alterou+1</strong> como ocorrência, solicitando que o financeiro faça o boleto com o valor calculado pelo parceiro.</li>
+          <li>Envie o boleto ao parceiro e solicite que envie o comprovante de pagamento.</li>
+        </ul>
+
+        <h2>Vincular Linha de Crédito</h2>
+        <ul>
+          <li>Após receber o comprovante de pagamento, solicite ao parceiro o <strong>ID da WABA</strong> e vincule a linha de crédito na plataforma através do <strong>WhatsApp Tools</strong>.</li>
+          <li>Caminho: <span class="badge badge-green">Admin Helena</span> → <span class="badge badge-green">WhatsApp Tools</span></li>
+        </ul>
+
+        <h2>Solicitar Recarga de Créditos</h2>
+        <ul>
+          <li>Preencha o <a href="https://forms.gle/p5QWgon1hK7DKCLT7" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">formulário de recarga</a> com as informações da WABA/BM da empresa proprietária do número.</li>
+          <li>Pedir para o <strong>Juliano</strong> liberar o valor para a WABA — enviar a solicitação a ele no Discord juntamente com o comprovante do pagamento.</li>
+        </ul>
+
+      </div>
+    </div>
+
+    <!-- PAGE: APPS WHITE LABEL -->
+    <div id="page-apps-white-label" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">⚙️ Processos Operacionais › <span onclick="showPage('suporte')" style="cursor:pointer;text-decoration:underline;">Suporte e Escalações</span></div>
+        <div class="page-title">Apps White Label</div>
+        <div class="page-desc">Passo a passo da implantação de APPs, executado após a contratação dos aplicativos personalizados.</div>
+      </div>
+      <div class="content-body">
+
+        <div class="callout-block"><span class="ci">📄</span><span>Baixe um PDF do documento <a href="https://docs.google.com/presentation/d/1O9-jYQn7czuE0guarTDFFqLazin14f1T3c9EG2M05JQ/edit?slide=id.g3861e3d12ca_0_49#slide=id.g3861e3d12ca_0_49" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">Entenda o que é possível personalizar nos Apps</a> e envie ao parceiro.</span></div>
+
+        <h2>Resumo do Processo</h2>
+        <ol class="step-list">
+          <li>O CS responsável deverá cadastrar no painel <a href="https://web-staging.helena.run/panels/48bcad78-02c6-4b29-b45e-28f6c00a5737" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">Publicação Apps Whitelabel</a> 2 cards — um para iOS e outro para Android.</li>
+          <li>O parceiro deverá realizar a abertura das lojas na Play Store e Apple Store.</li>
+          <li>O parceiro deverá informar sobre a criação das lojas para que o CS avance para o time de produto.</li>
+          <li>O prazo para conclusão dos Apps é de <strong>30 dias</strong> após o time de produto receber o e-mail de acesso às lojas do parceiro.</li>
+          <li>O time de produto irá retornar quando os apps forem concluídos.</li>
+          <li>O CS conclui a entrega dos apps ao parceiro.</li>
+        </ol>
+
+        <h2>Acompanhamento por Etapa</h2>
+
+        <p><strong>Etapa: Entrada</strong></p>
+        <p>Ao receber os dados de contratação do parceiro, criar um card para cada loja na etapa <em>Entrada</em> do painel de <a href="https://web-staging.helena.run/panels/48bcad78-02c6-4b29-b45e-28f6c00a5737" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">Publicação Apps Whitelabel</a> informando os campos:</p>
+        <ul>
+          <li>Nome da empresa parceira</li>
+          <li>Etiqueta do Sistema Operacional (<span class="badge badge-green">Android</span> / <span class="badge badge-green">iOS</span>)</li>
+          <li>Contato</li>
+          <li>Responsável pela abertura da loja (cliente)</li>
+          <li>Nome do app (informado pelo parceiro)</li>
+        </ul>
+        <p>Avançar o card para a próxima etapa.</p>
+
+        <p><strong>Etapa: Abertura de Conta</strong></p>
+        <p>O CS responsável pelo parceiro que contratou o app deve orientá-lo sobre os pré-requisitos para a criação dos Apps:</p>
+        <ul>
+          <li>Ter a logo no formato horizontal, em alta definição PNG para personalização.</li>
+          <li>Informar sobre a necessidade de possuir loja para os apps e seus respectivos valores:
+            <ul style="margin-top:8px;">
+              <li><strong>Android</strong> — pagamento único <strong>U$ 25,00</strong></li>
+              <li><strong>iOS</strong> — pagamento anual <strong>U$ 99,00</strong></li>
+            </ul>
+          </li>
+          <li>Baixar os PDFs e enviar os manuais de abertura de loja:
+            <ul style="margin-top:8px;">
+              <li><a href="https://docs.google.com/document/d/1XLpJiLlP5H7qvYpnPVJV3CAX21pa9hmQ_zYVz7AHRPc/edit?tab=t.0#heading=h.bbcy0kniuygu" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">Play Store</a></li>
+              <li><a href="https://docs.google.com/document/d/1gbNRmsjHQ2kKE4hVVLHLTUIZ6i-lRSyxy4CZoOoG5Gc/edit?tab=t.0" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">Apple Store</a></li>
+            </ul>
+          </li>
+        </ul>
+        <p>Avançar o card para a próxima etapa.</p>
+
+        <p><strong>Etapa: Pendente com o Cliente</strong></p>
+        <p>O card deverá ficar nessa etapa até que o parceiro sinalize a criação das lojas. Antes de avançar, certifique-se que as logos enviadas pelo parceiro foram anexadas ao card.</p>
+        <p>Avançar o card para a próxima etapa.</p>
+
+        <p><strong>Etapa: Pendente Assets</strong></p>
+        <p>É recomendado que ao passar o card para essa etapa, seja enviada uma mensagem no grupo <strong>Publicações do Discord</strong>, informando a equipe de produto que já está tudo correto para que assumam os próximos passos. Dessa etapa em diante o time de produto assume o card e avança para as demais etapas de acordo com o status da criação dos apps, até que ela seja publicada.</p>
+
+        <div class="callout-block"><span class="ci">📌</span><span>As etapas <strong>Fila de Publicação</strong>, <strong>Preparando Publicação</strong> e <strong>Aprovação Lojas</strong> são de responsabilidade do Time de Produto.</span></div>
+
+        <p><strong>Etapa: Publicado</strong></p>
+        <p>Quando o time de Produto avançar o card para essa etapa, o CS responsável deve atualizá-lo com a data de publicação e o link do app (enviado no grupo de publicações no Discord).</p>
+
+        <h2>Atualizar Cadastro do Parceiro</h2>
+        <p>Após a publicação, atualizar no cadastro do parceiro a data de publicação do app.</p>
+        <p>Caminho: <span class="badge badge-green">Admin Helena</span> → <span class="badge badge-green">Parceiros</span></p>
+
+      </div>
+    </div>
+
+    <!-- PAGE: SOLICITAR REUNIAO -->
+    <div id="page-solicitar-reuniao" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">⚙️ Processos Operacionais › <span onclick="showPage('suporte')" style="cursor:pointer;text-decoration:underline;">Suporte e Escalações</span></div>
+        <div class="page-title">Solicitar Reunião de Integrações / Automações</div>
+        <div class="page-desc">Processo para solicitar apoio do time de integrações.</div>
+      </div>
+      <div class="content-body">
+        <p>Quando o cliente ou parceiro solicitar algum tipo de apoio com relação a integração, deverá ser solicitado via formulário. Após isso o time de integrações irá agendar a reunião.</p>
+        <div class="callout-block"><span class="ci">📋</span><span><a href="https://forms.gle/wyUta6ws8QX2ia566" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">Acessar formulário</a></span></div>
+      </div>
+    </div>
+
+    <!-- PAGE: ORGAO GOV -->
+    <div id="page-orgao-gov" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">⚙️ Processos Operacionais</div>
+        <div class="page-title">Órgão Governamental</div>
+        <div class="page-desc">Procedimentos específicos para conexão de órgãos governamentais à plataforma.</div>
+      </div>
+      <div class="sub-grid">
+        <div class="sub-card" onclick="showPage('conectar-orgao-gov')"><div class="sub-card-icon">🔌</div><div class="sub-card-title">Conectar Órgãos Governamentais na API Oficial (Linha de Crédito Hunion)</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
+        <div class="sub-card" onclick="showPage('ticket-meta-gov')"><div class="sub-card-icon">🎫</div><div class="sub-card-title">Abertura de Ticket Meta – Órgãos Governamentais</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
+      </div>
+    </div>
+
+    <!-- PAGE: CONECTAR ORGAO GOV -->
+    <div id="page-conectar-orgao-gov" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">⚙️ Processos Operacionais › <span onclick="showPage('orgao-gov')" style="cursor:pointer;text-decoration:underline;">Órgão Governamental</span></div>
+        <div class="page-title">Conectar Órgãos Governamentais na API Oficial</div>
+        <div class="page-desc">Passo a passo para conectar números de serviços governamentais à API oficial da Meta para WhatsApp.</div>
+      </div>
+      <div class="content-body">
+
+        <h2>Elegibilidade da API Oficial para Órgãos Governamentais</h2>
+        <p>Antes de iniciar o processo, é importante garantir que o serviço governamental está elegível para uso da API do WhatsApp. A Meta tem regras específicas para governos, e algumas categorias podem precisar de aprovações adicionais.</p>
+
+        <p><strong>Setores permitidos:</strong></p>
+        <ul>
+          <li>Serviços públicos: prefeituras, secretarias, hospitais, conselhos de classe etc.</li>
+          <li>Comunicações permitidas: atendimento ao cidadão, notificações oficiais, campanhas educativas etc.</li>
+        </ul>
+
+        <p><strong>Setores proibidos:</strong></p>
+        <ul>
+          <li>Autoridades policiais.</li>
+          <li>Serviços militares.</li>
+          <li>Agências de segurança nacional e inteligência.</li>
+          <li>Entidades relacionadas à política, candidatos políticos, estratégia de campanha, empresas de soluções de votação e prestadores de serviços exclusivos do governo.</li>
+        </ul>
+        <div class="callout-block"><span class="ci">🔗</span><span>Veja <a href="https://business.whatsapp.com/policy?lang=pt_BR#policy_on_government_and_political_use" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">neste link</a> todas as restrições da Meta.</span></div>
+
+        <h2>Como Preparar o Meta Business para Conectar um Número Oficial</h2>
+        <p>Se o órgão público não tiver uma BM, é preciso criar seguindo <a href="https://docs.helena.app/atalhos/faq/como-criar-uma-bm" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">este processo</a>. Caso já tenha BM, acesse o <a href="https://business.facebook.com/" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">Facebook Business</a> e faça login com uma conta que tenha permissões administrativas. A BM não pode ter nenhum tipo de restrição.</p>
+        <div class="callout-block"><span class="ci">⚠️</span><span>Não é recomendado, de forma alguma, que a prática de <strong>"compra de BM"</strong> seja incentivada com os parceiros, pois não é possível saber o histórico prévio da BM e como isso poderá impactar no processo com a Meta.</span></div>
+
+        <p><strong>Domínio de E-mail Oficial</strong></p>
+        <p>A BM deve ter como responsável alguém que utilize um e-mail com domínio institucional/governamental (ex: @gov.br, @orgao.gov). E-mails genéricos como Gmail, Outlook ou Yahoo não são aceitos.</p>
+
+        <p><strong>Incluir a hunion.io como Parceiro</strong></p>
+        <p>Para que a helenaCRM (na Meta <em>hunion.io</em>) possa intervir em situações de bloqueio, é preciso ser associado como Parceiro na BM. Acesse <strong>Conta &gt; Parceiros</strong> e inclua a <em>hunion.io</em> usando o ID: <span class="badge badge-green">345920103576826</span></p>
+        <div class="callout-block"><span class="ci">⚠️</span><span>Se a <em>hunion.io</em> não estiver associada como Parceiro, não será possível abrir tickets na Meta.</span></div>
+
+        <p><strong>Autorização Prévia da WABA</strong></p>
+        <p>É preciso criar uma WABA seguindo o processo tradicional de conexão, pausando-o logo após a inserção do nome da BM e antes de informar o número. A WABA ficará vazia, sem número associado — isso provavelmente levará ao bloqueio da WABA.</p>
+        <p>Caso isso aconteça, o cliente deve solicitar o desbloqueio em <strong>Página Inicial do Suporte para Empresas</strong>. Se o retorno for negativo, preencher <a href="https://automation.helena.run/form/governamental-meta" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">este formulário</a> para abertura de ticket na Meta. Em seguida, solicite o número do ticket ao Juliano (ou Thiago), insira no painel e informe ao David em caso de negativa.</p>
+
+        <p><strong>Conta Verificada no Meta Business Manager</strong></p>
+        <p>O órgão governamental deve ter a BM verificada com documentos oficiais (ex: CNPJ). Só é possível solicitar a verificação se a BM possuir uma WABA criada, um app vinculado ou conta de anúncios com movimentação relevante.</p>
+
+        <p><strong>Número de Telefone Elegível</strong></p>
+        <p>O número não pode estar em uso no WhatsApp pessoal ou Business — se estiver, deve ser removido antes da migração. Deve ser exclusivo para a API, preferencialmente institucional (número fixo ou governamental oficial).</p>
+
+        <p><strong>Forma de Pagamento</strong></p>
+        <p>Diferente de outras contas, órgãos governamentais precisam obrigatoriamente usar a <strong>linha de crédito da helenaCRM</strong> para pagar os custos com disparo de mensagens.</p>
+
+        <h2>Como Solicitar a Autorização da Meta</h2>
+        <p>Ao receber o pedido do parceiro, o primeiro passo é compartilhar <a href="https://docs.google.com/document/d/1N3VRO-PYeuLSWr8fRGmwSwH1FOpOCaBcZV6OpZ4s84g/edit?tab=t.0" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">este documento</a> para que ele entenda o processo. <strong>Sempre enviar em PDF para não permitir edição.</strong></p>
+
+        <p><strong>Painel interno para gestão</strong></p>
+        <p>Ao confirmar que um número governamental será conectado, crie um card no painel <a href="https://web-staging.helena.run/panels/93a57cef-f7c6-4bf1-b8ee-39002097b173" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">[CSWL] Conexão de órgãos públicos</a>. O painel é compartilhado com o David — mantenha os cards em <em>Coleta de Dados</em> até que tudo esteja pronto. Como o bloqueio da WABA não é impeditivo (desde que a BM esteja verificada), envie o formulário e aguarde a confirmação para mover o card e informar o David no Discord. Solicite o desbloqueio da WABA em paralelo para ganhar tempo.</p>
+
+        <p>Etapas do painel:</p>
+        <ul>
+          <li><strong>Coleta de Dados:</strong> registrar informações do parceiro, cliente/conta, BM e WABA.</li>
+          <li><strong>Enviar para a Meta:</strong> notificar o David da disponibilidade dos dados.</li>
+          <li><strong>Em revisão pela Meta:</strong> registrar data de envio e pedidos de informações adicionais.</li>
+          <li><strong>Conexão do Número:</strong> registrar informações da conexão e início de funcionamento.</li>
+        </ul>
+
+        <p><strong>Preenchimento do formulário</strong></p>
+        <p>Para formalizar o pedido, preencha <a href="https://automation.helena.run/form/governamental-meta" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">este formulário interno</a> com as informações que serão enviadas no pedido formal:</p>
+        <ul>
+          <li>Nome do parceiro, da conta e do órgão governamental; site vinculado à BM.</li>
+          <li>Número da BM e da WABA — garanta que estejam desbloqueadas no momento.</li>
+          <li>Display name, jurisdição e confirmação de conformidade com as regras da Meta.</li>
+          <li>Situações de uso do número — seja o mais detalhado possível com todos os contextos. Veja um <a href="https://docs.google.com/document/d/1jPFHXqeKvyuba5W3su5vSNUqrP9V7U1AxLl6fvon1Mw/edit?tab=t.0" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">exemplo aqui</a>.</li>
+          <li>Se o órgão solicitar dados como CPF, detalhe claramente como se dará o tratamento e armazenamento.</li>
+        </ul>
+        <div class="callout-block"><span class="ci">⚠️</span><span>Por regras da Meta, <strong>não é permitido</strong> solicitar o CPF completo — apenas <strong>4 dígitos</strong>. Para identificação completa, combine informações (ex: data de nascimento) ou valide numa plataforma externa ao WhatsApp.</span></div>
+        <p>Após o envio, a previsão de resposta é de até <strong>15 dias úteis</strong>, podendo ser necessário repassar informações adicionais à Meta.</p>
+
+        <h2>Como Conectar o Número na WABA Aprovada</h2>
+        <p>Após a aprovação da Meta, o número pode ser conectado seguindo o passo a passo tradicional, com as seguintes diferenças:</p>
+        <ul>
+          <li><strong>Escolha da WABA:</strong> não criar uma nova — usar a aprovada pela Meta.</li>
+          <li><strong>Display name:</strong> já indicado no formulário de aprovação, não é necessário informá-lo novamente.</li>
+          <li><strong>Forma de pagamento:</strong> por ser órgão governamental, não é possível usar cartão de crédito — obrigatório usar a linha de crédito da helenaCRM.</li>
+        </ul>
+
+      </div>
+    </div>
+
+    <!-- PAGE: TICKET META GOV -->
+    <div id="page-ticket-meta-gov" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">⚙️ Processos Operacionais › <span onclick="showPage('orgao-gov')" style="cursor:pointer;text-decoration:underline;">Órgão Governamental</span></div>
+        <div class="page-title">Abertura de Ticket Meta – Órgãos Governamentais</div>
+        <div class="page-desc">Processo de apelação para número banido pela Meta em caso de órgão governamental.</div>
+      </div>
+      <div class="content-body">
+        <p>Quando um parceiro/cliente é um órgão governamental e tem o número banido pela Meta, e através do próprio chamado aberto por ele o desbanimento não ocorre, o nosso analista responsável pela Meta pode abrir um ticket de apelação. Para isso é necessário preencher o formulário de <strong>Abertura de Ticket Meta Órgãos Governamentais</strong>.</p>
+        <div class="callout-block"><span class="ci">📋</span><span><a href="https://automation.helena.run/form/governamental-meta" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">Acessar formulário</a></span></div>
+      </div>
+    </div>
+
+    <!-- PAGE: TRANSFERENCIA -->
+    <div id="page-transferencia" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">⚙️ Processos Operacionais</div>
+        <div class="page-title">Transferência de Titularidade</div>
+        <div class="page-desc">Política sobre transferência de conta entre parceiros.</div>
+      </div>
+      <div class="content-body">
+        <div class="warning-block"><span class="ci">🚫</span><span><strong>Atenção:</strong> Não é mais permitido realizar transferência de titularidade entre parceiros por questões de <strong>LGPD</strong>.</span></div>
+        <p>Em caso de dúvidas sobre essa política, consulte o gestor responsável ou a equipe jurídica da Helena.</p>
+      </div>
+    </div>
+
+    <!-- PAGE: PALAVRAS RESERVADAS -->
+    <div id="page-palavras-reservadas" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">⚙️ Processos Operacionais</div>
+        <div class="page-title">Políticas de Palavras Reservadas</div>
+        <div class="page-desc">Nomes proibidos para URLs, produtos e identificadores públicos na plataforma.</div>
+      </div>
+      <div class="content-body">
+        <p>Existem nomes proibidos de serem utilizados em URLs, produtos e identificadores públicos, para evitar conflitos de marcas e violações legais.</p>
+        <h2>Palavras Reservadas (Proibidas)</h2>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;">
+          <span class="badge badge-orange">zap</span><span class="badge badge-orange">zapi</span><span class="badge badge-orange">chatbot</span><span class="badge badge-orange">union</span><span class="badge badge-orange">zapzap</span><span class="badge badge-orange">zapp</span><span class="badge badge-orange">bot</span><span class="badge badge-orange">Elena</span><span class="badge badge-orange">zapa</span><span class="badge badge-orange">wts</span><span class="badge badge-orange">hunion</span><span class="badge badge-orange">Helena</span>
+        </div>
+        <h2>Motivos para Restrição</h2>
+        <ul>
+          <li><strong>Risco de infração de marca registrada</strong> – "zap" e variações fazem alusão ao WhatsApp.</li>
+          <li>Uso do nome oficial ou domínio da Helena (wts.chat).</li>
+          <li>Conflito com parceiros ou tecnologias utilizadas (Z-API, Hunion, etc.).</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PAGE: SOLICITACOES META -->
+    <div id="page-solicitacoes-meta" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">⚙️ Processos Operacionais</div>
+        <div class="page-title">Solicitações Meta</div>
+        <div class="page-desc">Processos para abertura e acompanhamento de tickets junto à Meta.</div>
+      </div>
+      <div class="sub-grid">
+        <div class="sub-card" onclick="showPage('ticket-meta-geral')"><div class="sub-card-icon">🎫</div><div class="sub-card-title">Abertura de Ticket Meta – Casos Gerais</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
+        <div class="sub-card" onclick="showPage('acompanhamento-tickets-meta')"><div class="sub-card-icon">📋</div><div class="sub-card-title">Acompanhamento do Formulário de Abertura de Tickets Meta</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
+      </div>
+    </div>
+
+    <!-- PAGE: TICKET META GERAL -->
+    <div id="page-ticket-meta-geral" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">⚙️ Processos Operacionais › <span onclick="showPage('solicitacoes-meta')" style="cursor:pointer;text-decoration:underline;">Solicitações Meta</span></div>
+        <div class="page-title">Abertura de Ticket Meta – Casos Gerais</div>
+        <div class="page-desc">Processo de apelação para número banido pela Meta em casos gerais.</div>
+      </div>
+      <div class="content-body">
+        <p>Quando um parceiro/cliente tem o número banido pela Meta, e através do próprio chamado aberto por ele o desbanimento não ocorre, o nosso analista responsável pela Meta pode abrir um ticket de apelação. Para isso é necessário preencher o formulário de <strong>Abertura de Ticket Meta Casos Gerais</strong>.</p>
+        <div class="callout-block"><span class="ci">📋</span><span><a href="https://automation.helena.run/form/chamados-meta" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">Acessar formulário</a></span></div>
+      </div>
+    </div>
+
+    <!-- PAGE: ACOMPANHAMENTO TICKETS META -->
+    <div id="page-acompanhamento-tickets-meta" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">⚙️ Processos Operacionais › <span onclick="showPage('solicitacoes-meta')" style="cursor:pointer;text-decoration:underline;">Solicitações Meta</span></div>
+        <div class="page-title">Acompanhamento do Formulário de Abertura de Tickets Meta</div>
+        <div class="page-desc">Acompanhamento das solicitações de tickets Meta através dos painéis internos.</div>
+      </div>
+      <div class="content-body">
+        <p>As informações sobre a Abertura de Ticket Meta podem ser acompanhadas através do card da solicitação nos painéis:</p>
+        <ul>
+          <li><strong>Ticket Casos Gerais:</strong> <a href="https://web-staging.helena.run/panels/4d7bb50b-2848-417f-9f26-b1db96016e32" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">[SUP] Meta Business</a>.</li>
+          <li><strong>Ticket Órgãos Governamentais:</strong> <a href="https://web-staging.helena.run/panels/93a57cef-f7c6-4bf1-b8ee-39002097b173" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">[SUP] Meta Business Governamental</a>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SECTION: GESTAO -->
+    <div id="page-gestao" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">📈 Gestão de Parceiros</div>
+        <div class="page-title">Gestão de Parceiros</div>
+        <div class="page-desc">Estratégias de acompanhamento mensal e ongoing para crescimento sustentável dos parceiros.</div>
+      </div>
+      <div class="sub-grid">
+        <div class="sub-card" onclick="showPage('contato-estrategico')"><div class="sub-card-icon">👨‍💻</div><div class="sub-card-title">Contato Estratégico Com Parceiros (mensal)</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
+        <div class="sub-card" onclick="showPage('acompanhamento-ongoing')"><div class="sub-card-icon">✍️</div><div class="sub-card-title">Acompanhamento Parceiros Em Ongoing</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
+      </div>
+    </div>
+
+    <!-- PAGE: CONTATO ESTRATEGICO -->
+    <div id="page-contato-estrategico" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">📈 Gestão de Parceiros</div>
+        <div class="page-title">👨‍💻 Contato Estratégico Com Parceiros (mensal)</div>
+        <div class="page-desc">Seleção e contato mensal com parceiros para apoio estratégico e crescimento de contas.</div>
+      </div>
+      <div class="content-body">
+        <p>Mensalmente são selecionados parceiros para contato estratégico, visando aumentar o número de contas do mesmo e apoiá-lo em crescimento.</p>
+
+        <h2>Passo a Passo</h2>
+        <ol class="step-list">
+          <li><strong>Organização no painel:</strong> garanta que o parceiro esteja corretamente inserido no painel de Onboarding e utilize a etiqueta <span class="badge badge-green">Priorizado Mai</span> para sinalizar o foco neste acompanhamento.</li>
+          <li><strong>Analise os relatórios de maturidade:</strong> identifique o principal gargalo do parceiro — por exemplo:
+            <ul style="margin-top:8px;list-style:disc;">
+              <li>Possui site ativo?</li>
+              <li>Está utilizando a plataforma com consistência?</li>
+              <li>Tem funil de vendas estruturado no CRM (confira os painéis)?</li>
+            </ul>
+          </li>
+          <li><strong>Personalize o contato:</strong> com base na análise, envie uma mensagem convidando o parceiro para participar das Office Hours com temas que atendam suas necessidades atuais, como:
+            <ul style="margin-top:8px;">
+              <li>Geração de demanda</li>
+              <li>Estratégias de precificação</li>
+              <li>Como encantar e converter leads</li>
+            </ul>
+          </li>
+          <li><strong>Follow-up estratégico (24h após a Office Hour):</strong> entre em contato para entender se ele gostou da conversa, se ficou com dúvidas, se conseguiu aplicar o conteúdo e como podemos apoiar na evolução.</li>
+          <li><strong>Gerar evidências dos contatos realizados:</strong> inserindo prints das conversas e outras informações relevantes nas notas do card do parceiro.</li>
+          <li><strong>Encerramento do ciclo de estímulo:</strong> caso até o final de maio o parceiro não tenha dado nenhum retorno e não tenha inserido novas contas, aplicar a etiqueta <span class="badge badge-green">Não vai vender</span> para que possamos direcionar esforços a quem está engajado.</li>
+        </ol>
+
+        <div class="callout-block"><span class="ci">💡</span><span>Essa abordagem direcionada mostra que estamos atentos à realidade de cada parceiro, e fortalece nosso papel como consultores de sucesso!</span></div>
+      </div>
+    </div>
+
+    <!-- PAGE: ACOMPANHAMENTO ONGOING -->
+    <div id="page-acompanhamento-ongoing" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">📈 Gestão de Parceiros</div>
+        <div class="page-title">✍️ Acompanhamento Parceiros Em Ongoing</div>
+        <div class="page-desc">5 pilares estratégicos que guiam o time de CS na geração de resultados para os parceiros.</div>
+      </div>
+      <div class="content-body">
+        <div class="callout-block"><span class="ci">🎯</span><span>O sucesso é alcançado combinando: <strong>satisfação do parceiro</strong>, <strong>aumento nas vendas por meio da plataforma</strong> e <strong>domínio do produto</strong>.</span></div>
+
+        <h2>Acompanhamento Mensal Estratégico</h2>
+        <p>Além dos pilares já definidos para a reunião de acompanhamento, é fundamental se preparar com antecedência. Utilize a <strong>IA Integrativa</strong> antes da reunião para consultar o histórico de interações do parceiro com nossos canais, entendendo:</p>
+        <ul>
+          <li>A frequência e o motivo dos contatos.</li>
+          <li>Quais dúvidas ou problemas foram mais recorrentes.</li>
+          <li>Quais áreas do sistema geraram mais demanda.</li>
+        </ul>
+        <p><strong>Durante a reunião:</strong></p>
+        <ul>
+          <li>Pergunte como ele avalia o atendimento recebido ao longo do mês.</li>
+          <li>Estimule sugestões e ideias de melhoria.</li>
+          <li>Siga uma linha de conversa que vá esclarecendo dúvidas e co-construindo estratégias com o parceiro.</li>
+          <li>Reforce pontos que contribuam para o aumento da compreensão e do engajamento dele com a plataforma.</li>
+        </ul>
+        <div class="callout-block"><span class="ci">💡</span><span>Esse momento é uma oportunidade valiosa para fortalecer o relacionamento, antecipar demandas e contribuir para o crescimento contínuo do parceiro.</span></div>
+
+        <h2>Pilar: Apoio ao Modelo de Negócio e Precificação</h2>
+        <p><strong>Entendimento do Modelo de Cobrança</strong></p>
+        <ul>
+          <li>Identificar como o parceiro pretende precificar a plataforma (ex.: mensalidade fixa, cobrança por uso, planos escaláveis).</li>
+          <li>Avaliar se há aderência ao modelo já utilizado pela Helena e sugerir boas práticas.</li>
+        </ul>
+        <p><strong>Análise da Operação do Parceiro</strong></p>
+        <ul>
+          <li>Compreender quais serviços o parceiro oferecerá em conjunto com a plataforma.</li>
+          <li>Mapear diferenciais e possíveis desafios na comercialização.</li>
+          <li>Apresentar ao parceiro a lógica de precificação utilizada pela Helena como referência.</li>
+        </ul>
+        <p><strong>Definição e Ajustes da Precificação</strong></p>
+        <ul>
+          <li>Auxiliar o parceiro na criação de planos e valores estratégicos para o mercado-alvo.</li>
+          <li>Validar a viabilidade financeira e competitividade dos preços.</li>
+        </ul>
+        <p><strong>Recomendações de Capacitação</strong></p>
+        <ul>
+          <li>Indicar materiais de apoio: cursos, vídeos e Office Hours sobre precificação.</li>
+          <li>Reforçar a importância de revisões periódicas na estratégia comercial.</li>
+        </ul>
+        <p><strong>Acompanhamento e Otimização</strong></p>
+        <ul>
+          <li>Monitorar os primeiros resultados da estratégia de precificação.</li>
+          <li>Ajustar o modelo com base no feedback do mercado e na performance das vendas.</li>
+        </ul>
+
+        <h2>Pilar: Fortalecimento do Processo Comercial — SDR e Closer</h2>
+        <p><strong>Validar estrutura de atendimento</strong></p>
+        <ul>
+          <li>Verificar se o parceiro possui equipe dedicada para atendimento comercial (SDR e Closer).</li>
+          <li>Garantir que o parceiro entenda a importância dessa separação de funções.</li>
+        </ul>
+        <p><strong>Foco na agilidade e qualidade</strong></p>
+        <ul>
+          <li>Alinhar sobre a importância do tempo de resposta rápido para leads.</li>
+          <li>Sugerir a utilização de chatbot para triagem e qualificação inicial.</li>
+          <li>Enfatizar a necessidade de atendimento humanizado e consultivo.</li>
+        </ul>
+        <p><strong>Preparar para objeções</strong></p>
+        <ul>
+          <li>Identificar junto ao parceiro as principais objeções que surgem nas vendas.</li>
+          <li>Trabalhar com o time comercial soluções e argumentações estratégicas.</li>
+        </ul>
+        <p><strong>Apoio com materiais oficiais</strong></p>
+        <p>Apresentar os recursos disponíveis no Portal Helena:</p>
+        <ul>
+          <li>Vídeos de capacitação.</li>
+          <li>Modelos de propostas comerciais.</li>
+          <li>Modelos de contratos.</li>
+        </ul>
+        <p><strong>Indicadores</strong></p>
+        <ul>
+          <li>Estimular o acompanhamento de métricas de conversão e tempo médio de atendimento.</li>
+          <li>Alinhar a expectativa de melhoria contínua baseada nos dados.</li>
+        </ul>
+
+        <h2>Pilar: Excelência no Atendimento</h2>
+        <p><strong>Transição Comercial → Pós-venda</strong></p>
+        <ul>
+          <li>Alinhar expectativas entre a equipe comercial e a de pós-venda.</li>
+          <li>Garantir que todas as informações do cliente sejam documentadas e repassadas corretamente.</li>
+          <li>Definir responsáveis pelo onboarding e acompanhamento inicial.</li>
+        </ul>
+        <p><strong>Implantação Estruturada</strong></p>
+        <ul>
+          <li>Realizar um onboarding detalhado, apresentando todas as funcionalidades essenciais.</li>
+          <li>Oferecer treinamentos personalizados para que o cliente compreenda o uso da plataforma.</li>
+          <li>Disponibilizar materiais de apoio, como tutoriais e guias.</li>
+        </ul>
+        <p><strong>Monitoramento da Experiência do Cliente</strong></p>
+        <ul>
+          <li>Acompanhar os primeiros dias de uso e garantir que não haja dificuldades na operação.</li>
+          <li>Criar canais de comunicação para dúvidas e solicitações iniciais.</li>
+          <li>Analisar os primeiros feedbacks para antecipar possíveis ajustes.</li>
+        </ul>
+        <p><strong>Gestão de Suporte e Atendimento</strong></p>
+        <ul>
+          <li>Avaliar o volume de clientes e definir o momento certo para ampliar a equipe de suporte.</li>
+          <li>Criar processos claros para atendimento e resolução de problemas.</li>
+          <li>Treinar novos membros da equipe utilizando os materiais disponíveis no Portal do Parceiro.</li>
+        </ul>
+        <p><strong>Acompanhamento Contínuo e Prevenção de Churn</strong></p>
+        <ul>
+          <li>Implementar rotinas de check-in com os clientes para medir satisfação e engajamento.</li>
+          <li>Utilizar métricas para identificar clientes em risco e agir preventivamente.</li>
+          <li>Manter um relacionamento próximo, oferecendo estratégias de otimização e expansão.</li>
+        </ul>
+        <div class="callout-block"><span class="ci">📌</span><span>Acesse o <strong>Portal do Parceiro</strong> para guias, treinamentos e melhores práticas sobre estruturação de atendimento e retenção de clientes.</span></div>
+
+        <h2>Pilar: Integrações Inteligentes — Eficiência e Escalabilidade</h2>
+
+      </div>
+    </div>
+
+    <!-- SECTION: PROCEDIMENTOS -->
+    <div id="page-procedimentos" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">📁 Procedimentos Parceiros</div>
+        <div class="page-title">Procedimentos Parceiros</div>
+        <div class="page-desc">Procedimentos técnicos para criação e configuração do ambiente do parceiro.</div>
+      </div>
+      <div class="sub-grid">
+        <div class="sub-card" onclick="showPage('criacao-ambiente')"><div class="sub-card-icon">🏗️</div><div class="sub-card-title">Criação do Ambiente do Parceiro</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
+        <div class="sub-card" onclick="showPage('dominio-personalizado')"><div class="sub-card-icon">🎛️</div><div class="sub-card-title">Configuração de Domínio Personalizado</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
+        <div class="sub-card" onclick="showPage('criacao-conta')"><div class="sub-card-icon">👤</div><div class="sub-card-title">Criação de Conta na Plataforma</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
+      </div>
+    </div>
+
+    <!-- PAGE: CRIACAO AMBIENTE -->
+    <div id="page-criacao-ambiente" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">📁 Procedimentos Parceiros</div>
+        <div class="page-title">Criação do Ambiente do Parceiro</div>
+        <div class="page-desc">Passos para criar o ambiente do parceiro na plataforma Admin Helena.</div>
+      </div>
+      <div class="content-body">
+
+        <ol class="step-list">
+          <li>Acesse o menu: <span class="badge badge-green">Admin Helena</span> → <span class="badge badge-green">Parceiros</span></li>
+          <li>Clique no botão <strong>"Novo"</strong>, localizado no canto superior direito da tela.</li>
+          <li>Uma nova tela será aberta para preenchimento dos dados do parceiro.</li>
+        </ol>
+
+        <h2>Preenchimento — Parceiro White Label</h2>
+        <p>Preencha os seguintes campos com base nas informações do F+1:</p>
+        <ul>
+          <li>Nome Fantasia</li>
+          <li>Razão Social</li>
+          <li>CNPJ</li>
+          <li>Endereço</li>
+          <li><strong>E-mail de contato:</strong> preencha com o e-mail informado pelo parceiro durante a reunião de KickOff. Esse e-mail será exibido nos Termos de Uso.</li>
+        </ul>
+        <p>Também com base na reunião de KickOff, preencha:</p>
+        <ul>
+          <li>Endereço do ambiente</li>
+          <li>Dados do usuário administrador da conta</li>
+        </ul>
+
+        <div class="callout-block"><span class="ci">⚠️</span><span><strong>Pontos de Atenção:</strong>
+          <ul style="margin-top:8px;">
+            <li>Se o parceiro contratou <strong>Domínio Personalizado</strong>, não configure imediatamente. No preenchimento inicial, deixe como <em>"indefinido"</em>. A alteração deve ser feita apenas após a finalização da configuração.</li>
+            <li><strong>ID de Integração:</strong> é obrigatório. Ele será utilizado para fins de faturamento.</li>
+          </ul>
+        </span></div>
+
+        <p>Em <strong>Configurações da Plataforma</strong>, selecione as opções do campo <em>Detalhe</em> e preencha os artigos com base no nome do produto do parceiro.</p>
+        <ul>
+          <li>Se não contratou aplicativo próprio, associe o app genérico <span class="badge badge-green">wts.chat</span>.</li>
+          <li>Caso tenha contratado app próprio, associe somente após a finalização da configuração. Enquanto isso, use o app genérico.</li>
+        </ul>
+
+        <h2>Preenchimento — Parceiro Revenda</h2>
+        <p>Preencha os campos com os dados do F+1:</p>
+        <ul>
+          <li>Nome Fantasia</li>
+          <li>Razão Social</li>
+          <li>CNPJ</li>
+          <li>Endereço</li>
+          <li><strong>ID de Integração:</strong> sempre preencha esse campo. Ele é essencial para o faturamento pelo setor financeiro.</li>
+        </ul>
+        <p>Insira os dados do usuário administrador com base nas informações fornecidas durante a reunião de KickOff e complete os campos na configuração do revendedor.</p>
+
+      </div>
+    </div>
+
+    <!-- PAGE: DOMINIO -->
+    <div id="page-dominio-personalizado" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">📁 Procedimentos Parceiros</div>
+        <div class="page-title">🎛️ Configuração de Domínio Personalizado</div>
+        <div class="page-desc">Configuração de domínio personalizado para parceiros que contrataram essa funcionalidade.</div>
+      </div>
+      <div class="content-body">
+
+        <p>Para os parceiros que contratarem domínio personalizado, o primeiro passo é o envio das configurações de NS. Para isso, verifique com o parceiro qual será o subdomínio a ser utilizado.</p>
+
+        <div class="callout-block"><span class="ci">⚠️</span><span>
+          <ul style="margin-top:6px;">
+            <li>Recomendamos que o parceiro crie um <strong>subdomínio específico</strong> (ex: <em>painel.chat.com.br</em>) para evitar conflitos com o domínio principal.</li>
+            <li>É necessário que o <strong>servidor de hospedagem do parceiro aceite configurações de NS</strong>.</li>
+          </ul>
+        </span></div>
+
+        <h2>Passo a Passo para Configuração do Domínio Personalizado</h2>
+        <ol class="step-list">
+          <li>Acesse o menu: <span class="badge badge-green">Admin Helena</span> → <span class="badge badge-green">Domínio Personalizado</span></li>
+          <li>Clique no botão <strong>"Novo"</strong> (menu superior, lado direito).</li>
+          <li>No campo <strong>"Domínio"</strong>, insira o subdomínio informado pelo parceiro e clique em salvar.</li>
+          <li>Clique em <strong>"Gerar Configuração do DNS"</strong>. O sistema exibirá os <strong>servidores DNS</strong> que devem ser configurados.</li>
+          <li><strong>Envie essas informações para o parceiro</strong> e aguarde ele concluir a configuração no provedor de domínio.</li>
+          <li>Após retorno do parceiro, clique em <strong>"Iniciar Configuração do Domínio"</strong>.</li>
+          <li>Aguarde o sistema finalizar todas as etapas. O processo estará completo quando o status for <strong>"Concluído"</strong>.</li>
+        </ol>
+
+        <div class="callout-block"><span class="ci">⚠️</span><span>Caso ocorra algum erro durante a configuração do domínio, realize um teste de validação no site <a href="https://toolbox.googleapps.com/apps/dig/?utm_source=chatgpt.com#NS/" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">Google Toolbox Dig</a>. Verifique se os registros NS foram propagados e estão configurados corretamente.</span></div>
+
+        <h2>Vinculando o Domínio ao Parceiro</h2>
+        <ol class="step-list">
+          <li>Vá para <span class="badge badge-green">Admin Helena</span> → <span class="badge badge-green">Parceiros</span></li>
+          <li>Localize o parceiro que contratou o domínio personalizado e clique em <strong>"Alterar"</strong>.</li>
+          <li>No campo <strong>"Domínio Personalizado"</strong> (que estará como "indefinido"), <strong>selecione o domínio recém-configurado</strong>.</li>
+          <li>Clique em <strong>Salvar</strong>.</li>
+        </ol>
+
+      </div>
+    </div>
+
+    <!-- PAGE: CRIACAO CONTA -->
+    <div id="page-criacao-conta" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">📁 Procedimentos Parceiros</div>
+        <div class="page-title">Criação de Conta na Plataforma</div>
+        <div class="page-desc">Processo para criar a conta do cliente após o fechamento de uma venda.</div>
+      </div>
+      <div class="content-body">
+        <p>Ao realizar o fechamento de uma venda, o próximo passo é a criação da conta do cliente.</p>
+        <div class="callout-block"><span class="ci">⚠️</span><span>Tal criação só pode ser realizada por um usuário <strong>Super Admin</strong>.</span></div>
+
+        <h2>Passo a Passo para Cadastro da Conta</h2>
+        <ol class="step-list">
+          <li>Acesse o menu: <span class="badge badge-green">Admin</span> → <span class="badge badge-green">Contas</span></li>
+          <li>Clique no botão <strong>"Novo"</strong> (menu superior, lado direito).</li>
+          <li>Preencha os campos da tela de cadastro:
+            <ul style="margin-top:10px;">
+              <li><strong>Tipo:</strong> Pessoa jurídica ou pessoa física.</li>
+              <li><strong>Nome Fantasia:</strong> Nome fantasia da empresa.</li>
+              <li><strong>CNPJ:</strong> Número do CNPJ da empresa.</li>
+              <li><strong>Razão Social:</strong> Nome de registro da empresa.</li>
+              <li><strong>Tipo de Empresa:</strong> Qualificação do tipo que consta no Registro da empresa (ex.: MEI, LTDA, etc.).</li>
+              <li><strong>Situação:</strong> Informar a situação inicial da conta.</li>
+              <li><strong>Administrador:</strong> Preencher Nome, telefone e e-mail da pessoa que será o usuário administrador da conta. Esses dados serão usados no login.</li>
+              <li><strong>Endereço:</strong> Preencha o campo CEP com o da empresa e avance para o próximo campo — os dados serão preenchidos automaticamente, sendo necessário ajustar apenas o número e o complemento.</li>
+            </ul>
+          </li>
+          <li>Em <strong>Configurações</strong>, defina:
+            <ul style="margin-top:10px;">
+              <li><strong>Plano:</strong> Personalizar opções.</li>
+              <li><strong>Apps:</strong> Selecionar quais funcionalidades serão liberadas na conta. <em>Obs.: Agentes Inteligentes, Asaas e Transcrição de áudio com IA são adicionais com custo.</em></li>
+              <li><strong>Recursos:</strong> Campos personalizados, Webhook+API, Canal não oficial, Automação.</li>
+              <li><strong>Chatbots de atendimento / automação:</strong> Quantidade de bots que podem ser criados.</li>
+              <li><strong>Painéis / Sequências / Agentes de IA:</strong> Quantidades configuráveis por conta.</li>
+              <li><strong>Usuários:</strong> Quantidade de usuários que a conta terá.</li>
+              <li><strong>Canais de WhatsApp / Instagram / Messenger:</strong> Quantidade de canais que podem ser conectados.</li>
+            </ul>
+          </li>
+          <li>Clique em <strong>Salvar</strong>.</li>
+        </ol>
+
+        <h2>Observações Gerais</h2>
+        <ul>
+          <li>Valores de apps adicionais devem ser verificados na planilha de preços atual, disponível no portal do parceiro.</li>
+          <li>Quantidade de usuários contemplados pelo plano base: Parceiros — 5 / Clientes finais — 3.</li>
+          <li>Quantidade de canais contemplados pelo plano base:
+            <ul style="margin-top:6px;">
+              <li>Parceiros: WhatsApp 1, Instagram 1, Messenger 1.</li>
+              <li>Clientes finais: WhatsApp 1.</li>
+            </ul>
+          </li>
+          <li>Agentes de IA possuem valor fixo por conta, independente de quantos agentes serão criados.</li>
+          <li>Canais de Instagram e Messenger para cliente final são adicionais com cobrança de um único adicional.</li>
+          <li>A cobrança de usuários no faturamento considera a quantidade de usuários <strong>cadastrados</strong> na conta, e não a quantidade informada no campo Usuários. Usuários desligados só deixarão de ser cobrados se o cadastro for excluído.</li>
+          <li>Contas com apenas um usuário e um canal de WhatsApp entram automaticamente na cobrança de conta de automação, que é mais barata. Verificar valor na tabela de preços atual.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SECTION: DASHBOARDS -->
+    <div id="page-dashboards" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">📊 Dashboards e Monitoramento</div>
+        <div class="page-title">Dashboards e Monitoramento</div>
+        <div class="page-desc">Ferramentas de monitoramento para acompanhamento de performance, churn e usabilidade dos parceiros.</div>
+      </div>
+      <div class="sub-grid">
+        <div class="sub-card" onclick="showPage('metabase')"><div class="sub-card-icon">📉</div><div class="sub-card-title">Metabase – Evolução de Atendimento por Empresa</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
+        <div class="sub-card" onclick="showPage('painel-gestao')"><div class="sub-card-icon">📌</div><div class="sub-card-title">Painel de Gestão a Vista</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
+      </div>
+    </div>
+
+    <!-- PAGE: METABASE -->
+    <div id="page-metabase" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">📊 Dashboards e Monitoramento</div>
+        <div class="page-title">Metabase – Evolução de Atendimento por Empresa</div>
+        <div class="page-desc">Painel para acompanhar a usabilidade dos clientes dos parceiros e identificar riscos de churn.</div>
+      </div>
+      <div class="content-body">
+        <p>Painel utilizado para acompanhar a usabilidade dos clientes dos parceiros, para que seja dedicada atenção às contas que apresentam risco de churn.</p>
+        <div class="callout-block"><span class="ci">🔗</span><span><a href="https://metabase.helena.run/question/2049-evolucao-do-atendimento-por-empresa?situacaoempresa=COMPLETED&situacaoempresa=SUBSCRIPTION_ARREARS&situacaoempresa=SUBSCRIPTION_SUSPENDED" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">Acesso ao Painel</a></span></div>
+      </div>
+    </div>
+
+    <!-- PAGE: PAINEL GESTAO -->
+    <div id="page-painel-gestao" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">📊 Dashboards e Monitoramento</div>
+        <div class="page-title">Painel de Gestão a Vista</div>
+        <div class="page-desc">Acompanhamento de contas e churn por parceiro e por analista de CS.</div>
+      </div>
+      <div class="content-body">
+        <p>Para acompanhamento de contas e churn por parceiro/CS é utilizado o <strong>Painel de Gestão a Vista</strong>.</p>
+        <div class="callout-block"><span class="ci">🔗</span><span><a href="https://lookerstudio.google.com/u/0/reporting/a41cb5b0-b3d1-4837-8fe4-b2bbf24079fe/page/NgWNF" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">Painel de Gestão a Vista</a></span></div>
+      </div>
+    </div>
+
+    <!-- SECTION: CULTURA -->
+    <div id="page-cultura" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">🎓 Cultura e Desenvolvimento</div>
+        <div class="page-title">Cultura e Desenvolvimento</div>
+        <div class="page-desc">Recursos de capacitação e desenvolvimento para o time e parceiros Helena.</div>
+      </div>
+      <div class="sub-grid">
+        <div class="sub-card" onclick="showPage('academia')"><div class="sub-card-icon">🎓</div><div class="sub-card-title">Portal do Parceiro | Academia Helena</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
+      </div>
+    </div>
+
+    <!-- PAGE: ACADEMIA -->
+    <div id="page-academia" class="page-view">
+      <div class="page-header">
+        <div class="page-tag">🎓 Cultura e Desenvolvimento</div>
+        <div class="page-title">Portal do Parceiro | Academia Helena</div>
+        <div class="page-desc">Espaço dedicado ao desenvolvimento e capacitação de colaboradores e parceiros da Helena.</div>
+      </div>
+      <div class="content-body">
+        <p>A <strong>Academia do Parceiro</strong> é um espaço dedicado ao desenvolvimento e capacitação de colaboradores e parceiros da Helena.</p>
+        <p>Neste portal você encontrará <strong>treinamentos, materiais de apoio e conteúdos estratégicos</strong> que auxiliam no entendimento da plataforma, nos processos operacionais e nas melhores práticas para atuação no dia a dia.</p>
+        <div class="callout-block"><span class="ci">🔗</span><span><a href="https://parceiros.helena.app/feed" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">Acessar Academia Helena</a></span></div>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+</div><!-- /main -->
+
+<button class="mobile-toggle" onclick="toggleMobile()" title="Menu">☰</button>
+
+<script>
+// ── State ──
+let currentPage = 'home';
+let currentSection = null;
+
+// ── Search data ──
+const searchIndex = [
+  { id:'check-in', section:'rotinas', sectionLabel:'Rotinas do Time', title:'Check-in Semanal', preview:'Reunião segunda-feira 14h, estratégias da semana, métricas da carteira.' },
+  { id:'check-out', section:'rotinas', sectionLabel:'Rotinas do Time', title:'Check-out Semanal', preview:'Sexta-feira, resultados da semana, conquistas, desafios, aprendizados.' },
+  { id:'cumbuca', section:'rotinas', sectionLabel:'Rotinas do Time', title:'Cumbuca', preview:'Encontro semanal de leitura do livro do time.' },
+  { id:'emv', section:'rotinas', sectionLabel:'Rotinas do Time', title:'Avaliação de EMV', preview:'Avaliação trimestral do Engagement Maturity Value dos parceiros.' },
+  { id:'fechamentos', section:'rotinas', sectionLabel:'Rotinas do Time', title:'Acompanhar Fechamentos do Comercial', preview:'Planilha F+1 – Fechou mais um HELENA CRM.' },
+  { id:'ferias', section:'rotinas', sectionLabel:'Rotinas do Time', title:'Solicitação de Férias', preview:'E-mail ao DP até dia 10, mínimo 30 dias de antecedência.' },
+  { id:'distribuicao', section:'onboarding', sectionLabel:'Processos de Onboarding', title:'Distribuição', preview:'Fluxo após formulário Fechou +1, etiquetas e padronização.' },
+  { id:'kickoff', section:'onboarding', sectionLabel:'Processos de Onboarding', title:'Kick Off', preview:'Primeira reunião com parceiro, template KickOff 2026, coleta de dados.' },
+  { id:'configurar-ambiente', section:'onboarding', sectionLabel:'Processos de Onboarding', title:'Configurar Ambiente', preview:'Criação da conta da empresa do parceiro, planos, valores.' },
+  { id:'conexoes', section:'onboarding', sectionLabel:'Processos de Onboarding', title:'Conexões', preview:'Instagram, Facebook, WhatsApp Z-API e Meta Cloud API.' },
+  { id:'funcionalidades', section:'onboarding', sectionLabel:'Processos de Onboarding', title:'Funcionalidades Gerais', preview:'Verificação do uso da plataforma, suporte N1 e N2.' },
+  { id:'estrategias', section:'onboarding', sectionLabel:'Processos de Onboarding', title:'Primeiras Estratégias', preview:'Dúvidas gerais e primeiros 4 clientes do parceiro.' },
+  { id:'cancelamentos', section:'operacional', sectionLabel:'Processos Operacionais', title:'Cancelamentos / Alterações', preview:'Cancelamento de parceiros, alterações de conta, upsell WL.' },
+  { id:'suporte', section:'operacional', sectionLabel:'Processos Operacionais', title:'Suporte e Escalações', preview:'Cards N2, Linha de Crédito Hunion, Apps White Label.' },
+  { id:'orgao-gov', section:'operacional', sectionLabel:'Processos Operacionais', title:'Órgão Governamental', preview:'Conexão API Oficial, ticket Meta para órgãos governamentais.' },
+  { id:'transferencia', section:'operacional', sectionLabel:'Processos Operacionais', title:'Transferência de Titularidade', preview:'Não permitido por questões de LGPD.' },
+  { id:'palavras-reservadas', section:'operacional', sectionLabel:'Processos Operacionais', title:'Políticas de Palavras Reservadas', preview:'zap, zapi, chatbot, Helena – palavras proibidas em URLs.' },
+  { id:'solicitacoes-meta', section:'operacional', sectionLabel:'Processos Operacionais', title:'Solicitações Meta', preview:'Abertura e acompanhamento de tickets Meta.' },
+  { id:'contato-estrategico', section:'gestao', sectionLabel:'Gestão de Parceiros', title:'Contato Estratégico Com Parceiros (mensal)', preview:'Seleção mensal, análise de maturidade, Office Hours.' },
+  { id:'acompanhamento-ongoing', section:'gestao', sectionLabel:'Gestão de Parceiros', title:'Acompanhamento Parceiros Em Ongoing', preview:'5 pilares estratégicos, IA Integrativa, precificação.' },
+  { id:'criacao-ambiente', section:'procedimentos', sectionLabel:'Procedimentos Parceiros', title:'Criação do Ambiente do Parceiro', preview:'Admin Helena > Parceiros, preencher F+1, ID Integração.' },
+  { id:'dominio-personalizado', section:'procedimentos', sectionLabel:'Procedimentos Parceiros', title:'Configuração de Domínio Personalizado', preview:'Subdomínio, DNS, Admin Helena > Domínio Personalizado.' },
+  { id:'criacao-conta', section:'procedimentos', sectionLabel:'Procedimentos Parceiros', title:'Criação de Conta na Plataforma', preview:'Super Admin, Admin > Contas, CNPJ, PJ ou PF.' },
+  { id:'metabase', section:'dashboards', sectionLabel:'Dashboards e Monitoramento', title:'Metabase – Evolução de Atendimento', preview:'Usabilidade de clientes, risco de churn por parceiro.' },
+  { id:'painel-gestao', section:'dashboards', sectionLabel:'Dashboards e Monitoramento', title:'Painel de Gestão a Vista', preview:'Contas e churn por parceiro/CS.' },
+  { id:'academia', section:'cultura', sectionLabel:'Cultura e Desenvolvimento', title:'Portal do Parceiro | Academia Helena', preview:'Treinamentos, materiais de apoio, capacitação de parceiros.' },
+];
+
+// Section page map
+const sectionPages = {
+  rotinas: 'rotinas', onboarding: 'onboarding', operacional: 'operacional',
+  gestao: 'gestao', procedimentos: 'procedimentos', dashboards: 'dashboards', cultura: 'cultura'
+};
+
+// ── Navigation ──
+function showPage(pageId) {
+  // Hide all
+  document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
+  // Show target
+  const el = document.getElementById('page-' + pageId);
+  if (el) {
+    el.classList.add('active');
+    currentPage = pageId;
+  }
+  // Update nav items
+  document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+  const match = [...document.querySelectorAll('.nav-item')].find(i =>
+    i.getAttribute('onclick') && i.getAttribute('onclick').includes("'" + pageId + "'")
+  );
+  if (match) match.classList.add('active');
+  // Breadcrumb
+  updateBreadcrumb(pageId);
+  // Scroll top
+  document.getElementById('content').scrollTop = 0;
+  window.scrollTo(0, 0);
+  // Close search
+  closeSearch();
+}
+
+function openSection(sectionId) {
+  // Open the category in sidebar
+  const navItems = document.getElementById('nav-' + sectionId);
+  const cat = document.querySelector(`[data-section="${sectionId}"]`);
+  if (navItems && !navItems.classList.contains('open')) {
+    navItems.classList.add('open');
+    if (cat) cat.classList.add('open', 'active');
+  }
+  showPage(sectionId);
+}
+
+function toggleCat(el, sectionId) {
+  const navItems = document.getElementById('nav-' + sectionId);
+  const isOpen = navItems.classList.contains('open');
+  // Toggle
+  navItems.classList.toggle('open', !isOpen);
+  el.classList.toggle('open', !isOpen);
+  el.classList.toggle('active', !isOpen);
+  // Navigate to section page
+  showPage(sectionId);
+}
+
+function updateBreadcrumb(pageId) {
+  const bc = document.getElementById('breadcrumb');
+  if (pageId === 'home') {
+    bc.innerHTML = '<span>Portal CS Parcerias</span>';
+    return;
+  }
+  const item = searchIndex.find(i => i.id === pageId);
+  const sectionId = Object.keys(sectionPages).find(k => sectionPages[k] === pageId);
+  if (sectionId) {
+    // Section page
+    const sections = {rotinas:'Rotinas do Time',onboarding:'Processos de Onboarding',operacional:'Processos Operacionais',gestao:'Gestão de Parceiros',procedimentos:'Procedimentos Parceiros',dashboards:'Dashboards e Monitoramento',cultura:'Cultura e Desenvolvimento'};
+    bc.innerHTML = `Portal CS Parcerias <span class="sep">›</span> <span>${sections[sectionId]||pageId}</span>`;
+  } else if (item) {
+    bc.innerHTML = `Portal CS Parcerias <span class="sep">›</span> ${item.sectionLabel} <span class="sep">›</span> <span>${item.title}</span>`;
+  } else {
+    bc.innerHTML = `Portal CS Parcerias <span class="sep">›</span> <span>${pageId}</span>`;
+  }
+}
+
+// ── Search ──
+function doSearch() {
+  const q = document.getElementById('topSearch').value.trim();
+  if (!q) { closeSearch(); return; }
+  const results = searchIndex.filter(item =>
+    item.title.toLowerCase().includes(q.toLowerCase()) ||
+    item.preview.toLowerCase().includes(q.toLowerCase()) ||
+    item.sectionLabel.toLowerCase().includes(q.toLowerCase())
+  );
+  renderSearchResults(results, q);
+}
+
+function renderSearchResults(results, q) {
+  const box = document.getElementById('searchResults');
+  if (!results.length) {
+    box.innerHTML = `<div id="noSearchResults">Nenhum resultado para "<strong>${q}</strong>"</div>`;
+    box.style.display = 'block';
+    return;
+  }
+  box.innerHTML = results.map(r => `
+    <div class="search-result-item" onclick="showPage('${r.id}')">
+      <div class="sr-cat">${r.sectionLabel}</div>
+      <div class="sr-title">${r.title}</div>
+      <div class="sr-preview">${r.preview}</div>
+    </div>
+    <hr>
+  `).join('');
+  box.style.display = 'block';
+}
+
+function closeSearch() {
+  document.getElementById('searchResults').style.display = 'none';
+}
+
+// Sidebar search filter
+document.getElementById('searchInput').addEventListener('input', function() {
+  const q = this.value.toLowerCase().trim();
+  const noResults = document.getElementById('noNavResults');
+  let hasAny = false;
+
+  document.querySelectorAll('.nav-item').forEach(item => {
+    const text = item.textContent.toLowerCase();
+    const visible = !q || text.includes(q);
+    item.style.display = visible ? '' : 'none';
+    if (visible && q) hasAny = true;
+  });
+
+  // Show/hide categories
+  document.querySelectorAll('.nav-cat').forEach(cat => {
+    const sectionId = cat.getAttribute('data-section');
+    const items = document.querySelectorAll(`#nav-${sectionId} .nav-item`);
+    const hasVisible = [...items].some(i => i.style.display !== 'none');
+    cat.style.display = !q || hasVisible ? '' : 'none';
+    if (q && hasVisible) {
+      document.getElementById('nav-' + sectionId).classList.add('open');
+      cat.classList.add('open');
+    }
+  });
+
+  noResults.style.display = q && !hasAny ? 'block' : 'none';
+});
+
+// Top search events
+document.getElementById('topSearch').addEventListener('keyup', function(e) {
+  if (e.key === 'Enter') doSearch();
+  else if (e.key === 'Escape') closeSearch();
+  else if (this.value.length > 1) doSearch();
+  else if (!this.value) closeSearch();
+});
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('#searchResults') && !e.target.closest('#topSearch')) {
+    closeSearch();
+  }
+});
+
+// Mobile toggle
+function toggleMobile() {
+  document.getElementById('sidebar').classList.toggle('open');
+}
+
+// Init
+document.addEventListener('DOMContentLoaded', function() {
+  showPage('home');
+});
+</script>
+</body>
+</html>
