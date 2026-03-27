@@ -36,7 +36,7 @@
   /* ───── SIDEBAR ───── */
   #sidebar {
     width: var(--sidebar-w);
-    min-height: 100vh;
+    height: 100vh;
     background: var(--dark);
     display: flex;
     flex-direction: column;
@@ -207,14 +207,13 @@
     margin-left: var(--sidebar-w);
     flex: 1;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
   }
 
   #topbar {
     position: sticky;
     top: 0;
     z-index: 50;
+    width: 100%;
     background: rgba(244,248,246,.92);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
@@ -223,6 +222,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    box-sizing: border-box;
   }
 
   .breadcrumb {
@@ -297,10 +297,9 @@
 
   /* ───── CONTENT ───── */
   #content {
-    flex: 1;
     padding: 36px 40px 60px;
-    max-width: 900px;
     width: 100%;
+    box-sizing: border-box;
   }
 
   .home-hero {
@@ -930,7 +929,7 @@
     </div>
     <div class="nav-section">
       <div class="nav-cat" data-section="procedimentos" onclick="toggleCat(this,'procedimentos')">
-        <div class="nav-cat-icon">📁</div>
+        <div class="nav-cat-icon">🗂️</div>
         <div class="nav-cat-label">Procedimentos Parceiros</div>
         <svg class="nav-chevron" viewBox="0 0 24 24" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
       </div>
@@ -1008,7 +1007,7 @@
         <div class="section-card" onclick="openSection('onboarding')"><div class="card-icon">🚀</div><div class="card-title">Processos de Onboarding</div><div class="card-desc">Configuração, treinamento e adaptação dos parceiros à plataforma.</div><div class="card-count">↗ 6 processos</div></div>
         <div class="section-card" onclick="openSection('operacional')"><div class="card-icon">⚙️</div><div class="card-title">Processos Operacionais</div><div class="card-desc">Cancelamentos, suporte, órgãos governamentais e solicitações Meta.</div><div class="card-count">↗ 6 processos</div></div>
         <div class="section-card" onclick="openSection('gestao')"><div class="card-icon">📈</div><div class="card-title">Gestão de Parceiros</div><div class="card-desc">Contato estratégico mensal e acompanhamento em ongoing.</div><div class="card-count">↗ 2 processos</div></div>
-        <div class="section-card" onclick="openSection('procedimentos')"><div class="card-icon">📁</div><div class="card-title">Procedimentos Parceiros</div><div class="card-desc">Criação de ambiente, domínio personalizado e conta na plataforma.</div><div class="card-count">↗ 3 processos</div></div>
+        <div class="section-card" onclick="openSection('procedimentos')"><div class="card-icon">🗂️</div><div class="card-title">Procedimentos Parceiros</div><div class="card-desc">Criação de ambiente, domínio personalizado e conta na plataforma.</div><div class="card-count">↗ 3 processos</div></div>
         <div class="section-card" onclick="openSection('dashboards')"><div class="card-icon">📊</div><div class="card-title">Dashboards e Monitoramento</div><div class="card-desc">Metabase e painel de gestão para acompanhamento de churn e performance.</div><div class="card-count">↗ 2 processos</div></div>
         <div class="section-card" onclick="openSection('cultura')"><div class="card-icon">🎓</div><div class="card-title">Cultura e Desenvolvimento</div><div class="card-desc">Academia Helena – treinamentos e capacitação de parceiros.</div><div class="card-count">↗ 2 processos</div></div>
       </div>
@@ -1710,8 +1709,6 @@
         <p><strong>Papel do CS em Integrações via API</strong> — O CS não atua como responsável técnico, mas exerce papel fundamental na orientação estratégica: garantir que o parceiro compreenda as possibilidades, alinhar expectativas sobre responsabilidades técnicas, orientar sobre a documentação oficial e avaliar riscos e impactos antes da implementação.</p>
         <div class="callout-block"><span class="ci">📋</span><span><a href="https://docs.google.com/document/d/1PReXO19HbQAlXut8UN0ZI54xigOkrTYele39KyyPY7E/edit?tab=t.0#heading=h.u5ptqr4pcpzh" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">Formulário Padrão de Avaliação do Parceiro</a></span></div>
       </div>
-    </div>
-
     </div>
 
     <!-- SECTION: PROCEDIMENTOS -->
