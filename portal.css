@@ -14,6 +14,9 @@
     --white: #ffffff;
     --sidebar-w: 280px;
   }
+.sub-items {
+  margin-left: 26px; /* alinha com o texto do checkbox */
+}
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
