@@ -16,7 +16,8 @@
   }
 .sub-items {
   margin-top: 5px;
-  padding-left: 32px; /* ajuste fino aqui */
+  margin-left: 26px; /* puxa pra direita alinhando com o texto */
+  padding-left: 16px; /* controla a posição da bolinha */
 }
 
 .sub-items li {
