@@ -15,7 +15,12 @@
     --sidebar-w: 280px;
   }
 .sub-items {
-  margin-left: 26px; /* alinha com o texto do checkbox */
+  margin-top: 5px;
+  padding-left: 32px; /* ajuste fino aqui */
+}
+
+.sub-items li {
+  margin-bottom: 4px;
 }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
