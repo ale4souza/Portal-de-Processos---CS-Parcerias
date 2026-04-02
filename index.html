@@ -1,29 +1,29 @@
-<!DOCTYPE html>
-<html lang="pt-BR" data-theme="light">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portal de Processos | CS Parcerias – Helena</title>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="portal.css">
-<link rel="icon" type="image/svg+xml" href="logo-limpa-branco.png">
-</head>
-<body>
-
-<!-- SIDEBAR -->
-<nav id="sidebar">
+  <!DOCTYPE html>
+  <html lang="pt-BR" data-theme="light">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal de Processos | CS Parcerias – Helena</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="portal.css">
+  <link rel="icon" type="image/svg+xml" href="logo-limpa-branco.png">
+  </head>
+  <body>
+  
+  <!-- SIDEBAR -->
+  <nav id="sidebar">
   <div class="sidebar-logo">
     <img src="logo helena.png" alt="Helena CRM" style="height:36px;width:auto;object-fit:contain;max-width:180px;">
     <div class="logo-sub" style="display:none;">CS Parcerias</div>
   </div>
-
+  
   <div class="sidebar-search">
     <div class="search-wrap">
       <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
       <input type="text" id="searchInput" placeholder="Buscar processo...">
     </div>
   </div>
-
+  
   <div id="navTree">
     <div class="nav-section">
       <div class="nav-cat" data-section="rotinas" onclick="toggleCat(this,'rotinas')">
@@ -118,10 +118,10 @@
     </div>
   </div>
   <div class="no-results" id="noNavResults">Nenhum resultado encontrado.</div>
-</nav>
-
-<!-- MAIN -->
-<div id="main">
+  </nav>
+  
+  <!-- MAIN -->
+  <div id="main">
   <div id="topbar">
     <div class="breadcrumb" id="breadcrumb">
       <span>Portal CS Parcerias</span>
@@ -137,9 +137,9 @@
       </button>
     </div>
   </div>
-
+  
   <div id="searchResults"></div>
-
+  
   <div id="content">
     <!-- HOME PAGE -->
     <div id="page-home" class="page-view active">
@@ -163,7 +163,7 @@
         <div class="section-card" onclick="openSection('cultura')"><div class="card-icon">🎓</div><div class="card-title">Cultura e Desenvolvimento</div><div class="card-desc">Academia Helena – treinamentos e capacitação de parceiros.</div><div class="card-count">↗ 2 processos</div></div>
       </div>
     </div>
-
+  
     <!-- SECTION: ROTINAS -->
     <div id="page-rotinas" class="page-view">
       <div class="page-header"><div class="page-tag">📆 Rotinas do Time</div><div class="page-title">Rotinas do Time</div><div class="page-desc">Processos de acompanhamento e análises periódicas para garantir a saúde da carteira de parceiros.</div></div>
@@ -176,7 +176,7 @@
         <div class="sub-card" onclick="showPage('ferias')"><div class="sub-card-icon">🏝️</div><div class="sub-card-title">Solicitação de Férias</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
       </div>
     </div>
-
+  
     <!-- PAGE: CHECK-IN -->
     <div id="page-check-in" class="page-view">
       <div class="page-header"><div class="page-tag">📆 Rotinas do Time</div><div class="page-title">Check-in Semanal</div><div class="page-desc">Na segunda-feira às 14h, cada analista apresenta as estratégias planejadas para a semana.</div></div>
@@ -190,7 +190,7 @@
         <div class="callout-block"><span class="ci">🔗</span><span>Acesse o <a href="https://lookerstudio.google.com/u/0/reporting/a41cb5b0-b3d1-4837-8fe4-b2bbf24079fe/page/p_jxzk95g9td" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">Link do Painel</a> para consultar os dados antes da reunião.</span></div>
       </div>
     </div>
-
+  
     <!-- PAGE: CHECK-OUT -->
     <div id="page-check-out" class="page-view">
       <div class="page-header"><div class="page-tag">📆 Rotinas do Time</div><div class="page-title">Check-out Semanal</div><div class="page-desc">Na sexta-feira à tarde, apresentação dos resultados dos pontos levantados no check-in.</div></div>
@@ -202,7 +202,7 @@
         <ul><li><strong>Conquistas:</strong> atingiu a meta da semana? O que deu certo?</li><li><strong>Desafios:</strong> algo não saiu como planejado?</li><li><strong>Aprendizados:</strong> o que podemos melhorar?</li><li><strong>Crescimento:</strong> evolução de contas na carteira.</li><li><strong>Inadimplentes:</strong> informar sobre os inadimplentes notificados durante a semana</li></ul>
       </div>
     </div>
-
+  
     <!-- PAGE: CUMBUCA -->
     <div id="page-cumbuca" class="page-view">
       <div class="page-header"><div class="page-tag">📆 Rotinas do Time</div><div class="page-title">Cumbuca</div><div class="page-desc">Encontro semanal de leitura e compartilhamento de aprendizados do livro do time.</div></div>
@@ -212,7 +212,7 @@
         <div class="callout-block"><span class="ci">📂</span><span>Os materiais estão disponíveis no <a href="https://drive.google.com/drive/folders/1pkmQb4DkonBH_0Z3EOkA9yyhukR9Ck68" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">Google Drive do Time</a>.</span></div>
       </div>
     </div>
-
+  
     <!-- PAGE: EMV -->
     <div id="page-emv" class="page-view">
       <div class="page-header"><div class="page-tag">📆 Rotinas do Time</div><div class="page-title">Avaliação de EMV</div><div class="page-desc">Avaliação trimestral do Engagement Maturity Value de cada parceiro da carteira.</div></div>
@@ -222,7 +222,7 @@
         <div class="callout-block"><span class="ci">📊</span><span>Utilize a <a href="https://docs.google.com/spreadsheets/d/1wevrzIx2KajRejQDKk1tSFZM4Y1imz_c0WZjX4yeZt8/edit?gid=904238701#gid=904238701" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">planilha de EMV</a> para registrar e acompanhar as avaliações trimestrais.</span></div>
       </div>
     </div>
-
+  
     <!-- PAGE: FECHAMENTOS -->
     <div id="page-fechamentos" class="page-view">
       <div class="page-header"><div class="page-tag">📆 Rotinas do Time</div><div class="page-title">Acompanhar Fechamentos do Comercial</div><div class="page-desc">Monitoramento contínuo dos novos parceiros fechados pelo time comercial.</div></div>
@@ -231,7 +231,7 @@
         <div class="callout-block"><span class="ci">🔗</span><span>Acesse o <a href="https://docs.google.com/spreadsheets/d/1yiEyf8R4YHvOHkqIXE3ICrYAPELJ6_cehEvRQxthiVQ/edit?pli=1&gid=1103254367#gid=1103254367" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">Link F+1</a> para visualizar os fechamentos em tempo real.</span></div>
       </div>
     </div>
-
+  
     <!-- PAGE: FERIAS -->
     <div id="page-ferias" class="page-view">
       <div class="page-header"><div class="page-tag">📆 Rotinas do Time</div><div class="page-title">🏝️ Solicitação de Férias</div><div class="page-desc">Processo padronizado para solicitação de férias, garantindo o cumprimento dos prazos legais.</div></div>
@@ -247,7 +247,7 @@
         <ul><li>As férias podem ser divididas em até 3 períodos.</li><li>Um período não pode ser inferior a 14 dias corridos.</li><li>Os demais períodos não podem ser inferiores a 5 dias corridos cada.</li></ul>
       </div>
     </div>
-
+  
     <!-- SECTION: ONBOARDING -->
     <div id="page-onboarding" class="page-view">
       <div class="page-header"><div class="page-tag">🚀 Processos de Onboarding</div><div class="page-title">Processos de Onboarding</div><div class="page-desc">Configuração, treinamento e adaptação dos parceiros à plataforma. Voltado a parceiros que comercializarão a plataforma com sua marca própria (White Label).</div></div>
@@ -260,7 +260,7 @@
         <div class="sub-card" onclick="showPage('estrategias')"><div class="sub-card-icon">📈</div><div class="sub-card-title">Primeiras Estratégias</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
       </div>
     </div>
-
+  
     <!-- PAGE: DISTRIBUICAO -->
     <div id="page-distribuicao" class="page-view">
       <div class="page-header"><div class="page-tag">🚀 Processos de Onboarding</div><div class="page-title">Distribuição</div><div class="page-desc">Fluxo de distribuição de novos parceiros ao time de CS após o fechamento comercial.</div></div>
@@ -277,7 +277,7 @@
         </ol>
       </div>
     </div>
-
+  
     <!-- PAGE: KICKOFF -->
     <div id="page-kickoff" class="page-view">
       <div class="page-header"><div class="page-tag">🚀 Processos de Onboarding</div><div class="page-title">Kick Off</div><div class="page-desc">Primeira reunião formal com o parceiro para apresentação e coleta de informações essenciais.</div></div>
@@ -319,8 +319,8 @@
         <ul><li>Cadastrar o domínio, gerar as chaves de registros <strong>NS</strong> e enviar ao parceiro. O cadastro deve ser realizado seguindo o manual (Procedimentos Parceiros > Configuração de Domínio).</li></ul>
       </div>
     </div>
-
-
+  
+  
     <!-- PAGE: CONFIGURAR AMBIENTE -->
     <div id="page-configurar-ambiente" class="page-view">
       <div class="page-header"><div class="page-tag">🚀 Processos de Onboarding</div><div class="page-title">⚙️ Configurar Ambiente</div><div class="page-desc">Criação e configuração da conta da empresa do parceiro no ambiente da plataforma.</div></div>
@@ -350,7 +350,7 @@
         </ol>
       </div>
     </div>
-
+  
     <!-- PAGE: CONEXOES -->
     <div id="page-conexoes" class="page-view">
       <div class="page-header"><div class="page-tag">🚀 Processos de Onboarding</div><div class="page-title">Conexões</div><div class="page-desc">Apresentação de todos os tipos de conexão disponíveis na plataforma.</div></div>
@@ -370,7 +370,7 @@
         </ol>
       </div>
     </div>
-
+  
     <!-- PAGE: FUNCIONALIDADES -->
     <div id="page-funcionalidades" class="page-view">
       <div class="page-header"><div class="page-tag">🚀 Processos de Onboarding</div><div class="page-title">Funcionalidades Gerais</div><div class="page-desc">Verificação do uso da plataforma e apresentação das principais funcionalidades ao parceiro.</div></div>
@@ -381,7 +381,7 @@
         <ol class="step-list"><li>Enviar e-mail para o parceiro com o documento de abertura de suporte N2 apresentado durante a reunião.</li><li>Atualizar o card com as notas do TLDV, e avançar para a próxima etapa no <a href="https://web-staging.helena.run/panels/a22a008b-66b8-47a1-af07-62f5ce904b16" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">painel de Onboarding Parcerias</a> do nosso CRM.</li></ol>
       </div>
     </div>
-
+  
     <!-- PAGE: ESTRATEGIAS -->
     <div id="page-estrategias" class="page-view">
       <div class="page-header"><div class="page-tag">🚀 Processos de Onboarding</div><div class="page-title">Primeiras Estratégias</div><div class="page-desc">Sessão para responder dúvidas gerais e traçar as primeiras estratégias do parceiro.</div></div>
@@ -400,7 +400,7 @@
         <div class="callout-block"><span class="ci">⚠️</span><span>Atenção no preenchimento do campo <strong>Concluído</strong>: o tipo de conclusão é o que vai levá-lo ou não para o painel de <strong>Ongoing Parcerias</strong>.</span></div>
       </div>
     </div>
-
+  
     <!-- SECTION: OPERACIONAL -->
     <div id="page-operacional" class="page-view">
       <div class="page-header"><div class="page-tag">⚙️ Processos Operacionais</div><div class="page-title">Processos Operacionais</div><div class="page-desc">Procedimentos para cancelamentos, suporte, órgãos governamentais e solicitações Meta.</div></div>
@@ -413,7 +413,7 @@
         <div class="sub-card" onclick="showPage('solicitacoes-meta')"><div class="sub-card-icon">📱</div><div class="sub-card-title">Solicitações Meta</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
       </div>
     </div>
-
+  
     <!-- PAGE: CANCELAMENTOS -->
     <div id="page-cancelamentos" class="page-view">
       <div class="page-header"><div class="page-tag">⚙️ Processos Operacionais</div><div class="page-title">Cancelamentos / Alterações</div><div class="page-desc">Procedimentos para cancelamento de parceiros, alterações de conta e processos relacionados.</div></div>
@@ -425,23 +425,23 @@
         <div class="sub-card" onclick="showPage('cancel-app-personalizado')"><div class="sub-card-icon">📱</div><div class="sub-card-title">Cancelamento de Aplicativo Personalizado</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
       </div>
     </div>
-
- <!-- PAGE: CANCEL PARCEIROS -->
+  
+  <!-- PAGE: CANCEL PARCEIROS -->
     <div id="page-cancel-parceiros" class="page-view">
       <div class="page-header"><div class="page-tag">⚙️ Processos Operacionais › <span onclick="showPage('cancelamentos')" style="cursor:pointer;text-decoration:underline;">Cancelamentos / Alterações</span></div><div class="page-title">Cancelamento de Parceiros</div><div class="page-desc">O objetivo é garantir que toda solicitação de cancelamento seja tratada com tentativa de retenção, alinhamento entre áreas e registro completo das informações, evitando perdas desnecessárias e mantendo histórico claro.</div></div>
       <div class="content-body">
-
+  
         <h2>Tratativa Inicial – Tentativa de Reversão</h2>
         <p>Assim que o parceiro sinalizar intenção de cancelamento, agende uma ligação ou reunião para entender o momento — investigue motivos, expectativas e dificuldades e avalie se o caso é de atendimento, maturidade, financeiro ou desalinhamento.</p>
         <p>Se fizer sentido, ofereça <strong>desconto de 50% por 2 a 3 meses</strong> como solução inicial. Se o desconto não for suficiente ou o caso for complexo, envolva a liderança de CS — e também a liderança Comercial se o parceiro tiver <strong>menos de 90 dias</strong> de empresa.</p>
-
+  
         <h2>Em Caso de Reversão</h2>
         <ul>
           <li>Preencher o <strong>alterou+1</strong> e selecionar: <em>Desconto ou isenção temporária</em>, informando percentual, tempo de desconto e motivo da tentativa de cancelamento.</li>
           <li>Atualizar o card com etiqueta <span class="badge badge-green">Alerta</span> e histórico completo da negociação.</li>
         </ul>
         <div class="callout-block"><span class="ci">📌</span><span>Toda reversão precisa ficar documentada para análise futura de risco.</span></div>
-
+  
         <h2>Em Caso de Não Reversão</h2>
         <ul>
           <li>Preencher o <strong>alterou+1</strong> com tipo do processo (Desistência ou Cancelamento), motivo e boletos em aberto.</li>
@@ -449,7 +449,7 @@
           <li>Inserir etiqueta <span class="badge badge-green">Churn</span> no card <strong>e</strong> no contato.</li>
           <li>Descrever no card: todas as tratativas, tentativas de retenção, quem participou e status financeiro.</li>
         </ul>
-
+  
         <h2>O que registrar no card (sempre)</h2>
         <ul>
           <li>Motivo inicial do cancelamento</li>
@@ -460,7 +460,7 @@
           <li>Decisão final do parceiro</li>
           <li>Data da finalização do processo</li>
         </ul>
-
+  
         <h2>Checklist Final</h2>
         <div class="checklist">
           <label class="checklist-item"><input type="checkbox"><span>Reunião / ligação realizada.</span></label>
@@ -474,11 +474,11 @@
           <label class="checklist-item"><input type="checkbox"><span>Histórico completo registrado.</span></label>
           <label class="checklist-item"><input type="checkbox"><span>Colocar o ambiente do parceiro com o status <strong>Cancelado</strong>.</span></label>
         </div>
-
+  
         <h2>Cancelamento por Inadimplência</h2>
         <p>Considera-se inadimplência quando o parceiro permanece com faturas em aberto por <strong>dois meses consecutivos</strong>. O CS deve acompanhar mensalmente a situação financeira do parceiro.</p>
         <p>Ao identificar o segundo mês consecutivo, envie e-mail formal ao parceiro com cópia para a liderança — informando a preocupação com as faturas e que, caso ao menos uma não seja quitada em até 24 horas, o contrato será cancelado. Registre o envio no card com data e conteúdo da comunicação.</p>
-
+  
         <div class="callout-block" style="flex-direction:column;align-items:flex-start;gap:10px;">
           <div style="display:flex;align-items:center;gap:8px;"><span class="ci">📧</span><strong>Modelo — Aviso de Inadimplência</strong></div>
           <div style="width:100%;background:rgba(0,0,0,.18);border-radius:8px;padding:14px 18px;font-size:13px;line-height:1.75;">
@@ -491,9 +491,9 @@
             <p style="opacity:.7;font-style:italic;">⚠️ Essa comunicação é obrigatória antes da finalização do contrato.</p>
           </div>
         </div>
-
+  
         <p>Após o envio, aguarde 24 horas corridas e monitore se o parceiro quitou ao menos uma fatura ou enviou retorno formal. Se houver pagamento ou contato, avalie junto à liderança de CS e defina os próximos passos. Se não houver retorno, responda o mesmo e-mail com cópia para <a href="mailto:juridico@helena.app" style="color:inherit;font-weight:700;text-decoration:underline;">juridico@helena.app</a> e liderança de CS, informando que o contrato está sendo finalizado por inadimplência, e inclua o link das faturas em aberto, o nome do parceiro e a data do último contato.</p>
-
+  
         <div class="callout-block" style="flex-direction:column;align-items:flex-start;gap:10px;">
           <div style="display:flex;align-items:center;gap:8px;"><span class="ci">📧</span><strong>Modelo — Cancelamento por Inadimplência</strong></div>
           <div style="width:100%;background:rgba(0,0,0,.18);border-radius:8px;padding:14px 18px;font-size:13px;line-height:1.75;">
@@ -507,9 +507,9 @@
             <p>Atenciosamente,</p>
           </div>
         </div>
-
+  
         <p>Para finalizar, preencha o <strong>alterou+1</strong> como Cancelamento por Inadimplência (motivo, quantidade de faturas em aberto e datas das comunicações), mova o card para a coluna de cancelado, aplique a etiqueta <span class="badge badge-green">Churn</span> também no contato e detalhe todo o histórico no card.</p>
-
+  
         <h2>Checklist – Cancelamento por Inadimplência</h2>
         <div class="checklist">
           <label class="checklist-item"><input type="checkbox"><span>Segundo mês de inadimplência identificado.</span></label>
@@ -521,11 +521,11 @@
           <label class="checklist-item"><input type="checkbox"><span>Card atualizado com histórico.</span></label>
           <label class="checklist-item"><input type="checkbox"><span>Etiquetas de Churn aplicadas.</span></label>
         </div>
-
+  
       </div>
     </div>
-
-
+  
+  
     <!-- PAGE: ALTERACOES CONTA -->
     <div id="page-alteracoes-conta" class="page-view">
       <div class="page-header"><div class="page-tag">⚙️ Processos Operacionais › <span onclick="showPage('cancelamentos')" style="cursor:pointer;text-decoration:underline;">Cancelamentos / Alterações</span></div><div class="page-title">Solicitar Alterações / Cancelamento da Conta do Parceiro</div><div class="page-desc">Formulário para alterar informações da conta do parceiro.</div></div>
@@ -534,9 +534,9 @@
         <div class="callout-block"><span class="ci">📋</span><span><a href="https://docs.google.com/forms/d/e/1FAIpQLSdGXeG_vrZn8fLi5SBe-she7qIsAlph8MdcW2uKLBtv_dr70w/viewform" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">Acessar formulário</a></span></div>
       </div>
     </div>
-
+  
   <!-- PAGE: UPSELL REVENDA -->
-<div id="page-upsell-revenda" class="page-view">
+  <div id="page-upsell-revenda" class="page-view">
   <div class="page-header">
     <div class="page-tag">⚙️ Processos Operacionais › 
       <span onclick="showPage('cancelamentos')" style="cursor:pointer;text-decoration:underline;">
@@ -548,17 +548,17 @@
       O objetivo é padronizar os procedimentos internos quando um parceiro do modelo Revenda Marca Helena decide migrar para o modelo White Label, garantindo o pagamento correto de comissão, atualização de informações internas e realização de todas as etapas operacionais necessárias.
     </div>
   </div>
-
+  
   <div class="content-body">
-
+  
     <h2>Registro da Ocorrência para Comissão</h2>
     <p>O CS recebe <strong>7% do valor de implantação</strong> pago pelo parceiro, desde que o processo seja registrado corretamente.</p>
-
+  
     <h2>Procedimento obrigatório: Ocorrência</h2>
     <div class="checklist">
       <label class="checklist-item"><input type="checkbox"><span>Acessar o formulário de “alterou+1”</span></label>
       <label class="checklist-item"><input type="checkbox"><span>Selecionar a opção Ocorrência</span></label>
-
+  
       <label class="checklist-item">
         <input type="checkbox">
         <span>Preencher a descrição com:
@@ -567,24 +567,24 @@
         <li>Mudança de modelo: Revenda Marca Helena → White Label</li>
         <li>Valor pago de setup: R$ X (valor exato)</li></ul>
         </span>
-
+  
     
       </label>
-
-
+  
+  
       <label class="checklist-item"><input type="checkbox"><span>Enviar o formulário</span></label>
     </div>
-
+  
     <div class="callout-block">
       <span class="ci">⚠️</span>
       <span>Sem esse preenchimento, a comissão não é gerada.</span>
     </div>
-
+  
     <h2>Procedimento obrigatório: Cancelamento</h2>
     <div class="checklist">
       <label class="checklist-item"><input type="checkbox"><span>Acessar o formulário de “alterou+1”</span></label>
       <label class="checklist-item"><input type="checkbox"><span>Selecionar a opção Cancelamento</span></label>
-
+  
       <label class="checklist-item">
         <input type="checkbox">
         <span>Preencher a descrição com:
@@ -596,16 +596,16 @@
         <li>Detalhamento: Cliente era REVENDA e fez um upgrade do plano para White Label + Alguma informação importante que o time Comercial tenha incluído no F+1, se necessário.</li>
         </ul>
         </span>
-
+  
       </label>
       <label class="checklist-item"><input type="checkbox"><span>Enviar o formulário</span></label>
     </div>
-
+  
     <h2>Procedimento obrigatório: Ocorrência de migração de contas de ambiente Revenda para novo ambiente White Label</h2>
     <div class="checklist">
       <label class="checklist-item"><input type="checkbox"><span>Acessar o formulário de “alterou+1”</span></label>
       <label class="checklist-item"><input type="checkbox"><span>Selecionar a opção Ocorrência</span></label>
-
+  
       <label class="checklist-item">
         <input type="checkbox">
         <span>Preencher a descrição com:
@@ -618,11 +618,11 @@
       </ul>
         </span>
       </label>
-
-
+  
+  
       <label class="checklist-item"><input type="checkbox"><span>Enviar o formulário</span></label>
     </div>
-
+  
     <h2>Ações Imediatas Após a Migração</h2>
     <h2>Agendar o Kick Off White Label</h2>
     <p>
@@ -633,8 +633,8 @@
       <label class="checklist-item"><input type="checkbox"><span>Agendar o Kickoff da implantação Whitelabel</span></label>
       </div>
     </p>
-
-<h2>Análise do “Fechou+1” para Avaliar Maturidade</h2>
+  
+  <h2>Análise do “Fechou+1” para Avaliar Maturidade</h2>
     <p>O CS deve verificar a data do primeiro Fechou+1 da revenda.</p>
     <h2>Regra</h2>
     <p>Se o primeiro Fechou+1 tiver mais de 6 meses da data atual: → [ ] Preencher novamente o formulário de maturidade </p>
@@ -646,7 +646,7 @@
       Se optar por migrar, siga o procedimento padrão, valide com o parceiro se todas as contas foram transferidas corretamente e, em seguida, 
       <strong>cancele o ambiente antigo de Revenda</strong> confirmando que o White Label está ativo e funcional.
     </p>
-
+  
     <h2>Reuniões e Onboarding Complementar</h2>
     <h2>Tira-Dúvidas</h2>
     <p>
@@ -677,9 +677,9 @@
       <label class="checklist-item"><input type="checkbox"><span>Reunião de conexão realizada.</span></label>
       <label class="checklist-item"><input type="checkbox"><span>Parceiro oficialmente ativo como White Label.</span></label>
     </div>
-
+  
   </div>
-</div>
+  </div>
     <!-- PAGE: SEGUNDO AMBIENTE WL -->
     <div id="page-segundo-ambiente-wl" class="page-view">
       <div class="page-header"><div class="page-tag">⚙️ Processos Operacionais › <span onclick="showPage('cancelamentos')" style="cursor:pointer;text-decoration:underline;">Cancelamentos / Alterações</span></div><div class="page-title">2° Ambiente WL</div><div class="page-desc">Padronizar o processo quando um parceiro que já possui um ambiente Whitelabel ativo realiza a contratação de um novo ambiente, garantindo o registro correto da ocorrência, cálculo de comissão e execução adequada da implantação.</div></div>
@@ -717,14 +717,14 @@
         </div>
       </div>
     </div>
-
+  
     <!-- PAGE: CANCEL APP PERSONALIZADO -->
     <div id="page-cancel-app-personalizado" class="page-view">
       <div class="page-header"><div class="page-tag">⚙️ Processos Operacionais › <span onclick="showPage('cancelamentos')" style="cursor:pointer;text-decoration:underline;">Cancelamentos / Alterações</span></div><div class="page-title">Cancelamento de Aplicativo Personalizado</div><div class="page-desc">Garantir que toda solicitação de cancelamento do aplicativo personalizado seja tratada com alinhamento entre as áreas envolvidas e registro completo das informações.</div></div>
       <div class="content-body">
-
+  
         <h2>Tratativa Inicial – Tentativa de Reversão</h2>
-
+  
         <h3>Abordagem imediata</h3>
         <p>Assim que o parceiro sinalizar a intenção de cancelar o aplicativo personalizado, é necessário realizar uma abordagem rápida para entender o cenário.</p>
         <p><strong>Ações:</strong></p>
@@ -740,18 +740,18 @@
             </ul>
           </li>
         </ul>
-
+  
         <h3>Oferta de retenção</h3>
         <p>Quando houver possibilidade de reversão, deve ser feita uma proposta inicial de retenção.</p>
         <p><strong>Ação recomendada:</strong></p>
         <ul class="sub-items">
           <li>Oferecer <strong>50% de desconto por um período de 2 a 3 meses</strong>, avaliando qual prazo faz mais sentido de acordo com o contexto do parceiro.</li>
         </ul>
-
+  
         <h3>Necessidade de negociação mais profunda</h3>
         <p>Caso o desconto inicial não seja suficiente ou se o caso apresentar maior complexidade, é necessário envolver outras áreas.</p>
         <p>Nesses casos, acionar a <strong>liderança de CS.</strong></p>
-
+  
         <h2>Em caso de reversão</h2>
         <p>Se o parceiro aceitar a proposta de retenção, as seguintes ações devem ser realizadas:</p>
         <ul class="sub-items">
@@ -774,10 +774,10 @@
           <li>Registrar no histórico todas as negociações realizadas e as tratativas aplicadas.</li>
         </ul>
         <div class="callout-block"><span class="ci">📌</span><span><strong>Importante:</strong> Toda reversão deve estar documentada para permitir análise futura de risco de cancelamento.</span></div>
-
+  
         <h2>Em caso de não reversão (cancelamento confirmado)</h2>
         <p>Caso o parceiro confirme o cancelamento do aplicativo personalizado, siga os passos abaixo.</p>
-
+  
         <h3>Passo 1: Registrar a alteração</h3>
         <p>Preencher o <strong>alterou+1</strong> com as seguintes informações:</p>
         <ul class="sub-items">
@@ -787,7 +787,7 @@
           <li><strong>Variação da mensalidade:</strong> Inserir o valor atualmente pago pelo cliente</li>
           <li><strong>Observações adicionais:</strong> Informar a data da solicitação de cancelamento</li>
         </ul>
-
+  
         <h3>Passo 2: Atualizar o sistema</h3>
         <p>Acessar: <a href="https://web.helena.run/" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">https://web.helena.run/</a> → <span class="badge badge-green">Admin</span> → <span class="badge badge-green">Parceiros</span></p>
         <p>Realizar as seguintes alterações:</p>
@@ -796,25 +796,25 @@
           <li>Remover o <strong>aplicativo personalizado</strong>;</li>
           <li>Incluir o aplicativo genérico da Helena: <span class="badge badge-green">flw.chat</span>.</li>
         </ul>
-
+  
         <h3>Passo 3: Registrar no card do parceiro</h3>
         <p>Registrar no card do parceiro:</p>
         <ul class="sub-items">
           <li>Que o parceiro decidiu cancelar o aplicativo personalizado;</li>
           <li>A <strong>data do cancelamento</strong>.</li>
         </ul>
-
+  
         <h3>Passo 4: Informação para repassar para o parceiro</h3>
         <ul class="sub-items">
           <li>O valor proporcional aos dias em que o aplicativo personalizado esteve ativo aparecerá na próxima folha.</li>
           <li>Salientar que o aplicativo genérico estará disponível para ele.</li>
           <li>Caso o cliente tenha o <strong>Domínio Personalizado</strong>, ao cancelar o aplicativo personalizado, o cliente passa a pagar o valor sem desconto do Domínio Personalizado → De: <strong>R$100 para R$190</strong>.</li>
         </ul>
-
+  
       </div>
     </div>
-
-
+  
+  
     <!-- PAGE: SUPORTE -->
     <div id="page-suporte" class="page-view">
       <div class="page-header"><div class="page-tag">⚙️ Processos Operacionais</div><div class="page-title">🛠️ Suporte e Escalações</div><div class="page-desc">Processos de abertura de cards, escalações N2 e suporte especializado.</div></div>
@@ -825,7 +825,7 @@
         <div class="sub-card" onclick="showPage('solicitar-reuniao')"><div class="sub-card-icon">🤝</div><div class="sub-card-title">Solicitar Reunião de Integrações / Automações</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
       </div>
     </div>
-
+  
     <!-- PAGE: ABERTURA CARD N2 -->
     <div id="page-abertura-card-n2" class="page-view">
       <div class="page-header"><div class="page-tag">⚙️ Processos Operacionais › <span onclick="showPage('suporte')" style="cursor:pointer;text-decoration:underline;">Suporte e Escalações</span></div><div class="page-title">Abertura de Card Demandas de Clientes – N2</div><div class="page-desc">Situações mais complexas que exigem análise do N2 devem ser registradas no painel de Demandas de Clientes.</div></div>
@@ -863,7 +863,7 @@
         </div>
       </div>
     </div>
-
+  
     <!-- PAGE: LINHA CREDITO HUNION -->
     <div id="page-linha-credito-hunion" class="page-view">
       <div class="page-header"><div class="page-tag">⚙️ Processos Operacionais › <span onclick="showPage('suporte')" style="cursor:pointer;text-decoration:underline;">Suporte e Escalações</span></div><div class="page-title">Linha de Crédito Hunion</div><div class="page-desc">Este processo tem como objetivo direcionar o passo a passo da conexão de canais em API Oficial, usando a linha de crédito Hunion como forma de pagamento</div></div>
@@ -875,31 +875,30 @@
           <li>Solicitar boleto pelo Alterou+1.</li>
           <li>Vincular linha de crédito a waba</li>
           <li>Preencher formulário para solicitar a recarga da Waba.</li></ol>
-
-<h2>Cálculo de disparos</h2>
+  
+          <h2>Cálculo de disparos</h2>
           <ol class="step-list">
           <li>Verificar quantos disparos farão no mês e multiplicar pelo valor de R$0,45 (valor estimado).</li>
           <li>Perguntar em nome de quem virá o boleto (parceiro ou cliente, lembrando que o boleto virá no nome da Hunion).</li></ol>
-
+  
           <h2>Envio de e-mail</h2>
           <ol class="step-list">
           <li>Enviar o e-mail abaixo ao parceiro utilizando o mesmo e-mail cadastrado no F+1 ou o e-mail de Super admin atrelado a conta.</li>
           <li>Aguardar resposta do parceiro dando permissão para liberar a linha de crédito.</li>
           <li>E-mail a ser enviado:</li>
           </ol>
-        <div class="callout-block" style="flex-direction:column;align-items:flex-start;gap:10px;">
+          <div class="callout-block" style="flex-direction:column;align-items:flex-start;gap:10px;">
           <div style="display:flex;align-items:center;gap:8px;"><span class="ci">📧</span><strong>Modelo — E-mail Linha de Crédito</strong></div>
           <div style="width:100%;background:rgba(0,0,0,.18);border-radius:8px;padding:14px 18px;font-size:13px;line-height:1.75;">
             <p>Prezados,</p>
             <p>Sobre a liberação da linha de crédito para a “NOME DO PARCEIRO”, gostaríamos de alinhar alguns pontos importantes sobre o funcionamento na HelenaCRM:
             <ul><li><strong>Controle de Consumo: </strong> Atualmente, a HelenaCRM não possui um sistema de faturamento pré-pago que interrompe automaticamente o uso após atingir determinado saldo. O único controle disponível é o limite mensal configurado na WABA pela Meta, em dólares. Esse limite se renova integralmente a cada virada de mês.</li>
-            <li><strong> Recarga Mensal: </strong> strong>Será realizada uma recarga mensal para garantir o saldo de aproximadamente U$”valor em dolar” (cerca de R$”valor em real”).</li>
-            <li><strong> Consumo sem Trava: </strong>strong> Caso o cliente ultrapasse esse limite, a Meta pode não bloquear o disparo de mensagens. Assim, o consumo excedente será faturado pela HelenaCRM e cobrado da “NOME DO PARCEIRO” no ciclo seguinte.</li>
-            <li><strong> Monitoramento: </strong>strong> É fundamental que o uso seja acompanhado de perto, já que não há garantia de bloqueio automático após o limite.</li>
+            <li><strong> Recarga Mensal: </strong> Será realizada uma recarga mensal para garantir o saldo de aproximadamente U$”valor em dolar” (cerca de R$”valor em real”).</li>
+            <li><strong> Consumo sem Trava: </strong> Caso o cliente ultrapasse esse limite, a Meta pode não bloquear o disparo de mensagens. Assim, o consumo excedente será faturado pela HelenaCRM e cobrado da “NOME DO PARCEIRO” no ciclo seguinte.</li>
+            <li><strong> Monitoramento: </strong> É fundamental que o uso seja acompanhado de perto, já que não há garantia de bloqueio automático após o limite.</li>
             <li><strong> Desativação: </strong> Caso o cliente deseje interromper o serviço, é necessário informar seu CS para que a linha de crédito seja desativada. Caso contrário, as recargas e cobranças continuarão sendo geradas mensalmente.</li>
             </ul>
             </p>
-
             <p style="opacity:.7;font-style:italic;">⚠️ Ponto de Atenção: Já houve casos em que, mesmo após ultrapassar o limite estipulado, a Meta não bloqueou o envio de mensagens. Portanto, ao aceitar a liberação da linha de crédito, é importante estar ciente e concordar que qualquer valor excedente será cobrado no próximo ciclo de faturamento.</p>
           <p>Se houver concordância com esse formato e aceitação do risco, seguiremos com a liberação da linha de crédito no valor aproximado de U$valor em dolar” (cerca de R$”valor em real”). Caso contrário, recomendamos aguardar até que a funcionalidade de cobrança pré-paga esteja disponível.</p>
           <p>Atenciosamente,</p>
@@ -910,8 +909,8 @@
       <span>Os pontos de atenção presentes no e-mail, devem ser informados também ao parceiro por Whatsapp.</span>
     </div>
       
-
-<h2>Solicitar boleto</h2>
+  
+  <h2>Solicitar boleto</h2>
           <ol class="step-list">
           <li>Com as informações acima preencha o alterou+1 como ocorrência, solicitando que o financeiro faça o boleto com o valor do calculado pelo parceiro.</li>
           <li>Envie-o para o parceiro e solicite que envie o comprovante de pagamento</li>
@@ -922,18 +921,18 @@
             <img src="Linha de crédito.png" alt="Vincular linha de crédito" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
           </li>
       <h2>Solicitar recarga de créditos</h2>
-<p>Preencher o <a href="https://forms.gle/p5QWgon1hK7DKCLT7" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">formulário de recarga</a></p>
+  <p>Preencher o <a href="https://forms.gle/p5QWgon1hK7DKCLT7" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">formulário de recarga</a></p>
         <p>Pedir para o Juliano liberar o valor para a Waba, enviar a solicitação a ele no Discord juntamente com o comprovante do pagamento.</p>
         
     </div>
     </div>
-
+  
     <!-- PAGE: APPS WHITE LABEL -->
     <div id="page-apps-white-label" class="page-view">
       <div class="page-header"><div class="page-tag">⚙️ Processos Operacionais › <span onclick="showPage('suporte')" style="cursor:pointer;text-decoration:underline;">Suporte e Escalações</span></div><div class="page-title">Apps White Label</div><div class="page-desc">Passo a passo da implantação de APPs personalizados.</div></div>
       <div class="content-body">
         <div class="callout-block"><span class="ci">📄</span><span>Baixe um PDF do documento <a href="https://docs.google.com/presentation/d/1O9-jYQn7czuE0guarTDFFqLazin14f1T3c9EG2M05JQ/edit" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">Entenda o que é possível personalizar nos Apps</a> e envie ao parceiro.</span></div>
-
+  
         <h2>Resumo do Processo</h2>
         <ul>
           <li>O CS responsável deverá cadastrar no painel <a href="https://web-staging.helena.run/panels/48bcad78-02c6-4b29-b45e-28f6c00a5737" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">Publicação Apps Whitelabel</a> 2 cards — um para iOS e outro para Android.</li>
@@ -943,7 +942,7 @@
           <li>O time de produto irá retornar quando os apps forem concluídos.</li>
           <li>O CS conclui a entrega dos apps ao parceiro.</li>
         </ul>
-<h2>Acompanhamento</h2>
+        <h2>Acompanhamento</h2>
         <h2>Etapa: Entrada</h2>
         <p>Ao receber os dados de contratação do parceiro, criar um card para cada loja na etapa <strong>Entrada</strong> do painel <a href="https://web-staging.helena.run/panels/48bcad78-02c6-4b29-b45e-28f6c00a5737" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">Publicação Apps Whitelabel</a>, informando os campos:</p>
         <ul>
@@ -955,7 +954,7 @@
         </ul>
         <img src="Apps personalizado  01.png" alt="Card na etapa Entrada" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
         <p>Avançar o card para a próxima etapa.</p>
-
+  
         <h2>Etapa: Abertura de Conta</h2>
         <p>O CS responsável pelo parceiro que contratou o app deve orientá-lo sobre os pré-requisitos para a criação dos Apps:</p>
         <ul>
@@ -974,26 +973,26 @@
           </li>
         </ul>
         <p>Avançar o card para a próxima etapa.</p>
-
+  
         <h2>Etapa: Pendente com o Cliente</h2>
         <p>O card deverá ficar nessa etapa até que o parceiro sinalize a criação das lojas. Antes de avançar, certifique-se que as logos enviadas pelo parceiro foram anexadas ao card.</p>
         <img src="Apps personalizado  02.png" alt="Card na etapa Pendente com o cliente" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
         <p>Avançar o card para a próxima etapa.</p>
-
+  
         <h2>Etapa: Pendente Assets</h2>
         <p>É recomendado que ao passar o card para essa etapa, seja enviada uma mensagem no grupo <strong>Publicações do Discord</strong>, informando a equipe de produto que já está tudo correto para que assumam os próximos passos. Dessa etapa em diante o time de produto assume o card e avança para as demais etapas de acordo com o status da criação dos apps, até que ela seja publicada.</p>
-
+  
         <div class="callout-block"><span class="ci">📌</span><span>As etapas <strong>Fila de Publicação</strong>, <strong>Preparando Publicação</strong> e <strong>Aprovação Lojas</strong> são de responsabilidade do Time de Produto.</span></div>
-
+  
         <h2>Etapa: Publicado</h2>
         <p>Quando o time de Produto avançar o card para essa etapa, o CS responsável deve atualizá-lo com a data de publicação e o link do app (enviado no grupo de publicações no Discord).</p>
         <img src="Apps personalizado  03.png" alt="Card na etapa Publicado com link do app" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-<h2>Atualizar cadastro do parceiro</h2>
-<p>Após a publicação é necessário atualizar no cadastro do parceiro a data de publicação do app. Menu: Admin Helena > Parceiros</p>
+        <h2>Atualizar cadastro do parceiro</h2>
+        <p>Após a publicação é necessário atualizar no cadastro do parceiro a data de publicação do app. Menu: Admin Helena > Parceiros</p>
         <img src="Apps personalizado  04.png" alt="Card na etapa Publicado com link do app" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
       </div>
     </div>
-
+  
     <!-- PAGE: SOLICITAR REUNIAO -->
     <div id="page-solicitar-reuniao" class="page-view">
       <div class="page-header"><div class="page-tag">⚙️ Processos Operacionais › <span onclick="showPage('suporte')" style="cursor:pointer;text-decoration:underline;">Suporte e Escalações</span></div><div class="page-title">Solicitar Reunião de Integrações / Automações</div><div class="page-desc">Processo para solicitar apoio do time de integrações.</div></div>
@@ -1002,7 +1001,7 @@
         <div class="callout-block"><span class="ci">📅</span><span><a href="https://calendar.app.google/Yj98xRmL5VY2xFpC8" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">Agendar horário</a></span></div>
       </div>
     </div>
-
+  
     <!-- PAGE: ORGAO GOV -->
     <div id="page-orgao-gov" class="page-view">
       <div class="page-header"><div class="page-tag">⚙️ Processos Operacionais</div><div class="page-title">Órgão Governamental</div><div class="page-desc">Procedimentos específicos para conexão de órgãos governamentais à plataforma.</div></div>
@@ -1011,7 +1010,7 @@
         <div class="sub-card" onclick="showPage('ticket-meta-gov')"><div class="sub-card-icon">🎫</div><div class="sub-card-title">Abertura de Ticket Meta – Órgãos Governamentais</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
       </div>
     </div>
-
+  
     <!-- PAGE: CONECTAR ORGAO GOV -->
     <div id="page-conectar-orgao-gov" class="page-view">
       <div class="page-header"><div class="page-tag">⚙️ Processos Operacionais › <span onclick="showPage('orgao-gov')" style="cursor:pointer;text-decoration:underline;">Órgão Governamental</span></div><div class="page-title">Conectar Órgãos Governamentais na API Oficial</div><div class="page-desc">Para conectar um número de Serviços Governamentais à API oficial da Meta para WhatsApp, é necessário seguir algumas etapas específicas, já que números governamentais têm requisitos adicionais de verificação. Aqui está um passo a passo detalhado.</div></div>
@@ -1079,7 +1078,7 @@
         <p>Caso o órgão governamental precise solicitar dados de identificação específicos do usuário, como CPF, é importante que seja detalhado de forma clara na segunda pergunta da seção. Então, na próxima pergunta, informe quais serão os dados solicitados e como se dará o tratamento/armazenamento dessas informações. </p>
         <p><strong>IMPORTANTE! </strong>Por regras da Meta, <strong>não é permitido</strong> que os órgãos governamentais solicitem o CPF completo de um usuário, <strong>apenas 4 dígitos</strong>. Para a identificação dos contatos, é preciso combinar informações, como data de nascimento, ou fazer uma validação segura do CPF completo numa plataforma externa ao WhatsApp.
         <img src="Orgao governamental 04.png" alt="Orgao governamental > Parceiros" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-</p>
+  </p>
         <p>Por fim, nesta seção, informe se o órgão governamental é um dos indicados na pergunta, se há mais informações úteis a serem compartilhadas e se a entidade atua como verificadora de fatos. 
         <img src="Orgao governamental 05.png" alt="Orgao governamental > Parceiros" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
         </p>
@@ -1095,7 +1094,7 @@
               
       </div>
     </div>
-
+  
     <!-- PAGE: TICKET META GOV -->
     <div id="page-ticket-meta-gov" class="page-view">
       <div class="page-header"><div class="page-tag">⚙️ Processos Operacionais › <span onclick="showPage('orgao-gov')" style="cursor:pointer;text-decoration:underline;">Órgão Governamental</span></div><div class="page-title">Abertura de Ticket Meta – Órgãos Governamentais</div><div class="page-desc">Processo de apelação para número banido pela Meta em caso de órgão governamental.</div></div>
@@ -1104,7 +1103,7 @@
         <div class="callout-block"><span class="ci">📋</span><span><a href="https://automation.helena.run/form/governamental-meta" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">Acessar formulário</a></span></div>
       </div>
     </div>
-
+  
     <!-- PAGE: TRANSFERENCIA -->
     <div id="page-transferencia" class="page-view">
       <div class="page-header"><div class="page-tag">⚙️ Processos Operacionais</div><div class="page-title">Transferência de Titularidade</div><div class="page-desc">Política sobre transferência de conta entre parceiros.</div></div>
@@ -1113,7 +1112,7 @@
         <p>Em caso de dúvidas sobre essa política, consulte o gestor responsável ou a equipe jurídica da Helena.</p>
       </div>
     </div>
-
+  
     <!-- PAGE: PALAVRAS RESERVADAS -->
     <div id="page-palavras-reservadas" class="page-view">
       <div class="page-header"><div class="page-tag">⚙️ Processos Operacionais</div><div class="page-title">Políticas de Palavras Reservadas</div><div class="page-desc">Nomes proibidos para URLs, produtos e identificadores públicos na plataforma.</div></div>
@@ -1127,7 +1126,7 @@
         <ul><li><strong>Risco de infração de marca registrada</strong> – "zap" e variações fazem alusão ao WhatsApp.</li><li>Uso do nome oficial ou domínio da Helena (wts.chat).</li><li>Conflito com parceiros ou tecnologias utilizadas (Z-API, Hunion, etc.).</li></ul>
       </div>
     </div>
-
+  
     <!-- PAGE: SOLICITACOES META -->
     <div id="page-solicitacoes-meta" class="page-view">
       <div class="page-header"><div class="page-tag">⚙️ Processos Operacionais</div><div class="page-title">Solicitações Meta</div><div class="page-desc">Processos para abertura e acompanhamento de tickets junto à Meta.</div></div>
@@ -1136,7 +1135,7 @@
         <div class="sub-card" onclick="showPage('acompanhamento-tickets-meta')"><div class="sub-card-icon">📋</div><div class="sub-card-title">Acompanhamento do Formulário de Tickets Meta</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
       </div>
     </div>
-
+  
     <!-- PAGE: TICKET META GERAL -->
     <div id="page-ticket-meta-geral" class="page-view">
       <div class="page-header"><div class="page-tag">⚙️ Processos Operacionais › <span onclick="showPage('solicitacoes-meta')" style="cursor:pointer;text-decoration:underline;">Solicitações Meta</span></div><div class="page-title">Abertura de Ticket Meta – Casos Gerais</div><div class="page-desc">Processo de apelação para número banido pela Meta em casos gerais.</div></div>
@@ -1145,7 +1144,7 @@
         <div class="callout-block"><span class="ci">📋</span><span><a href="https://automation.helena.run/form/chamados-meta" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">Acessar formulário</a></span></div>
       </div>
     </div>
-
+  
     <!-- PAGE: ACOMPANHAMENTO TICKETS META -->
     <div id="page-acompanhamento-tickets-meta" class="page-view">
       <div class="page-header"><div class="page-tag">⚙️ Processos Operacionais › <span onclick="showPage('solicitacoes-meta')" style="cursor:pointer;text-decoration:underline;">Solicitações Meta</span></div><div class="page-title">Acompanhamento de Tickets Meta</div><div class="page-desc">Acompanhamento das solicitações de tickets Meta através dos painéis internos.</div></div>
@@ -1156,7 +1155,7 @@
         </ul>
       </div>
     </div>
-
+  
     <!-- SECTION: GESTAO -->
     <div id="page-gestao" class="page-view">
       <div class="page-header"><div class="page-tag">📈 Gestão de Parceiros</div><div class="page-title">Gestão de Parceiros</div><div class="page-desc">Estratégias de acompanhamento mensal e ongoing para crescimento sustentável dos parceiros.</div></div>
@@ -1165,7 +1164,7 @@
         <div class="sub-card" onclick="showPage('acompanhamento-ongoing')"><div class="sub-card-icon">✍️</div><div class="sub-card-title">Acompanhamento Parceiros Em Ongoing</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
       </div>
     </div>
-
+  
     <!-- PAGE: CONTATO ESTRATEGICO -->
     <div id="page-contato-estrategico" class="page-view">
       <div class="page-header"><div class="page-tag">📈 Gestão de Parceiros</div><div class="page-title">👨‍💻 Contato Estratégico Com Parceiros (mensal)</div><div class="page-desc">Seleção e contato mensal com parceiros para apoio estratégico e crescimento de contas.</div></div>
@@ -1183,13 +1182,13 @@
         <div class="callout-block"><span class="ci">💡</span><span>Essa abordagem direcionada mostra que estamos atentos à realidade de cada parceiro, e fortalece nosso papel como consultores de sucesso!</span></div>
       </div>
     </div>
-
+  
     <!-- PAGE: ACOMPANHAMENTO ONGOING -->
     <div id="page-acompanhamento-ongoing" class="page-view">
       <div class="page-header"><div class="page-tag">📈 Gestão de Parceiros</div><div class="page-title">✍️ Acompanhamento Parceiros Em Ongoing</div><div class="page-desc">5 pilares estratégicos que guiam o time de CS na geração de resultados para os parceiros.</div></div>
       <div class="content-body">
         <div class="callout-block"><span class="ci">🎯</span><span>O sucesso só é alcançado quando conseguimos combinar três elementos-chave: <strong>satisfação do parceiro</strong>, <strong>aumento nas vendas por meio da plataforma</strong> e <strong>domínio do produto</strong>. Para isso, estruturamos nossa atuação em 5 pilares estratégicos, que guiam o time de Sucesso do Cliente na geração de resultados tangíveis e sustentáveis para o parceiro e para a Helena.</span></div>
-
+  
         <h2>Acompanhamento Mensal Estratégico</h2>
         <p>Além dos pilares já definidos para a reunião de acompanhamento, é fundamental se preparar com antecedência para garantir uma conversa estratégica e produtiva. Para isso:</p>
         <ol class="step-list">
@@ -1202,7 +1201,7 @@
           <li>Reforce pontos que contribuam para o aumento da compreensão e do engajamento dele com a plataforma.</li>
         </ol>
         <div class="callout-block"><span class="ci">💡</span><span>Esse momento é uma oportunidade valiosa para fortalecer o relacionamento, antecipar demandas e contribuir para o crescimento contínuo do parceiro.</span></div>
-
+  
         <h2>Pilar: Apoio ao Modelo de Negócio e Precificação</h2>
         <p>Um dos pilares estratégicos do acompanhamento de parceiros é garantir que eles compreendam e apliquem uma precificação adequada para sua operação.</p>
         <ol class="step-list">
@@ -1238,10 +1237,10 @@
           </ul></li>
            
         </ol>
-
+  
         <h2>Pilar: Marketing Estratégico — Atração e Conversão de Leads</h2>
         <p>Outro pilar estratégico é garantir que os parceiros tenham uma estratégia adequada de atração e conversão de leads. Para alcançar esse objetivo, seguimos as seguintes etapas:</p>
-
+  
         <p><strong>Canal: Anúncios</strong> — Gerar demanda previsível para empresas que já sentem dor em atendimento, vendas ou organização via WhatsApp.</p>
         <h3>Checklist de ações</h3>
         <ul>
@@ -1303,7 +1302,7 @@
         <a href="https://parceiros.helena.app/c/encontros-semanais/treinamento-15-10-25-campanhas-e-sequencias-na-pratica" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;">Campanhas e Sequências na Prática</a>
         <a href="https://parceiros.helena.app/c/agentes-de-ia-286c4a/treinamento-09-09-25-como-construir-prompts-eficazes-para-os-agentes-de-ia-da-plataforma" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;">Como construir prompts eficazes para os Agentes de IA da plataforma</a>  
         </p>
-
+  
         <p><strong>Canal: Marketing Digital (além de anúncios)</strong> — Construir autoridade, reduzir objeções e nutrir leads até o momento da compra. Ações principais:</p>
         <ul>
           <li>Criar conteúdo para gerar autoridade</li>
@@ -1322,12 +1321,12 @@
         <a href="https://parceiros.helena.app/c/agentes-de-ia-286c4a/treinamento-09-09-25-como-construir-prompts-eficazes-para-os-agentes-de-ia-da-plataforma" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;">Como construir prompts eficazes para os Agentes de IA da plataforma</a>
         <a href="https://parceiros.helena.app/c/encontros-semanais/treinamento-10-09-25-comunidade-como-estrategia-engaje-clientes-e-impulsione-o-seu-negocio" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;">Comunidade como estratégia: Engaje clientes e impulsione o seu negócio</a>
         </p>
-
+  
         <p><strong>Canal: Off-line</strong> — Gerar confiança local e leads qualificados e relacionamento direto com decisores.. Ações principais:</p>
         <ul>
           <li>Estabelecer presença local, considerando que determinados nichos de negócio têm forte apelo em ações relacionais e consultivas: Participar de eventos regionais e setoriais; Frequentar associações comerciais e empresariais, propondo ações (como palestras) quando viável; Networking ativo com empresários locais; QR Code levando para WhatsApp ou landing page (IMPORTANTE! Sempre que um QR code for gerado para uso em grandes ações, com potencial de muitos acessos simultâneos, é importante que o parceiro alinhe com o CS para que a plataforma esteja preparada para essa ação); Oferta exclusiva para eventos determinados.</li>
         </ul>
-
+  
         <p>Materiais de apoio: <a href="https://parceiros.helena.app/c/encontros-semanais/treinamento-10-09-25-comunidade-como-estrategia-engaje-clientes-e-impulsione-o-seu-negocio" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;">Comunidade como estratégia: Engaje clientes e impulsione o seu negócio</a> 
         <a href="https://parceiros.helena.app/c/maquina-de-vendas-do-0-a-100-contas/" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;">Curso - Entenda o que é a Máquina de Vendas</a> </p>
         
@@ -1349,7 +1348,7 @@
              <ul style="margin-top:8px;"> <li>Estimular o acompanhamento de métricas de conversão e tempo médio de atendimento.</li><li>Alinhar expectativa de melhoria contínua baseada nos dados.</li><li>Monitorar indicadores é essencial para garantir a eficiência do time comercial do parceiro. Métricas como taxa de conversão, tempo médio de atendimento e motivo de perda devem ser acompanhadas de perto, permitindo ajustes estratégicos que impactem diretamente nos resultados de vendas e no sucesso do parceiro. Dessa forma, os parceiros estarão mais capacitados a estruturar um processo comercial eficiente e a converter oportunidades de forma estratégica, potencializando o sucesso de sua operação.</li></ul></li>
                      
         </ol>
-
+  
         <h2>Pilar: Excelência no Atendimento</h2>
         <p>Um atendimento eficiente e bem estruturado é fundamental para a retenção de clientes e o crescimento sustentável do parceiro.</p>
         <ol class="step-list">
@@ -1361,7 +1360,7 @@
           <li><strong>Acompanhamento Contínuo e Prevenção de Churn</strong> — Implementar rotinas de check-in com os clientes para medir satisfação e engajamento; Utilizar métricas para identificar clientes em risco e agir preventivamente; Manter um relacionamento próximo, oferecendo estratégias de otimização e expansão; Monitore regularmente a jornada do cliente por meio de check-ins estratégicos, avaliando sua satisfação e nível de engajamento. Utilize indicadores de desempenho para identificar sinais de possíveis cancelamentos e implemente ações proativas para reverter cenários de risco. Fortaleça o relacionamento, garantindo que o parceiro aproveite ao máximo os recursos da plataforma e alcance seus objetivos.</li>
         </ol>
         <div class="callout-block"><span class="ci">📌</span><span>Acesse o <strong>Portal do Parceiro</strong> para guias, treinamentos e melhores práticas sobre estruturação de atendimento e retenção de clientes. Dessa forma, os parceiros estarão mais capacitados para padronizar os processos, utilizar boas práticas e capacitar a equipe para garantir um suporte ágil, eficiente e alinhado às necessidades do cliente.</span> </div>
-
+  
         <h2>Pilar: Integrações Inteligentes — Eficiência e Escalabilidade</h2>
         <p>Conhecer as possibilidades que o produto oferece é essencial para garantir valor agregado ao parceiro e aos seus clientes finais, tanto em termos de entrega quanto de monetização. Antes de considerar qualquer integração externa, o time de Sucesso do Cliente deve atuar de forma consultiva, avaliando se as necessidades do parceiro podem ser atendidas com os recursos nativos da plataforma.</p>
         <p><strong>Entendendo o Potencial Nativo do Produto</strong> 
@@ -1380,7 +1379,7 @@
          <p><strong>Eficiência, Escalabilidade e Sustentabilidade</strong> — Integrações bem planejadas ampliam o potencial da plataforma e viabilizam operações mais robustas e escaláveis. No entanto, quando mal avaliadas, podem gerar gargalos, custos desnecessários e dificuldades de suporte. O papel do time de Sucesso do Cliente é garantir que: A decisão por integrar seja consciente e estratégica; O parceiro explore primeiro o máximo do produto nativo; A escalabilidade da operação seja preservada; A experiência do cliente final permaneça simples, eficiente e sustentável. Ao atuar dessa forma, o CS contribui diretamente para a maturidade do parceiro, para a valorização do produto e para o crescimento sustentável da Helena. </p>
       </div>
     </div>
-
+  
     <!-- SECTION: PROCEDIMENTOS -->
     <div id="page-procedimentos" class="page-view">
       <div class="page-header"><div class="page-tag">📁 Procedimentos Parceiros</div><div class="page-title">Procedimentos Parceiros</div><div class="page-desc">Procedimentos técnicos para criação e configuração do ambiente do parceiro.</div></div>
@@ -1391,7 +1390,7 @@
         <div class="sub-card" onclick="showPage('conexao-canal')"><div class="sub-card-icon">🔌</div><div class="sub-card-title">Conexão de Canal</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
       </div>
     </div>
-
+  
     <!-- PAGE: CRIACAO AMBIENTE -->
     <div id="page-criacao-ambiente" class="page-view">
       <div class="page-header"><div class="page-tag">📁 Procedimentos Parceiros</div><div class="page-title">Criação do Ambiente do Parceiro</div><div class="page-desc">Passos para criar o ambiente do parceiro na plataforma Admin Helena.</div></div>
@@ -1406,7 +1405,7 @@
           </li>
           <li>Uma nova tela será aberta para preenchimento dos dados do parceiro.</li>
         </ol>
-
+  
         <h2>Preenchimento — Parceiro White Label</h2>
         <img src="Ambiente 03.png" alt="Campos White Label" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
         <p>Preencha os seguintes campos com base nas informações do F+1:</p>
@@ -1420,7 +1419,7 @@
         <img src="Ambiente 06.png" alt="Configurações da Plataforma" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
         <ul><li>Se não contratou aplicativo próprio, associe o app genérico <span class="badge badge-green">wts.chat</span>.</li><li>Caso tenha contratado app próprio, associe somente após a finalização da configuração. Enquanto isso, use o app genérico.</li></ul>
         <img src="Ambiente 07.png" alt="App genérico wts.chat" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-
+  
         <h2>Preenchimento — Parceiro Revenda</h2>
         <p>Preencha os campos com os dados do F+1:</p>
         <ul><li>Nome Fantasia</li><li>Razão Social</li><li>CNPJ</li><li>Endereço</li><li><strong>ID de Integração:</strong> sempre preencha esse campo. Ele é essencial para o faturamento pelo setor financeiro.</li></ul>
@@ -1429,7 +1428,7 @@
         <img src="Ambiente 09.png" alt="Configuração do revendedor" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
       </div>
     </div>
-
+  
     <!-- PAGE: DOMINIO -->
     <div id="page-dominio-personalizado" class="page-view">
       <div class="page-header"><div class="page-tag">📁 Procedimentos Parceiros</div><div class="page-title">🎛️ Configuração de Domínio Personalizado</div><div class="page-desc">Configuração de domínio personalizado para parceiros que contrataram essa funcionalidade.</div></div>
@@ -1472,7 +1471,7 @@
         </ol>
       </div>
     </div>
-
+  
     <!-- PAGE: CRIACAO CONTA -->
     <div id="page-criacao-conta" class="page-view">
       <div class="page-header"><div class="page-tag">📁 Procedimentos Parceiros</div><div class="page-title">Criação de Conta na Plataforma</div><div class="page-desc">Processo para criar a conta do cliente após o fechamento de uma venda.</div></div>
@@ -1512,8 +1511,8 @@
           <li>Clique em <strong>Salvar</strong>
         
         </ol>
-
-          
+  
+         
         <h2>Observações Gerais</h2>
         <ul>
           <li>Valores de apps adicionais devem ser verificados na planilha de preços atual, que fica no portal do parceiro.</li>
@@ -1526,48 +1525,48 @@
         </ul>
       </div>
     </div>
-
+  
     <!-- PAGE: CONEXAO CANAL -->
     <div id="page-conexao-canal" class="page-view">
       <div class="page-header"><div class="page-tag">🗂️ Procedimentos Parceiros</div><div class="page-title">Conexão de Canal</div><div class="page-desc">Passo a passo completo para conexão de WhatsApp (API Oficial e Z-API), Instagram, Messenger, portabilidade e canal de demonstração.</div></div>
       <div class="content-body">
-
+  
         <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
-
+  
         <h2>🟢 Conexão de Novo Número na API Oficial do WhatsApp</h2>
-
+  
         <h2>Passo 1. Validar conta empresarial</h2>
         <p>Acessar Conta Empresarial do Facebook e verificar Informações da Empresa.</p>
         <img src="Conexao 01.png" alt="BM - Informações da empresa" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
         <div class="warning-block"><span class="ci">⚠️</span><span><strong>Pontos importantes:</strong><ul style="margin-top:8px;"><li>Cadastrar o CNPJ e o Site Empresarial.</li><li><strong>NÃO COLOCAR</strong> no campo site endereço de conta do Instagram ou Página do Facebook.</li><li><strong>JAMAIS</strong> subir na API Oficial um cliente sem site ativo ou sem https.</li></ul></span></div>
-
+  
         <h2>Passo 2. Iniciar a conexão com o número na Cloud API</h2>
         <p>Entrar na plataforma e acessar o menu <strong>Ajustes → Conta</strong> e clicar na aba <strong>Canais de Atendimento</strong>. Na sequência clique no botão <strong>+</strong> e acesse a integração com a Cloud API.</p>
         <img src="Conexao 02.png" alt="Canais de atendimento - Cloud API" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-
+  
         <h2>Passo 3. Selecione a opção de Integrar Novo Número e clique em Iniciar</h2>
         <h2>Passo 4. Clique em Continuar na tela de informação seguinte</h2>
         <img src="Conexao 03.png" alt="Integrar Novo Número e Continuar" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-
+  
         <h2>Passo 5. Clique em Entrar com Facebook</h2>
         <img src="Conexao 04.png" alt="Entrar com Facebook" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-
+  
         <h2>Passo 6. Faça login com sua conta Facebook</h2>
         <p>Se você não for administrador da conta empresarial (BM) clique em <strong>Entrar em outra conta</strong> e faça login com algum usuário que tenha acesso.</p>
         <img src="Conexao 05.png" alt="Entrar com Facebook" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
         <h2>Passo 7. Avance até tela de seleção de conta empresarial</h2>
         <p>Escolha a BM para conexão e clique em avançar.</p>
         <img src="Conexao 06" alt="Login Facebook e seleção de conta empresarial" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-
+  
         <h2>Passo 8. Crie sempre uma nova WABA e um novo Perfil</h2>
         <p>Porém, se estiver refazendo uma integração que falhou, selecione a WABA que já havia sido criada antes.</p>
         <img src="Conexao 07.png" alt="Criação de nova WABA" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
         <div class="warning-block"><span class="ci">⚠️</span><span>Cada WABA tem direito a 1.000 conversas receptivas de franquia, sendo assim o ideal é colocar cada número de telefone em uma WABA apenas.</span></div>
-
+  
         <h2>Passo 9. Dê um nome para a WABA e do Perfil do WhatsApp</h2>
         <img src="Conexao 08.png" alt="Nome da WABA e Perfil do WhatsApp" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
         <div class="warning-block"><span class="ci">⚠️</span><span><ul style="margin-top:6px;"><li>Coloque um nome intuitivo na WABA que ajude a identificar qual número é só com a leitura do nome.</li><li>Escolha um nome de perfil do WhatsApp visível no site (nome da empresa, produto, razão social ou algo presente na URL do site).</li><li>Não utilize nome totalmente em caixa alta ou caracteres especiais no nome de perfil.</li></ul></span></div>
-
+  
         <h2>Passo 10. Solicite o código de verificação</h2>
         <p>Informe o número de telefone com DDD e selecione a opção de ligação ou SMS.</p>
         <img src="Conexao 09.png" alt="Solicitação do código de verificação" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
@@ -1575,9 +1574,9 @@
         <div class="callout-block"><span class="ci">💡</span><span>Depois de receber a ligação/SMS e digitar o código, basta continuar até o fim das etapas. Se o código não chegar, tente iniciar os passos novamente — você pode fechar as janelas e começar de novo sem nenhuma perda.</span></div>
         <p>Ao final seu número estará ativo e pronto para receber conversas. Ainda será necessário (1) cadastrar um cartão de crédito na WABA e (2) criar modelos de mensagem para iniciar conversa. Os modelos de mensagem levam até 24h para serem aprovados, sendo assim já inicie o cadastro de ao menos um. Veja nos passos a seguir como associar o cartão de crédito na WABA.</p>
         <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
-
+  
         <h2>💳 Cadastro do Cartão de Crédito na API Oficial</h2>
-
+  
         <h2>Passo 1. Acesse o menu Contas → Contas do WhatsApp</h2>
         <p>Selecione a WABA que acabou de criar, clique na aba <strong>Configurações</strong> e depois clique no botão <strong>Configurações de Pagamento</strong>.
         <img src="Conexao 10.png" alt="Contas do WhatsApp e forma de pagamento" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
@@ -1588,9 +1587,9 @@
         </p>
         
         <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
-
+  
         <h2>🖼️ Associar Logomarca da Empresa no Número</h2>
-
+  
         <h2>Passo 1. Acesse o menu Contas → Contas do WhatsApp</h2>
         <p>Esse acesso deve ser feito na conta empresarial usada para conectar o número. Selecione a WABA que acabou de criar, clique na aba <strong>Configurações</strong> e depois clique no botão <strong>Gerenciador do WhatsApp.</strong>
         <img src="Conexao 12.png" alt="Contas do WhatsApp e forma de pagamento" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
@@ -1601,11 +1600,11 @@
         <h2>Passo 3. Faça upload da logomarca para o número</h2>
         <p>Clique no menu <strong>Perfil</strong> e, abaixo do texto <strong>Foto do perfil</strong>, clique no botão <strong>Escolher arquivo</strong>.</p>
         <img src="Conexao 14.png" alt="Upload da logomarca no perfil" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-
+  
         <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
-
+  
         <h2>🔌 Conexão de Novo Número na API Não Oficial (Z-API)</h2>
-
+  
         <h2>Passo 1. Iniciar a conexão com o número na Z-API</h2>
         <p>Entrar na plataforma, acessar o menu <strong>Ajustes → Conta</strong>, clicar no botão <strong>Canais de Atendimento</strong>. Clique no botão <strong>+</strong>, WhatsApp QRCode → Z-api</p>
         <img src="Conexao 15.png" alt="Z-API - Campos de conexão e QR Code" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
@@ -1618,11 +1617,11 @@
         <img src="Conexao 18.png" alt="Z-API - Campos de conexão e QR Code" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
         <p>Para conexão, basta informar o ID da instância e os tokens da instância e de segurança</p>
         <img src="Conexao 19.png" alt="Z-API - Campos de conexão conta propria" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-
+  
         <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
-
+  
         <h2>📸 Conexão de Conta Instagram / Messenger</h2>
-
+  
         <h2>Passo 1. Conectar o Instagram na Página Oficial do Facebook</h2>
         <p>É obrigatório ter uma página do Facebook para fazer a conexão com o Instagram. Acesse (ou crie) a página e, com o perfil do administrador, clique no botão <strong>Configurações</strong>.</p>
         <img src="Conexao 20.png" alt="Página do Facebook - Configurações e Contas vinculadas" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
@@ -1630,103 +1629,103 @@
         <h2>Passo 2. Clique para vincular contas</h2>
         <p>Clique no botão <strong>Contas Vinculadas</strong>.</p>
         <img src="Conexao 21.png" alt="Página do Facebook - Configurações e Contas vinculadas" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-
+  
         <h2>Passo 3. Clique em Instagram</h2>
         <img src="Conexao 22.png" alt="Instagram conectado com acesso à caixa de mensagens" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
         <p>Clique em <strong>Conectar conta</strong> e informe login e senha da conta do Instagram. Deverá ser dado acesso à caixa de mensagens.</p>
         <img src="Conexao 23.png" alt="Instagram conectado com acesso à caixa de mensagens" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
         <div class="warning-block"><span class="ci">⚠️</span><span><ul style="margin-top:6px;"><li>Se a conta já estiver conectada sem acesso à caixa de mensagens, faça a desconexão e conecte novamente. Antes confirme com o proprietário se ele sabe o login/senha.</li><li>No botão WhatsApp você vincula o número à página para fazer anúncios do tipo Click to WhatsApp.</li></ul></span></div>
-
+  
         <h2>Passo 4. Adicione a página na Conta Empresarial (BM)</h2>
         <p>Se a página ainda não estiver associada à BM, acesse o menu <strong>Contas → Páginas</strong> no Gerenciador de Negócios e adicione a página da empresa.</p>
          <img src="Conexao 24.png" alt="BM Páginas e botão Integrar com Instagram" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
         <h2>Passo 5. Iniciar a conexão com o Instagram/Messenger</h2>
         <p>Entrar na plataforma, acessar o menu <strong>Ajustes → Conta</strong>, clicar em <strong>Canais de Atendimento</strong>. Clique no botão <strong>+</strong> e clique em <strong>Integrar com Instagram</strong>.</p>
         <img src="Conexao 25.png" alt="BM Páginas e botão Integrar com Instagram" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-
+  
         <h2>Passo 6. Entrar com o Facebook</h2>
         <p>Avance até a tela de entrar na conta do Facebook. Faça login com um usuário que seja <strong>administrador da página</strong>.</p>
         <img src="Conexao 26.png" alt="Entrar com Facebook - Instagram" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-
+  
         <h2>Passo 7. Edite as configurações de conexão</h2>
         <p>Clique na opção <strong>Editar as Configurações Anteriores</strong>. Escolha a página do Facebook que vai conectar e depois a conta do Instagram.</p>
         <img src="Conexao 27.png" alt="Seleção de páginas e contas Instagram" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
         <div class="callout-block"><span class="ci">💡</span><span>Pode ser que ao chegar aqui, as opções já sejam exibidas sem a necessidade de clicar em Editar Configurações Anteriores.</span></div>
-
+  
         <h2>Passo 8. Confirme os canais que serão conectados</h2>
         <p>Avance até a tela final de confirmação dos canais. Desmarque algum caso não queira que a conexão seja feita.</p>
         <img src="Conexao 28.png" alt="Confirmação dos canais Instagram e Messenger" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
         <div class="warning-block"><span class="ci">⚠️</span><span>Se depois de tudo feito não estiver enviando ou recebendo Direct na plataforma, pode ser porque o tipo da conta do Instagram <strong>NÃO É Profissional → Empresarial</strong>. Acesse as configurações do Instagram no APP e faça a modificação.</span></div>
-
+  
         <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
-
+  
         <h2>🔴 Desconectar o Número da API Oficial</h2>
-
+  
         <h2>Passo 1. Excluir o número do telefone</h2>
         <p>Execute os passos 1 e 2 de Associar Logomarca. Quando chegar na tela de Telefones, selecione o número que deseja excluir e clique na lixeira ao lado do ícone de configuração.</p>
-
+  
         <h2>Passo 2. Remova o número da WABA</h2>
         <p>Acesse o menu <strong>Contas → Contas do WhatsApp</strong>. Selecione a WABA à qual o número estava conectado e clique em <strong>Remover</strong> no canto superior direito.</p>
         <div class="warning-block"><span class="ci">⚠️</span><span><ul style="margin-top:6px;"><li>Aguarde de 5 a 10 minutos entre o passo 1 e passo 2, pois a sincronização interna na Meta pode demorar alguns minutos.</li><li>Se houver saldo em aberto ao excluir a WABA, o pagamento deve ser realizado com o cartão associado. Somente após pagar é possível remover a WABA.</li><li>Enquanto a WABA não for removida, não é possível voltar com o número para o aplicativo do WhatsApp.</li></ul></span></div>
-
+  
         <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
-
+  
         <h2>🔄 Conectar na API Oficial por meio de Portabilidade</h2>
-
+  
         <h2>Passo 1. Verificar a conta empresarial (BM)</h2>
         <p>Acesse a conta empresarial e clique no menu <strong>Centro de Segurança</strong>. Clique em <strong>Iniciar Verificação</strong> e siga os passos do formulário da Meta.</p>
         <img src="Conexao 29.png" alt="Centro de Segurança - Verificação da BM" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
         <div class="callout-block"><span class="ci">💡</span><span>Se a conta empresarial não for verificada, é necessário enviar documentos (Cartão CNPJ ou Alvará de Funcionamento) e informar um telefone ou e-mail. A verificação pode levar até 48h — faça antes da data da conexão.</span></div>
-
+  
         <h2>Passo 2. Desative a autenticação em dois fatores</h2>
         <p>Siga os passos para associar uma logomarca ao número. Quando chegar nas configurações do telefone, clique em <strong>Confirmação em duas etapas</strong> e depois em <strong>Desativar</strong>. Um e-mail será enviado — acesse-o e clique no link para desativar.</p>
         <img src="Conexao 30.png" alt="Centro de Segurança - Verificação da BM" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-
+  
         <h2>Passo 3. Inicie a conexão de um número por portabilidade</h2>
         <p>Acesse a plataforma, vá no menu <strong>Ajustes → Conta</strong> e depois na aba <strong>Canais de Atendimento</strong>. Clique no botão <strong>+</strong> e inicie uma conexão com o WhatsApp na Cloud API.</p>
         <img src="Conexao 31.png" alt="Confirmação em duas etapas e Canais de Atendimento para portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-
+  
         <h2>Passo 4. Selecione a opção de migração</h2>
         <p>Na tela seguinte selecione a opção de migração e clique em Iniciar.</p>
         <img src="Conexao 32.png" alt="Seleção de migração" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-
+  
         <h2>Defina o número a ser migrado e acesse a BM</h2>
         <p>Avance até a tela de definição de número e informe o número de telefone a ser migrado. Na tela seguinte faça login no Facebook para acessar a conta empresarial (BM) na qual o número está conectado.</p>
         <img src="Conexao 33.png" alt="Número a ser migrado e acesso à BM de origem" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
         <div class="warning-block"><span class="ci">⚠️</span><span><ul style="margin-top:6px;"><li>É possível migrar o número de WABA. Porém <strong>NÃO é possível</strong> migrar o número de BM. Após a migração o número continuará associado ao mesmo Gerenciador de Negócios.</li><li>Se sua intenção for mudar o número para outra BM, será necessário desconectar e fazer uma nova integração.</li></ul></span></div>
-
+  
         <h2>Passo 5. Avance pelo wizard do Facebook</h2>
         <p>Continue avançando pelas telas do Facebook — o procedimento é o mesmo que para conectar um número novo (passos 6 ao 9). Conclua quando chegar na tela que dá acesso à hunion para conectar à WABA.</p>
         <img src="Conexao 34.png" alt="Número a ser migrado e acesso à BM de origem" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-
+  
         <h2>Passo 6. Finalize dentro da plataforma</h2>
         <p>Associe um pagamento na nova WABA, valide que a autenticação em dois fatores está desativada, e prossiga até a tela de envio do código de verificação. Ao final digite o código recebido e avance até finalizar.</p>
         
         <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
-
+  
         <h2>🧪 Conectar um Número para Demonstração (Teste Grátis)</h2>
-
+  
         <h2>Passo 1. Acessar ou criar uma conta qualquer</h2>
         <p>Você vai precisar de uma conta em ambiente de produção — pode ser uma conta fake ou de cliente, pois vamos usá-la apenas para acessar o menu <strong>Ajustes → Conta → Canal de Atendimento</strong>. Depois siga os passos para conectar um número na API Oficial.</p>
-
+  
         <h2>Passo 2. Associar meio de pagamento ao canal</h2>
         <p>Siga os passos para cadastrar um cartão de crédito para pagamento das conversas do número de demonstração.</p>
-
+  
         <h2>Passo 3. Selecione canal para marcar como Demonstração</h2>
         <p>Acesse o menu <strong>Admin → Canais</strong> e pesquise pelo canal que acabou de criar. Clique sobre ele e depois clique em <strong>Alterar</strong>.</p>
         <img src="Conexao 35.png" alt="Admin Canais - selecionar canal para demonstração" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-
+  
         <h2>Passo 4. Alterar status do canal para Demonstração</h2>
         <p>Dentro do canal criado, ative o campo <strong>"Canal de demonstração"</strong> e clique em salvar.</p>
         <img src="Conexao 36.png" alt="Admin Canais - selecionar canal para demonstração" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-
+  
         <h2>Passo 5. Remova o canal da conta que usou para criá-lo</h2>
         <p>Acesse o menu <strong>Admin → Conta</strong>, pesquise pela conta usada para criar o canal de demonstração, role até a parte inferior da tela, remova o canal e clique em salvar.</p>
         <img src="Conexao 38.png" alt="Alterar status demonstração e remover canal da conta" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-
+  
       </div>
     </div>
-
+  
     <!-- SECTION: DASHBOARDS -->
     <div id="page-dashboards" class="page-view">
       <div class="page-header"><div class="page-tag">📊 Dashboards e Monitoramento</div><div class="page-title">Dashboards e Monitoramento</div><div class="page-desc">Ferramentas de monitoramento para acompanhamento de performance, churn e usabilidade dos parceiros.</div></div>
@@ -1735,7 +1734,7 @@
         <div class="sub-card" onclick="showPage('painel-gestao')"><div class="sub-card-icon">📌</div><div class="sub-card-title">Painel de Gestão a Vista</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
       </div>
     </div>
-
+  
     <!-- PAGE: METABASE -->
     <div id="page-metabase" class="page-view">
       <div class="page-header"><div class="page-tag">📊 Dashboards e Monitoramento</div><div class="page-title">Metabase – Evolução de Atendimento por Empresa</div><div class="page-desc">Painel para acompanhar a usabilidade dos clientes dos parceiros e identificar riscos de churn.</div></div>
@@ -1744,7 +1743,7 @@
         <div class="callout-block"><span class="ci">🔗</span><span><a href="https://metabase.helena.run/question/2049-evolucao-do-atendimento-por-empresa?situacaoempresa=COMPLETED&situacaoempresa=SUBSCRIPTION_ARREARS&situacaoempresa=SUBSCRIPTION_SUSPENDED" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">Acesso ao Painel</a></span></div>
       </div>
     </div>
-
+  
     <!-- PAGE: PAINEL GESTAO -->
     <div id="page-painel-gestao" class="page-view">
       <div class="page-header"><div class="page-tag">📊 Dashboards e Monitoramento</div><div class="page-title">Painel de Gestão a Vista</div><div class="page-desc">Acompanhamento de contas e churn por parceiro e por analista de CS.</div></div>
@@ -1753,7 +1752,7 @@
         <div class="callout-block"><span class="ci">🔗</span><span><a href="https://lookerstudio.google.com/u/0/reporting/a41cb5b0-b3d1-4837-8fe4-b2bbf24079fe/page/NgWNF" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">Painel de Gestão a Vista</a></span></div>
       </div>
     </div>
-
+  
     <!-- SECTION: CULTURA -->
     <div id="page-cultura" class="page-view">
       <div class="page-header"><div class="page-tag">🎓 Cultura e Desenvolvimento</div><div class="page-title">Cultura e Desenvolvimento</div><div class="page-desc">Recursos de capacitação e desenvolvimento para o time e parceiros Helena.</div></div>
@@ -1762,7 +1761,7 @@
         <div class="sub-card" onclick="showPage('conteudos-time-interno')"><div class="sub-card-icon">👥</div><div class="sub-card-title">Conteúdos para o Time Interno</div><div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div></div>
       </div>
     </div>
-
+  
     <!-- PAGE: ACADEMIA -->
     <div id="page-academia" class="page-view">
       <div class="page-header"><div class="page-tag">🎓 Cultura e Desenvolvimento</div><div class="page-title">Portal do Parceiro | Academia Helena</div><div class="page-desc">Espaço dedicado ao desenvolvimento e capacitação de colaboradores e parceiros da Helena.</div></div>
@@ -1772,7 +1771,7 @@
         <div class="callout-block"><span class="ci">🔗</span><span><a href="https://parceiros.helena.app/feed" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">Acessar Academia Helena</a></span></div>
       </div>
     </div>
-
+  
     <!-- PAGE: CONTEUDOS TIME INTERNO -->
     <div id="page-conteudos-time-interno" class="page-view">
       <div class="page-header"><div class="page-tag">🎓 Cultura e Desenvolvimento</div><div class="page-title">Conteúdos para o Time Interno</div><div class="page-desc">Cursos e conteúdos exclusivos para desenvolvimento do time interno Helena.</div></div>
@@ -1781,34 +1780,34 @@
         <div class="callout-block"><span class="ci">🔗</span><span><a href="https://parceiros.helena.app/c/cursos-e-conteudos-para-o-time-interno/" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">Acessar Conteúdos para o Time Interno</a></span></div>
       </div>
     </div>
-
+  
   </div><!-- /content -->
-</div><!-- /main -->
-
-<button class="mobile-toggle" onclick="toggleMobile()" title="Menu">☰</button>
-
-<script>
-// ── Theme ──
-function toggleTheme() {
+  </div><!-- /main -->
+  
+  <button class="mobile-toggle" onclick="toggleMobile()" title="Menu">☰</button>
+  
+  <script>
+  // ── Theme ──
+  function toggleTheme() {
   const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
   document.documentElement.setAttribute('data-theme', next);
   try { localStorage.setItem('helena-theme', next); } catch(e) {}
-}
-(function() {
+  }
+  (function() {
   try {
     const saved = localStorage.getItem('helena-theme');
     if (saved) document.documentElement.setAttribute('data-theme', saved);
     else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) document.documentElement.setAttribute('data-theme', 'dark');
   } catch(e) {}
-})();
-
-// ── State ──
-let currentPage = 'home';
-let currentSection = null;
-let pageHistory = [];
-
-// ── Search data ──
-const searchIndex = [
+  })();
+  
+  // ── State ──
+  let currentPage = 'home';
+  let currentSection = null;
+  let pageHistory = [];
+  
+  // ── Search data ──
+  const searchIndex = [
   { id:'check-in', section:'rotinas', sectionLabel:'Rotinas do Time', title:'Check-in Semanal', preview:'Reunião segunda-feira 14h, estratégias da semana, métricas da carteira.' },
   { id:'check-out', section:'rotinas', sectionLabel:'Rotinas do Time', title:'Check-out Semanal', preview:'Sexta-feira, resultados da semana, conquistas, desafios, aprendizados.' },
   { id:'cumbuca', section:'rotinas', sectionLabel:'Rotinas do Time', title:'Cumbuca', preview:'Encontro semanal de leitura do livro do time.' },
@@ -1837,14 +1836,14 @@ const searchIndex = [
   { id:'painel-gestao', section:'dashboards', sectionLabel:'Dashboards e Monitoramento', title:'Painel de Gestão a Vista', preview:'Contas e churn por parceiro/CS.' },
   { id:'academia', section:'cultura', sectionLabel:'Cultura e Desenvolvimento', title:'Portal do Parceiro | Academia Helena', preview:'Treinamentos, materiais de apoio, capacitação de parceiros.' },
   { id:'conteudos-time-interno', section:'cultura', sectionLabel:'Cultura e Desenvolvimento', title:'Conteúdos para o Time Interno', preview:'Cursos e conteúdos exclusivos para desenvolvimento do time interno Helena.' },
-];
-
-const sectionPages = {
+  ];
+  
+  const sectionPages = {
   rotinas: 'rotinas', onboarding: 'onboarding', operacional: 'operacional',
   gestao: 'gestao', procedimentos: 'procedimentos', dashboards: 'dashboards', cultura: 'cultura'
-};
-
-function showPage(pageId, pushHistory = true) {
+  };
+  
+  function showPage(pageId, pushHistory = true) {
   if (pushHistory && currentPage && currentPage !== pageId) pageHistory.push(currentPage);
   document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
   const el = document.getElementById('page-' + pageId);
@@ -1859,9 +1858,9 @@ function showPage(pageId, pushHistory = true) {
   window.scrollTo(0, 0);
   closeSearch();
   document.querySelectorAll('.nav-btn-row').forEach(row => { if (row._updatePrevBtn) row._updatePrevBtn(); });
-}
-
-function openSection(sectionId) {
+  }
+  
+  function openSection(sectionId) {
   const navItems = document.getElementById('nav-' + sectionId);
   const cat = document.querySelector(`[data-section="${sectionId}"]`);
   if (navItems && !navItems.classList.contains('open')) {
@@ -1869,18 +1868,18 @@ function openSection(sectionId) {
     if (cat) cat.classList.add('open', 'active');
   }
   showPage(sectionId);
-}
-
-function toggleCat(el, sectionId) {
+  }
+  
+  function toggleCat(el, sectionId) {
   const navItems = document.getElementById('nav-' + sectionId);
   const isOpen = navItems.classList.contains('open');
   navItems.classList.toggle('open', !isOpen);
   el.classList.toggle('open', !isOpen);
   el.classList.toggle('active', !isOpen);
   showPage(sectionId);
-}
-
-function updateBreadcrumb(pageId) {
+  }
+  
+  function updateBreadcrumb(pageId) {
   const bc = document.getElementById('breadcrumb');
   if (pageId === 'home') { bc.innerHTML = '<span>Portal CS Parcerias</span>'; return; }
   const item = searchIndex.find(i => i.id === pageId);
@@ -1893,9 +1892,9 @@ function updateBreadcrumb(pageId) {
   } else {
     bc.innerHTML = `Portal CS Parcerias <span class="sep">›</span> <span>${pageId}</span>`;
   }
-}
-
-function doSearch() {
+  }
+  
+  function doSearch() {
   const q = document.getElementById('topSearch').value.trim();
   if (!q) { closeSearch(); return; }
   const results = searchIndex.filter(item =>
@@ -1904,9 +1903,9 @@ function doSearch() {
     item.sectionLabel.toLowerCase().includes(q.toLowerCase())
   );
   renderSearchResults(results, q);
-}
-
-function renderSearchResults(results, q) {
+  }
+  
+  function renderSearchResults(results, q) {
   const box = document.getElementById('searchResults');
   if (!results.length) {
     box.innerHTML = `<div id="noSearchResults">Nenhum resultado para "<strong>${q}</strong>"</div>`;
@@ -1920,11 +1919,11 @@ function renderSearchResults(results, q) {
     </div><hr>
   `).join('');
   box.style.display = 'block';
-}
-
-function closeSearch() { document.getElementById('searchResults').style.display = 'none'; }
-
-document.getElementById('searchInput').addEventListener('input', function() {
+  }
+  
+  function closeSearch() { document.getElementById('searchResults').style.display = 'none'; }
+  
+  document.getElementById('searchInput').addEventListener('input', function() {
   const q = this.value.toLowerCase().trim();
   const noResults = document.getElementById('noNavResults');
   let hasAny = false;
@@ -1942,22 +1941,22 @@ document.getElementById('searchInput').addEventListener('input', function() {
     if (q && hasVisible) { document.getElementById('nav-' + sectionId).classList.add('open'); cat.classList.add('open'); }
   });
   noResults.style.display = q && !hasAny ? 'block' : 'none';
-});
-
-document.getElementById('topSearch').addEventListener('keyup', function(e) {
+  });
+  
+  document.getElementById('topSearch').addEventListener('keyup', function(e) {
   if (e.key === 'Enter') doSearch();
   else if (e.key === 'Escape') closeSearch();
   else if (this.value.length > 1) doSearch();
   else if (!this.value) closeSearch();
-});
-
-document.addEventListener('click', function(e) {
+  });
+  
+  document.addEventListener('click', function(e) {
   if (!e.target.closest('#searchResults') && !e.target.closest('#topSearch')) closeSearch();
-});
-
-function toggleMobile() { document.getElementById('sidebar').classList.toggle('open'); }
-
-document.addEventListener('DOMContentLoaded', function() {
+  });
+  
+  function toggleMobile() { document.getElementById('sidebar').classList.toggle('open'); }
+  
+  document.addEventListener('DOMContentLoaded', function() {
   showPage('home');
   const sectionPageMap = {
     rotinas: 'rotinas', onboarding: 'onboarding', operacional: 'operacional',
@@ -1978,7 +1977,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   const arrowLeft  = '<svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>';
   const arrowRight = '<svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>';
-
+  
   function makeRow(parentId, parentLabel, nextId, nextTitle, extraStyle) {
     const row = document.createElement('div');
     row.className = 'nav-btn-row';
@@ -2005,7 +2004,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     return row;
   }
-
+  
   document.querySelectorAll('.page-view').forEach(pageView => {
     const rawId = pageView.id;
     if (!rawId || rawId === 'page-home') return;
@@ -2031,7 +2030,7 @@ document.addEventListener('DOMContentLoaded', function() {
     header.insertBefore(makeRow(parentId, parentLabel, nextId, nextTitle, 'margin-bottom:14px;'), tag);
     if (contentBody) contentBody.appendChild(makeRow(parentId, parentLabel, nextId, nextTitle, 'margin-top:28px;'));
   });
-});
-</script>
-</body>
-</html>
+  });
+  </script>
+  </body>
+  </html>
