@@ -2313,184 +2313,220 @@
         let currentSection = null;
         let pageHistory = [];
         // ── Search data ──
-        const searchIndex = [{
-            id: 'check-in',
-            section: 'rotinas',
-            sectionLabel: 'Rotinas do Time',
-            title: 'Check-in Semanal',
-            preview: 'Reunião segunda-feira 14h, estratégias da semana, métricas da carteira.'
-        }, {
-            id: 'check-out',
-            section: 'rotinas',
-            sectionLabel: 'Rotinas do Time',
-            title: 'Check-out Semanal',
-            preview: 'Sexta-feira, resultados da semana, conquistas, desafios, aprendizados.'
-        }, {
-            id: 'cumbuca',
-            section: 'rotinas',
-            sectionLabel: 'Rotinas do Time',
-            title: 'Cumbuca',
-            preview: 'Encontro semanal de leitura do livro do time.'
-        }, {
-            id: 'emv',
-            section: 'rotinas',
-            sectionLabel: 'Rotinas do Time',
-            title: 'Avaliação de EMV',
-            preview: 'Avaliação trimestral do Engagement Maturity Value dos parceiros.'
-        }, {
-            id: 'fechamentos',
-            section: 'rotinas',
-            sectionLabel: 'Rotinas do Time',
-            title: 'Acompanhar Fechamentos do Comercial',
-            preview: 'Planilha F+1 – Fechou mais um HELENA CRM.'
-        }, {
-            id: 'ferias',
-            section: 'rotinas',
-            sectionLabel: 'Rotinas do Time',
-            title: 'Solicitação de Férias',
-            preview: 'E-mail ao DP até dia 10, mínimo 30 dias de antecedência.'
-        }, {
-            id: 'distribuicao',
-            section: 'onboarding',
-            sectionLabel: 'Processos de Onboarding',
-            title: 'Distribuição',
-            preview: 'Fluxo após formulário Fechou +1, etiquetas e padronização.'
-        }, {
-            id: 'kickoff',
-            section: 'onboarding',
-            sectionLabel: 'Processos de Onboarding',
-            title: 'Kick Off',
-            preview: 'Primeira reunião com parceiro, template KickOff 2026, coleta de dados.'
-        }, {
-            id: 'configurar-ambiente',
-            section: 'onboarding',
-            sectionLabel: 'Processos de Onboarding',
-            title: 'Configurar Ambiente',
-            preview: 'Criação da conta da empresa do parceiro, planos, valores.'
-        }, {
-            id: 'conexoes',
-            section: 'onboarding',
-            sectionLabel: 'Processos de Onboarding',
-            title: 'Conexões',
-            preview: 'Instagram, Facebook, WhatsApp Z-API e Meta Cloud API.'
-        }, {
-            id: 'funcionalidades',
-            section: 'onboarding',
-            sectionLabel: 'Processos de Onboarding',
-            title: 'Funcionalidades Gerais',
-            preview: 'Verificação do uso da plataforma, suporte N1 e N2.'
-        }, {
-            id: 'estrategias',
-            section: 'onboarding',
-            sectionLabel: 'Processos de Onboarding',
-            title: 'Primeiras Estratégias',
-            preview: 'Dúvidas gerais e primeiros 4 clientes do parceiro.'
-        }, {
-            id: 'cancelamentos',
-            section: 'operacional',
-            sectionLabel: 'Processos Operacionais',
-            title: 'Cancelamentos / Alterações',
-            preview: 'Cancelamento de parceiros, alterações de conta, upsell WL.'
-        }, {
-            id: 'suporte',
-            section: 'operacional',
-            sectionLabel: 'Processos Operacionais',
-            title: 'Suporte e Escalações',
-            preview: 'Cards N2, Linha de Crédito Hunion, Apps White Label.'
-        }, {
-            id: 'orgao-gov',
-            section: 'operacional',
-            sectionLabel: 'Processos Operacionais',
-            title: 'Órgão Governamental',
-            preview: 'Conexão API Oficial, ticket Meta para órgãos governamentais.'
-        }, {
-            id: 'transferencia',
-            section: 'operacional',
-            sectionLabel: 'Processos Operacionais',
-            title: 'Transferência de Titularidade',
-            preview: 'Não permitido por questões de LGPD.'
-        }, {
-            id: 'palavras-reservadas',
-            section: 'operacional',
-            sectionLabel: 'Processos Operacionais',
-            title: 'Políticas de Palavras Reservadas',
-            preview: 'zap, zapi, chatbot, Helena – palavras proibidas em URLs.'
-        }, {
-            id: 'solicitacoes-meta',
-            section: 'operacional',
-            sectionLabel: 'Processos Operacionais',
-            title: 'Solicitações Meta',
-            preview: 'Abertura e acompanhamento de tickets Meta.'
-        }, {
-            id: 'contato-estrategico',
-            section: 'gestao',
-            sectionLabel: 'Gestão de Parceiros',
-            title: 'Contato Estratégico Com Parceiros (mensal)',
-            preview: 'Seleção mensal, análise de maturidade, Office Hours.'
-        }, {
-            id: 'acompanhamento-ongoing',
-            section: 'gestao',
-            sectionLabel: 'Gestão de Parceiros',
-            title: 'Acompanhamento Parceiros Em Ongoing',
-            preview: '5 pilares estratégicos, IA Integrativa, precificação.'
-        }, {
-            id: 'criacao-ambiente',
-            section: 'procedimentos',
-            sectionLabel: 'Procedimentos Parceiros',
-            title: 'Criação do Ambiente do Parceiro',
-            preview: 'Admin Helena > Parceiros, preencher F+1, ID Integração.'
-        }, {
-            id: 'dominio-personalizado',
-            section: 'procedimentos',
-            sectionLabel: 'Procedimentos Parceiros',
-            title: 'Configuração de Domínio Personalizado',
-            preview: 'Subdomínio, DNS, Admin Helena > Domínio Personalizado.'
-        }, {
-            id: 'criacao-conta',
-            section: 'procedimentos',
-            sectionLabel: 'Procedimentos Parceiros',
-            title: 'Criação de Conta na Plataforma',
-            preview: 'Super Admin, Admin > Contas, CNPJ, PJ ou PF.'
-        }, {
-            id: 'conexao-canal',
-            section: 'procedimentos',
-            sectionLabel: 'Procedimentos Parceiros',
-            title: 'Conexão de Canal',
-            preview: 'API Oficial, Z-API, Instagram, Messenger, portabilidade e demonstração.'
-        }, {
-            id: 'metabase',
-            section: 'dashboards',
-            sectionLabel: 'Dashboards e Monitoramento',
-            title: 'Metabase – Evolução de Atendimento',
-            preview: 'Usabilidade de clientes, risco de churn por parceiro.'
-        }, {
-            id: 'painel-gestao',
-            section: 'dashboards',
-            sectionLabel: 'Dashboards e Monitoramento',
-            title: 'Painel de Gestão a Vista',
-            preview: 'Contas e churn por parceiro/CS.'
-        }, {
-            id: 'academia',
-            section: 'cultura',
-            sectionLabel: 'Cultura e Desenvolvimento',
-            title: 'Portal do Parceiro | Academia Helena',
-            preview: 'Treinamentos, materiais de apoio, capacitação de parceiros.'
-        }, {
-            id: 'conteudos-time-interno',
-            section: 'cultura',
-            sectionLabel: 'Cultura e Desenvolvimento',
-            title: 'Conteúdos para o Time Interno',
-            preview: 'Cursos e conteúdos exclusivos para desenvolvimento do time interno Helena.'
-        }, ];
-        const sectionPages = {
-            rotinas: 'rotinas',
-            onboarding: 'onboarding',
-            operacional: 'operacional',
-            gestao: 'gestao',
-            procedimentos: 'procedimentos',
-            dashboards: 'dashboards',
-            cultura: 'cultura'
-        };
+const searchIndex = [{
+    id: 'check-in',
+    section: 'rotinas',
+    sectionLabel: 'Rotinas do Time',
+    title: 'Check-in Semanal',
+    preview: 'Reunião segunda-feira 14h, estratégias da semana, métricas da carteira.'
+}, {
+    id: 'check-out',
+    section: 'rotinas',
+    sectionLabel: 'Rotinas do Time',
+    title: 'Check-out Semanal',
+    preview: 'Sexta-feira, resultados da semana, conquistas, desafios, aprendizados.'
+}, {
+    id: 'cumbuca',
+    section: 'rotinas',
+    sectionLabel: 'Rotinas do Time',
+    title: 'Cumbuca',
+    preview: 'Encontro semanal de leitura do livro do time.'
+}, {
+    id: 'emv',
+    section: 'rotinas',
+    sectionLabel: 'Rotinas do Time',
+    title: 'Avaliação de EMV',
+    preview: 'Avaliação trimestral do Engagement Maturity Value dos parceiros.'
+}, {
+    id: 'fechamentos',
+    section: 'rotinas',
+    sectionLabel: 'Rotinas do Time',
+    title: 'Acompanhar Fechamentos do Comercial',
+    preview: 'Planilha F+1 – Fechou mais um HELENA CRM.'
+}, {
+    id: 'ferias',
+    section: 'rotinas',
+    sectionLabel: 'Rotinas do Time',
+    title: 'Solicitação de Férias',
+    preview: 'E-mail ao DP até dia 10, mínimo 30 dias de antecedência.'
+}, {
+    id: 'distribuicao',
+    section: 'onboarding',
+    sectionLabel: 'Processos de Onboarding',
+    title: 'Distribuição',
+    preview: 'Fluxo após formulário Fechou +1, etiquetas e padronização.'
+}, {
+    id: 'kickoff',
+    section: 'onboarding',
+    sectionLabel: 'Processos de Onboarding',
+    title: 'Kick Off',
+    preview: 'Primeira reunião com parceiro, template KickOff 2026, coleta de dados.'
+}, {
+    id: 'configurar-ambiente',
+    section: 'onboarding',
+    sectionLabel: 'Processos de Onboarding',
+    title: 'Configurar Ambiente',
+    preview: 'Criação da conta da empresa do parceiro, planos, valores.'
+}, {
+    id: 'conexoes',
+    section: 'onboarding',
+    sectionLabel: 'Processos de Onboarding',
+    title: 'Conexões',
+    preview: 'Instagram, Facebook, WhatsApp Z-API e Meta Cloud API.'
+}, {
+    id: 'funcionalidades',
+    section: 'onboarding',
+    sectionLabel: 'Processos de Onboarding',
+    title: 'Funcionalidades Gerais',
+    preview: 'Verificação do uso da plataforma, suporte N1 e N2.'
+}, {
+    id: 'estrategias',
+    section: 'onboarding',
+    sectionLabel: 'Processos de Onboarding',
+    title: 'Primeiras Estratégias',
+    preview: 'Dúvidas gerais e primeiros 4 clientes do parceiro.'
+}, {
+    id: 'cancelamentos',
+    section: 'operacional',
+    sectionLabel: 'Processos Operacionais',
+    title: 'Cancelamentos / Alterações',
+    preview: 'Cancelamento de parceiros, alterações de conta, upsell WL.'
+}, {
+    id: 'suporte',
+    section: 'operacional',
+    sectionLabel: 'Processos Operacionais',
+    title: 'Suporte e Escalações',
+    preview: 'Cards N2, Linha de Crédito Hunion, Apps White Label.'
+}, {
+    id: 'orgao-gov',
+    section: 'operacional',
+    sectionLabel: 'Processos Operacionais',
+    title: 'Órgão Governamental',
+    preview: 'Conexão API Oficial, ticket Meta para órgãos governamentais.'
+}, {
+    id: 'transferencia',
+    section: 'operacional',
+    sectionLabel: 'Processos Operacionais',
+    title: 'Transferência de Titularidade',
+    preview: 'Não permitido por questões de LGPD.'
+}, {
+    id: 'palavras-reservadas',
+    section: 'operacional',
+    sectionLabel: 'Processos Operacionais',
+    title: 'Políticas de Palavras Reservadas',
+    preview: 'zap, zapi, chatbot, Helena – palavras proibidas em URLs.'
+}, {
+    id: 'solicitacoes-meta',
+    section: 'operacional',
+    sectionLabel: 'Processos Operacionais',
+    title: 'Solicitações Meta',
+    preview: 'Abertura e acompanhamento de tickets Meta.'
+}, {
+    id: 'contato-estrategico',
+    section: 'gestao',
+    sectionLabel: 'Gestão de Parceiros',
+    title: 'Contato Estratégico Com Parceiros (mensal)',
+    preview: 'Seleção mensal, análise de maturidade, Office Hours.'
+}, {
+    id: 'acompanhamento-ongoing',
+    section: 'gestao',
+    sectionLabel: 'Gestão de Parceiros',
+    title: 'Acompanhamento Parceiros Em Ongoing',
+    preview: '5 pilares estratégicos, IA Integrativa, precificação.'
+}, {
+    id: 'criacao-ambiente',
+    section: 'procedimentos',
+    sectionLabel: 'Procedimentos Parceiros',
+    title: 'Criação do Ambiente do Parceiro',
+    preview: 'Admin Helena > Parceiros, preencher F+1, ID Integração.'
+}, {
+    id: 'dominio-personalizado',
+    section: 'procedimentos',
+    sectionLabel: 'Procedimentos Parceiros',
+    title: 'Configuração de Domínio Personalizado',
+    preview: 'Subdomínio, DNS, Admin Helena > Domínio Personalizado.'
+}, {
+    id: 'criacao-conta',
+    section: 'procedimentos',
+    sectionLabel: 'Procedimentos Parceiros',
+    title: 'Criação de Conta na Plataforma',
+    preview: 'Super Admin, Admin > Contas, CNPJ, PJ ou PF.'
+}, {
+    id: 'conexao-canal',
+    section: 'procedimentos',
+    sectionLabel: 'Procedimentos Parceiros',
+    title: 'Conexão de Canal',
+    preview: 'API Oficial, Z-API, Instagram, Messenger, portabilidade e demonstração.'
+}, {
+    id: 'conexao-api-oficial',
+    section: 'procedimentos',
+    sectionLabel: 'Procedimentos Parceiros',
+    title: 'API Oficial do WhatsApp',
+    preview: 'Conexão Cloud API Meta, WABA, cartão de crédito, logomarca.'
+}, {
+    id: 'conexao-api-coexistencia',
+    section: 'procedimentos',
+    sectionLabel: 'Procedimentos Parceiros',
+    title: 'API Oficial – Coexistência',
+    preview: 'Dois sistemas coexistindo no mesmo número WhatsApp.'
+}, {
+    id: 'conexao-zapi',
+    section: 'procedimentos',
+    sectionLabel: 'Procedimentos Parceiros',
+    title: 'API Não Oficial (Z-API)',
+    preview: 'Conexão Z-API parceria Helena e conta própria, QR Code.'
+}, {
+    id: 'conexao-instagram-messenger',
+    section: 'procedimentos',
+    sectionLabel: 'Procedimentos Parceiros',
+    title: 'Instagram / Messenger',
+    preview: 'Conexão Instagram e Messenger via página do Facebook.'
+}, {
+    id: 'conexao-portabilidade',
+    section: 'procedimentos',
+    sectionLabel: 'Procedimentos Parceiros',
+    title: 'Portabilidade',
+    preview: 'Migração de número já conectado em outra plataforma.'
+}, {
+    id: 'conexao-demonstracao',
+    section: 'procedimentos',
+    sectionLabel: 'Procedimentos Parceiros',
+    title: 'Canal de Demonstração',
+    preview: 'Conectar número para teste grátis e demonstração.'
+}, {
+    id: 'metabase',
+    section: 'dashboards',
+    sectionLabel: 'Dashboards e Monitoramento',
+    title: 'Metabase – Evolução de Atendimento',
+    preview: 'Usabilidade de clientes, risco de churn por parceiro.'
+}, {
+    id: 'painel-gestao',
+    section: 'dashboards',
+    sectionLabel: 'Dashboards e Monitoramento',
+    title: 'Painel de Gestão a Vista',
+    preview: 'Contas e churn por parceiro/CS.'
+}, {
+    id: 'academia',
+    section: 'cultura',
+    sectionLabel: 'Cultura e Desenvolvimento',
+    title: 'Portal do Parceiro | Academia Helena',
+    preview: 'Treinamentos, materiais de apoio, capacitação de parceiros.'
+}, {
+    id: 'conteudos-time-interno',
+    section: 'cultura',
+    sectionLabel: 'Cultura e Desenvolvimento',
+    title: 'Conteúdos para o Time Interno',
+    preview: 'Cursos e conteúdos exclusivos para desenvolvimento do time interno Helena.'
+}];
+const sectionPages = {
+    rotinas: 'rotinas',
+    onboarding: 'onboarding',
+    operacional: 'operacional',
+    gestao: 'gestao',
+    procedimentos: 'procedimentos',
+    dashboards: 'dashboards',
+    cultura: 'cultura'
+};
 
         function showPage(pageId, pushHistory = true) {
             if (pushHistory && currentPage && currentPage !== pageId) pageHistory.push(currentPage);
