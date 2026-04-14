@@ -2751,14 +2751,17 @@ const sectionPages = {
     cultura: 'cultura'
 };
 
-        function showPage(pageId, pushHistory = true) {
-            if (pushHistory && currentPage && currentPage !== pageId) pageHistory.push(currentPage);
-            document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
-            const el = document.getElementById('page-' + pageId);
-            if (el) {
-                el.classList.add('active');
-                currentPage = pageId;
-            }
+function showPage(pageId, pushHistory = true) {
+    if (pushHistory && currentPage && currentPage !== pageId) pageHistory.push(currentPage);
+    if (pushHistory) {
+        window.location.hash = pageId === 'home' ? '' : pageId;
+    }
+    document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
+    const el = document.getElementById('page-' + pageId);
+    if (el) {
+        el.classList.add('active');
+        currentPage = pageId;
+    }
             document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
             const match = [...document.querySelectorAll('.nav-item')].find(i => i.getAttribute('onclick') && i.getAttribute('onclick').includes("'" + pageId + "'"));
             if (match) match.classList.add('active');
@@ -2881,17 +2884,18 @@ const sectionPages = {
         function toggleMobile() {
             document.getElementById('sidebar').classList.toggle('open');
         }
-        document.addEventListener('DOMContentLoaded', function() {
-            showPage('home');
-            const sectionPageMap = {
-                rotinas: 'rotinas',
-                onboarding: 'onboarding',
-                operacional: 'operacional',
-                gestao: 'gestao',
-                procedimentos: 'procedimentos',
-                dashboards: 'dashboards',
-                cultura: 'cultura'
-            };
+document.addEventListener('DOMContentLoaded', function() {
+    const hash = window.location.hash.replace('#', '');
+    showPage(hash || 'home');
+    const sectionPageMap = {
+        rotinas: 'rotinas',
+        onboarding: 'onboarding',
+        operacional: 'operacional',
+        gestao: 'gestao',
+        procedimentos: 'procedimentos',
+        dashboards: 'dashboards',
+        cultura: 'cultura'
+    };
             const pageParentMap = {};
             searchIndex.forEach((item) => {
                 const sectionId = sectionPageMap[item.section];
