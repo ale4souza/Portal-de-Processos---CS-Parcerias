@@ -13,7 +13,7 @@
 <body>
     <!-- SIDEBAR -->
     <nav id="sidebar">
-        <div class="sidebar-logo" onclick="showPage('home')" style="cursor:pointer;">
+        <div class="sidebar-logo" onclick="showPage('home'); document.querySelectorAll('.nav-cat').forEach(c => c.classList.remove('active','open')); document.querySelectorAll('.nav-items').forEach(n => n.classList.remove('open'));" style="cursor:pointer;">
             <img src="logo helena.png" alt="Helena CRM" style="height:36px;width:auto;object-fit:contain;max-width:180px;">
             <div class="logo-sub" style="display:none;">CS Parcerias</div>
         </div>
