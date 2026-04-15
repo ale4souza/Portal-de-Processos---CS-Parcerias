@@ -3064,7 +3064,7 @@
                 window.location.hash = pageId === 'home' ? '' : pageId;
             }
             document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
-            const el = document.getElementById('page-' + pageId);
+            const el = document.getElementById('page-' + pageId) || document.getElementById(pageId);
             if (el) {
                 el.classList.add('active');
                 currentPage = pageId;
