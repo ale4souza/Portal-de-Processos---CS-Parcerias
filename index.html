@@ -2311,16 +2311,85 @@
                 </div>
             </div>
             <!-- PAGE: CONEXAO API COEXISTENCIA -->
-            <div id="page-conexao-api-coexistencia" class="page-view">
-                <div class="page-header">
-                    <div class="page-tag">🗂️ Procedimentos Parceiros › <span onclick="showPage('conexao-canal')" style="cursor:pointer;text-decoration:underline;">Conexão de Canal</span></div>
-                    <div class="page-title">🔀 API Oficial – Coexistência</div>
-                    <div class="page-desc">Funcionamento de dois sistemas no mesmo número WhatsApp simultaneamente.</div>
-                </div>
-                <div class="content-body">
-                    <div class="callout-block"><span class="ci">💡</span><span>Adicione aqui o conteúdo sobre coexistência.</span></div>
-                </div>
-            </div>
+<div id="page-conexao-api-coexistencia" class="page-view">
+    <div class="page-header">
+        <div class="page-tag">🗂️ Procedimentos Parceiros › <span onclick="showPage('conexao-canal')" style="cursor:pointer;text-decoration:underline;">Conexão de Canal</span></div>
+        <div class="page-title">🔀 API Oficial – Coexistência (QR Code)</div>
+        <div class="page-desc">Vincule sua conta WhatsApp à plataforma via QR Code, permitindo o uso simultâneo do app e da API Oficial.</div>
+    </div>
+    <div class="content-body">
+
+        <div class="callout-block"><span class="ci">💡</span><span>O processo envolve duas etapas: <strong>(1)</strong> adicionar o número ao portfólio empresarial no Meta Business Manager e <strong>(2)</strong> conectar na plataforma via QR Code.</span></div>
+
+        <h2>Pré-requisitos</h2>
+        <ul>
+            <li>Ter um número de telefone cadastrado no WhatsApp Business.</li>
+            <li>Ter um Portfólio Empresarial (Meta Business Manager).</li>
+            <li>Ser um usuário com perfil de <strong>administrador</strong> na plataforma.</li>
+            <li>Ter a página do Facebook atrelada à conta do WhatsApp Business.</li>
+            <li>Ter acesso ao aplicativo <strong>WhatsApp Business</strong> no celular para receber o código da Meta e escanear o QR Code.</li>
+        </ul>
+
+        <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
+        <h2>Parte 1 — Adicionar número ao Portfólio Empresarial</h2>
+
+        <ol class="step-list">
+            <li>Acesse <a href="https://business.facebook.com/" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">business.facebook.com</a> e clique em <strong>Configurações de Negócio</strong>.</li>
+            <li>No menu lateral esquerdo, clique em <strong>Contas do WhatsApp</strong>. Role até o final da lateral direita e clique em <strong>Gerenciador do WhatsApp</strong>.</li>
+            <li>Na nova aba exibida, clique em <strong>+ Adicionar</strong>.</li>
+            <li>Insira o número que deseja conectar e clique em <strong>Continuar</strong>.</li>
+            <li>Insira o código de verificação enviado para o app WhatsApp Business e clique em <strong>Continuar</strong>.</li>
+            <li>Uma janela confirmará que a conta foi adicionada ao portfólio. Clique em <strong>Concluir</strong>.</li>
+        </ol>
+
+        <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
+        <h2>Parte 2 — Conectar na plataforma via QR Code</h2>
+
+        <ol class="step-list">
+            <li>No menu principal da plataforma, acesse <strong>Ajustes → Conta → Canais de Atendimento</strong> e clique no botão <strong>+</strong>.</li>
+            <li>Clique em <strong>WhatsApp QR Code</strong> → <strong>Cloud Meta (QRCode)</strong>.</li>
+            <li>Clique em <strong>Entrar com Facebook</strong> e faça login com sua conta.</li>
+            <li>Selecione o <strong>Portfólio Empresarial</strong>, confira os dados (nome, site e país) e clique em <strong>Avançar</strong>.</li>
+            <li>Em <strong>Selecione sua configuração</strong>, marque a opção <strong>Conecte seu app WhatsApp Business existente</strong> e clique em <strong>Avançar</strong>.</li>
+            <li>Informe o código do país (BR +55) e insira o número que deseja conectar.</li>
+            <li>A Meta enviará um código para o <strong>app do WhatsApp Business</strong>. Insira o código recebido e clique em <strong>Avançar</strong>.</li>
+            <li>Confirme o <strong>Display Name</strong> e o fuso horário e clique em <strong>Avançar</strong>.</li>
+            <li>Clique em <strong>Continuar</strong> para seguir com a conexão à hunion.</li>
+            <li>Chegará uma mensagem no app WhatsApp Business — clique nela e faça a <strong>leitura do QR Code</strong>.</li>
+            <li>Clique em <strong>Adicionar forma de pagamento</strong> e depois em <strong>Continuar</strong>.</li>
+            <li>Selecione o número que está integrando e clique em <strong>Continuar</strong>.</li>
+            <li>Clique em <strong>Finalizar</strong> para concluir o processo.</li>
+        </ol>
+
+        <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
+        <h2>⚠️ Considerações Finais</h2>
+
+        <div class="warning-block"><span class="ci">⚠️</span><span>Nem todos os números são elegíveis. A Meta avalia o histórico de uso antes de permitir a vinculação. Se o número não for elegível, uma mensagem de aviso será exibida e o cliente deverá usar a conexão padrão.</span></div>
+
+        <ul>
+            <li>O <strong>WhatsApp Desktop para Windows</strong> não será compatível após a migração.</li>
+            <li>A sincronização de contatos, números e conversas <strong>ainda não está disponível</strong>.</li>
+            <li>Funcionalidades como Canais, Status, enquetes, eventos e localização em tempo real <strong>não são suportadas</strong> na API Oficial, mas ainda funcionam no app.</li>
+            <li>O uso de modelos de mensagem e janela de conversa seguem as regras da API Oficial.</li>
+            <li>Após reiniciar uma conversa pelo app, é necessário aguardar o contato responder para continuar pela plataforma.</li>
+            <li>O app WhatsApp Business deve ser utilizado <strong>ao menos uma vez a cada 15 dias</strong>.</li>
+            <li>É possível vincular e desvincular o número a qualquer momento.</li>
+        </ul>
+
+        <h2>O que muda no app WhatsApp Business</h2>
+        <ul>
+            <li>Não será possível criar novas <strong>Listas de Transmissão</strong> — as existentes ficarão como somente leitura.</li>
+            <li>Todos os outros dispositivos (WhatsApp Web etc.) serão desconectados, mas poderão ser reconectados após o vínculo.</li>
+            <li>Não será possível <strong>editar ou excluir mensagens</strong> após o vínculo.</li>
+            <li>Mensagens que desaparecem e visualização única <strong>não poderão ser usadas</strong>.</li>
+        </ul>
+        <div class="callout-block"><span class="ci">💡</span><span>Apesar da facilidade de conexão via QR Code, essa versão deve ser usada com cautela em projetos maiores, especialmente quando há dependência da integridade total das mensagens trocadas.</span></div>
+                     
+    </div>
+</div>
+
+                
+                    
             <!-- PAGE: CONEXAO ZAPI -->
             <div id="page-conexao-zapi" class="page-view">
                 <div class="page-header">
