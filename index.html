@@ -2490,43 +2490,109 @@
                     <div class="warning-block"><span class="ci">⚠️</span><span>Se depois de tudo feito não estiver enviando ou recebendo Direct na plataforma, pode ser porque o tipo da conta do Instagram <strong>NÃO É Profissional → Empresarial</strong>. Acesse as configurações do Instagram no APP e faça a modificação.</span></div>
                 </div>
             </div>
-            <!-- PAGE: CONEXAO PORTABILIDADE -->
-            <div id="page-conexao-portabilidade" class="page-view">
-                <div class="page-header">
-                    <div class="page-tag">🗂️ Procedimentos Parceiros › <span onclick="showPage('conexao-canal')" style="cursor:pointer;text-decoration:underline;">Conexão de Canal</span></div>
-                    <div class="page-title">🔄 Portabilidade</div>
-                    <div class="page-desc">Migração de número já conectado em outra plataforma para a API Oficial.</div>
-                </div>
-                <div class="content-body">
-                    <h2>Passo 1. Verificar a conta empresarial (BM)</h2>
-                    <p>Acesse a conta empresarial e clique no menu <strong>Centro de Segurança</strong>. Clique em <strong>Iniciar Verificação</strong> e siga os passos do formulário da Meta.</p>
-                    <img src="Conexao 29.png" alt="Centro de Segurança - Verificação da BM" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-                    <div class="callout-block"><span class="ci">💡</span><span>Se a conta empresarial não for verificada, é necessário enviar documentos (Cartão CNPJ ou Alvará de Funcionamento) e informar um telefone ou e-mail. A verificação pode levar até 48h — faça antes da data da conexão.</span></div>
-                    <h2>Passo 2. Desative a autenticação em dois fatores</h2>
-                    <p>Siga os passos para associar uma logomarca ao número. Quando chegar nas configurações do telefone, clique em <strong>Confirmação em duas etapas</strong> e depois em <strong>Desativar</strong>. Um e-mail será enviado — acesse-o e clique no link para desativar.</p>
-                    <img src="Conexao 30.png" alt="Confirmação em duas etapas" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-                    <h2>Passo 3. Inicie a conexão de um número por portabilidade</h2>
-                    <p>Acesse a plataforma, vá no menu <strong>Ajustes → Conta</strong> e depois na aba <strong>Canais de Atendimento</strong>. Clique no botão <strong>+</strong> e inicie uma conexão com o WhatsApp na Cloud API.</p>
-                    <img src="Conexao 31.png" alt="Canais de Atendimento para portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-                    <h2>Passo 4. Selecione a opção de migração</h2>
-                    <p>Na tela seguinte selecione a opção de migração e clique em Iniciar.</p>
-                    <img src="Conexao 32.png" alt="Seleção de migração" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-                    <h2>Passo 5. Defina o número a ser migrado e acesse a BM</h2>
-                    <p>Avance até a tela de definição de número e informe o número de telefone a ser migrado. Na tela seguinte faça login no Facebook para acessar a conta empresarial (BM) na qual o número está conectado.</p>
-                    <img src="Conexao 33.png" alt="Número a ser migrado e acesso à BM de origem" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-                    <div class="warning-block"><span class="ci">⚠️</span><span>
-                            <ul style="margin-top:6px;">
-                                <li>É possível migrar o número de WABA. Porém <strong>NÃO é possível</strong> migrar o número de BM. Após a migração o número continuará associado ao mesmo Gerenciador de Negócios.</li>
-                                <li>Se sua intenção for mudar o número para outra BM, será necessário desconectar e fazer uma nova integração.</li>
-                            </ul>
-                        </span></div>
-                    <h2>Passo 6. Avance pelo wizard do Facebook</h2>
-                    <p>Continue avançando pelas telas do Facebook — o procedimento é o mesmo que para conectar um número novo (passos 6 ao 9). Conclua quando chegar na tela que dá acesso à hunion para conectar à WABA.</p>
-                    <img src="Conexao 34.png" alt="Wizard do Facebook" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-                    <h2>Passo 7. Finalize dentro da plataforma</h2>
-                    <p>Associe um pagamento na nova WABA, valide que a autenticação em dois fatores está desativada, e prossiga até a tela de envio do código de verificação. Ao final digite o código recebido e avance até finalizar.</p>
-                </div>
-            </div>
+<!-- PAGE: PORTABILIDADE API OFICIAL -->
+<div id="page-portabilidade-api-oficial" class="page-view">
+    <div class="page-header">
+        <div class="page-tag">🗂️ Procedimentos Parceiros › <span onclick="showPage('conexao-canal')" style="cursor:pointer;text-decoration:underline;">Conexão de Canal</span></div>
+        <div class="page-title">🔄 API Oficial – Portabilidade de Número</div>
+        <div class="page-desc">Migre seu número da API Oficial de outro provedor para a HelenaCRM sem perder qualidade, histórico e reputação.</div>
+    </div>
+
+    <div class="content-body">
+
+        <div class="callout-block">
+            <span class="ci">💡</span>
+            <span>A portabilidade permite manter o mesmo número, preservando <strong>qualidade, templates e histórico</strong>, sem necessidade de criar uma nova conta na Meta.</span>
+        </div>
+
+        <h2>O que é a portabilidade?</h2>
+        <p>
+            A portabilidade é o processo de migrar um número já conectado à API Oficial do WhatsApp de outro provedor para a infraestrutura da HelenaCRM.
+            Esse processo é homologado pela Meta e mantém o histórico e reputação do número.
+        </p>
+
+        <h2>Pré-requisitos</h2>
+        <ul>
+            <li>O número deve estar conectado à <strong>API Oficial da Meta</strong> com outro provedor;</li>
+            <li>Estar vinculado a um <strong>portfólio empresarial verificado</strong>;</li>
+            <li>Ter acesso de <strong>administrador</strong> ao Gerenciador de Negócios;</li>
+            <li>A <strong>verificação em dois fatores da WABA deve estar desativada</strong>;</li>
+            <li>O número deve estar <strong>ativo e apto a receber chamadas</strong> (código será via ligação);</li>
+        </ul>
+
+        <div class="warning-block">
+            <span class="ci">⚠️</span>
+            <span>Antes de iniciar, valide se o <strong>Display Name</strong> está correto enviando uma mensagem para um número que nunca interagiu com ele.</span>
+        </div>
+
+        <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
+
+        <h2>Passo a passo da portabilidade</h2>
+
+        <ol class="step-list">
+            <li>Acesse o <strong>Gerenciador de Negócios da Meta</strong> e valide se o portfólio está verificado.</li>
+
+            <li>Desative a <strong>autenticação em dois fatores (2FA)</strong> da WABA.</li>
+
+            <li>Na plataforma, acesse <strong>Ajustes → Conta → Canais de Atendimento</strong> e clique no botão <strong>+</strong>.</li>
+
+            <li>Selecione a opção <strong>Migrar número</strong> e clique em <strong>Iniciar</strong>.</li>
+
+            <li>Revise as instruções e clique em <strong>Continuar</strong>.</li>
+
+            <li>Digite o número que será migrado e clique em <strong>Continuar</strong>.</li>
+
+            <li>Faça login com sua conta do <strong>Facebook</strong>.</li>
+
+            <li>Confirme a conta utilizada para login.</li>
+
+            <li>Aceite os termos de conexão e clique em <strong>Começar</strong>.</li>
+
+            <li>Confira os dados da empresa e clique em <strong>Avançar</strong>.</li>
+
+            <li>Selecione ou crie a <strong>WABA</strong> onde o número será transferido.</li>
+
+            <li>Aceite as permissões e clique em <strong>Continuar</strong>.</li>
+
+            <li>Finalize o processo no pop-up clicando em <strong>Concluir</strong>.</li>
+
+            <li>Configure a <strong>forma de pagamento</strong> no Gerenciador de Negócios e clique em <strong>Continuar</strong>.</li>
+
+            <li>Confirme a <strong>desativação do 2FA</strong> e clique em <strong>Continuar</strong>.</li>
+
+            <li>Escolha como deseja receber o código de verificação (ligação).</li>
+
+            <li>Insira o código recebido e clique em <strong>Continuar</strong>.</li>
+
+            <li>Clique em <strong>Finalizar</strong> para concluir a portabilidade.</li>
+        </ol>
+
+        <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
+
+        <h2>⚠️ Considerações importantes</h2>
+
+        <ul>
+            <li>É possível migrar o número entre WABAs, mas <strong>não entre Portfólios Empresariais (BM)</strong>;</li>
+            <li>Para mudar de BM, será necessário <strong>remover o número e conectar novamente</strong>;</li>
+            <li>Se o número estiver em uma <strong>URA</strong>, ela deve ser desativada para receber o código;</li>
+        </ul>
+
+        <h2>O que é preservado na portabilidade?</h2>
+
+        <ul>
+            <li>✅ Qualidade e reputação do número;</li>
+            <li>✅ Templates já aprovados;</li>
+            <li>✅ Histórico de relacionamento com a Meta;</li>
+            <li>✅ Vinculação ao Gerenciador de Negócios;</li>
+        </ul>
+
+        <div class="callout-block">
+            <span class="ci">💡</span>
+            <span>A portabilidade é o caminho ideal para trocar de provedor sem perder performance ou histórico do número.</span>
+        </div>
+
+    </div>
+</div>
             <!-- PAGE: CONEXAO DEMONSTRACAO -->
             <div id="page-conexao-demonstracao" class="page-view">
                 <div class="page-header">
