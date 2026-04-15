@@ -223,6 +223,12 @@
                         <div class="card-desc">Criação de ambiente, domínio personalizado e conta na plataforma.</div>
                         <div class="card-count">↗ 4 processos</div>
                     </div>
+                        <div class="section-card" onclick="openSection('bonificacoes')">
+                        <div class="card-icon">💰</div>
+                        <div class="card-title">Bonificações</div>
+                        <div class="card-desc">Processos de upsell de app personalizado e domínio personalizado.</div>
+                        <div class="card-count">↗ 1 processo</div>
+                    </div>
                     <div class="section-card" onclick="openSection('dashboards')">
                         <div class="card-icon">📊</div>
                         <div class="card-title">Dashboards e Monitoramento</div>
@@ -2452,6 +2458,101 @@
                     <img src="Conexao 38.png" alt="Remover canal da conta" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
                 </div>
             </div>
+            
+            <!-- SECTION: BONIFICACOES -->
+<div id="page-bonificacoes" class="page-view">
+    <div class="page-header">
+        <div class="page-tag">💰 Bonificações</div>
+        <div class="page-title">Bonificações</div>
+        <div class="page-desc">Processos de upsell e contratação de serviços adicionais para parceiros.</div>
+    </div>
+    <div class="sub-grid">
+        <div class="sub-card" onclick="showPage('upsell-app-dominio')">
+            <div class="sub-card-icon">⬆️</div>
+            <div class="sub-card-title">POP – Upsell de App Personalizado e Domínio Personalizado</div>
+            <div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div>
+        </div>
+    </div>
+</div>
+
+<!-- PAGE: UPSELL APP DOMINIO -->
+<div id="page-upsell-app-dominio" class="page-view">
+    <div class="page-header">
+        <div class="page-tag">💰 Bonificações</div>
+        <div class="page-title">POP – Upsell de App Personalizado e Domínio Personalizado</div>
+        <div class="page-desc">Orientações para o processo de upsell de app personalizado (whitelabel) e domínio personalizado.</div>
+    </div>
+    <div class="content-body">
+        <div class="callout-block"><span class="ci">💡</span><span>A principal diferença entre o White Label Pró e o White Label Premium é a disponibilidade de <strong>app personalizado</strong> e <strong>domínio personalizado</strong>. Caso o parceiro solicite migração do Pró para o Premium, basta seguir este POP realizando a contratação e implantação de ambos os serviços. Se houver interesse em contratar apenas um dos itens, o analista deve seguir o fluxo correspondente ao serviço solicitado.</span></div>
+
+        <h2>Objetivo</h2>
+        <p>Orientar o analista no processo de upsell de app personalizado (whitelabel) e domínio personalizado.</p>
+
+        <h2>Regra Geral</h2>
+        <div class="warning-block"><span class="ci">⚠️</span><span><strong>MUITO IMPORTANTE:</strong>
+            <ul style="margin-top:8px;">
+                <li>Todo o processo de contratação deve ser feito via CS.</li>
+                <li>É obrigatório ter confirmação por mensagem (WhatsApp/plataforma) <strong>OU</strong> reunião gravada com o aceite do parceiro.</li>
+                <li>Sem isso, <strong>não seguir com o processo.</strong></li>
+            </ul>
+        </span></div>
+
+        <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
+        <h2>🌐 Domínio Personalizado</h2>
+        <h3>Condições Comerciais</h3>
+        <div class="info-row"><span class="info-key">Valor</span><span class="info-val">R$ 190,00/mês</span></div>
+        <div class="info-row"><span class="info-key">Com app personalizado</span><span class="info-val">R$ 100,00/mês</span></div>
+        <div class="info-row"><span class="info-key">Taxa de setup</span><span class="info-val">❌ Não possui</span></div>
+
+        <h3>Processo</h3>
+        <ol class="step-list">
+            <li>Confirmar aceite do parceiro (mensagem ou gravação).</li>
+            <li>Preencher o <strong>Alterou+1</strong>:
+                <ul style="margin-top:8px;">
+                    <li>Tipo da Alteração: <span class="badge badge-green">Alteração de Plano (Upsell ou Downsell)</span></li>
+                    <li>Novos Adicionais: <span class="badge badge-green">+ App Personalizado (WL)</span> e <span class="badge badge-green">Domínio Próprio (WL)</span></li>
+                </ul>
+            </li>
+            <li>Incluir informações do upsell.</li>
+            <li>Enviar para o parceiro o POP de domínio personalizado e artigo correspondente.</li>
+        </ol>
+
+        <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
+        <h2>📱 App Personalizado (Whitelabel)</h2>
+        <h3>Condições Comerciais — Setup</h3>
+        <div class="info-row"><span class="info-key">Valor</span><span class="info-val">R$ 3.000,00</span></div>
+        <div class="info-row"><span class="info-key">Desconto à vista (PIX)</span><span class="info-val">Até 12%</span></div>
+        <div class="info-row"><span class="info-key">Parcelamento</span><span class="info-val">Até 6x sem juros</span></div>
+        <div class="callout-block"><span class="ci">👉</span><span>Recomendado: começar oferecendo em 3x e negociar conforme necessidade.</span></div>
+
+        <h3>Condições Comerciais — Mensalidade</h3>
+        <div class="info-row"><span class="info-key">Valor</span><span class="info-val">R$ 800,00/mês</span></div>
+        <div class="info-row"><span class="info-key">Início da cobrança</span><span class="info-val">Após publicação do app</span></div>
+
+        <h3>Processo</h3>
+        <ol class="step-list">
+            <li>Confirmar aceite do parceiro: mensagem (WhatsApp/plataforma) ou reunião gravada.</li>
+            <li>Preencher o <strong>Alterou+1</strong>:
+                <ul style="margin-top:8px;">
+                    <li>Selecionar opção: <span class="badge badge-green">Upsell</span></li>
+                    <li>Detalhar condições do setup (valor, desconto ou parcelamento) e mensalidade.</li>
+                </ul>
+            </li>
+            <li>Utilizar como base o POP de implantação de app whitelabel e documentações em <a href="https://docs.helena.app" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">docs.helena.app</a>.</li>
+            <li>Enviar para o parceiro o POP de implantação e materiais/documentações necessárias.</li>
+        </ol>
+
+        <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
+        <h2>✅ Boas Práticas</h2>
+        <ul>
+            <li>Sempre documentar claramente o acordo.</li>
+            <li>Evitar iniciar processo sem aceite formal.</li>
+            <li>Garantir que o parceiro entenda quando começa a cobrança e a diferença entre setup e mensalidade.</li>
+            <li>Priorizar clareza na negociação, principalmente no setup.</li>
+        </ul>
+    </div>
+</div>
+            
             <!-- SECTION: DASHBOARDS -->
             <div id="page-dashboards" class="page-view">
                 <div class="page-header">
@@ -2759,7 +2860,15 @@
             sectionLabel: 'Procedimentos Parceiros',
             title: 'Canal de Demonstração',
             preview: 'Conectar número para teste grátis e demonstração.'
-        }, {
+        }, 
+                   }, {
+    id: 'upsell-app-dominio',
+    section: 'bonificacoes',
+    sectionLabel: 'Bonificações',
+    title: 'POP – Upsell de App Personalizado e Domínio Personalizado',
+    preview: 'Upsell de app whitelabel e domínio personalizado, condições comerciais e processo.'},          
+                             
+                             {
             id: 'metabase',
             section: 'dashboards',
             sectionLabel: 'Dashboards e Monitoramento',
@@ -2936,6 +3045,7 @@
                 operacional: 'operacional',
                 gestao: 'gestao',
                 procedimentos: 'procedimentos',
+                bonificacoes: 'bonificacoes',
                 dashboards: 'dashboards',
                 cultura: 'cultura'
             };
