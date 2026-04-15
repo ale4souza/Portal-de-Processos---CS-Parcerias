@@ -107,18 +107,18 @@
                 </div>
             </div>
             <div class="nav-section">
-    <div class="nav-cat" data-section="bonificacoes" onclick="toggleCat(this,'bonificacoes')">
-        <div class="nav-cat-icon">💰</div>
-        <div class="nav-cat-label">Bonificações</div>
-        <svg class="nav-chevron" viewBox="0 0 24 24" stroke-width="2">
-            <path d="m9 18 6-6-6-6" />
-        </svg>
-    </div>
-    <div class="nav-items" id="nav-bonificacoes">
-        <div class="nav-item" onclick="showPage('upsell-app-dominio')">Upsell de App e Domínio</div>
-        <div class="nav-item" onclick="showPage('bonificacao-ongoing')">Bonificação Onboarding</div>
-    </div>
-     </div>
+                <div class="nav-cat" data-section="bonificacoes" onclick="toggleCat(this,'bonificacoes')">
+                    <div class="nav-cat-icon">💰</div>
+                    <div class="nav-cat-label">Bonificações</div>
+                    <svg class="nav-chevron" viewBox="0 0 24 24" stroke-width="2">
+                        <path d="m9 18 6-6-6-6" />
+                    </svg>
+                </div>
+                <div class="nav-items" id="nav-bonificacoes">
+                    <div class="nav-item" onclick="showPage('upsell-app-dominio')">Upsell de App e Domínio</div>
+                    <div class="nav-item" onclick="showPage('bonificacao-ongoing')">Bonificação Onboarding</div>
+                </div>
+            </div>
             <div class="nav-section">
                 <div class="nav-cat" data-section="dashboards" onclick="toggleCat(this,'dashboards')">
                     <div class="nav-cat-icon">📊</div>
@@ -224,7 +224,7 @@
                         <div class="card-desc">Criação de ambiente, domínio personalizado e conta na plataforma.</div>
                         <div class="card-count">↗ 4 processos</div>
                     </div>
-                        <div class="section-card" onclick="openSection('bonificacoes')">
+                    <div class="section-card" onclick="openSection('bonificacoes')">
                         <div class="card-icon">💰</div>
                         <div class="card-title">Bonificações</div>
                         <div class="card-desc">Processos de upsell de app personalizado e domínio personalizado.</div>
@@ -2312,108 +2312,95 @@
                 </div>
             </div>
             <!-- PAGE: CONEXAO API COEXISTENCIA -->
-<div id="page-conexao-api-coexistencia" class="page-view">
-    <div class="page-header">
-        <div class="page-tag">🗂️ Procedimentos Parceiros › <span onclick="showPage('conexao-canal')" style="cursor:pointer;text-decoration:underline;">Conexão de Canal</span></div>
-        <div class="page-title">🔀 API Oficial – Coexistência (QR Code)</div>
-        <div class="page-desc">Vincule sua conta WhatsApp à plataforma via QR Code, permitindo o uso simultâneo do app e da API Oficial.</div>
-    </div>
-    <div class="content-body">
-
-        <div class="callout-block"><span class="ci">💡</span><span>O processo envolve duas etapas: <strong>(1)</strong> adicionar o número ao portfólio empresarial no Meta Business Manager e <strong>(2)</strong> conectar na plataforma via QR Code.</span></div>
-
-        <h2>Pré-requisitos</h2>
-        <ul>
-            <li>Ter um número de telefone cadastrado no WhatsApp Business.</li>
-            <li>Ter um Portfólio Empresarial (Meta Business Manager).</li>
-            <li>Ser um usuário com perfil de <strong>administrador</strong> na plataforma.</li>
-            <li>Ter a página do Facebook atrelada à conta do WhatsApp Business.</li>
-            <li>Ter acesso ao aplicativo <strong>WhatsApp Business</strong> no celular para receber o código da Meta e escanear o QR Code.</li>
-        </ul>
-
-        <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
-        <h2>Parte 1 — Adicionar número ao Portfólio Empresarial</h2>
-
-        <ol class="step-list">
-            <li>Acesse <a href="https://business.facebook.com/" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">business.facebook.com</a> e clique em <strong>Configurações de Negócio</strong>.</li>
-            <img src="Conexão Coexistencia 01.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-            <li>No menu lateral esquerdo, clique em <strong>Contas do WhatsApp</strong>. Role até o final da lateral direita e clique em <strong>Gerenciador do WhatsApp</strong>.</li>
-            <img src="Conexão Coexistencia 23.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-            <li>Na nova aba exibida, clique em <strong>+ Adicionar</strong>.</li>
-            <img src="Conexão Coexistencia 02.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-            <li>Insira o número que deseja conectar e clique em <strong>Continuar</strong>.</li>
-            <img src="Conexão Coexistencia 03.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-            <li>Insira o código de verificação enviado para o app WhatsApp Business e clique em <strong>Continuar</strong>.</li>
-            <img src="Conexão Coexistencia 04.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-            <li>Uma janela confirmará que a conta foi adicionada ao portfólio. Clique em <strong>Concluir</strong>.</li>
-            <img src="Conexão Coexistencia 05.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-            <li>Após a finalização do processo a tela apresentará os seguintes dados.</li>
-            <img src="Conexão Coexistencia 06.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-        </ol>
-
-        <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
-        <h2>Parte 2 — Conectar na plataforma via QR Code</h2>
-
-        <ol class="step-list">
-            <li>No menu principal da plataforma, acesse <strong>Ajustes → Conta → Canais de Atendimento</strong> e clique no botão <strong>+</strong>.</li>
-            <img src="Conexão Coexistencia 07.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-            <img src="Conexão Coexistencia 08.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-            <li>Clique em <strong>WhatsApp QR Code</strong> → <strong>Cloud Meta (QRCode)</strong>.</li>
-            <img src="Conexão Coexistencia 09.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-            <li>Clique em <strong>Entrar com Facebook</strong> e faça login com sua conta.</li>
-            <img src="Conexão Coexistencia 10.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-            <img src="Conexão Coexistencia 11.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-            <li>Selecione o <strong>Portfólio Empresarial</strong>, confira os dados (nome, site e país) e clique em <strong>Avançar</strong>.</li>
-            <img src="Conexão Coexistencia 12.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-            <li>Em <strong>Selecione sua configuração</strong>, marque a opção <strong>Conecte seu app WhatsApp Business existente</strong> e clique em <strong>Avançar</strong>.</li>
-            <img src="Conexão Coexistencia 13.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-            <li>Informe o código do país (BR +55) e insira o número que deseja conectar.</li>
-            <img src="Conexão Coexistencia 14.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-            <li>A Meta enviará um código para o <strong>app do WhatsApp Business</strong>. Insira o código recebido e clique em <strong>Avançar</strong>.</li>
-            <img src="Conexão Coexistencia 15.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-            <li>Confirme o <strong>Display Name</strong> e o fuso horário e clique em <strong>Avançar</strong>.</li>
-            <img src="Conexão Coexistencia 16.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-            <li>Clique em <strong>Continuar</strong> para seguir com a conexão à hunion.</li>
-            <img src="Conexão Coexistencia 17.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-            <li>Chegará uma mensagem no app WhatsApp Business — clique nela e faça a <strong>leitura do QR Code</strong>.</li>
-            <img src="Conexão Coexistencia 18.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-            <img src="Conexão Coexistencia 19.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-            <li>Clique em <strong>Adicionar forma de pagamento</strong> e depois em <strong>Continuar</strong>.</li>
-            <img src="Conexão Coexistencia 20.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-            <li>Selecione o número que está integrando e clique em <strong>Continuar</strong>.</li>
-            <img src="Conexão Coexistencia 21.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-            <li>Clique em <strong>Finalizar</strong> para concluir o processo.</li>
-            <img src="Conexão Coexistencia 22.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-        </ol>
-
-        <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
-        <h2>⚠️ Considerações Finais</h2>
-
-        <div class="warning-block"><span class="ci">⚠️</span><span>Nem todos os números são elegíveis. A Meta avalia o histórico de uso antes de permitir a vinculação. Se o número não for elegível, uma mensagem de aviso será exibida e o cliente deverá usar a conexão padrão.</span></div>
-
-        <ul>
-            <li>O <strong>WhatsApp Desktop para Windows</strong> não será compatível após a migração.</li>
-            <li>A sincronização de contatos, números e conversas <strong>ainda não está disponível</strong>.</li>
-            <li>Funcionalidades como Canais, Status, enquetes, eventos e localização em tempo real <strong>não são suportadas</strong> na API Oficial, mas ainda funcionam no app.</li>
-            <li>O uso de modelos de mensagem e janela de conversa seguem as regras da API Oficial.</li>
-            <li>Após reiniciar uma conversa pelo app, é necessário aguardar o contato responder para continuar pela plataforma.</li>
-            <li>O app WhatsApp Business deve ser utilizado <strong>ao menos uma vez a cada 15 dias</strong>.</li>
-            <li>É possível vincular e desvincular o número a qualquer momento.</li>
-        </ul>
-
-        <h2>O que muda no app WhatsApp Business</h2>
-        <ul>
-            <li>Não será possível criar novas <strong>Listas de Transmissão</strong> — as existentes ficarão como somente leitura.</li>
-            <li>Todos os outros dispositivos (WhatsApp Web etc.) serão desconectados, mas poderão ser reconectados após o vínculo.</li>
-            <li>Não será possível <strong>editar ou excluir mensagens</strong> após o vínculo.</li>
-            <li>Mensagens que desaparecem e visualização única <strong>não poderão ser usadas</strong>.</li>
-        </ul>
-        <div class="callout-block"><span class="ci">💡</span><span>Apesar da facilidade de conexão via QR Code, essa versão deve ser usada com cautela em projetos maiores, especialmente quando há dependência da integridade total das mensagens trocadas.</span></div>
-                     
-    </div>
-</div>
-
-                               
+            <div id="page-conexao-api-coexistencia" class="page-view">
+                <div class="page-header">
+                    <div class="page-tag">🗂️ Procedimentos Parceiros › <span onclick="showPage('conexao-canal')" style="cursor:pointer;text-decoration:underline;">Conexão de Canal</span></div>
+                    <div class="page-title">🔀 API Oficial – Coexistência (QR Code)</div>
+                    <div class="page-desc">Vincule sua conta WhatsApp à plataforma via QR Code, permitindo o uso simultâneo do app e da API Oficial.</div>
+                </div>
+                <div class="content-body">
+                    <div class="callout-block"><span class="ci">💡</span><span>O processo envolve duas etapas: <strong>(1)</strong> adicionar o número ao portfólio empresarial no Meta Business Manager e <strong>(2)</strong> conectar na plataforma via QR Code.</span></div>
+                    <h2>Pré-requisitos</h2>
+                    <ul>
+                        <li>Ter um número de telefone cadastrado no WhatsApp Business.</li>
+                        <li>Ter um Portfólio Empresarial (Meta Business Manager).</li>
+                        <li>Ser um usuário com perfil de <strong>administrador</strong> na plataforma.</li>
+                        <li>Ter a página do Facebook atrelada à conta do WhatsApp Business.</li>
+                        <li>Ter acesso ao aplicativo <strong>WhatsApp Business</strong> no celular para receber o código da Meta e escanear o QR Code.</li>
+                    </ul>
+                    <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
+                    <h2>Parte 1 — Adicionar número ao Portfólio Empresarial</h2>
+                    <ol class="step-list">
+                        <li>Acesse <a href="https://business.facebook.com/" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">business.facebook.com</a> e clique em <strong>Configurações de Negócio</strong>.</li>
+                        <img src="Conexão Coexistencia 01.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                        <li>No menu lateral esquerdo, clique em <strong>Contas do WhatsApp</strong>. Role até o final da lateral direita e clique em <strong>Gerenciador do WhatsApp</strong>.</li>
+                        <img src="Conexão Coexistencia 23.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                        <li>Na nova aba exibida, clique em <strong>+ Adicionar</strong>.</li>
+                        <img src="Conexão Coexistencia 02.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                        <li>Insira o número que deseja conectar e clique em <strong>Continuar</strong>.</li>
+                        <img src="Conexão Coexistencia 03.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                        <li>Insira o código de verificação enviado para o app WhatsApp Business e clique em <strong>Continuar</strong>.</li>
+                        <img src="Conexão Coexistencia 04.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                        <li>Uma janela confirmará que a conta foi adicionada ao portfólio. Clique em <strong>Concluir</strong>.</li>
+                        <img src="Conexão Coexistencia 05.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                        <li>Após a finalização do processo a tela apresentará os seguintes dados.</li>
+                        <img src="Conexão Coexistencia 06.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                    </ol>
+                    <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
+                    <h2>Parte 2 — Conectar na plataforma via QR Code</h2>
+                    <ol class="step-list">
+                        <li>No menu principal da plataforma, acesse <strong>Ajustes → Conta → Canais de Atendimento</strong> e clique no botão <strong>+</strong>.</li>
+                        <img src="Conexão Coexistencia 07.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                        <img src="Conexão Coexistencia 08.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                        <li>Clique em <strong>WhatsApp QR Code</strong> → <strong>Cloud Meta (QRCode)</strong>.</li>
+                        <img src="Conexão Coexistencia 09.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                        <li>Clique em <strong>Entrar com Facebook</strong> e faça login com sua conta.</li>
+                        <img src="Conexão Coexistencia 10.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                        <img src="Conexão Coexistencia 11.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                        <li>Selecione o <strong>Portfólio Empresarial</strong>, confira os dados (nome, site e país) e clique em <strong>Avançar</strong>.</li>
+                        <img src="Conexão Coexistencia 12.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                        <li>Em <strong>Selecione sua configuração</strong>, marque a opção <strong>Conecte seu app WhatsApp Business existente</strong> e clique em <strong>Avançar</strong>.</li>
+                        <img src="Conexão Coexistencia 13.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                        <li>Informe o código do país (BR +55) e insira o número que deseja conectar.</li>
+                        <img src="Conexão Coexistencia 14.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                        <li>A Meta enviará um código para o <strong>app do WhatsApp Business</strong>. Insira o código recebido e clique em <strong>Avançar</strong>.</li>
+                        <img src="Conexão Coexistencia 15.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                        <li>Confirme o <strong>Display Name</strong> e o fuso horário e clique em <strong>Avançar</strong>.</li>
+                        <img src="Conexão Coexistencia 16.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                        <li>Clique em <strong>Continuar</strong> para seguir com a conexão à hunion.</li>
+                        <img src="Conexão Coexistencia 17.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                        <li>Chegará uma mensagem no app WhatsApp Business — clique nela e faça a <strong>leitura do QR Code</strong>.</li>
+                        <img src="Conexão Coexistencia 18.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                        <img src="Conexão Coexistencia 19.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                        <li>Clique em <strong>Adicionar forma de pagamento</strong> e depois em <strong>Continuar</strong>.</li>
+                        <img src="Conexão Coexistencia 20.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                        <li>Selecione o número que está integrando e clique em <strong>Continuar</strong>.</li>
+                        <img src="Conexão Coexistencia 21.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                        <li>Clique em <strong>Finalizar</strong> para concluir o processo.</li>
+                        <img src="Conexão Coexistencia 22.png" alt="Coexistencia" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                    </ol>
+                    <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
+                    <h2>⚠️ Considerações Finais</h2>
+                    <div class="warning-block"><span class="ci">⚠️</span><span>Nem todos os números são elegíveis. A Meta avalia o histórico de uso antes de permitir a vinculação. Se o número não for elegível, uma mensagem de aviso será exibida e o cliente deverá usar a conexão padrão.</span></div>
+                    <ul>
+                        <li>O <strong>WhatsApp Desktop para Windows</strong> não será compatível após a migração.</li>
+                        <li>A sincronização de contatos, números e conversas <strong>ainda não está disponível</strong>.</li>
+                        <li>Funcionalidades como Canais, Status, enquetes, eventos e localização em tempo real <strong>não são suportadas</strong> na API Oficial, mas ainda funcionam no app.</li>
+                        <li>O uso de modelos de mensagem e janela de conversa seguem as regras da API Oficial.</li>
+                        <li>Após reiniciar uma conversa pelo app, é necessário aguardar o contato responder para continuar pela plataforma.</li>
+                        <li>O app WhatsApp Business deve ser utilizado <strong>ao menos uma vez a cada 15 dias</strong>.</li>
+                        <li>É possível vincular e desvincular o número a qualquer momento.</li>
+                    </ul>
+                    <h2>O que muda no app WhatsApp Business</h2>
+                    <ul>
+                        <li>Não será possível criar novas <strong>Listas de Transmissão</strong> — as existentes ficarão como somente leitura.</li>
+                        <li>Todos os outros dispositivos (WhatsApp Web etc.) serão desconectados, mas poderão ser reconectados após o vínculo.</li>
+                        <li>Não será possível <strong>editar ou excluir mensagens</strong> após o vínculo.</li>
+                        <li>Mensagens que desaparecem e visualização única <strong>não poderão ser usadas</strong>.</li>
+                    </ul>
+                    <div class="callout-block"><span class="ci">💡</span><span>Apesar da facilidade de conexão via QR Code, essa versão deve ser usada com cautela em projetos maiores, especialmente quando há dependência da integridade total das mensagens trocadas.</span></div>
+                </div>
+            </div>
             <!-- PAGE: CONEXAO ZAPI -->
             <div id="page-conexao-zapi" class="page-view">
                 <div class="page-header">
@@ -2438,50 +2425,42 @@
                 </div>
             </div>
             <!-- PAGE: CONEXAO EVOLUTION -->
-<div id="page-conexao-evolution" class="page-view">
-    <div class="page-header">
-        <div class="page-tag">🗂️ Procedimentos Parceiros › <span onclick="showPage('conexao-canal')" style="cursor:pointer;text-decoration:underline;">Conexão de Canal</span></div>
-        <div class="page-title">⚡ Evolution API</div>
-        <div class="page-desc">Conexão via servidor próprio EvolutionAPI — integração não oficial.</div>
-    </div>
-    <div class="content-body">
-
-        <div class="warning-block"><span class="ci">⚠️</span><span>A Evolution API é uma integração <strong>não oficial</strong> e está em fase <strong>Beta</strong>. Para utilizá-la, o parceiro precisa saber criar e gerenciar o próprio servidor EvolutionAPI. <strong>Não oferecemos suporte à configuração ou manutenção do servidor.</strong></span></div>
-
-        <h2>Pré-requisitos</h2>
-        <p>Antes de iniciar a conexão, certifique-se de que o cliente já possua:</p>
-        <ul>
-            <li>Um servidor EvolutionAPI próprio configurado e em funcionamento;</li>
-            <li>O endereço do servidor (URL);</li>
-            <li>O nome da instância criada no servidor;</li>
-            <li>O token da instância.</li>
-        </ul>
-
-        <h2>Passo 1. Acesse Canais de Atendimento</h2>
-        <p>Na plataforma, acesse o menu <strong>Ajustes → Conta</strong> e clique na aba <strong>Canais de Atendimento</strong>. Em seguida, clique no botão <strong>+</strong> para iniciar uma nova conexão.</p>
-        <img src="Conexao EV01.png" alt="Canais de atendimento - novo canal" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-
-        <h2>Passo 2. Selecione a opção EvolutionAPI (Servidor próprio)</h2>
-        <p>No menu de opções, clique em <strong>WhatsApp QRCode</strong> e depois selecione <strong>EvolutionAPI (Servidor próprio)</strong>. Clique em <strong>Iniciar</strong> para prosseguir.</p>
-        <img src="Conexao EV02.png" alt="Seleção EvolutionAPI" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-
-        <h2>Passo 3. Preencha os dados do servidor</h2>
-        <p>Na tela seguinte, preencha os campos com as informações do seu servidor EvolutionAPI:</p>
-        <ul>
-            <li><strong>Endereço do servidor</strong> — URL do seu servidor;</li>
-            <li><strong>Nome da instância</strong> — nome da instância criada no servidor;</li>
-            <li><strong>Token da instância</strong> — token de autenticação da instância.</li>
-        </ul>
-        <p>Após preencher todos os campos, clique em <strong>Continuar</strong>.</p>
-        <img src="Conexao EV03.png" alt="Preencher dados do servidor EvolutionAPI" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-
-        <h2>Passo 4. Conclua a conexão</h2>
-        <p>A plataforma irá se conectar ao seu servidor e a instância estará pronta para uso. Caso a conexão falhe, verifique se o endereço, nome da instância e token estão corretos e se o servidor está acessível.</p>
-
-        <div class="callout-block"><span class="ci">💡</span><span>Problemas com o servidor, instância ou token são de responsabilidade do parceiro. A equipe HelenaCRM não oferece suporte à configuração do servidor EvolutionAPI.</span></div>
-
-    </div>
-</div>
+            <div id="page-conexao-evolution" class="page-view">
+                <div class="page-header">
+                    <div class="page-tag">🗂️ Procedimentos Parceiros › <span onclick="showPage('conexao-canal')" style="cursor:pointer;text-decoration:underline;">Conexão de Canal</span></div>
+                    <div class="page-title">⚡ Evolution API</div>
+                    <div class="page-desc">Conexão via servidor próprio EvolutionAPI — integração não oficial.</div>
+                </div>
+                <div class="content-body">
+                    <div class="warning-block"><span class="ci">⚠️</span><span>A Evolution API é uma integração <strong>não oficial</strong> e está em fase <strong>Beta</strong>. Para utilizá-la, o parceiro precisa saber criar e gerenciar o próprio servidor EvolutionAPI. <strong>Não oferecemos suporte à configuração ou manutenção do servidor.</strong></span></div>
+                    <h2>Pré-requisitos</h2>
+                    <p>Antes de iniciar a conexão, certifique-se de que o cliente já possua:</p>
+                    <ul>
+                        <li>Um servidor EvolutionAPI próprio configurado e em funcionamento;</li>
+                        <li>O endereço do servidor (URL);</li>
+                        <li>O nome da instância criada no servidor;</li>
+                        <li>O token da instância.</li>
+                    </ul>
+                    <h2>Passo 1. Acesse Canais de Atendimento</h2>
+                    <p>Na plataforma, acesse o menu <strong>Ajustes → Conta</strong> e clique na aba <strong>Canais de Atendimento</strong>. Em seguida, clique no botão <strong>+</strong> para iniciar uma nova conexão.</p>
+                    <img src="Conexao EV01.png" alt="Canais de atendimento - novo canal" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                    <h2>Passo 2. Selecione a opção EvolutionAPI (Servidor próprio)</h2>
+                    <p>No menu de opções, clique em <strong>WhatsApp QRCode</strong> e depois selecione <strong>EvolutionAPI (Servidor próprio)</strong>. Clique em <strong>Iniciar</strong> para prosseguir.</p>
+                    <img src="Conexao EV02.png" alt="Seleção EvolutionAPI" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                    <h2>Passo 3. Preencha os dados do servidor</h2>
+                    <p>Na tela seguinte, preencha os campos com as informações do seu servidor EvolutionAPI:</p>
+                    <ul>
+                        <li><strong>Endereço do servidor</strong> — URL do seu servidor;</li>
+                        <li><strong>Nome da instância</strong> — nome da instância criada no servidor;</li>
+                        <li><strong>Token da instância</strong> — token de autenticação da instância.</li>
+                    </ul>
+                    <p>Após preencher todos os campos, clique em <strong>Continuar</strong>.</p>
+                    <img src="Conexao EV03.png" alt="Preencher dados do servidor EvolutionAPI" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                    <h2>Passo 4. Conclua a conexão</h2>
+                    <p>A plataforma irá se conectar ao seu servidor e a instância estará pronta para uso. Caso a conexão falhe, verifique se o endereço, nome da instância e token estão corretos e se o servidor está acessível.</p>
+                    <div class="callout-block"><span class="ci">💡</span><span>Problemas com o servidor, instância ou token são de responsabilidade do parceiro. A equipe HelenaCRM não oferece suporte à configuração do servidor EvolutionAPI.</span></div>
+                </div>
+            </div>
             <!-- PAGE: CONEXAO INSTAGRAM MESSENGER -->
             <div id="page-conexao-instagram-messenger" class="page-view">
                 <div class="page-header">
@@ -2526,121 +2505,97 @@
                     <div class="warning-block"><span class="ci">⚠️</span><span>Se depois de tudo feito não estiver enviando ou recebendo Direct na plataforma, pode ser porque o tipo da conta do Instagram <strong>NÃO É Profissional → Empresarial</strong>. Acesse as configurações do Instagram no APP e faça a modificação.</span></div>
                 </div>
             </div>
-
-<!-- PAGE: CONEXAO PORTABILIDADE -->
-<div id="conexao-portabilidade" class="page-view">
-    <div class="page-header">
-        <div class="page-tag">🗂️ Procedimentos Parceiros › <span onclick="showPage('conexao-canal')" style="cursor:pointer;text-decoration:underline;">Conexão de Canal</span></div>
-        <div class="page-title">🔄 Portabilidade</div>
-        <div class="page-desc">Migração de número com API Oficial de outro provedor para a plataforma HelenaCRM.</div>
-    </div>
-    <div class="content-body">
-
-        <h2>O que é a portabilidade entre provedores da API Oficial?</h2>
-        <p>Portabilidade significa migrar seu número da API Oficial de um provedor atual para a infraestrutura de API usada pela HelenaCRM. É um processo técnico homologado pela Meta que permite que sua empresa mantenha o mesmo número, preservando qualidade e reputação da conta.</p>
-
-        <h2>Pré-requisitos</h2>
-        <ul>
-            <li>O número já está conectado à API Oficial da Meta com outro provedor;</li>
-            <li>O número está vinculado a uma conta do <strong>portfólio empresarial verificado</strong>;</li>
-            <li>Ter acesso de administrador ao Gerenciador de Negócios da Meta;</li>
-            <li>A autenticação em dois fatores da WABA está desativada.</li>
-        </ul>
-        <div class="warning-block"><span class="ci">⚠️</span><span>O número que será migrado deve estar ativo e habilitado para receber chamadas telefônicas, pois o código de verificação da Meta será enviado por ligação durante o processo de portabilidade.</span></div>
-        <div class="callout-block"><span class="ci">💡</span><span>Antes de iniciar o processo de portabilidade, recomendamos verificar se o número exibe corretamente o display name (nome de exibição). Para isso, envie uma mensagem a partir de um número que nunca tenha interagido com ele.</span></div>
-
-        <h2>Passo 1. Conferir se o Portfólio Empresarial é verificado</h2>
-        <p>Acesse o Gerenciador de Negócios da Meta. Na lateral esquerda, role para baixo e clique em <strong>Informações da empresa</strong>. Verifique o Status de verificação da empresa.</p>
-        <img src="portabilidade 01.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-
-        <div class="callout-block"><span class="ci">💡</span><span>Caso a BM não seja verificada seguir esse <a href="https://docs.helena.app/~/changes/204/atalhos/faq/como-verificar-um-portfolio-empresarial-na-meta" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">passo a passo de como verificar um portfólio empresarial na Meta</a></span></div>
-
-        
-        <h2>Passo 2. Desative a autenticação em dois fatores</h2>
-        <p>Siga os passos descritos no <a href="https://docs.helena.app/duvidas-e-novidades/faq/como-desativar-a-autenticacao-em-dois-fatores-no-portfolio-empresarial" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">manual</a> para desativar a autenticação em dois fatores da WABA antes de prosseguir.</p>
-        <img src="portabilidade 02.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-
-        <h2>Passo 3. Inicie a conexão de um número por portabilidade</h2>
-        <p>Acesse a plataforma, clique em <strong>Ajustes → Conta</strong> e, na aba <strong>Canais de Atendimento</strong>, selecione o botão <strong>+</strong> para iniciar uma nova conexão com o WhatsApp via Cloud API.</p>
-        <img src="portabilidade 03.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-        
-        <h2>Passo 4. Selecione a opção de migrar número</h2>
-        <p>Na tela seguinte, selecione a opção de <strong>migrar número</strong> e em seguida clique em <strong>Iniciar</strong>.</p>
-        <img src="portabilidade 04.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-
-        <h2>Passo 5. Revise as instruções e clique em Continuar</h2>
-        <p>Na tela seguinte, revise atentamente as instruções para realizar a portabilidade. Se estiver tudo correto, clique em <strong>Continuar</strong> para prosseguir com o processo.</p>
-         <img src="portabilidade 05.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-
-        <h2>Passo 6. Digite o número a ser migrado</h2>
-        <p>Informe o número que deseja migrar e clique em <strong>Continuar</strong>.</p>
-        <img src="portabilidade 06.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-
-        <h2>Passo 7. Faça login no Facebook</h2>
-        <p>Na tela seguinte, realize o login com sua conta do Facebook vinculada ao Gerenciador de Negócios.</p>
-        <img src="portabilidade 07.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-        <h2>Passo 8. Confirme a conta para login</h2>
-        <p>Confirme a conta que deseja utilizar para o login.</p>
-        <img src="portabilidade 08.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-        <h2>Passo 9. Aceite os termos de conexão</h2>
-        <p>Após aceitar os termos de conexão com a Hunion.io, clique em <strong>Começar</strong> para prosseguir.</p>
-        <img src="portabilidade 09.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-        <h2>Passo 10. Confira os dados da empresa</h2>
-        <p>Confira os dados da empresa exibidos na tela e em seguida clique em <strong>Avançar</strong>.</p>
-        <img src="portabilidade 10.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-        <h2>Passo 11. Selecione ou crie a WABA de destino</h2>
-        <p>Selecione ou crie a WABA onde o número será transferido e clique em <strong>Avançar</strong>.</p>
-         <img src="portabilidade 11.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-        <div class="warning-block"><span class="ci">⚠️</span><span>Cada WABA tem direito a 1.000 conversas receptivas de franquia. O ideal é manter apenas um número por WABA.</span></div>
-
-        <h2>Passo 12. Aceite os termos de acesso</h2>
-        <p>Após aceitar os termos de acesso que a Hunion.io terá, clique em <strong>Continuar</strong> para prosseguir.</p>
-         <img src="portabilidade 12.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-        <h2>Passo 13. Conclua o processo no pop-up</h2>
-        <p>Um novo pop-up será exibido informando que o processo foi concluído. Clique em <strong>Concluir</strong> para finalizar.</p>
-        <img src="portabilidade 13.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-
-        <h2>Passo 14. Configure o pagamento</h2>
-        <p>Retornando à plataforma, clique em <strong>Confirmação de configuração de pagamento</strong> ou acesse o Gerenciador de Negócios para definir a forma de pagamento. Após concluir essa etapa, clique em <strong>Continuar</strong>.</p>
-        <img src="portabilidade 14.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-        
-        <h2>Passo 15. Confirme a desativação da autenticação em dois fatores</h2>
-        <p>Uma nova aba se abrirá. Clique em <strong>Confirmação de desativação da autenticação de dois fatores</strong> ou acesse o Gerenciador de Negócios para desativar a autenticação. Após concluir essa etapa, clique em <strong>Continuar</strong>.</p>
-        <img src="portabilidade 15.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-        
-        <h2>Passo 16. Selecione o meio de verificação</h2>
-        <p>Selecione o meio pelo qual deseja receber o código de verificação (ligação ou SMS) e clique em <strong>Continuar</strong>.</p>
-        <div class="warning-block"><span class="ci">⚠️</span><span>Se o número estiver conectado a uma URA (Unidade de Resposta Audível), será necessário desativá-la para receber o código de verificação.</span></div>
-        <img src="portabilidade 16.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-        
-        <h2>Passo 17. Informe o código de verificação</h2>
-        <p>Informe o código de verificação recebido e clique em <strong>Continuar</strong> para prosseguir com o processo.</p>
-        <img src="portabilidade 17.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-        
-        <h2>Passo 18. Finalize a portabilidade</h2>
-        <p>Clique em <strong>Finalizar</strong> para concluir a configuração. O número estará ativo e pronto para uso na plataforma HelenaCRM.</p>
-        <img src="portabilidade 18.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-
-        <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
-
-        <h2>✅ O que é preservado na portabilidade?</h2>
-        <ul>
-            <li>A reputação da conta (qualidade);</li>
-            <li>Os números verificados no Gerenciador de Negócios;</li>
-            <li>Os templates (mensagens padrão) previamente aprovados;</li>
-            <li>O histórico de relacionamento com a Meta.</li>
-        </ul>
-
-        <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
-
-        <h2>⚠️ Considerações finais</h2>
-        <div class="warning-block"><span class="ci">⚠️</span><span>É possível, e recomendado, migrar o número de WABA. Porém <strong>NÃO</strong> é possível migrar o número de Portfólio Empresarial. Após a migração, o número continuará associado ao mesmo Gerenciador de Negócios em que já estava.</span></div>
-        <div class="warning-block"><span class="ci">⚠️</span><span>Na Meta não é possível fazer migração de conta empresarial. Se a intenção for mudar o número para outra BM, será necessário desconectar o número da API Oficial e realizar uma nova integração como número novo.</span></div>
-
-    </div>
-</div>
-
-               <!-- PAGE: CONEXAO DEMONSTRACAO -->
+            <!-- PAGE: CONEXAO PORTABILIDADE -->
+            <div id="conexao-portabilidade" class="page-view">
+                <div class="page-header">
+                    <div class="page-tag">🗂️ Procedimentos Parceiros › <span onclick="showPage('conexao-canal')" style="cursor:pointer;text-decoration:underline;">Conexão de Canal</span></div>
+                    <div class="page-title">🔄 Portabilidade</div>
+                    <div class="page-desc">Migração de número com API Oficial de outro provedor para a plataforma HelenaCRM.</div>
+                </div>
+                <div class="content-body">
+                    <h2>O que é a portabilidade entre provedores da API Oficial?</h2>
+                    <p>Portabilidade significa migrar seu número da API Oficial de um provedor atual para a infraestrutura de API usada pela HelenaCRM. É um processo técnico homologado pela Meta que permite que sua empresa mantenha o mesmo número, preservando qualidade e reputação da conta.</p>
+                    <h2>Pré-requisitos</h2>
+                    <ul>
+                        <li>O número já está conectado à API Oficial da Meta com outro provedor;</li>
+                        <li>O número está vinculado a uma conta do <strong>portfólio empresarial verificado</strong>;</li>
+                        <li>Ter acesso de administrador ao Gerenciador de Negócios da Meta;</li>
+                        <li>A autenticação em dois fatores da WABA está desativada.</li>
+                    </ul>
+                    <div class="warning-block"><span class="ci">⚠️</span><span>O número que será migrado deve estar ativo e habilitado para receber chamadas telefônicas, pois o código de verificação da Meta será enviado por ligação durante o processo de portabilidade.</span></div>
+                    <div class="callout-block"><span class="ci">💡</span><span>Antes de iniciar o processo de portabilidade, recomendamos verificar se o número exibe corretamente o display name (nome de exibição). Para isso, envie uma mensagem a partir de um número que nunca tenha interagido com ele.</span></div>
+                    <h2>Passo 1. Conferir se o Portfólio Empresarial é verificado</h2>
+                    <p>Acesse o Gerenciador de Negócios da Meta. Na lateral esquerda, role para baixo e clique em <strong>Informações da empresa</strong>. Verifique o Status de verificação da empresa.</p>
+                    <img src="portabilidade 01.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                    <div class="callout-block"><span class="ci">💡</span><span>Caso a BM não seja verificada seguir esse <a href="https://docs.helena.app/~/changes/204/atalhos/faq/como-verificar-um-portfolio-empresarial-na-meta" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">passo a passo de como verificar um portfólio empresarial na Meta</a></span></div>
+                    <h2>Passo 2. Desative a autenticação em dois fatores</h2>
+                    <p>Siga os passos descritos no <a href="https://docs.helena.app/duvidas-e-novidades/faq/como-desativar-a-autenticacao-em-dois-fatores-no-portfolio-empresarial" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">manual</a> para desativar a autenticação em dois fatores da WABA antes de prosseguir.</p>
+                    <img src="portabilidade 02.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                    <h2>Passo 3. Inicie a conexão de um número por portabilidade</h2>
+                    <p>Acesse a plataforma, clique em <strong>Ajustes → Conta</strong> e, na aba <strong>Canais de Atendimento</strong>, selecione o botão <strong>+</strong> para iniciar uma nova conexão com o WhatsApp via Cloud API.</p>
+                    <img src="portabilidade 03.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                    <h2>Passo 4. Selecione a opção de migrar número</h2>
+                    <p>Na tela seguinte, selecione a opção de <strong>migrar número</strong> e em seguida clique em <strong>Iniciar</strong>.</p>
+                    <img src="portabilidade 04.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                    <h2>Passo 5. Revise as instruções e clique em Continuar</h2>
+                    <p>Na tela seguinte, revise atentamente as instruções para realizar a portabilidade. Se estiver tudo correto, clique em <strong>Continuar</strong> para prosseguir com o processo.</p>
+                    <img src="portabilidade 05.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                    <h2>Passo 6. Digite o número a ser migrado</h2>
+                    <p>Informe o número que deseja migrar e clique em <strong>Continuar</strong>.</p>
+                    <img src="portabilidade 06.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                    <h2>Passo 7. Faça login no Facebook</h2>
+                    <p>Na tela seguinte, realize o login com sua conta do Facebook vinculada ao Gerenciador de Negócios.</p>
+                    <img src="portabilidade 07.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                    <h2>Passo 8. Confirme a conta para login</h2>
+                    <p>Confirme a conta que deseja utilizar para o login.</p>
+                    <img src="portabilidade 08.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                    <h2>Passo 9. Aceite os termos de conexão</h2>
+                    <p>Após aceitar os termos de conexão com a Hunion.io, clique em <strong>Começar</strong> para prosseguir.</p>
+                    <img src="portabilidade 09.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                    <h2>Passo 10. Confira os dados da empresa</h2>
+                    <p>Confira os dados da empresa exibidos na tela e em seguida clique em <strong>Avançar</strong>.</p>
+                    <img src="portabilidade 10.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                    <h2>Passo 11. Selecione ou crie a WABA de destino</h2>
+                    <p>Selecione ou crie a WABA onde o número será transferido e clique em <strong>Avançar</strong>.</p>
+                    <img src="portabilidade 11.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                    <div class="warning-block"><span class="ci">⚠️</span><span>Cada WABA tem direito a 1.000 conversas receptivas de franquia. O ideal é manter apenas um número por WABA.</span></div>
+                    <h2>Passo 12. Aceite os termos de acesso</h2>
+                    <p>Após aceitar os termos de acesso que a Hunion.io terá, clique em <strong>Continuar</strong> para prosseguir.</p>
+                    <img src="portabilidade 12.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                    <h2>Passo 13. Conclua o processo no pop-up</h2>
+                    <p>Um novo pop-up será exibido informando que o processo foi concluído. Clique em <strong>Concluir</strong> para finalizar.</p>
+                    <img src="portabilidade 13.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                    <h2>Passo 14. Configure o pagamento</h2>
+                    <p>Retornando à plataforma, clique em <strong>Confirmação de configuração de pagamento</strong> ou acesse o Gerenciador de Negócios para definir a forma de pagamento. Após concluir essa etapa, clique em <strong>Continuar</strong>.</p>
+                    <img src="portabilidade 14.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                    <h2>Passo 15. Confirme a desativação da autenticação em dois fatores</h2>
+                    <p>Uma nova aba se abrirá. Clique em <strong>Confirmação de desativação da autenticação de dois fatores</strong> ou acesse o Gerenciador de Negócios para desativar a autenticação. Após concluir essa etapa, clique em <strong>Continuar</strong>.</p>
+                    <img src="portabilidade 15.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                    <h2>Passo 16. Selecione o meio de verificação</h2>
+                    <p>Selecione o meio pelo qual deseja receber o código de verificação (ligação ou SMS) e clique em <strong>Continuar</strong>.</p>
+                    <div class="warning-block"><span class="ci">⚠️</span><span>Se o número estiver conectado a uma URA (Unidade de Resposta Audível), será necessário desativá-la para receber o código de verificação.</span></div>
+                    <img src="portabilidade 16.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                    <h2>Passo 17. Informe o código de verificação</h2>
+                    <p>Informe o código de verificação recebido e clique em <strong>Continuar</strong> para prosseguir com o processo.</p>
+                    <img src="portabilidade 17.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                    <h2>Passo 18. Finalize a portabilidade</h2>
+                    <p>Clique em <strong>Finalizar</strong> para concluir a configuração. O número estará ativo e pronto para uso na plataforma HelenaCRM.</p>
+                    <img src="portabilidade 18.png" alt="Portabilidade" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                    <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
+                    <h2>✅ O que é preservado na portabilidade?</h2>
+                    <ul>
+                        <li>A reputação da conta (qualidade);</li>
+                        <li>Os números verificados no Gerenciador de Negócios;</li>
+                        <li>Os templates (mensagens padrão) previamente aprovados;</li>
+                        <li>O histórico de relacionamento com a Meta.</li>
+                    </ul>
+                    <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
+                    <h2>⚠️ Considerações finais</h2>
+                    <div class="warning-block"><span class="ci">⚠️</span><span>É possível, e recomendado, migrar o número de WABA. Porém <strong>NÃO</strong> é possível migrar o número de Portfólio Empresarial. Após a migração, o número continuará associado ao mesmo Gerenciador de Negócios em que já estava.</span></div>
+                    <div class="warning-block"><span class="ci">⚠️</span><span>Na Meta não é possível fazer migração de conta empresarial. Se a intenção for mudar o número para outra BM, será necessário desconectar o número da API Oficial e realizar uma nova integração como número novo.</span></div>
+                </div>
+            </div>
+            <!-- PAGE: CONEXAO DEMONSTRACAO -->
             <div id="page-conexao-demonstracao" class="page-view">
                 <div class="page-header">
                     <div class="page-tag">🗂️ Procedimentos Parceiros › <span onclick="showPage('conexao-canal')" style="cursor:pointer;text-decoration:underline;">Conexão de Canal</span></div>
@@ -2660,197 +2615,220 @@
                     <img src="Conexao 36.png" alt="Alterar status demonstração" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
                 </div>
             </div>
-            
             <!-- SECTION: BONIFICACOES -->
-             <!-- PAGE: BONIFICAÇÃO APPS E DOMINIO -->
-<div id="page-bonificacoes" class="page-view">
-    <div class="page-header">
-        <div class="page-tag">💰 Bonificações</div>
-        <div class="page-title">Bonificações</div>
-        <div class="page-desc">Processos de upsell e contratação de serviços adicionais para parceiros.</div>
-    </div>
-    <div class="sub-grid">
-        <div class="sub-card" onclick="showPage('upsell-app-dominio')">
-            <div class="sub-card-icon">⬆️</div>
-            <div class="sub-card-title">Upsell de App Personalizado e Domínio Personalizado</div>
-            <div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div>
-        </div>
-        <div class="sub-card" onclick="showPage('bonificacao-ongoing')">
-            <div class="sub-card-icon">📊</div>
-            <div class="sub-card-title">Bonificação — Acompanhamentos Mensais</div>
-            <div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div>
-        </div>
-    </div>
-</div>
-<!-- PAGE: BONIFICACAO ONGOING -->
-<div id="page-bonificacao-ongoing" class="page-view">
-    <div class="page-header">
-        <div class="page-tag">💰 Bonificações › <span onclick="showPage('bonificacoes')" style="cursor:pointer;text-decoration:underline;">Bonificações</span></div>
-        <div class="page-title">📊 Bonificação — Acompanhamentos Mensais</div>
-        <div class="page-desc">Critérios e fórmulas para cálculo da bonificação dos acompanhamentos mensais.</div>
-    </div>
-    <div class="content-body">
-
-        <h2>Objetivo</h2>
-        <p>Definir as regras de cálculo do engajamento, crescimento e bônus final, garantindo padronização na análise dos resultados.</p>
-
-        <h2>📊 Engajamento</h2>
-        <h3>Definição</h3>
-        <p>O engajamento mede o nível de ativação dos parceiros, considerando quantas empresas da carteira adicionaram contas no período analisado.</p>
-        <h3>Cálculo</h3>
-        <div class="callout-block"><span class="ci">🧮</span><span><strong>Engajamento = Empresas que adicionaram contas no mês ÷ Total de empresas da carteira</strong></span></div>
-        <p>O resultado gera um percentual, que é convertido em uma escala de engajamento conforme abaixo</p>
-        <h3>Conversão em percentual</h3>
-        <table style="width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;">
-            <thead>
-                <tr style="background:var(--color-background-secondary);">
-                    <th style="text-align:left;padding:10px 14px;border:0.5px solid var(--color-border-tertiary);font-weight:500;">Resultado do cálculo</th>
-                    <th style="text-align:left;padding:10px 14px;border:0.5px solid var(--color-border-tertiary);font-weight:500;">% de Engajamento</th>
-                </tr>
-            </thead>
-            <tbody>
-<tr><td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">= 0,0</td><td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">0%</td></tr>
-<tr style="background:var(--color-background-secondary);"><td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">0 &lt; % ≤ 0,2</td><td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">20%</td></tr>
-<tr><td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">0,2 &lt; % ≤ 0,4</td><td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">40%</td></tr>
-<tr style="background:var(--color-background-secondary);"><td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">0,4 &lt; % ≤ 0,6</td><td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">60%</td></tr>
-<tr><td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">0,6 &lt; % ≤ 0,8</td><td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">80%</td></tr>
-<tr style="background:var(--color-background-secondary);"><td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">Acima de 0,8</td><td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">100%</td></tr>
-            </tbody>
-        </table>
-        <div class="info-row"><span class="info-key">📌 Resultado final</span><span class="info-val">Percentual de Engajamento</span></div>
-
-        <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
-
-        <h2>🚀 Crescimento</h2>
-        <h3>Definição</h3>
-        <p>O crescimento representa a evolução da base de contas dos parceiros dentro da carteira, considerando saldo líquido.</p>
-        <h3>Cálculo</h3>
-        <div class="callout-block"><span class="ci">🧮</span><span><strong>Saldo = Contas adicionadas – Contas perdidas</strong><br>Crescimento = Saldo ÷ Total de parceiros da carteira</span></div>
-        <h3>Meta</h3>
-        <p>A meta da empresa é atingir crescimento superior a <strong>1,6</strong>, o que representa em média mais de 1,6 conta por parceiro.</p>
-        <h3>Conversão em percentual</h3>
-        <table style="width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;">
-            <thead>
-                <tr style="background:var(--color-background-secondary);">
-                    <th style="text-align:left;padding:10px 14px;border:0.5px solid var(--color-border-tertiary);font-weight:500;">Saldo por parceiro</th>
-                    <th style="text-align:left;padding:10px 14px;border:0.5px solid var(--color-border-tertiary);font-weight:500;">% de Crescimento</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">Até 1,0</td><td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">25%</td></tr>
-                <tr style="background:var(--color-background-secondary);"><td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">Entre 1,0 a 1,1</td><td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">50%</td></tr>
-                <tr><td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">Entre 1,1 a 1,2</td><td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">55%</td></tr>
-                <tr style="background:var(--color-background-secondary);"><td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">Entre 1,2 a 1,3</td><td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">60%</td></tr>
-                <tr><td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">Entre 1,3 a 1,4</td><td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">70%</td></tr>
-                <tr style="background:var(--color-background-secondary);"><td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">Entre 1,4 a 1,5</td><td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">80%</td></tr>
-                <tr><td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">Entre 1,5 a 1,6</td><td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">90%</td></tr>
-                <tr style="background:var(--color-background-secondary);"><td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">Acima de 1,6 ✅ Meta</td><td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">100%</td></tr>
-            </tbody>
-        </table>
-        <div class="info-row"><span class="info-key">📌 Resultado final</span><span class="info-val">Percentual de Crescimento</span></div>
-
-        <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
-
-        <h2>💰 Bônus Final</h2>
-        <h3>Fórmula de cálculo</h3>
-        <div class="callout-block"><span class="ci">🧮</span><span><strong>Bônus = % Engajamento × % Crescimento × R$ 3.000</strong></span></div>
-        <h3>Exemplo prático</h3>
-        <div class="info-row"><span class="info-key">Engajamento</span><span class="info-val">80%</span></div>
-        <div class="info-row"><span class="info-key">Crescimento</span><span class="info-val">70%</span></div>
-        <div class="callout-block"><span class="ci">💡</span><span>0,8 × 0,7 × R$ 3.000 = <strong>R$ 1.680</strong></span></div>
-
-        <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
-
-        <h2>🧾 Regras e Observações</h2>
-        <ul>
-            <li>A última linha da planilha enviada pelo Juliano representa a consolidação final dos dados.</li>
-            <li>Essa linha reúne todos os parâmetros utilizados no cálculo do bônus.</li>
-            <li>A coluna <strong>Perda</strong> aparece zerada porque o sistema Tietry já fornece o valor líquido do saldo diretamente.</li>
-            <li>Todos os cálculos devem ser baseados nos dados oficiais extraídos do sistema, <strong>sem ajustes manuais</strong>.</li>
-        </ul>
-
-    </div>
-</div>
-
-
-<!-- PAGE: UPSELL APP DOMINIO -->
-<div id="page-upsell-app-dominio" class="page-view">
-    <div class="page-header">
-        <div class="page-tag">💰 Bonificações</div>
-        <div class="page-title">Upsell de App Personalizado e Domínio Personalizado</div>
-        <div class="page-desc">Orientações para o processo de upsell de app personalizado (whitelabel) e domínio personalizado.</div>
-    </div>
-    <div class="content-body">
-        <div class="callout-block"><span class="ci">💡</span><span>A principal diferença entre o White Label Pró e o White Label Premium é a disponibilidade de <strong>app personalizado</strong> e <strong>domínio personalizado</strong>. Caso o parceiro solicite migração do Pró para o Premium, basta seguir este POP realizando a contratação e implantação de ambos os serviços. Se houver interesse em contratar apenas um dos itens, o analista deve seguir o fluxo correspondente ao serviço solicitado.</span></div>
-
-        <h2>Objetivo</h2>
-        <p>Orientar o analista no processo de upsell de app personalizado (whitelabel) e domínio personalizado.</p>
-
-        <h2>Regra Geral</h2>
-        <div class="warning-block"><span class="ci">⚠️</span><span><strong>MUITO IMPORTANTE:</strong>
-            <ul style="margin-top:8px;">
-                <li>Todo o processo de contratação deve ser feito via CS.</li>
-                <li>É obrigatório ter confirmação por mensagem (WhatsApp/plataforma) <strong>OU</strong> reunião gravada com o aceite do parceiro.</li>
-                <li>Sem isso, <strong>não seguir com o processo.</strong></li>
-            </ul>
-        </span></div>
-
-        <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
-        <h2>🌐 Domínio Personalizado</h2>
-        <h3>Condições Comerciais</h3>
-        <div class="info-row"><span class="info-key">Valor</span><span class="info-val">R$ 190,00/mês</span></div>
-        <div class="info-row"><span class="info-key">Com app personalizado</span><span class="info-val">R$ 100,00/mês</span></div>
-        <div class="info-row"><span class="info-key">Taxa de setup</span><span class="info-val">❌ Não possui</span></div>
-
-        <h3>Processo</h3>
-        <ol class="step-list">
-            <li>Confirmar aceite do parceiro (mensagem ou gravação).</li>
-            <li>Preencher o <strong>Alterou+1</strong>:
-                <ul style="margin-top:8px;">
-                    <li>Tipo da Alteração: <span class="badge badge-green">Alteração de Plano (Upsell ou Downsell)</span></li>
-                    <li>Novos Adicionais: <span class="badge badge-green">+ App Personalizado (WL)</span> e <span class="badge badge-green">Domínio Próprio (WL)</span></li>
-                </ul>
-            </li>
-            <li>Incluir informações do upsell.</li>
-            <li>Enviar para o parceiro o procedimento de domínio personalizado e artigo correspondente.</li>
-        </ol>
-
-        <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
-        <h2>📱 App Personalizado (Whitelabel)</h2>
-        <h3>Condições Comerciais — Setup</h3>
-        <div class="info-row"><span class="info-key">Valor</span><span class="info-val">R$ 3.000,00</span></div>
-        <div class="info-row"><span class="info-key">Desconto à vista (PIX)</span><span class="info-val">Até 12%</span></div>
-        <div class="info-row"><span class="info-key">Parcelamento</span><span class="info-val">Até 6x sem juros</span></div>
-        <div class="callout-block"><span class="ci">👉</span><span>Recomendado: começar oferecendo em 3x e negociar conforme necessidade.</span></div>
-
-        <h3>Condições Comerciais — Mensalidade</h3>
-        <div class="info-row"><span class="info-key">Valor</span><span class="info-val">R$ 800,00/mês</span></div>
-        <div class="info-row"><span class="info-key">Início da cobrança</span><span class="info-val">Após publicação do app</span></div>
-
-        <h3>Processo</h3>
-        <ol class="step-list">
-            <li>Confirmar aceite do parceiro: mensagem (WhatsApp/plataforma) ou reunião gravada.</li>
-            <li>Preencher o <strong>Alterou+1</strong>:
-                <ul style="margin-top:8px;">
-                    <li>Selecionar opção: <span class="badge badge-green">Upsell</span></li>
-                    <li>Detalhar condições do setup (valor, desconto ou parcelamento) e mensalidade.</li>
-                </ul>
-            </li>
-            <li>Utilizar como base o (Procedimentos parceiros > Configuração de Domínio Personalizado) para configurar o dominio e o (Processos Operacionais > Suporte e Escalações > Apps White Label) para a configuração do App Personalizado e documentações em <a href="https://docs.helena.app" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">docs.helena.app</a>.</li>
-            <li>Enviar para o parceiro o procedimento de implantação e materiais/documentações necessárias.</li>
-        </ol>
-
-        <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
-        <h2>✅ Boas Práticas</h2>
-        <ul>
-            <li>Sempre documentar claramente o acordo.</li>
-            <li>Evitar iniciar processo sem aceite formal.</li>
-            <li>Garantir que o parceiro entenda quando começa a cobrança e a diferença entre setup e mensalidade.</li>
-            <li>Priorizar clareza na negociação, principalmente no setup.</li>
-        </ul>
-    </div>
-</div>
-            
+            <!-- PAGE: BONIFICAÇÃO APPS E DOMINIO -->
+            <div id="page-bonificacoes" class="page-view">
+                <div class="page-header">
+                    <div class="page-tag">💰 Bonificações</div>
+                    <div class="page-title">Bonificações</div>
+                    <div class="page-desc">Processos de upsell e contratação de serviços adicionais para parceiros.</div>
+                </div>
+                <div class="sub-grid">
+                    <div class="sub-card" onclick="showPage('upsell-app-dominio')">
+                        <div class="sub-card-icon">⬆️</div>
+                        <div class="sub-card-title">Upsell de App Personalizado e Domínio Personalizado</div>
+                        <div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5">
+                                <path d="m9 18 6-6-6-6" />
+                            </svg></div>
+                    </div>
+                    <div class="sub-card" onclick="showPage('bonificacao-ongoing')">
+                        <div class="sub-card-icon">📊</div>
+                        <div class="sub-card-title">Bonificação — Acompanhamentos Mensais</div>
+                        <div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5">
+                                <path d="m9 18 6-6-6-6" />
+                            </svg></div>
+                    </div>
+                </div>
+            </div>
+            <!-- PAGE: BONIFICACAO ONGOING -->
+            <div id="page-bonificacao-ongoing" class="page-view">
+                <div class="page-header">
+                    <div class="page-tag">💰 Bonificações › <span onclick="showPage('bonificacoes')" style="cursor:pointer;text-decoration:underline;">Bonificações</span></div>
+                    <div class="page-title">📊 Bonificação — Acompanhamentos Mensais</div>
+                    <div class="page-desc">Critérios e fórmulas para cálculo da bonificação dos acompanhamentos mensais.</div>
+                </div>
+                <div class="content-body">
+                    <h2>Objetivo</h2>
+                    <p>Definir as regras de cálculo do engajamento, crescimento e bônus final, garantindo padronização na análise dos resultados.</p>
+                    <h2>📊 Engajamento</h2>
+                    <h3>Definição</h3>
+                    <p>O engajamento mede o nível de ativação dos parceiros, considerando quantas empresas da carteira adicionaram contas no período analisado.</p>
+                    <h3>Cálculo</h3>
+                    <div class="callout-block"><span class="ci">🧮</span><span><strong>Engajamento = Empresas que adicionaram contas no mês ÷ Total de empresas da carteira</strong></span></div>
+                    <p>O resultado gera um percentual, que é convertido em uma escala de engajamento conforme abaixo</p>
+                    <h3>Conversão em percentual</h3>
+                    <table style="width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;">
+                        <thead>
+                            <tr style="background:var(--color-background-secondary);">
+                                <th style="text-align:left;padding:10px 14px;border:0.5px solid var(--color-border-tertiary);font-weight:500;">Resultado do cálculo</th>
+                                <th style="text-align:left;padding:10px 14px;border:0.5px solid var(--color-border-tertiary);font-weight:500;">% de Engajamento</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">= 0,0</td>
+                                <td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">0%</td>
+                            </tr>
+                            <tr style="background:var(--color-background-secondary);">
+                                <td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">0 &lt; % ≤ 0,2</td>
+                                <td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">20%</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">0,2 &lt; % ≤ 0,4</td>
+                                <td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">40%</td>
+                            </tr>
+                            <tr style="background:var(--color-background-secondary);">
+                                <td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">0,4 &lt; % ≤ 0,6</td>
+                                <td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">60%</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">0,6 &lt; % ≤ 0,8</td>
+                                <td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">80%</td>
+                            </tr>
+                            <tr style="background:var(--color-background-secondary);">
+                                <td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">Acima de 0,8</td>
+                                <td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">100%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="info-row"><span class="info-key">📌 Resultado final</span><span class="info-val">Percentual de Engajamento</span></div>
+                    <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
+                    <h2>🚀 Crescimento</h2>
+                    <h3>Definição</h3>
+                    <p>O crescimento representa a evolução da base de contas dos parceiros dentro da carteira, considerando saldo líquido.</p>
+                    <h3>Cálculo</h3>
+                    <div class="callout-block"><span class="ci">🧮</span><span><strong>Saldo = Contas adicionadas – Contas perdidas</strong><br>Crescimento = Saldo ÷ Total de parceiros da carteira</span></div>
+                    <h3>Meta</h3>
+                    <p>A meta da empresa é atingir crescimento superior a <strong>1,6</strong>, o que representa em média mais de 1,6 conta por parceiro.</p>
+                    <h3>Conversão em percentual</h3>
+                    <table style="width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;">
+                        <thead>
+                            <tr style="background:var(--color-background-secondary);">
+                                <th style="text-align:left;padding:10px 14px;border:0.5px solid var(--color-border-tertiary);font-weight:500;">Saldo por parceiro</th>
+                                <th style="text-align:left;padding:10px 14px;border:0.5px solid var(--color-border-tertiary);font-weight:500;">% de Crescimento</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">Até 1,0</td>
+                                <td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">25%</td>
+                            </tr>
+                            <tr style="background:var(--color-background-secondary);">
+                                <td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">Entre 1,0 a 1,1</td>
+                                <td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">50%</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">Entre 1,1 a 1,2</td>
+                                <td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">55%</td>
+                            </tr>
+                            <tr style="background:var(--color-background-secondary);">
+                                <td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">Entre 1,2 a 1,3</td>
+                                <td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">60%</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">Entre 1,3 a 1,4</td>
+                                <td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">70%</td>
+                            </tr>
+                            <tr style="background:var(--color-background-secondary);">
+                                <td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">Entre 1,4 a 1,5</td>
+                                <td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">80%</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">Entre 1,5 a 1,6</td>
+                                <td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">90%</td>
+                            </tr>
+                            <tr style="background:var(--color-background-secondary);">
+                                <td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">Acima de 1,6 ✅ Meta</td>
+                                <td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">100%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="info-row"><span class="info-key">📌 Resultado final</span><span class="info-val">Percentual de Crescimento</span></div>
+                    <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
+                    <h2>💰 Bônus Final</h2>
+                    <h3>Fórmula de cálculo</h3>
+                    <div class="callout-block"><span class="ci">🧮</span><span><strong>Bônus = % Engajamento × % Crescimento × R$ 3.000</strong></span></div>
+                    <h3>Exemplo prático</h3>
+                    <div class="info-row"><span class="info-key">Engajamento</span><span class="info-val">80%</span></div>
+                    <div class="info-row"><span class="info-key">Crescimento</span><span class="info-val">70%</span></div>
+                    <div class="callout-block"><span class="ci">💡</span><span>0,8 × 0,7 × R$ 3.000 = <strong>R$ 1.680</strong></span></div>
+                    <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
+                    <h2>🧾 Regras e Observações</h2>
+                    <ul>
+                        <li>A última linha da planilha enviada pelo Juliano representa a consolidação final dos dados.</li>
+                        <li>Essa linha reúne todos os parâmetros utilizados no cálculo do bônus.</li>
+                        <li>A coluna <strong>Perda</strong> aparece zerada porque o sistema Tietry já fornece o valor líquido do saldo diretamente.</li>
+                        <li>Todos os cálculos devem ser baseados nos dados oficiais extraídos do sistema, <strong>sem ajustes manuais</strong>.</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- PAGE: UPSELL APP DOMINIO -->
+            <div id="page-upsell-app-dominio" class="page-view">
+                <div class="page-header">
+                    <div class="page-tag">💰 Bonificações</div>
+                    <div class="page-title">Upsell de App Personalizado e Domínio Personalizado</div>
+                    <div class="page-desc">Orientações para o processo de upsell de app personalizado (whitelabel) e domínio personalizado.</div>
+                </div>
+                <div class="content-body">
+                    <div class="callout-block"><span class="ci">💡</span><span>A principal diferença entre o White Label Pró e o White Label Premium é a disponibilidade de <strong>app personalizado</strong> e <strong>domínio personalizado</strong>. Caso o parceiro solicite migração do Pró para o Premium, basta seguir este POP realizando a contratação e implantação de ambos os serviços. Se houver interesse em contratar apenas um dos itens, o analista deve seguir o fluxo correspondente ao serviço solicitado.</span></div>
+                    <h2>Objetivo</h2>
+                    <p>Orientar o analista no processo de upsell de app personalizado (whitelabel) e domínio personalizado.</p>
+                    <h2>Regra Geral</h2>
+                    <div class="warning-block"><span class="ci">⚠️</span><span><strong>MUITO IMPORTANTE:</strong>
+                            <ul style="margin-top:8px;">
+                                <li>Todo o processo de contratação deve ser feito via CS.</li>
+                                <li>É obrigatório ter confirmação por mensagem (WhatsApp/plataforma) <strong>OU</strong> reunião gravada com o aceite do parceiro.</li>
+                                <li>Sem isso, <strong>não seguir com o processo.</strong></li>
+                            </ul>
+                        </span></div>
+                    <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
+                    <h2>🌐 Domínio Personalizado</h2>
+                    <h3>Condições Comerciais</h3>
+                    <div class="info-row"><span class="info-key">Valor</span><span class="info-val">R$ 190,00/mês</span></div>
+                    <div class="info-row"><span class="info-key">Com app personalizado</span><span class="info-val">R$ 100,00/mês</span></div>
+                    <div class="info-row"><span class="info-key">Taxa de setup</span><span class="info-val">❌ Não possui</span></div>
+                    <h3>Processo</h3>
+                    <ol class="step-list">
+                        <li>Confirmar aceite do parceiro (mensagem ou gravação).</li>
+                        <li>Preencher o <strong>Alterou+1</strong>: <ul style="margin-top:8px;">
+                                <li>Tipo da Alteração: <span class="badge badge-green">Alteração de Plano (Upsell ou Downsell)</span></li>
+                                <li>Novos Adicionais: <span class="badge badge-green">+ App Personalizado (WL)</span> e <span class="badge badge-green">Domínio Próprio (WL)</span></li>
+                            </ul>
+                        </li>
+                        <li>Incluir informações do upsell.</li>
+                        <li>Enviar para o parceiro o procedimento de domínio personalizado e artigo correspondente.</li>
+                    </ol>
+                    <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
+                    <h2>📱 App Personalizado (Whitelabel)</h2>
+                    <h3>Condições Comerciais — Setup</h3>
+                    <div class="info-row"><span class="info-key">Valor</span><span class="info-val">R$ 3.000,00</span></div>
+                    <div class="info-row"><span class="info-key">Desconto à vista (PIX)</span><span class="info-val">Até 12%</span></div>
+                    <div class="info-row"><span class="info-key">Parcelamento</span><span class="info-val">Até 6x sem juros</span></div>
+                    <div class="callout-block"><span class="ci">👉</span><span>Recomendado: começar oferecendo em 3x e negociar conforme necessidade.</span></div>
+                    <h3>Condições Comerciais — Mensalidade</h3>
+                    <div class="info-row"><span class="info-key">Valor</span><span class="info-val">R$ 800,00/mês</span></div>
+                    <div class="info-row"><span class="info-key">Início da cobrança</span><span class="info-val">Após publicação do app</span></div>
+                    <h3>Processo</h3>
+                    <ol class="step-list">
+                        <li>Confirmar aceite do parceiro: mensagem (WhatsApp/plataforma) ou reunião gravada.</li>
+                        <li>Preencher o <strong>Alterou+1</strong>: <ul style="margin-top:8px;">
+                                <li>Selecionar opção: <span class="badge badge-green">Upsell</span></li>
+                                <li>Detalhar condições do setup (valor, desconto ou parcelamento) e mensalidade.</li>
+                            </ul>
+                        </li>
+                        <li>Utilizar como base o (Procedimentos parceiros > Configuração de Domínio Personalizado) para configurar o dominio e o (Processos Operacionais > Suporte e Escalações > Apps White Label) para a configuração do App Personalizado e documentações em <a href="https://docs.helena.app" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">docs.helena.app</a>.</li>
+                        <li>Enviar para o parceiro o procedimento de implantação e materiais/documentações necessárias.</li>
+                    </ol>
+                    <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
+                    <h2>✅ Boas Práticas</h2>
+                    <ul>
+                        <li>Sempre documentar claramente o acordo.</li>
+                        <li>Evitar iniciar processo sem aceite formal.</li>
+                        <li>Garantir que o parceiro entenda quando começa a cobrança e a diferença entre setup e mensalidade.</li>
+                        <li>Priorizar clareza na negociação, principalmente no setup.</li>
+                    </ul>
+                </div>
+            </div>
             <!-- SECTION: DASHBOARDS -->
             <div id="page-dashboards" class="page-view">
                 <div class="page-header">
@@ -2923,8 +2901,7 @@
                     </div>
                 </div>
             </div>
-            
-             <!-- PAGE: CONTEUDOS TIME INTERNO -->
+            <!-- PAGE: CONTEUDOS TIME INTERNO -->
             <div id="page-conteudos-time-interno" class="page-view">
                 <div class="page-header">
                     <div class="page-tag">🎓 Cultura e Desenvolvimento</div>
@@ -2961,162 +2938,162 @@
         let pageHistory = [];
         // ── Search data ──
         const searchIndex = [{
-                    id: 'check-in',
-                    section: 'rotinas',
-                    sectionLabel: 'Rotinas do Time',
-                    title: 'Check-in Semanal',
-                    preview: 'Reunião segunda-feira 14h, estratégias da semana, métricas da carteira.'
-                }, {
-                    id: 'check-out',
-                    section: 'rotinas',
-                    sectionLabel: 'Rotinas do Time',
-                    title: 'Check-out Semanal',
-                    preview: 'Sexta-feira, resultados da semana, conquistas, desafios, aprendizados.'
-                }, {
-                    id: 'cumbuca',
-                    section: 'rotinas',
-                    sectionLabel: 'Rotinas do Time',
-                    title: 'Cumbuca',
-                    preview: 'Encontro semanal de leitura do livro do time.'
-                }, {
-                    id: 'emv',
-                    section: 'rotinas',
-                    sectionLabel: 'Rotinas do Time',
-                    title: 'Avaliação de EMV',
-                    preview: 'Avaliação trimestral do Engagement Maturity Value dos parceiros.'
-                }, {
-                    id: 'fechamentos',
-                    section: 'rotinas',
-                    sectionLabel: 'Rotinas do Time',
-                    title: 'Acompanhar Fechamentos do Comercial',
-                    preview: 'Planilha F+1 – Fechou mais um HELENA CRM.'
-                }, {
-                    id: 'ferias',
-                    section: 'rotinas',
-                    sectionLabel: 'Rotinas do Time',
-                    title: 'Solicitação de Férias',
-                    preview: 'E-mail ao DP até dia 10, mínimo 30 dias de antecedência.'
-                }, {
-                    id: 'distribuicao',
-                    section: 'onboarding',
-                    sectionLabel: 'Processos de Onboarding',
-                    title: 'Distribuição',
-                    preview: 'Fluxo após formulário Fechou +1, etiquetas e padronização.'
-                }, {
-                    id: 'kickoff',
-                    section: 'onboarding',
-                    sectionLabel: 'Processos de Onboarding',
-                    title: 'Kick Off',
-                    preview: 'Primeira reunião com parceiro, template KickOff 2026, coleta de dados.'
-                }, {
-                    id: 'configurar-ambiente',
-                    section: 'onboarding',
-                    sectionLabel: 'Processos de Onboarding',
-                    title: 'Configurar Ambiente',
-                    preview: 'Criação da conta da empresa do parceiro, planos, valores.'
-                }, {
-                    id: 'conexoes',
-                    section: 'onboarding',
-                    sectionLabel: 'Processos de Onboarding',
-                    title: 'Conexões',
-                    preview: 'Instagram, Facebook, WhatsApp Z-API e Meta Cloud API.'
-                }, {
-                    id: 'funcionalidades',
-                    section: 'onboarding',
-                    sectionLabel: 'Processos de Onboarding',
-                    title: 'Funcionalidades Gerais',
-                    preview: 'Verificação do uso da plataforma, suporte N1 e N2.'
-                }, {
-                    id: 'estrategias',
-                    section: 'onboarding',
-                    sectionLabel: 'Processos de Onboarding',
-                    title: 'Primeiras Estratégias',
-                    preview: 'Dúvidas gerais e primeiros 4 clientes do parceiro.'
-                }, {
-                    id: 'cancelamentos',
-                    section: 'operacional',
-                    sectionLabel: 'Processos Operacionais',
-                    title: 'Cancelamentos / Alterações',
-                    preview: 'Cancelamento de parceiros, alterações de conta, upsell WL.'
-                }, {
-                    id: 'suporte',
-                    section: 'operacional',
-                    sectionLabel: 'Processos Operacionais',
-                    title: 'Suporte e Escalações',
-                    preview: 'Cards N2, Linha de Crédito Hunion, Apps White Label.'
-                }, {
-                    id: 'orgao-gov',
-                    section: 'operacional',
-                    sectionLabel: 'Processos Operacionais',
-                    title: 'Órgão Governamental',
-                    preview: 'Conexão API Oficial, ticket Meta para órgãos governamentais.'
-                }, {
-                    id: 'transferencia',
-                    section: 'operacional',
-                    sectionLabel: 'Processos Operacionais',
-                    title: 'Transferência de Titularidade',
-                    preview: 'Não permitido por questões de LGPD.'
-                }, {
-                    id: 'palavras-reservadas',
-                    section: 'operacional',
-                    sectionLabel: 'Processos Operacionais',
-                    title: 'Políticas de Palavras Reservadas',
-                    preview: 'zap, zapi, chatbot, Helena – palavras proibidas em URLs.'
-                }, {
-                    id: 'solicitacoes-meta',
-                    section: 'operacional',
-                    sectionLabel: 'Processos Operacionais',
-                    title: 'Solicitações Meta',
-                    preview: 'Abertura e acompanhamento de tickets Meta.'
-                }, {
-                    id: 'contato-estrategico',
-                    section: 'gestao',
-                    sectionLabel: 'Gestão de Parceiros',
-                    title: 'Contato Estratégico Com Parceiros (mensal)',
-                    preview: 'Seleção mensal, análise de maturidade, Office Hours.'
-                }, {
-                    id: 'acompanhamento-ongoing',
-                    section: 'gestao',
-                    sectionLabel: 'Gestão de Parceiros',
-                    title: 'Acompanhamento Parceiros Em Ongoing',
-                    preview: '5 pilares estratégicos, IA Integrativa, precificação.'
-                }, {
-                    id: 'criacao-ambiente',
-                    section: 'procedimentos',
-                    sectionLabel: 'Procedimentos Parceiros',
-                    title: 'Criação do Ambiente do Parceiro',
-                    preview: 'Admin Helena > Parceiros, preencher F+1, ID Integração.'
-                }, {
-                    id: 'dominio-personalizado',
-                    section: 'procedimentos',
-                    sectionLabel: 'Procedimentos Parceiros',
-                    title: 'Configuração de Domínio Personalizado',
-                    preview: 'Subdomínio, DNS, Admin Helena > Domínio Personalizado.'
-                }, {
-                    id: 'criacao-conta',
-                    section: 'procedimentos',
-                    sectionLabel: 'Procedimentos Parceiros',
-                    title: 'Criação de Conta na Plataforma',
-                    preview: 'Super Admin, Admin > Contas, CNPJ, PJ ou PF.'
-                }, {
-                    id: 'conexao-canal',
-                    section: 'procedimentos',
-                    sectionLabel: 'Procedimentos Parceiros',
-                    title: 'Conexão de Canal',
-                    preview: 'API Oficial, Z-API, Instagram, Messenger, portabilidade e demonstração.'
-                }, {
-                    id: 'conexao-api-oficial',
-                    section: 'procedimentos',
-                    sectionLabel: 'Procedimentos Parceiros',
-                    title: 'API Oficial do WhatsApp',
-                    preview: 'Conexão Cloud API Meta, WABA, cartão de crédito, logomarca.'
-                }, {
-                    id: 'conexao-api-coexistencia',
-                    section: 'procedimentos',
-                    sectionLabel: 'Procedimentos Parceiros',
-                    title: 'API Oficial – Coexistência',
-                    preview: 'Dois sistemas coexistindo no mesmo número WhatsApp.'
-}, {
+            id: 'check-in',
+            section: 'rotinas',
+            sectionLabel: 'Rotinas do Time',
+            title: 'Check-in Semanal',
+            preview: 'Reunião segunda-feira 14h, estratégias da semana, métricas da carteira.'
+        }, {
+            id: 'check-out',
+            section: 'rotinas',
+            sectionLabel: 'Rotinas do Time',
+            title: 'Check-out Semanal',
+            preview: 'Sexta-feira, resultados da semana, conquistas, desafios, aprendizados.'
+        }, {
+            id: 'cumbuca',
+            section: 'rotinas',
+            sectionLabel: 'Rotinas do Time',
+            title: 'Cumbuca',
+            preview: 'Encontro semanal de leitura do livro do time.'
+        }, {
+            id: 'emv',
+            section: 'rotinas',
+            sectionLabel: 'Rotinas do Time',
+            title: 'Avaliação de EMV',
+            preview: 'Avaliação trimestral do Engagement Maturity Value dos parceiros.'
+        }, {
+            id: 'fechamentos',
+            section: 'rotinas',
+            sectionLabel: 'Rotinas do Time',
+            title: 'Acompanhar Fechamentos do Comercial',
+            preview: 'Planilha F+1 – Fechou mais um HELENA CRM.'
+        }, {
+            id: 'ferias',
+            section: 'rotinas',
+            sectionLabel: 'Rotinas do Time',
+            title: 'Solicitação de Férias',
+            preview: 'E-mail ao DP até dia 10, mínimo 30 dias de antecedência.'
+        }, {
+            id: 'distribuicao',
+            section: 'onboarding',
+            sectionLabel: 'Processos de Onboarding',
+            title: 'Distribuição',
+            preview: 'Fluxo após formulário Fechou +1, etiquetas e padronização.'
+        }, {
+            id: 'kickoff',
+            section: 'onboarding',
+            sectionLabel: 'Processos de Onboarding',
+            title: 'Kick Off',
+            preview: 'Primeira reunião com parceiro, template KickOff 2026, coleta de dados.'
+        }, {
+            id: 'configurar-ambiente',
+            section: 'onboarding',
+            sectionLabel: 'Processos de Onboarding',
+            title: 'Configurar Ambiente',
+            preview: 'Criação da conta da empresa do parceiro, planos, valores.'
+        }, {
+            id: 'conexoes',
+            section: 'onboarding',
+            sectionLabel: 'Processos de Onboarding',
+            title: 'Conexões',
+            preview: 'Instagram, Facebook, WhatsApp Z-API e Meta Cloud API.'
+        }, {
+            id: 'funcionalidades',
+            section: 'onboarding',
+            sectionLabel: 'Processos de Onboarding',
+            title: 'Funcionalidades Gerais',
+            preview: 'Verificação do uso da plataforma, suporte N1 e N2.'
+        }, {
+            id: 'estrategias',
+            section: 'onboarding',
+            sectionLabel: 'Processos de Onboarding',
+            title: 'Primeiras Estratégias',
+            preview: 'Dúvidas gerais e primeiros 4 clientes do parceiro.'
+        }, {
+            id: 'cancelamentos',
+            section: 'operacional',
+            sectionLabel: 'Processos Operacionais',
+            title: 'Cancelamentos / Alterações',
+            preview: 'Cancelamento de parceiros, alterações de conta, upsell WL.'
+        }, {
+            id: 'suporte',
+            section: 'operacional',
+            sectionLabel: 'Processos Operacionais',
+            title: 'Suporte e Escalações',
+            preview: 'Cards N2, Linha de Crédito Hunion, Apps White Label.'
+        }, {
+            id: 'orgao-gov',
+            section: 'operacional',
+            sectionLabel: 'Processos Operacionais',
+            title: 'Órgão Governamental',
+            preview: 'Conexão API Oficial, ticket Meta para órgãos governamentais.'
+        }, {
+            id: 'transferencia',
+            section: 'operacional',
+            sectionLabel: 'Processos Operacionais',
+            title: 'Transferência de Titularidade',
+            preview: 'Não permitido por questões de LGPD.'
+        }, {
+            id: 'palavras-reservadas',
+            section: 'operacional',
+            sectionLabel: 'Processos Operacionais',
+            title: 'Políticas de Palavras Reservadas',
+            preview: 'zap, zapi, chatbot, Helena – palavras proibidas em URLs.'
+        }, {
+            id: 'solicitacoes-meta',
+            section: 'operacional',
+            sectionLabel: 'Processos Operacionais',
+            title: 'Solicitações Meta',
+            preview: 'Abertura e acompanhamento de tickets Meta.'
+        }, {
+            id: 'contato-estrategico',
+            section: 'gestao',
+            sectionLabel: 'Gestão de Parceiros',
+            title: 'Contato Estratégico Com Parceiros (mensal)',
+            preview: 'Seleção mensal, análise de maturidade, Office Hours.'
+        }, {
+            id: 'acompanhamento-ongoing',
+            section: 'gestao',
+            sectionLabel: 'Gestão de Parceiros',
+            title: 'Acompanhamento Parceiros Em Ongoing',
+            preview: '5 pilares estratégicos, IA Integrativa, precificação.'
+        }, {
+            id: 'criacao-ambiente',
+            section: 'procedimentos',
+            sectionLabel: 'Procedimentos Parceiros',
+            title: 'Criação do Ambiente do Parceiro',
+            preview: 'Admin Helena > Parceiros, preencher F+1, ID Integração.'
+        }, {
+            id: 'dominio-personalizado',
+            section: 'procedimentos',
+            sectionLabel: 'Procedimentos Parceiros',
+            title: 'Configuração de Domínio Personalizado',
+            preview: 'Subdomínio, DNS, Admin Helena > Domínio Personalizado.'
+        }, {
+            id: 'criacao-conta',
+            section: 'procedimentos',
+            sectionLabel: 'Procedimentos Parceiros',
+            title: 'Criação de Conta na Plataforma',
+            preview: 'Super Admin, Admin > Contas, CNPJ, PJ ou PF.'
+        }, {
+            id: 'conexao-canal',
+            section: 'procedimentos',
+            sectionLabel: 'Procedimentos Parceiros',
+            title: 'Conexão de Canal',
+            preview: 'API Oficial, Z-API, Instagram, Messenger, portabilidade e demonstração.'
+        }, {
+            id: 'conexao-api-oficial',
+            section: 'procedimentos',
+            sectionLabel: 'Procedimentos Parceiros',
+            title: 'API Oficial do WhatsApp',
+            preview: 'Conexão Cloud API Meta, WABA, cartão de crédito, logomarca.'
+        }, {
+            id: 'conexao-api-coexistencia',
+            section: 'procedimentos',
+            sectionLabel: 'Procedimentos Parceiros',
+            title: 'API Oficial – Coexistência',
+            preview: 'Dois sistemas coexistindo no mesmo número WhatsApp.'
+        }, {
             id: 'conexao-zapi',
             section: 'procedimentos',
             sectionLabel: 'Procedimentos Parceiros',
@@ -3146,15 +3123,13 @@
             sectionLabel: 'Procedimentos Parceiros',
             title: 'Canal de Demonstração',
             preview: 'Conectar número para teste grátis e demonstração.'
-        }, 
-                    {
-    id: 'upsell-app-dominio',
-    section: 'bonificacoes',
-    sectionLabel: 'Bonificações',
-    title: 'POP – Upsell de App Personalizado e Domínio Personalizado',
-    preview: 'Upsell de app whitelabel e domínio personalizado, condições comerciais e processo.'},          
-                             
-                             {
+        }, {
+            id: 'upsell-app-dominio',
+            section: 'bonificacoes',
+            sectionLabel: 'Bonificações',
+            title: 'POP – Upsell de App Personalizado e Domínio Personalizado',
+            preview: 'Upsell de app whitelabel e domínio personalizado, condições comerciais e processo.'
+        }, {
             id: 'metabase',
             section: 'dashboards',
             sectionLabel: 'Dashboards e Monitoramento',
