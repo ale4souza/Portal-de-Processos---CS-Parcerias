@@ -117,6 +117,7 @@
                 <div class="nav-items" id="nav-bonificacoes">
                     <div class="nav-item" onclick="showPage('upsell-app-dominio')">Upsell de App e Domínio</div>
                     <div class="nav-item" onclick="showPage('bonificacao-ongoing')">Bonificação Onboarding</div>
+                    <div class="nav-item" onclick="showPage('bonificacao-indicacao')">Bonificação por Indicação</div>
                 </div>
             </div>
             <div class="nav-section">
@@ -2649,6 +2650,11 @@
                                 <path d="m9 18 6-6-6-6" />
                             </svg></div>
                     </div>
+                    <div class="sub-card" onclick="showPage('bonificacao-indicacao')">
+    <div class="sub-card-icon">🤝</div>
+    <div class="sub-card-title">Bonificação por Indicação de Parceiros</div>
+    <div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div>
+</div>
                 </div>
             </div>
             <!-- PAGE: BONIFICACAO ONGOING -->
@@ -2840,6 +2846,85 @@
                     </ul>
                 </div>
             </div>
+            <!-- PAGE: BONIFICACAO INDICACAO -->
+<div id="page-bonificacao-indicacao" class="page-view">
+    <div class="page-header">
+        <div class="page-tag">💰 Bonificações › <span onclick="showPage('bonificacoes')" style="cursor:pointer;text-decoration:underline;">Bonificações</span></div>
+        <div class="page-title">🤝 Bonificação por Indicação de Parceiros White Label</div>
+        <div class="page-desc">Regras, critérios e fluxo de bonificação para parceiros White Label que indicam novos parceiros para a Helena.</div>
+    </div>
+    <div class="content-body">
+
+        <h2>Regra Geral da Bonificação</h2>
+        <p>Todo parceiro White Label que indicar um novo parceiro, e este vier a fechar contrato com a Helena, terá direito a uma bonificação conforme as condições abaixo:</p>
+        <ul>
+            <li>Receberá <strong>20%</strong> sobre o valor das contas ativadas pelo parceiro indicado;</li>
+            <li>A bonificação será válida por até <strong>12 meses</strong>;</li>
+            <li>Caso o parceiro indicado permaneça por menos de 12 meses, o pagamento será realizado proporcionalmente ao período ativo.</li>
+        </ul>
+
+        <h2>Critérios para Validação da Indicação</h2>
+        <p>Para que a bonificação seja válida:</p>
+        <ul>
+            <li>A indicação deve ser identificada no momento da entrada do novo parceiro;</li>
+            <li>O parceiro indicado deve efetivar a contratação com a Helena;</li>
+            <li>O vínculo entre indicador e indicado deve estar registrado corretamente no sistema.</li>
+        </ul>
+
+        <h2>Regra de Apuração e Pagamento</h2>
+        <ul>
+            <li>A apuração dos valores inicia a partir do <strong>2º mês</strong> de operação do parceiro indicado;</li>
+            <li>O pagamento da bonificação ao parceiro indicador ocorre a partir do <strong>3º mês</strong>.</li>
+        </ul>
+        <div class="callout-block"><span class="ci">📅</span><span>
+            <strong>Exemplo prático:</strong><br>
+            Mês 1: Entrada do parceiro indicado<br>
+            Mês 2: Início da apuração<br>
+            Mês 3: Primeiro pagamento ao indicador
+        </span></div>
+
+        <h2>Base de Cálculo</h2>
+        <p>A bonificação será calculada com base em:</p>
+        <ul>
+            <li>Valor das contas efetivamente ativas e faturadas pelo parceiro indicado;</li>
+            <li>Considerando apenas receitas válidas dentro do período de apuração.</li>
+        </ul>
+
+        <h2>Regras Importantes</h2>
+        <div class="warning-block"><span class="ci">⚠️</span><span>
+            <ul style="margin-top:6px;">
+                <li>A bonificação <strong>não é retroativa</strong>;</li>
+                <li>O pagamento está condicionado à <strong>adimplência</strong> do parceiro indicado;</li>
+                <li>Em caso de cancelamento do parceiro indicado, a bonificação é automaticamente encerrada;</li>
+                <li>Não há acúmulo de indicação para o mesmo parceiro — vale o <strong>primeiro indicador registrado</strong>.</li>
+            </ul>
+        </span></div>
+
+        <hr style="border:none;border-top:1.5px solid var(--border);margin:24px 0;">
+
+        <h2>Responsáveis</h2>
+
+        <h3>Time Comercial</h3>
+        <ul>
+            <li>Informar ao time de Sucesso do Cliente que houve a indicação;</li>
+            <li>Garantir que o fechamento do parceiro indicado seja comunicado corretamente.</li>
+        </ul>
+
+        <h3>Time de Sucesso do Cliente</h3>
+        <ul>
+            <li>Preencher o <strong>Alterou+1</strong> do tipo Ocorrência com os dados do parceiro que indicou e do parceiro indicado;</li>
+            <li>Garantir o registro correto da indicação no sistema;</li>
+            <li>Acompanhar a ativação e evolução do parceiro indicado.</li>
+        </ul>
+
+        <h3>Time Financeiro</h3>
+        <ul>
+            <li>Realizar a apuração dos valores;</li>
+            <li>Executar o pagamento das bonificações.</li>
+        </ul>
+
+    </div>
+</div>
             <!-- SECTION: DASHBOARDS -->
             <div id="page-dashboards" class="page-view">
                 <div class="page-header">
