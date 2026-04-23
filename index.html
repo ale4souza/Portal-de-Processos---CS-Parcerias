@@ -76,6 +76,7 @@
                     <div class="nav-item" onclick="showPage('transferencia')">Transferência de Titularidade</div>
                     <div class="nav-item" onclick="showPage('palavras-reservadas')">Políticas de Palavras Reservadas</div>
                     <div class="nav-item" onclick="showPage('solicitacoes-meta')">Solicitações Meta</div>
+                    <div class="nav-item" onclick="showPage('page-linha-credito-hunion')">Linha de Crédito Hunion</div>
                 </div>
             </div>
             <div class="nav-section">
@@ -213,7 +214,7 @@
                         <div class="card-icon">⚙️</div>
                         <div class="card-title">Processos Operacionais</div>
                         <div class="card-desc">Cancelamentos, suporte, órgãos governamentais e solicitações Meta.</div>
-                        <div class="card-count">↗ 6 processos</div>
+                        <div class="card-count">↗ 7 processos</div>
                     </div>
                     <div class="section-card" onclick="openSection('gestao')">
                         <div class="card-icon">📈</div>
@@ -1245,13 +1246,6 @@
                                 <path d="m9 18 6-6-6-6" />
                             </svg></div>
                     </div>
-                    <div class="sub-card" onclick="showPage('linha-credito-hunion')">
-                        <div class="sub-card-icon">💳</div>
-                        <div class="sub-card-title">Linha de Crédito Hunion</div>
-                        <div class="sub-card-arrow"><svg viewBox="0 0 24 24" stroke-width="2.5">
-                                <path d="m9 18 6-6-6-6" />
-                            </svg></div>
-                    </div>
                     <div class="sub-card" onclick="showPage('apps-white-label')">
                         <div class="sub-card-icon">📱</div>
                         <div class="sub-card-title">Apps White Label</div>
@@ -1316,70 +1310,7 @@
                     </div>
                 </div>
             </div>
-            <!-- PAGE: LINHA CREDITO HUNION -->
-            <div id="page-linha-credito-hunion" class="page-view">
-                <div class="page-header">
-                    <div class="page-tag">⚙️ Processos Operacionais › <span onclick="showPage('suporte')" style="cursor:pointer;text-decoration:underline;">Suporte e Escalações</span></div>
-                    <div class="page-title">Linha de Crédito Hunion</div>
-                    <div class="page-desc">Este processo tem como objetivo direcionar o passo a passo da conexão de canais em API Oficial, usando a linha de crédito Hunion como forma de pagamento</div>
-                </div>
-                <div class="content-body">
-                    <h2>Resumo do Processo</h2>
-                    <ol class="step-list">
-                        <li>Orientar o parceiro sobre o cálculo de disparos (disparos do mês × R$ 0,45).</li>
-                        <li>Enviar e-mail com detalhamento ao parceiro e aguardar retorno de permissão.</li>
-                        <li>Solicitar boleto pelo Alterou+1.</li>
-                        <li>Vincular linha de crédito a waba</li>
-                        <li>Preencher formulário para solicitar a recarga da Waba.</li>
-                    </ol>
-                    <h2>Cálculo de disparos</h2>
-                    <ol class="step-list">
-                        <li>Verificar quantos disparos farão no mês e multiplicar pelo valor de R$0,45 (valor estimado).</li>
-                        <li>Perguntar em nome de quem virá o boleto (parceiro ou cliente, lembrando que o boleto virá no nome da Hunion).</li>
-                    </ol>
-                    <h2>Envio de e-mail</h2>
-                    <ol class="step-list">
-                        <li>Enviar o e-mail abaixo ao parceiro utilizando o mesmo e-mail cadastrado no F+1 ou o e-mail de Super admin atrelado a conta.</li>
-                        <li>Aguardar resposta do parceiro dando permissão para liberar a linha de crédito.</li>
-                        <li>E-mail a ser enviado:</li>
-                    </ol>
-                    <div class="callout-block" style="flex-direction:column;align-items:flex-start;gap:10px;">
-                        <div style="display:flex;align-items:center;gap:8px;"><span class="ci">📧</span><strong>Modelo — E-mail Linha de Crédito</strong></div>
-                        <div style="width:100%;background:rgba(0,0,0,.18);border-radius:8px;padding:14px 18px;font-size:13px;line-height:1.75;">
-                            <p>Prezados,</p>
-                            <p>Sobre a liberação da linha de crédito para a “NOME DO PARCEIRO”, gostaríamos de alinhar alguns pontos importantes sobre o funcionamento na HelenaCRM:
-                            <ul>
-                                <li><strong>Controle de Consumo: </strong> Atualmente, a HelenaCRM não possui um sistema de faturamento pré-pago que interrompe automaticamente o uso após atingir determinado saldo. O único controle disponível é o limite mensal configurado na WABA pela Meta, em dólares. Esse limite se renova integralmente a cada virada de mês.</li>
-                                <li><strong> Recarga Mensal: </strong> Será realizada uma recarga mensal para garantir o saldo de aproximadamente U$”valor em dolar” (cerca de R$”valor em real”).</li>
-                                <li><strong> Consumo sem Trava: </strong> Caso o cliente ultrapasse esse limite, a Meta pode não bloquear o disparo de mensagens. Assim, o consumo excedente será faturado pela HelenaCRM e cobrado da “NOME DO PARCEIRO” no ciclo seguinte.</li>
-                                <li><strong> Monitoramento: </strong> É fundamental que o uso seja acompanhado de perto, já que não há garantia de bloqueio automático após o limite.</li>
-                                <li><strong> Desativação: </strong> Caso o cliente deseje interromper o serviço, é necessário informar seu CS para que a linha de crédito seja desativada. Caso contrário, as recargas e cobranças continuarão sendo geradas mensalmente.</li>
-                            </ul>
-                            </p>
-                            <p style="opacity:.7;font-style:italic;">⚠️ Ponto de Atenção: Já houve casos em que, mesmo após ultrapassar o limite estipulado, a Meta não bloqueou o envio de mensagens. Portanto, ao aceitar a liberação da linha de crédito, é importante estar ciente e concordar que qualquer valor excedente será cobrado no próximo ciclo de faturamento.</p>
-                            <p>Se houver concordância com esse formato e aceitação do risco, seguiremos com a liberação da linha de crédito no valor aproximado de U$valor em dolar” (cerca de R$”valor em real”). Caso contrário, recomendamos aguardar até que a funcionalidade de cobrança pré-paga esteja disponível.</p>
-                            <p>Atenciosamente,</p>
-                        </div>
-                    </div>
-                    <div class="callout-block">
-                        <span class="ci">⚠️</span>
-                        <span>Os pontos de atenção presentes no e-mail, devem ser informados também ao parceiro por Whatsapp.</span>
-                    </div>
-                    <h2>Solicitar boleto</h2>
-                    <ol class="step-list">
-                        <li>Com as informações acima preencha o alterou+1 como ocorrência, solicitando que o financeiro faça o boleto com o valor do calculado pelo parceiro.</li>
-                        <li>Envie-o para o parceiro e solicite que envie o comprovante de pagamento</li>
-                    </ol>
-                    <h2>Vincular linha de crédito</h2>
-                    <li>Após receber o comprovante de pagamento, solicite ao parceiro o <strong>ID da WABA</strong> e vincule a linha de crédito na plataforma através do <strong>WhatsApp Tools</strong>.<br> Caminho: <span class="badge badge-green">Admin Helena</span> → <span class="badge badge-green">WhatsApp Tools</span>
-                        <img src="Linha de crédito.png" alt="Vincular linha de crédito" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
-                    </li>
-                    <h2>Solicitar recarga de créditos</h2>
-                    <p>Preencher o <a href="https://forms.gle/p5QWgon1hK7DKCLT7" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">formulário de recarga</a></p>
-                    <p>Pedir para o Juliano liberar o valor para a Waba, enviar a solicitação a ele no Discord juntamente com o comprovante do pagamento.</p>
-                </div>
-            </div>
-            <!-- PAGE: APPS WHITE LABEL -->
+                        <!-- PAGE: APPS WHITE LABEL -->
             <div id="page-apps-white-label" class="page-view">
                 <div class="page-header">
                     <div class="page-tag">⚙️ Processos Operacionais › <span onclick="showPage('suporte')" style="cursor:pointer;text-decoration:underline;">Suporte e Escalações</span></div>
@@ -1607,6 +1538,69 @@
                         <li>Uso do nome oficial ou domínio da Helena (wts.chat).</li>
                         <li>Conflito com parceiros ou tecnologias utilizadas (Z-API, Hunion, etc.).</li>
                     </ul>
+                </div>
+            </div>
+            <!-- PAGE: LINHA CREDITO HUNION -->
+            <div id="page-linha-credito-hunion" class="page-view">
+                <div class="page-header">
+                    <div class="page-tag">⚙️ Processos Operacionais › <span onclick="showPage('suporte')" style="cursor:pointer;text-decoration:underline;">Suporte e Escalações</span></div>
+                    <div class="page-title">Linha de Crédito Hunion</div>
+                    <div class="page-desc">Este processo tem como objetivo direcionar o passo a passo da conexão de canais em API Oficial, usando a linha de crédito Hunion como forma de pagamento</div>
+                </div>
+                <div class="content-body">
+                    <h2>Resumo do Processo</h2>
+                    <ol class="step-list">
+                        <li>Orientar o parceiro sobre o cálculo de disparos (disparos do mês × R$ 0,45).</li>
+                        <li>Enviar e-mail com detalhamento ao parceiro e aguardar retorno de permissão.</li>
+                        <li>Solicitar boleto pelo Alterou+1.</li>
+                        <li>Vincular linha de crédito a waba</li>
+                        <li>Preencher formulário para solicitar a recarga da Waba.</li>
+                    </ol>
+                    <h2>Cálculo de disparos</h2>
+                    <ol class="step-list">
+                        <li>Verificar quantos disparos farão no mês e multiplicar pelo valor de R$0,45 (valor estimado).</li>
+                        <li>Perguntar em nome de quem virá o boleto (parceiro ou cliente, lembrando que o boleto virá no nome da Hunion).</li>
+                    </ol>
+                    <h2>Envio de e-mail</h2>
+                    <ol class="step-list">
+                        <li>Enviar o e-mail abaixo ao parceiro utilizando o mesmo e-mail cadastrado no F+1 ou o e-mail de Super admin atrelado a conta.</li>
+                        <li>Aguardar resposta do parceiro dando permissão para liberar a linha de crédito.</li>
+                        <li>E-mail a ser enviado:</li>
+                    </ol>
+                    <div class="callout-block" style="flex-direction:column;align-items:flex-start;gap:10px;">
+                        <div style="display:flex;align-items:center;gap:8px;"><span class="ci">📧</span><strong>Modelo — E-mail Linha de Crédito</strong></div>
+                        <div style="width:100%;background:rgba(0,0,0,.18);border-radius:8px;padding:14px 18px;font-size:13px;line-height:1.75;">
+                            <p>Prezados,</p>
+                            <p>Sobre a liberação da linha de crédito para a “NOME DO PARCEIRO”, gostaríamos de alinhar alguns pontos importantes sobre o funcionamento na HelenaCRM:
+                            <ul>
+                                <li><strong>Controle de Consumo: </strong> Atualmente, a HelenaCRM não possui um sistema de faturamento pré-pago que interrompe automaticamente o uso após atingir determinado saldo. O único controle disponível é o limite mensal configurado na WABA pela Meta, em dólares. Esse limite se renova integralmente a cada virada de mês.</li>
+                                <li><strong> Recarga Mensal: </strong> Será realizada uma recarga mensal para garantir o saldo de aproximadamente U$”valor em dolar” (cerca de R$”valor em real”).</li>
+                                <li><strong> Consumo sem Trava: </strong> Caso o cliente ultrapasse esse limite, a Meta pode não bloquear o disparo de mensagens. Assim, o consumo excedente será faturado pela HelenaCRM e cobrado da “NOME DO PARCEIRO” no ciclo seguinte.</li>
+                                <li><strong> Monitoramento: </strong> É fundamental que o uso seja acompanhado de perto, já que não há garantia de bloqueio automático após o limite.</li>
+                                <li><strong> Desativação: </strong> Caso o cliente deseje interromper o serviço, é necessário informar seu CS para que a linha de crédito seja desativada. Caso contrário, as recargas e cobranças continuarão sendo geradas mensalmente.</li>
+                            </ul>
+                            </p>
+                            <p style="opacity:.7;font-style:italic;">⚠️ Ponto de Atenção: Já houve casos em que, mesmo após ultrapassar o limite estipulado, a Meta não bloqueou o envio de mensagens. Portanto, ao aceitar a liberação da linha de crédito, é importante estar ciente e concordar que qualquer valor excedente será cobrado no próximo ciclo de faturamento.</p>
+                            <p>Se houver concordância com esse formato e aceitação do risco, seguiremos com a liberação da linha de crédito no valor aproximado de U$valor em dolar” (cerca de R$”valor em real”). Caso contrário, recomendamos aguardar até que a funcionalidade de cobrança pré-paga esteja disponível.</p>
+                            <p>Atenciosamente,</p>
+                        </div>
+                    </div>
+                    <div class="callout-block">
+                        <span class="ci">⚠️</span>
+                        <span>Os pontos de atenção presentes no e-mail, devem ser informados também ao parceiro por Whatsapp.</span>
+                    </div>
+                    <h2>Solicitar boleto</h2>
+                    <ol class="step-list">
+                        <li>Com as informações acima preencha o alterou+1 como ocorrência, solicitando que o financeiro faça o boleto com o valor do calculado pelo parceiro.</li>
+                        <li>Envie-o para o parceiro e solicite que envie o comprovante de pagamento</li>
+                    </ol>
+                    <h2>Vincular linha de crédito</h2>
+                    <li>Após receber o comprovante de pagamento, solicite ao parceiro o <strong>ID da WABA</strong> e vincule a linha de crédito na plataforma através do <strong>WhatsApp Tools</strong>.<br> Caminho: <span class="badge badge-green">Admin Helena</span> → <span class="badge badge-green">WhatsApp Tools</span>
+                        <img src="Linha de crédito.png" alt="Vincular linha de crédito" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
+                    </li>
+                    <h2>Solicitar recarga de créditos</h2>
+                    <p>Preencher o <a href="https://forms.gle/p5QWgon1hK7DKCLT7" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">formulário de recarga</a></p>
+                    <p>Pedir para o Juliano liberar o valor para a Waba, enviar a solicitação a ele no Discord juntamente com o comprovante do pagamento.</p>
                 </div>
             </div>
             <!-- PAGE: SOLICITACOES META -->
