@@ -1545,28 +1545,35 @@
                 <div class="page-header">
                     <div class="page-tag">⚙️ Processos Operacionais › <span onclick="showPage('suporte')" style="cursor:pointer;text-decoration:underline;">Suporte e Escalações</span></div>
                     <div class="page-title">Linha de Crédito Hunion</div>
-                    <div class="page-desc">Este processo tem como objetivo direcionar o passo a passo da conexão de canais em API Oficial, usando a linha de crédito Hunion como forma de pagamento</div>
+                    <div class="page-desc">O objetivo é padronizar o processo de solicitação, aprovação e liberação da linha de crédito para disparos, garantindo organização, controle financeiro e rastreabilidade das informações.</div>
                 </div>
                 <div class="content-body">
-                    <h2>Resumo do Processo</h2>
-                    <ol class="step-list">
-                        <li>Orientar o parceiro sobre o cálculo de disparos (disparos do mês × R$ 0,45).</li>
-                        <li>Enviar e-mail com detalhamento ao parceiro e aguardar retorno de permissão.</li>
-                        <li>Solicitar boleto pelo Alterou+1.</li>
-                        <li>Vincular linha de crédito a waba</li>
-                        <li>Preencher formulário para solicitar a recarga da Waba.</li>
-                    </ol>
-                    <h2>Cálculo de disparos</h2>
-                    <ol class="step-list">
+                    <h2>Solicitação da Linha de Crédito</h2>
+                    <p>Quando o parceiro demonstrar interesse em utilizar a linha de crédito:</p>
+                    <p>Solicitar o preenchimento do <a href="https://forms.gle/p5QWgon1hK7DKCLT7" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">formulário</a></p>
+
+                    <h2>Levantamento de Informações (Obrigatório)</h2>
+                    <p>Antes de prosseguir, o CS deve coletar com o parceiro:</p>
+                                                     
+                    <ul>
+                        <li>Levantar com o parceiro a quantidade estimada de disparos no mês.</li>
                         <li>Verificar quantos disparos farão no mês e multiplicar pelo valor de R$0,45 (valor estimado).</li>
-                        <li>Perguntar em nome de quem virá o boleto (parceiro ou cliente, lembrando que o boleto virá no nome da Hunion).</li>
-                    </ol>
+                        <li>Confirmar em nome de quem será o boleto: Parceiro ou Cliente.</li>
+                        <li>Enviar e-mail com detalhamento ao parceiro e aguardar retorno de permissão.</li>
+                    </ul>
+
+                    <div class="callout-block">
+                        <span class="ci">⚠️</span>
+                        <span>O boleto será emitido em nome da <strong>Hunion</strong>, independentemente do solicitante</span>
+                    </div> 
+                    
                     <h2>Envio de e-mail</h2>
-                    <ol class="step-list">
+                    <ul>
                         <li>Enviar o e-mail abaixo ao parceiro utilizando o mesmo e-mail cadastrado no F+1 ou o e-mail de Super admin atrelado a conta.</li>
                         <li>Aguardar resposta do parceiro dando permissão para liberar a linha de crédito.</li>
                         <li>E-mail a ser enviado:</li>
-                    </ol>
+                    </ul>
+
                     <div class="callout-block" style="flex-direction:column;align-items:flex-start;gap:10px;">
                         <div style="display:flex;align-items:center;gap:8px;"><span class="ci">📧</span><strong>Modelo — E-mail Linha de Crédito</strong></div>
                         <div style="width:100%;background:rgba(0,0,0,.18);border-radius:8px;padding:14px 18px;font-size:13px;line-height:1.75;">
@@ -1590,19 +1597,42 @@
                         <span>Os pontos de atenção presentes no e-mail, devem ser informados também ao parceiro por Whatsapp.</span>
                     </div>
                     <h2>Solicitar boleto</h2>
-                    <ol class="step-list">
+                    <ul>
                         <li>Com as informações acima preencha o alterou+1 como ocorrência, solicitando que o financeiro faça o boleto com o valor do calculado pelo parceiro.</li>
-                        <li>Envie-o para o parceiro e solicite que envie o comprovante de pagamento</li>
-                    </ol>
+                        <li>Solicitar emissão de boleto ao financeiro, informando:</li>
+                        <ul style="margin-top:10px;"><li>Nome do parceiro</li><li>Quantidade de disparos</li><li>Valor calculado</li><li>Responsável pelo pagamento (parceiro ou cliente)</li></ul>
+                    </ul>
+                    <h2>Envio e Confirmação de Pagamento</h2>
+                    <ul>
+                        <li>Enviar o boleto ao parceiro</li>
+                        <li>Aguardar envio do comprovante de pagamento</li>
+                        <li>Validar o recebimento do comprovante</li>
+                    </ul>
                     <h2>Vincular linha de crédito</h2>
                     <li>Após receber o comprovante de pagamento, solicite ao parceiro o <strong>ID da WABA</strong> e vincule a linha de crédito na plataforma através do <strong>WhatsApp Tools</strong>.<br> Caminho: <span class="badge badge-green">Admin Helena</span> → <span class="badge badge-green">WhatsApp Tools</span>
                         <img src="Linha de crédito.png" alt="Vincular linha de crédito" style="width:100%;max-width:700px;border-radius:8px;border:1px solid var(--border);margin:12px 0;display:block;">
                     </li>
                     <h2>Solicitar recarga de créditos</h2>
-                    <p>Preencher o <a href="https://forms.gle/p5QWgon1hK7DKCLT7" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">formulário de recarga</a></p>
-                    <p>Pedir para o Juliano liberar o valor para a Waba, enviar a solicitação a ele no Discord juntamente com o comprovante do pagamento.</p>
+                    <p>Preencher o <a href="https://forms.gle/p5QWgon1hK7DKCLT7" target="_blank" rel="noopener noreferrer" style="color:inherit;font-weight:700;text-decoration:underline;">formulário de recarga (caso ainda não tenha feito)</a></p>
+                    <p>Pedir para o Juliano ou Guilherme liberar o valor para a Waba, enviar a solicitação a eles no Discord juntamente com o comprovante do pagamento.</p>
+                     <h2>Checklist Final</h2>
+                    <div class="checklist">
+                        <label class="checklist-item"><input type="checkbox"><span>Formulário preenchido pelo parceiro.</span></label>
+                        <label class="checklist-item"><input type="checkbox"><span>Quantidade de disparos validada.</span></label>
+                        <label class="checklist-item"><input type="checkbox"><span>Valor calculado corretamente.</span></label>
+                        <label class="checklist-item"><input type="checkbox"><span>Responsável pelo pagamento definido.</span></label>
+                        <label class="checklist-item"><input type="checkbox"><span>Alterou+1 preenchido corretamente.</span></label>
+                        <label class="checklist-item"><input type="checkbox"><span>Boleto solicitado ao financeiro.</span></label>
+                        <label class="checklist-item"><input type="checkbox"><span>Boleto enviado ao parceiro.</span></label>
+                        <label class="checklist-item"><input type="checkbox"><span>Comprovante recebido.</span></label>
+                        <label class="checklist-item"><input type="checkbox"><span>Linha de crédito liberada no sistema.</span></label>
+                        <label class="checklist-item"><input type="checkbox"><span>Solicitação enviada ao Guilherme ou Juliano.</span></label>
+                        <label class="checklist-item"><input type="checkbox"><span>Informação e comprovante enviados no Discord.</span></label>
+                    </div>
                 </div>
             </div>
+
+            
             <!-- PAGE: SOLICITACOES META -->
             <div id="page-solicitacoes-meta" class="page-view">
                 <div class="page-header">
@@ -3030,8 +3060,8 @@
                             </tr>
                             <tr style="background:var(--color-background-secondary);">
                                 <td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">Faixa 4</td>
-                                <td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">Entre R$ 50.000 e R$ 100.000 sobre o que excede R$ 50.000 (com limite de R$ 50.000, valor máximo do intervalo)</td>
-                                <td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">20%</td>
+                                <td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">Entre R$ 50.000 e R$ 100.000</td>
+                                <td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">20% sobre o que excede R$ 50.000 (com limite de R$ 50.000, valor máximo do intervalo)</td>
                             </tr>
                             <tr>
                                 <td style="padding:9px 14px;border:0.5px solid var(--color-border-tertiary);">Faixa 5</td>
