@@ -3281,321 +3281,354 @@
     </div><!-- /main -->
     <button class="mobile-toggle" onclick="toggleMobile()" title="Menu">☰</button>
     <script>
-        // ── Theme ──
-        function toggleTheme() {
-            const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', next);
-            try {
-                localStorage.setItem('helena-theme', next);
-            } catch (e) {}
-        }
-        (function() {
-            try {
-                const saved = localStorage.getItem('helena-theme');
-                if (saved) document.documentElement.setAttribute('data-theme', saved);
-                else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) document.documentElement.setAttribute('data-theme', 'dark');
-            } catch (e) {}
-        })();
-        // ── State ──
-        let currentPage = 'home';
-        let currentSection = null;
-        let pageHistory = [];
-        // ── Search data ──
-        const searchIndex = [{
-            id: 'check-in',
-            section: 'rotinas',
-            sectionLabel: 'Rotinas do Time',
-            title: 'Check-in Semanal',
-            preview: 'Reunião segunda-feira 14h, estratégias da semana, métricas da carteira.'
-        }, {
-            id: 'check-out',
-            section: 'rotinas',
-            sectionLabel: 'Rotinas do Time',
-            title: 'Check-out Semanal',
-            preview: 'Sexta-feira, resultados da semana, conquistas, desafios, aprendizados.'
-        }, {
-            id: 'cumbuca',
-            section: 'rotinas',
-            sectionLabel: 'Rotinas do Time',
-            title: 'Cumbuca',
-            preview: 'Encontro semanal de leitura do livro do time.'
-        }, {
-            id: 'emv',
-            section: 'rotinas',
-            sectionLabel: 'Rotinas do Time',
-            title: 'Avaliação de EMV',
-            preview: 'Avaliação trimestral do Engagement Maturity Value dos parceiros.'
-        }, {
-            id: 'fechamentos',
-            section: 'rotinas',
-            sectionLabel: 'Rotinas do Time',
-            title: 'Acompanhar Fechamentos do Comercial',
-            preview: 'Planilha F+1 – Fechou mais um HELENA CRM.'
-        }, {
-            id: 'ferias',
-            section: 'rotinas',
-            sectionLabel: 'Rotinas do Time',
-            title: 'Solicitação de Férias',
-            preview: 'E-mail ao DP até dia 10, mínimo 30 dias de antecedência.'
-        }, {
-            id: 'distribuicao',
-            section: 'onboarding',
-            sectionLabel: 'Processos de Onboarding',
-            title: 'Distribuição',
-            preview: 'Fluxo após formulário Fechou +1, etiquetas e padronização.'
-        }, {
-            id: 'kickoff',
-            section: 'onboarding',
-            sectionLabel: 'Processos de Onboarding',
-            title: 'Kick Off',
-            preview: 'Primeira reunião com parceiro, template KickOff 2026, coleta de dados.'
-        }, {
-            id: 'configurar-ambiente',
-            section: 'onboarding',
-            sectionLabel: 'Processos de Onboarding',
-            title: 'Configurar Ambiente',
-            preview: 'Criação da conta da empresa do parceiro, planos, valores.'
-        }, {
-            id: 'conexoes',
-            section: 'onboarding',
-            sectionLabel: 'Processos de Onboarding',
-            title: 'Conexões',
-            preview: 'Instagram, Facebook, WhatsApp Z-API e Meta Cloud API.'
-        }, {
-            id: 'funcionalidades',
-            section: 'onboarding',
-            sectionLabel: 'Processos de Onboarding',
-            title: 'Funcionalidades Gerais',
-            preview: 'Verificação do uso da plataforma, suporte N1 e N2.'
-        }, {
-            id: 'estrategias',
-            section: 'onboarding',
-            sectionLabel: 'Processos de Onboarding',
-            title: 'Primeiras Estratégias',
-            preview: 'Dúvidas gerais e primeiros 4 clientes do parceiro.'
-        }, {
-            id: 'cancelamentos',
-            section: 'operacional',
-            sectionLabel: 'Processos Operacionais',
-            title: 'Cancelamentos / Alterações',
-            preview: 'Cancelamento de parceiros, alterações de conta, upsell WL.'
-        }, {
-            id: 'suporte',
-            section: 'operacional',
-            sectionLabel: 'Processos Operacionais',
-            title: 'Suporte e Escalações',
-            preview: 'Cards N2, Linha de Crédito Hunion, Apps White Label.'
-        }, {
-            id: 'orgao-gov',
-            section: 'operacional',
-            sectionLabel: 'Processos Operacionais',
-            title: 'Órgão Governamental',
-            preview: 'Conexão API Oficial, ticket Meta para órgãos governamentais.'
-        }, {
-            id: 'transferencia',
-            section: 'operacional',
-            sectionLabel: 'Processos Operacionais',
-            title: 'Transferência de Titularidade',
-            preview: 'Não permitido por questões de LGPD.'
-        }, {
-            id: 'palavras-reservadas',
-            section: 'operacional',
-            sectionLabel: 'Processos Operacionais',
-            title: 'Políticas de Palavras Reservadas',
-            preview: 'zap, zapi, chatbot, Helena – palavras proibidas em URLs.'
-        }, {
-            id: 'solicitacoes-meta',
-            section: 'operacional',
-            sectionLabel: 'Processos Operacionais',
-            title: 'Solicitações Meta',
-            preview: 'Abertura e acompanhamento de tickets Meta.'
-        }, {
-            id: 'contato-estrategico',
-            section: 'gestao',
-            sectionLabel: 'Gestão de Parceiros',
-            title: 'Contato Estratégico Com Parceiros (mensal)',
-            preview: 'Seleção mensal, análise de maturidade, Office Hours.'
-        }, {
-            id: 'acompanhamento-ongoing',
-            section: 'gestao',
-            sectionLabel: 'Gestão de Parceiros',
-            title: 'Acompanhamento Parceiros Em Ongoing',
-            preview: '5 pilares estratégicos, IA Integrativa, precificação.'
-        }, {
-            id: 'criacao-ambiente',
-            section: 'procedimentos',
-            sectionLabel: 'Procedimentos Parceiros',
-            title: 'Criação do Ambiente do Parceiro',
-            preview: 'Admin Helena > Parceiros, preencher F+1, ID Integração.'
-        }, {
-            id: 'dominio-personalizado',
-            section: 'procedimentos',
-            sectionLabel: 'Procedimentos Parceiros',
-            title: 'Configuração de Domínio Personalizado',
-            preview: 'Subdomínio, DNS, Admin Helena > Domínio Personalizado.'
-        }, {
-            id: 'criacao-conta',
-            section: 'procedimentos',
-            sectionLabel: 'Procedimentos Parceiros',
-            title: 'Criação de Conta na Plataforma',
-            preview: 'Super Admin, Admin > Contas, CNPJ, PJ ou PF.'
-        }, {
-            id: 'conexao-canal',
-            section: 'procedimentos',
-            sectionLabel: 'Procedimentos Parceiros',
-            title: 'Conexão de Canal',
-            preview: 'API Oficial, Z-API, Instagram, Messenger, portabilidade e demonstração.'
-        }, {
-            id: 'conexao-api-oficial',
-            section: 'procedimentos',
-            sectionLabel: 'Procedimentos Parceiros',
-            title: 'API Oficial do WhatsApp',
-            preview: 'Conexão Cloud API Meta, WABA, cartão de crédito, logomarca.'
-        }, {
-            id: 'conexao-api-coexistencia',
-            section: 'procedimentos',
-            sectionLabel: 'Procedimentos Parceiros',
-            title: 'API Oficial – Coexistência',
-            preview: 'Dois sistemas coexistindo no mesmo número WhatsApp.'
-        }, {
-            id: 'conexao-zapi',
-            section: 'procedimentos',
-            sectionLabel: 'Procedimentos Parceiros',
-            title: 'API Não Oficial (Z-API)',
-            preview: 'Conexão Z-API parceria Helena e conta própria, QR Code.'
-        }, {
-            id: 'conexao-evolution',
-            section: 'procedimentos',
-            sectionLabel: 'Procedimentos Parceiros',
-            title: 'Evolution API',
-            preview: 'Conexão via Evolution API na plataforma.'
-        }, {
-            id: 'conexao-instagram-messenger',
-            section: 'procedimentos',
-            sectionLabel: 'Procedimentos Parceiros',
-            title: 'Instagram / Messenger',
-            preview: 'Conexão Instagram e Messenger via página do Facebook.'
-        }, {
-            id: 'conexao-portabilidade',
-            section: 'procedimentos',
-            sectionLabel: 'Procedimentos Parceiros',
-            title: 'Portabilidade',
-            preview: 'Migração de número já conectado em outra plataforma.'
-        }, {
-            id: 'conexao-demonstracao',
-            section: 'procedimentos',
-            sectionLabel: 'Procedimentos Parceiros',
-            title: 'Canal de Demonstração',
-            preview: 'Conectar número para teste grátis e demonstração.'
-        }, {
-            id: 'upsell-app-dominio',
-            section: 'bonificacoes',
-            sectionLabel: 'Bonificações',
-            title: 'POP – Upsell de App Personalizado e Domínio Personalizado',
-            preview: 'Upsell de app whitelabel e domínio personalizado, condições comerciais e processo.'
-        }, {
-            id: 'metabase',
-            section: 'dashboards',
-            sectionLabel: 'Dashboards e Monitoramento',
-            title: 'Metabase – Evolução de Atendimento',
-            preview: 'Usabilidade de clientes, risco de churn por parceiro.'
-        }, {
-            id: 'painel-gestao',
-            section: 'dashboards',
-            sectionLabel: 'Dashboards e Monitoramento',
-            title: 'Painel de Gestão a Vista',
-            preview: 'Contas e churn por parceiro/CS.'
-        }, {
-            id: 'academia',
-            section: 'cultura',
-            sectionLabel: 'Cultura e Desenvolvimento',
-            title: 'Portal do Parceiro | Academia Helena',
-            preview: 'Treinamentos, materiais de apoio, capacitação de parceiros.'
-        }, {
-            id: 'conteudos-time-interno',
-            section: 'cultura',
-            sectionLabel: 'Cultura e Desenvolvimento',
-            title: 'Conteúdos para o Time Interno',
-            preview: 'Cursos e conteúdos exclusivos para desenvolvimento do time interno Helena.'
-        }];
-        const sectionPages = {
-            rotinas: 'rotinas',
-            onboarding: 'onboarding',
-            operacional: 'operacional',
-            gestao: 'gestao',
-            procedimentos: 'procedimentos',
-            bonificacoes: 'bonificacoes',
-            dashboards: 'dashboards',
-            cultura: 'cultura'
+       function toggleTheme() {
+    const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try {
+        localStorage.setItem('helena-theme', next);
+    } catch (e) {}
+}
+(function() {
+    try {
+        const saved = localStorage.getItem('helena-theme');
+        if (saved) document.documentElement.setAttribute('data-theme', saved);
+        else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) document.documentElement.setAttribute('data-theme', 'dark');
+    } catch (e) {}
+})();
+
+// ── State ──
+let currentPage = 'home';
+let currentSection = null;
+let pageHistory = [];
+
+// ── Search data ──
+const searchIndex = [{
+    id: 'check-in',
+    section: 'rotinas',
+    sectionLabel: 'Rotinas do Time',
+    title: 'Check-in Semanal',
+    preview: 'Reunião segunda-feira 14h, estratégias da semana, métricas da carteira.'
+}, {
+    id: 'check-out',
+    section: 'rotinas',
+    sectionLabel: 'Rotinas do Time',
+    title: 'Check-out Semanal',
+    preview: 'Sexta-feira, resultados da semana, conquistas, desafios, aprendizados.'
+}, {
+    id: 'cumbuca',
+    section: 'rotinas',
+    sectionLabel: 'Rotinas do Time',
+    title: 'Cumbuca',
+    preview: 'Encontro semanal de leitura do livro do time.'
+}, {
+    id: 'emv',
+    section: 'rotinas',
+    sectionLabel: 'Rotinas do Time',
+    title: 'Avaliação de EMV',
+    preview: 'Avaliação trimestral do Engagement Maturity Value dos parceiros.'
+}, {
+    id: 'fechamentos',
+    section: 'rotinas',
+    sectionLabel: 'Rotinas do Time',
+    title: 'Acompanhar Fechamentos do Comercial',
+    preview: 'Planilha F+1 – Fechou mais um HELENA CRM.'
+}, {
+    id: 'ferias',
+    section: 'cultura',
+    sectionLabel: 'Experiência do Colaborador',
+    title: 'Solicitação de Férias',
+    preview: 'E-mail ao DP até dia 10, mínimo 30 dias de antecedência.'
+}, {
+    id: 'ajuste-ponto',
+    section: 'cultura',
+    sectionLabel: 'Experiência do Colaborador',
+    title: 'Ajuste de Ponto (Sólides)',
+    preview: 'Solicitação de ajuste de ponto no app Tangerino Sólides.'
+}, {
+    id: 'distribuicao',
+    section: 'onboarding',
+    sectionLabel: 'Processos de Onboarding',
+    title: 'Distribuição',
+    preview: 'Fluxo após formulário Fechou +1, etiquetas e padronização.'
+}, {
+    id: 'kickoff',
+    section: 'onboarding',
+    sectionLabel: 'Processos de Onboarding',
+    title: 'Kick Off',
+    preview: 'Primeira reunião com parceiro, template KickOff 2026, coleta de dados.'
+}, {
+    id: 'configurar-ambiente',
+    section: 'onboarding',
+    sectionLabel: 'Processos de Onboarding',
+    title: 'Configurar Ambiente',
+    preview: 'Criação da conta da empresa do parceiro, planos, valores.'
+}, {
+    id: 'conexoes',
+    section: 'onboarding',
+    sectionLabel: 'Processos de Onboarding',
+    title: 'Conexões',
+    preview: 'Instagram, Facebook, WhatsApp Z-API e Meta Cloud API.'
+}, {
+    id: 'funcionalidades',
+    section: 'onboarding',
+    sectionLabel: 'Processos de Onboarding',
+    title: 'Funcionalidades Gerais',
+    preview: 'Verificação do uso da plataforma, suporte N1 e N2.'
+}, {
+    id: 'estrategias',
+    section: 'onboarding',
+    sectionLabel: 'Processos de Onboarding',
+    title: 'Primeiras Estratégias',
+    preview: 'Dúvidas gerais e primeiros 4 clientes do parceiro.'
+}, {
+    id: 'cancelamentos',
+    section: 'operacional',
+    sectionLabel: 'Processos Operacionais',
+    title: 'Cancelamentos / Alterações',
+    preview: 'Cancelamento de parceiros, alterações de conta, upsell WL.'
+}, {
+    id: 'suporte',
+    section: 'operacional',
+    sectionLabel: 'Processos Operacionais',
+    title: 'Suporte e Escalações',
+    preview: 'Cards N2, Linha de Crédito Hunion, Apps White Label.'
+}, {
+    id: 'orgao-gov',
+    section: 'operacional',
+    sectionLabel: 'Processos Operacionais',
+    title: 'Órgão Governamental',
+    preview: 'Conexão API Oficial, ticket Meta para órgãos governamentais.'
+}, {
+    id: 'transferencia',
+    section: 'operacional',
+    sectionLabel: 'Processos Operacionais',
+    title: 'Transferência de Titularidade',
+    preview: 'Não permitido por questões de LGPD.'
+}, {
+    id: 'palavras-reservadas',
+    section: 'operacional',
+    sectionLabel: 'Processos Operacionais',
+    title: 'Políticas de Palavras Reservadas',
+    preview: 'zap, zapi, chatbot, Helena – palavras proibidas em URLs.'
+}, {
+    id: 'solicitacoes-meta',
+    section: 'operacional',
+    sectionLabel: 'Processos Operacionais',
+    title: 'Solicitações Meta',
+    preview: 'Abertura e acompanhamento de tickets Meta.'
+}, {
+    id: 'contato-estrategico',
+    section: 'gestao',
+    sectionLabel: 'Gestão de Parceiros',
+    title: 'Contato Estratégico Com Parceiros (mensal)',
+    preview: 'Seleção mensal, análise de maturidade, Office Hours.'
+}, {
+    id: 'acompanhamento-ongoing',
+    section: 'gestao',
+    sectionLabel: 'Gestão de Parceiros',
+    title: 'Acompanhamento Parceiros Em Ongoing',
+    preview: '5 pilares estratégicos, IA Integrativa, precificação.'
+}, {
+    id: 'criacao-ambiente',
+    section: 'procedimentos',
+    sectionLabel: 'Procedimentos Parceiros',
+    title: 'Criação do Ambiente do Parceiro',
+    preview: 'Admin Helena > Parceiros, preencher F+1, ID Integração.'
+}, {
+    id: 'dominio-personalizado',
+    section: 'procedimentos',
+    sectionLabel: 'Procedimentos Parceiros',
+    title: 'Configuração de Domínio Personalizado',
+    preview: 'Subdomínio, DNS, Admin Helena > Domínio Personalizado.'
+}, {
+    id: 'criacao-conta',
+    section: 'procedimentos',
+    sectionLabel: 'Procedimentos Parceiros',
+    title: 'Criação de Conta na Plataforma',
+    preview: 'Super Admin, Admin > Contas, CNPJ, PJ ou PF.'
+}, {
+    id: 'conexao-canal',
+    section: 'procedimentos',
+    sectionLabel: 'Procedimentos Parceiros',
+    title: 'Conexão de Canal',
+    preview: 'API Oficial, Z-API, Instagram, Messenger, portabilidade e demonstração.'
+}, {
+    id: 'conexao-api-oficial',
+    section: 'procedimentos',
+    sectionLabel: 'Procedimentos Parceiros',
+    title: 'API Oficial do WhatsApp',
+    preview: 'Conexão Cloud API Meta, WABA, cartão de crédito, logomarca.'
+}, {
+    id: 'conexao-api-coexistencia',
+    section: 'procedimentos',
+    sectionLabel: 'Procedimentos Parceiros',
+    title: 'API Oficial – Coexistência',
+    preview: 'Dois sistemas coexistindo no mesmo número WhatsApp.'
+}, {
+    id: 'conexao-zapi',
+    section: 'procedimentos',
+    sectionLabel: 'Procedimentos Parceiros',
+    title: 'API Não Oficial (Z-API)',
+    preview: 'Conexão Z-API parceria Helena e conta própria, QR Code.'
+}, {
+    id: 'conexao-evolution',
+    section: 'procedimentos',
+    sectionLabel: 'Procedimentos Parceiros',
+    title: 'Evolution API',
+    preview: 'Conexão via Evolution API na plataforma.'
+}, {
+    id: 'conexao-instagram-messenger',
+    section: 'procedimentos',
+    sectionLabel: 'Procedimentos Parceiros',
+    title: 'Instagram / Messenger',
+    preview: 'Conexão Instagram e Messenger via página do Facebook.'
+}, {
+    id: 'conexao-portabilidade',
+    section: 'procedimentos',
+    sectionLabel: 'Procedimentos Parceiros',
+    title: 'Portabilidade',
+    preview: 'Migração de número já conectado em outra plataforma.'
+}, {
+    id: 'conexao-demonstracao',
+    section: 'procedimentos',
+    sectionLabel: 'Procedimentos Parceiros',
+    title: 'Canal de Demonstração',
+    preview: 'Conectar número para teste grátis e demonstração.'
+}, {
+    id: 'upsell-app-dominio',
+    section: 'bonificacoes',
+    sectionLabel: 'Bonificações',
+    title: 'POP – Upsell de App Personalizado e Domínio Personalizado',
+    preview: 'Upsell de app whitelabel e domínio personalizado, condições comerciais e processo.'
+}, {
+    id: 'bonificacao-ongoing',
+    section: 'bonificacoes',
+    sectionLabel: 'Bonificações',
+    title: 'Bonificação — Acompanhamentos Mensais',
+    preview: 'Cálculo de engajamento, crescimento e bônus final dos parceiros.'
+}, {
+    id: 'bonificacao-indicacao',
+    section: 'bonificacoes',
+    sectionLabel: 'Bonificações',
+    title: 'Bonificação por Indicação de Parceiros',
+    preview: 'Regras e critérios para bonificação de parceiros que indicam novos parceiros.'
+}, {
+    id: 'bonificacao-fechamento-direto',
+    section: 'bonificacoes',
+    sectionLabel: 'Bonificações',
+    title: 'Bonificação por Fechamento Direto de Cliente de Parceiro',
+    preview: 'Bonificação quando cliente de parceiro White Label contrata diretamente com a Helena.'
+}, {
+    id: 'desconto-progressivo',
+    section: 'bonificacoes',
+    sectionLabel: 'Bonificações',
+    title: 'Política de Desconto Progressivo',
+    preview: 'Desconto automático por faixas de faturamento para parceiros.'
+}, {
+    id: 'metabase',
+    section: 'dashboards',
+    sectionLabel: 'Dashboards e Monitoramento',
+    title: 'Metabase – Evolução de Atendimento',
+    preview: 'Usabilidade de clientes, risco de churn por parceiro.'
+}, {
+    id: 'painel-gestao',
+    section: 'dashboards',
+    sectionLabel: 'Dashboards e Monitoramento',
+    title: 'Painel de Gestão a Vista',
+    preview: 'Contas e churn por parceiro/CS.'
+}, {
+    id: 'academia',
+    section: 'cultura',
+    sectionLabel: 'Experiência do Colaborador',
+    title: 'Portal do Parceiro | Academia Helena',
+    preview: 'Treinamentos, materiais de apoio, capacitação de parceiros.'
+}, {
+    id: 'conteudos-time-interno',
+    section: 'cultura',
+    sectionLabel: 'Experiência do Colaborador',
+    title: 'Conteúdos para o Time Interno',
+    preview: 'Cursos e conteúdos exclusivos para desenvolvimento do time interno Helena.'
+}];
+
+const sectionPages = {
+    rotinas: 'rotinas',
+    onboarding: 'onboarding',
+    operacional: 'operacional',
+    gestao: 'gestao',
+    procedimentos: 'procedimentos',
+    bonificacoes: 'bonificacoes',
+    dashboards: 'dashboards',
+    cultura: 'cultura'
+};
+
+function showPage(pageId, pushHistory = true) {
+    if (pushHistory && currentPage && currentPage !== pageId) pageHistory.push(currentPage);
+    if (pushHistory) {
+        window.location.hash = pageId === 'home' ? '' : pageId;
+    }
+    document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
+    const el = document.getElementById('page-' + pageId) || document.getElementById(pageId);
+    if (el) {
+        el.classList.add('active');
+        currentPage = pageId;
+    }
+    document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+    const match = [...document.querySelectorAll('.nav-item')].find(i => i.getAttribute('onclick') && i.getAttribute('onclick').includes("'" + pageId + "'"));
+    if (match) match.classList.add('active');
+    updateBreadcrumb(pageId);
+    document.getElementById('content').scrollTop = 0;
+    window.scrollTo(0, 0);
+    closeSearch();
+    document.querySelectorAll('.nav-btn-row').forEach(row => {
+        if (row._updatePrevBtn) row._updatePrevBtn();
+    });
+}
+
+function openSection(sectionId) {
+    const navItems = document.getElementById('nav-' + sectionId);
+    const cat = document.querySelector(`[data-section="${sectionId}"]`);
+    if (navItems && !navItems.classList.contains('open')) {
+        navItems.classList.add('open');
+        if (cat) cat.classList.add('open', 'active');
+    }
+    showPage(sectionId);
+}
+
+function toggleCat(el, sectionId) {
+    const navItems = document.getElementById('nav-' + sectionId);
+    const isOpen = navItems.classList.contains('open');
+    navItems.classList.toggle('open', !isOpen);
+    el.classList.toggle('open', !isOpen);
+    el.classList.toggle('active', !isOpen);
+    showPage(sectionId);
+}
+
+function updateBreadcrumb(pageId) {
+    const bc = document.getElementById('breadcrumb');
+    if (pageId === 'home') {
+        bc.innerHTML = '<span>Portal CS Parcerias</span>';
+        return;
+    }
+    const item = searchIndex.find(i => i.id === pageId);
+    const sectionId = Object.keys(sectionPages).find(k => sectionPages[k] === pageId);
+    if (sectionId) {
+        const sections = {
+            rotinas: 'Rotinas do Time',
+            onboarding: 'Processos de Onboarding',
+            operacional: 'Processos Operacionais',
+            gestao: 'Gestão de Parceiros',
+            procedimentos: 'Procedimentos Parceiros',
+            bonificacoes: 'Bonificações',
+            dashboards: 'Dashboards e Monitoramento',
+            cultura: 'Experiência do Colaborador'
         };
-
-        function showPage(pageId, pushHistory = true) {
-            if (pushHistory && currentPage && currentPage !== pageId) pageHistory.push(currentPage);
-            if (pushHistory) {
-                window.location.hash = pageId === 'home' ? '' : pageId;
-            }
-            document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
-            const el = document.getElementById('page-' + pageId) || document.getElementById(pageId);
-            if (el) {
-                el.classList.add('active');
-                currentPage = pageId;
-            }
-            document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
-            const match = [...document.querySelectorAll('.nav-item')].find(i => i.getAttribute('onclick') && i.getAttribute('onclick').includes("'" + pageId + "'"));
-            if (match) match.classList.add('active');
-            updateBreadcrumb(pageId);
-            document.getElementById('content').scrollTop = 0;
-            window.scrollTo(0, 0);
-            closeSearch();
-            document.querySelectorAll('.nav-btn-row').forEach(row => {
-                if (row._updatePrevBtn) row._updatePrevBtn();
-            });
-        }
-
-        function openSection(sectionId) {
-            const navItems = document.getElementById('nav-' + sectionId);
-            const cat = document.querySelector(`[data-section="${sectionId}"]`);
-            if (navItems && !navItems.classList.contains('open')) {
-                navItems.classList.add('open');
-                if (cat) cat.classList.add('open', 'active');
-            }
-            showPage(sectionId);
-        }
-
-        function toggleCat(el, sectionId) {
-            const navItems = document.getElementById('nav-' + sectionId);
-            const isOpen = navItems.classList.contains('open');
-            navItems.classList.toggle('open', !isOpen);
-            el.classList.toggle('open', !isOpen);
-            el.classList.toggle('active', !isOpen);
-            showPage(sectionId);
-        }
-
-        function updateBreadcrumb(pageId) {
-            const bc = document.getElementById('breadcrumb');
-            if (pageId === 'home') {
-                bc.innerHTML = '<span>Portal CS Parcerias</span>';
-                return;
-            }
-            const item = searchIndex.find(i => i.id === pageId);
-            const sectionId = Object.keys(sectionPages).find(k => sectionPages[k] === pageId);
-            if (sectionId) {
-                const sections = {
-                    rotinas: 'Rotinas do Time',
-                    onboarding: 'Processos de Onboarding',
-                    operacional: 'Processos Operacionais',
-                    gestao: 'Gestão de Parceiros',
-                    procedimentos: 'Procedimentos Parceiros',
-                    dashboards: 'Dashboards e Monitoramento',
-                    cultura: 'Cultura e Desenvolvimento'
-                };
-                bc.innerHTML = `Portal CS Parcerias <span class="sep">›</span> <span>${sections[sectionId]||pageId}</span>`;
-            } else if (item) {
-                bc.innerHTML = `Portal CS Parcerias <span class="sep">›</span> ${item.sectionLabel} <span class="sep">›</span> <span>${item.title}</span>`;
-            } else {
-                bc.innerHTML = `Portal CS Parcerias <span class="sep">›</span> <span>${pageId}</span>`;
-            }
-        }
+        bc.innerHTML = `Portal CS Parcerias <span class="sep">›</span> <span>${sections[sectionId]||pageId}</span>`;
+    } else if (item) {
+        bc.innerHTML = `Portal CS Parcerias <span class="sep">›</span> ${item.sectionLabel} <span class="sep">›</span> <span>${item.title}</span>`;
+    } else {
+        bc.innerHTML = `Portal CS Parcerias <span class="sep">›</span> <span>${pageId}</span>`;
+    }
+}
 
 function doSearch() {
     const q = document.getElementById('topSearch').value.trim();
@@ -3604,195 +3637,212 @@ function doSearch() {
         return;
     }
     const ql = q.toLowerCase();
+    let results = [];
 
-    // Busca no searchIndex (título, preview, seção)
-    let results = searchIndex.filter(item =>
-        item.title.toLowerCase().includes(ql) ||
-        item.preview.toLowerCase().includes(ql) ||
-        item.sectionLabel.toLowerCase().includes(ql)
-    );
+    // Busca no searchIndex
+    searchIndex.forEach(item => {
+        if (
+            item.title.toLowerCase().includes(ql) ||
+            item.preview.toLowerCase().includes(ql) ||
+            item.sectionLabel.toLowerCase().includes(ql)
+        ) {
+            results.push({ ...item });
+        }
+    });
 
-    // Busca também no conteúdo real das páginas
+    // Busca no HTML real de todas as páginas
     document.querySelectorAll('.page-view').forEach(page => {
         const rawId = page.id;
         if (!rawId || rawId === 'page-home') return;
         const pageId = rawId.replace(/^page-/, '');
-
-        // Evita duplicar o que já foi encontrado
         if (results.find(r => r.id === pageId)) return;
 
-        const text = page.innerText.toLowerCase();
-        if (text.includes(ql)) {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = page.innerHTML;
+        const text = tempDiv.innerText || tempDiv.textContent || '';
+        const textLower = text.toLowerCase();
+
+        if (textLower.includes(ql)) {
             const indexed = searchIndex.find(i => i.id === pageId);
-            const fullText = page.innerText;
-            const idx = text.indexOf(ql);
+            const idx = textLower.indexOf(ql);
             const start = Math.max(0, idx - 60);
-            const end = Math.min(fullText.length, idx + 100);
+            const end = Math.min(text.length, idx + 100);
             results.push({
                 id: pageId,
-                title: indexed ? indexed.title : (page.querySelector('.page-title')?.innerText || pageId),
-                sectionLabel: indexed ? indexed.sectionLabel : (page.querySelector('.page-tag')?.innerText || ''),
-                preview: '...' + fullText.slice(start, end).replace(/\n/g, ' ') + '...'
+                title: indexed ? indexed.title : (page.querySelector('.page-title')?.textContent || pageId),
+                sectionLabel: indexed ? indexed.sectionLabel : (page.querySelector('.page-tag')?.textContent || ''),
+                preview: '...' + text.slice(start, end).replace(/\n+/g, ' ').trim() + '...'
             });
         }
     });
 
     renderSearchResults(results, q);
 }
-        function renderSearchResults(results, q) {
-            const box = document.getElementById('searchResults');
-            if (!results.length) {
-                box.innerHTML = `<div id="noSearchResults">Nenhum resultado para "<strong>${q}</strong>"</div>`;
-                box.style.display = 'block';
-                return;
+
+function renderSearchResults(results, q) {
+    const box = document.getElementById('searchResults');
+    if (!results.length) {
+        box.innerHTML = `<div id="noSearchResults">Nenhum resultado para "<strong>${q}</strong>"</div>`;
+        box.style.display = 'block';
+        return;
+    }
+    box.innerHTML = results.map(r => `
+        <div class="search-result-item" onclick="showPage('${r.id}')">
+            <div class="sr-cat">${r.sectionLabel}</div>
+            <div class="sr-title">${r.title}</div>
+            <div class="sr-preview">${r.preview}</div>
+        </div><hr>
+    `).join('');
+    box.style.display = 'block';
+}
+
+function closeSearch() {
+    document.getElementById('searchResults').style.display = 'none';
+}
+
+document.getElementById('searchInput').addEventListener('input', function() {
+    const q = this.value.toLowerCase().trim();
+    const noResults = document.getElementById('noNavResults');
+    let hasAny = false;
+    document.querySelectorAll('.nav-item').forEach(item => {
+        const text = item.textContent.toLowerCase();
+        const visible = !q || text.includes(q);
+        item.style.display = visible ? '' : 'none';
+        if (visible && q) hasAny = true;
+    });
+    document.querySelectorAll('.nav-cat').forEach(cat => {
+        const sectionId = cat.getAttribute('data-section');
+        const items = document.querySelectorAll(`#nav-${sectionId} .nav-item`);
+        const hasVisible = [...items].some(i => i.style.display !== 'none');
+        cat.style.display = !q || hasVisible ? '' : 'none';
+        if (q && hasVisible) {
+            document.getElementById('nav-' + sectionId).classList.add('open');
+            cat.classList.add('open');
+        }
+    });
+    noResults.style.display = q && !hasAny ? 'block' : 'none';
+});
+
+document.getElementById('topSearch').addEventListener('keyup', function(e) {
+    if (e.key === 'Escape') closeSearch();
+    else if (e.key === 'Enter') doSearch();
+    else if (this.value.length > 1) doSearch();
+    else if (!this.value) closeSearch();
+});
+
+document.getElementById('topSearch').addEventListener('input', function() {
+    if (this.value.length > 1) doSearch();
+    else if (!this.value) closeSearch();
+});
+
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('#searchResults') && !e.target.closest('#topSearch')) closeSearch();
+});
+
+function toggleMobile() {
+    document.getElementById('sidebar').classList.toggle('open');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const hash = window.location.hash.replace('#', '');
+    showPage(hash || 'home');
+
+    const sectionPageMap = {
+        rotinas: 'rotinas',
+        onboarding: 'onboarding',
+        operacional: 'operacional',
+        gestao: 'gestao',
+        procedimentos: 'procedimentos',
+        bonificacoes: 'bonificacoes',
+        dashboards: 'dashboards',
+        cultura: 'cultura'
+    };
+
+    const pageParentMap = {};
+    searchIndex.forEach((item) => {
+        const sectionId = sectionPageMap[item.section];
+        const siblings = searchIndex.filter(i => i.section === item.section);
+        const sibIdx = siblings.findIndex(i => i.id === item.id);
+        const prev = siblings[sibIdx - 1] || null;
+        const next = siblings[sibIdx + 1] || null;
+        pageParentMap[item.id] = {
+            parentId: sectionId,
+            parentLabel: item.sectionLabel,
+            prevId: prev ? prev.id : null,
+            prevTitle: prev ? prev.title : null,
+            nextId: next ? next.id : null,
+            nextTitle: next ? next.title : null
+        };
+    });
+
+    const arrowLeft = '<svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>';
+    const arrowRight = '<svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>';
+
+    function makeRow(parentId, parentLabel, nextId, nextTitle, extraStyle) {
+        const row = document.createElement('div');
+        row.className = 'nav-btn-row';
+        if (extraStyle) row.style.cssText = extraStyle;
+        const back = document.createElement('button');
+        back.className = 'back-btn';
+        back.innerHTML = arrowLeft + parentLabel;
+        back.onclick = () => showPage(parentId);
+        row.appendChild(back);
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'back-btn';
+        prevBtn.innerHTML = arrowLeft + 'Anterior';
+        prevBtn.style.display = 'none';
+        prevBtn.onclick = () => {
+            if (pageHistory.length > 0) {
+                const prev = pageHistory.pop();
+                showPage(prev, false);
             }
-            box.innerHTML = results.map(r => `
-    <div class="search-result-item" onclick="showPage('${r.id}')">
-      <div class="sr-cat">${r.sectionLabel}</div>
-      <div class="sr-title">${r.title}</div>
-      <div class="sr-preview">${r.preview}</div>
-    </div><hr>
-  `).join('');
-            box.style.display = 'block';
+        };
+        const updatePrevBtn = () => {
+            prevBtn.style.display = pageHistory.length > 0 ? '' : 'none';
+        };
+        row._updatePrevBtn = updatePrevBtn;
+        row.appendChild(prevBtn);
+        if (nextId) {
+            const next = document.createElement('button');
+            next.className = 'next-btn';
+            next.innerHTML = nextTitle + arrowRight;
+            next.onclick = () => showPage(nextId);
+            row.appendChild(next);
         }
+        return row;
+    }
 
-        function closeSearch() {
-            document.getElementById('searchResults').style.display = 'none';
-        }
-        document.getElementById('searchInput').addEventListener('input', function() {
-            const q = this.value.toLowerCase().trim();
-            const noResults = document.getElementById('noNavResults');
-            let hasAny = false;
-            document.querySelectorAll('.nav-item').forEach(item => {
-                const text = item.textContent.toLowerCase();
-                const visible = !q || text.includes(q);
-                item.style.display = visible ? '' : 'none';
-                if (visible && q) hasAny = true;
-            });
-            document.querySelectorAll('.nav-cat').forEach(cat => {
-                const sectionId = cat.getAttribute('data-section');
-                const items = document.querySelectorAll(`#nav-${sectionId} .nav-item`);
-                const hasVisible = [...items].some(i => i.style.display !== 'none');
-                cat.style.display = !q || hasVisible ? '' : 'none';
-                if (q && hasVisible) {
-                    document.getElementById('nav-' + sectionId).classList.add('open');
-                    cat.classList.add('open');
-                }
-            });
-            noResults.style.display = q && !hasAny ? 'block' : 'none';
-        });
-        document.getElementById('topSearch').addEventListener('keyup', function(e) {
-            if (e.key === 'Enter') doSearch();
-            else if (e.key === 'Escape') closeSearch();
-            else if (this.value.length > 1) doSearch();
-            else if (!this.value) closeSearch();
-        });
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('#searchResults') && !e.target.closest('#topSearch')) closeSearch();
-        });
-
-        function toggleMobile() {
-            document.getElementById('sidebar').classList.toggle('open');
-        }
-        document.addEventListener('DOMContentLoaded', function() {
-            const hash = window.location.hash.replace('#', '');
-            showPage(hash || 'home');
-            const sectionPageMap = {
-                rotinas: 'rotinas',
-                onboarding: 'onboarding',
-                operacional: 'operacional',
-                gestao: 'gestao',
-                procedimentos: 'procedimentos',
-                bonificacoes: 'bonificacoes',
-                dashboards: 'dashboards',
-                cultura: 'cultura'
-            };
-            const pageParentMap = {};
-            searchIndex.forEach((item) => {
-                const sectionId = sectionPageMap[item.section];
-                const siblings = searchIndex.filter(i => i.section === item.section);
-                const sibIdx = siblings.findIndex(i => i.id === item.id);
-                const prev = siblings[sibIdx - 1] || null;
-                const next = siblings[sibIdx + 1] || null;
-                pageParentMap[item.id] = {
-                    parentId: sectionId,
-                    parentLabel: item.sectionLabel,
-                    prevId: prev ? prev.id : null,
-                    prevTitle: prev ? prev.title : null,
-                    nextId: next ? next.id : null,
-                    nextTitle: next ? next.title : null
-                };
-            });
-            const arrowLeft = '<svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>';
-            const arrowRight = '<svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>';
-
-            function makeRow(parentId, parentLabel, nextId, nextTitle, extraStyle) {
-                const row = document.createElement('div');
-                row.className = 'nav-btn-row';
-                if (extraStyle) row.style.cssText = extraStyle;
-                const back = document.createElement('button');
-                back.className = 'back-btn';
-                back.innerHTML = arrowLeft + parentLabel;
-                back.onclick = () => showPage(parentId);
-                row.appendChild(back);
-                const prevBtn = document.createElement('button');
-                prevBtn.className = 'back-btn';
-                prevBtn.innerHTML = arrowLeft + 'Anterior';
-                prevBtn.style.display = 'none';
-                prevBtn.onclick = () => {
-                    if (pageHistory.length > 0) {
-                        const prev = pageHistory.pop();
-                        showPage(prev, false);
-                    }
-                };
-                const updatePrevBtn = () => {
-                    prevBtn.style.display = pageHistory.length > 0 ? '' : 'none';
-                };
-                row._updatePrevBtn = updatePrevBtn;
-                row.appendChild(prevBtn);
-                if (nextId) {
-                    const next = document.createElement('button');
-                    next.className = 'next-btn';
-                    next.innerHTML = nextTitle + arrowRight;
-                    next.onclick = () => showPage(nextId);
-                    row.appendChild(next);
-                }
-                return row;
+    document.querySelectorAll('.page-view').forEach(pageView => {
+        const rawId = pageView.id;
+        if (!rawId || rawId === 'page-home') return;
+        const pageId = rawId.replace(/^page-/, '');
+        const header = pageView.querySelector('.page-header');
+        if (!header) return;
+        const contentBody = pageView.querySelector('.content-body');
+        let parentId = null, parentLabel = null, nextId = null, nextTitle = null;
+        const backSpan = header.querySelector('.page-tag span[onclick]');
+        if (backSpan) {
+            const m = backSpan.getAttribute('onclick').match(/showPage\('([^']+)'\)/);
+            if (m) {
+                parentId = m[1];
+                parentLabel = backSpan.textContent.trim();
             }
-            document.querySelectorAll('.page-view').forEach(pageView => {
-                const rawId = pageView.id;
-                if (!rawId || rawId === 'page-home') return;
-                const pageId = rawId.replace(/^page-/, '');
-                const header = pageView.querySelector('.page-header');
-                if (!header) return;
-                const contentBody = pageView.querySelector('.content-body');
-                let parentId = null,
-                    parentLabel = null,
-                    nextId = null,
-                    nextTitle = null;
-                const backSpan = header.querySelector('.page-tag span[onclick]');
-                if (backSpan) {
-                    const m = backSpan.getAttribute('onclick').match(/showPage\('([^']+)'\)/);
-                    if (m) {
-                        parentId = m[1];
-                        parentLabel = backSpan.textContent.trim();
-                    }
-                }
-                if (!parentId && pageParentMap[pageId]) {
-                    parentId = pageParentMap[pageId].parentId;
-                    parentLabel = pageParentMap[pageId].parentLabel;
-                    nextId = pageParentMap[pageId].nextId;
-                    nextTitle = pageParentMap[pageId].nextTitle;
-                } else if (parentId && pageParentMap[pageId]) {
-                    nextId = pageParentMap[pageId] ? pageParentMap[pageId].nextId : null;
-                    nextTitle = pageParentMap[pageId] ? pageParentMap[pageId].nextTitle : null;
-                }
-                if (!parentId) return;
-                const tag = header.querySelector('.page-tag');
-                header.insertBefore(makeRow(parentId, parentLabel, nextId, nextTitle, 'margin-bottom:14px;'), tag);
-                if (contentBody) contentBody.appendChild(makeRow(parentId, parentLabel, nextId, nextTitle, 'margin-top:28px;'));
-            });
-        });
+        }
+        if (!parentId && pageParentMap[pageId]) {
+            parentId = pageParentMap[pageId].parentId;
+            parentLabel = pageParentMap[pageId].parentLabel;
+            nextId = pageParentMap[pageId].nextId;
+            nextTitle = pageParentMap[pageId].nextTitle;
+        } else if (parentId && pageParentMap[pageId]) {
+            nextId = pageParentMap[pageId] ? pageParentMap[pageId].nextId : null;
+            nextTitle = pageParentMap[pageId] ? pageParentMap[pageId].nextTitle : null;
+        }
+        if (!parentId) return;
+        const tag = header.querySelector('.page-tag');
+        header.insertBefore(makeRow(parentId, parentLabel, nextId, nextTitle, 'margin-bottom:14px;'), tag);
+        if (contentBody) contentBody.appendChild(makeRow(parentId, parentLabel, nextId, nextTitle, 'margin-top:28px;'));
+    });
+});
     </script>
 </body>
 
