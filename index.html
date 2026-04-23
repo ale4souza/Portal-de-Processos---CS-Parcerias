@@ -3597,16 +3597,48 @@
             }
         }
 
-        function doSearch() {
-            const q = document.getElementById('topSearch').value.trim();
-            if (!q) {
-                closeSearch();
-                return;
-            }
-            const results = searchIndex.filter(item => item.title.toLowerCase().includes(q.toLowerCase()) || item.preview.toLowerCase().includes(q.toLowerCase()) || item.sectionLabel.toLowerCase().includes(q.toLowerCase()));
-            renderSearchResults(results, q);
-        }
+function doSearch() {
+    const q = document.getElementById('topSearch').value.trim();
+    if (!q) {
+        closeSearch();
+        return;
+    }
+    const ql = q.toLowerCase();
 
+    // Busca no searchIndex (título, preview, seção)
+    let results = searchIndex.filter(item =>
+        item.title.toLowerCase().includes(ql) ||
+        item.preview.toLowerCase().includes(ql) ||
+        item.sectionLabel.toLowerCase().includes(ql)
+    );
+
+    // Busca também no conteúdo real das páginas
+    document.querySelectorAll('.page-view').forEach(page => {
+        const rawId = page.id;
+        if (!rawId || rawId === 'page-home') return;
+        const pageId = rawId.replace(/^page-/, '');
+
+        // Evita duplicar o que já foi encontrado
+        if (results.find(r => r.id === pageId)) return;
+
+        const text = page.innerText.toLowerCase();
+        if (text.includes(ql)) {
+            const indexed = searchIndex.find(i => i.id === pageId);
+            const fullText = page.innerText;
+            const idx = text.indexOf(ql);
+            const start = Math.max(0, idx - 60);
+            const end = Math.min(fullText.length, idx + 100);
+            results.push({
+                id: pageId,
+                title: indexed ? indexed.title : (page.querySelector('.page-title')?.innerText || pageId),
+                sectionLabel: indexed ? indexed.sectionLabel : (page.querySelector('.page-tag')?.innerText || ''),
+                preview: '...' + fullText.slice(start, end).replace(/\n/g, ' ') + '...'
+            });
+        }
+    });
+
+    renderSearchResults(results, q);
+}
         function renderSearchResults(results, q) {
             const box = document.getElementById('searchResults');
             if (!results.length) {
